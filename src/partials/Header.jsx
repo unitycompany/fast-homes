@@ -3,10 +3,27 @@ import styled from "styled-components";
 
 import GlobalButton from "../components/buttons/GlobalButton";
 import HeaderSelect from "./HeaderSelect";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const HeaderContainer = styled.header`
     background-color: var(--color--black);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 768px){
+        height: 10vh;
+    }
+`;
+
+const HeaderAll = styled.div`
+    background-color: var(--color--black);
+    max-width: 1280px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    position: relative;
     width: 100%;
     height: 8vh;
     padding: 0 5%;
@@ -17,7 +34,7 @@ const HeaderContainer = styled.header`
     @media (max-width: 768px){
         height: 10vh;
     }
-`;
+`
 
 const HeaderImage = styled.div`
     width: 200px;
@@ -63,6 +80,7 @@ const HeaderLinks = styled.div`
             position: relative;
             transition: 0.5s ease;
             z-index: 2;
+            font-family: var(--font--montserrat);
 
             &::before{
                 content: '';
@@ -177,40 +195,42 @@ const Header = () => {
     return (
         <> 
             <HeaderContainer>
-                <HeaderImage>
-                    <button onClick={() => navigate('/')}> 
-                        <img 
-                            src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/3d1440c5-f0d7-41e3-953e-64662df60e00/public" 
-                            alt="logo-fast-homes" 
+                <HeaderAll>
+                    <HeaderImage>
+                        <button onClick={() => navigate('/')}> 
+                            <img 
+                                src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/3d1440c5-f0d7-41e3-953e-64662df60e00/public" 
+                                alt="logo-fast-homes" 
+                            />
+                        </button>
+                    </HeaderImage>
+                    <HeaderLinks>
+                        <ul>
+                            <div>
+                                <HeaderSelect />
+                            </div>
+                            <li onClick={() => Navigate=("/monte-sua-casa")}>Monte sua casa</li>
+                            <li onClick={() => Navigate=("/sobre")}>Sobre nós</li>
+                            <li onClick={() => Navigate=("/parcerias")}>Parcerias</li>
+                        </ul>
+                    </HeaderLinks>
+                    <HeaderButton>
+                        <GlobalButton 
+                            text="Solicitar orçamento"
+                            background1="#ffffff"
+                            background2="#ffffff"
+                            colorIcon="#000000"
+                            colorText="#000000"
                         />
-                    </button>
-                </HeaderImage>
-                <HeaderLinks>
-                    <ul>
-                        <div>
-                            <HeaderSelect />
+                    </HeaderButton>
+                    <HeaderMenu onClick={toggleSidebar} isOpen={isSidebarOpen}>
+                        <div className="hamburger">
+                            <span className="bar"></span>
+                            <span className="bar"></span>
+                            <span className="bar"></span>
                         </div>
-                        <li>Monte sua casa</li>
-                        <li>Sobre nós</li>
-                        <li>Parcerias</li>
-                    </ul>
-                </HeaderLinks>
-                <HeaderButton>
-                    <GlobalButton 
-                        text="Solicitar orçamento"
-                        background1="#ffffff"
-                        background2="#ffffff"
-                        colorIcon="#000000"
-                        colorText="#000000"
-                    />
-                </HeaderButton>
-                <HeaderMenu onClick={toggleSidebar} isOpen={isSidebarOpen}>
-                    <div className="hamburger">
-                        <span className="bar"></span>
-                        <span className="bar"></span>
-                        <span className="bar"></span>
-                    </div>
-                </HeaderMenu>
+                    </HeaderMenu>
+                </HeaderAll>
             </HeaderContainer>
 
             <HeaderSidebar isOpen={isSidebarOpen}>

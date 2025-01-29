@@ -9,6 +9,7 @@ const Button = styled.button`
     justify-content: center;
     cursor: pointer;
     position: relative;
+    font-family: var(--font--montserrat);
 
     &:hover > div:nth-child(2){
         border-radius: 0 50px 50px 0;
@@ -16,6 +17,7 @@ const Button = styled.button`
 
         & > svg {
             transform: rotate(135deg);
+            font-size: 14px;
         }
     }
 
@@ -37,7 +39,7 @@ const Button = styled.button`
         position: relative;
         overflow: hidden;
         transition: all .4s ease;
-        font-weight: 300;
+        font-weight: 400;
         font-size: 16px;
         z-index: 2;
     }

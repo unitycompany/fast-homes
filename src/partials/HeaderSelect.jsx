@@ -21,6 +21,7 @@ const DropdownHeader = styled.div`
   color: ${({ colorText }) => colorText || '#fff' };
   transition: all .2s ease;
   text-transform: uppercase;
+  font-family: var(--font--montserrat);
 
   &:hover {
     border-bottom: 1px solid #fff;
@@ -36,7 +37,7 @@ const DropdownList = styled.div`
   position: absolute;
   top: ${({ isOpen }) => (isOpen ? "calc(100% + 0.5rem)" : "calc(100% + 0.5rem)")};
   left: 0;
-  width: 150px;
+  width: 200px;
   right: 0;
   background-color: var(--color--black);
   border-top: 2px solid #fff;
@@ -47,6 +48,7 @@ const DropdownList = styled.div`
   transform: ${({ isOpen }) => (isOpen ? "scaleY(1)" : "scaleY(0)")};
   transform-origin: top;
   transition: transform 0.3s ease, max-height 0.3s ease;
+  font-family: var(--font--montserrat);
 
   @media (max-width: 768px) {
     max-width: ${({ isOpen }) => (isOpen ? "150px" : "0")};
