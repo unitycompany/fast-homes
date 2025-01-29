@@ -210,25 +210,6 @@ const HeaderSidebarContainer = styled.div`
 const HeaderSidebarButton = styled.div`
 `
 
-const HeaderSidebarImage = styled.div`
-    width: 97.5%;
-    height: 250px;
-    overflow: hidden;
-    border: 2px solid #fff;
-    position: relative;
-
-    & > img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: all .5s ease;
-
-        &:hover {
-            transform: scale(1.1);
-        }
-    }
-`
-
 const HeaderMenu = styled.button`
     display: none;
     background: none;
@@ -359,11 +340,6 @@ const Header = () => {
                             <li onClick={() => navigate=("/parcerias")}>Parcerias</li>
                         </ul>
                     </HeaderSidebarLinks>
-
-                    <HeaderSidebarImage>
-                        <img onClick={() => navigate=("/catalogo")} src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/70a9ba30-6754-4d9d-0a68-8e6a98db7a00/public" alt="projeto-fast-homes" loading="" />
-                    </HeaderSidebarImage>
-
                     <HeaderSidebarButton>
                         <GlobalButton 
                             text="Solicitar orçamento"
