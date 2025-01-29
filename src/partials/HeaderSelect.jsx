@@ -51,10 +51,12 @@ const DropdownList = styled.div`
   font-family: var(--font--montserrat);
 
   @media (max-width: 768px) {
+    border-top: none;
+    border-left: 1px solid #fff;
     max-width: ${({ isOpen }) => (isOpen ? "150px" : "0")};
-    top: 0;
+    top: 10px;
     max-height: 300px;
-    left: ${({ isOpen }) => (isOpen ? "calc(100% + 0.2rem)" : "calc(100% + 0.5rem)")};
+    left: ${({ isOpen }) => (isOpen ? "calc(100% + 0.3rem)" : "calc(100% + 0.5rem)")};
   }
 `;
 
@@ -99,9 +101,9 @@ const HeaderSelect = ({ colorIcon, colorText }) => {
   const navigate = useNavigate();
 
   const options = [
-    { label: "Opção 1", path: "/acomodaSerra" },
-    { label: "Opção 2", path: "/acomodaMar" },
-    { label: "Opção 3", path: "/pacotes" },
+    { label: "Opção 1", path: "/" },
+    { label: "Opção 2", path: "/" },
+    { label: "Opção 3", path: "/" },
   ];
 
   const handleSelect = (option) => {

@@ -123,6 +123,111 @@ const HeaderLinks = styled.div`
     }
 `
 
+const HeaderSidebarLinks = styled.div`
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    & > ul {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        list-style: none;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 10px;  
+
+        & > li {
+            font-weight: 400;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 10px 8px;
+            background: transparent;
+            border: none;
+            text-transform: uppercase;
+            position: relative;
+            transition: 0.5s ease;
+            z-index: 2;
+            font-family: var(--font--montserrat);
+
+            &::before{
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 2px;
+                width: 0px;
+                background-color: #fff;
+                transition: 0.5s ease;
+            }
+
+            &:hover{
+                color: var(--color--black);
+                transition-delay: 0.5s;
+            }
+
+            &:hover::before{
+                width: 100%;
+            }
+
+            &::after{
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 0;
+                width: 100%;
+                background-color: #fff;
+                transition: .4s ease;
+                z-index: -1;
+            }
+
+            &:hover::after{
+                height: 100%;
+                transition-delay: .4s;
+                color: var(--color--black);
+            }
+        }
+    }
+`
+
+const HeaderSidebarContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    padding: 10% 5% 5% 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+`
+
+const HeaderSidebarButton = styled.div`
+`
+
+const HeaderSidebarImage = styled.div`
+    width: 97.5%;
+    height: 300px;
+    overflow: hidden;
+    border: 2px solid #fff;
+    position: relative;
+
+    & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all .5s ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+`
+
 const HeaderMenu = styled.button`
     display: none;
     background: none;
@@ -166,7 +271,14 @@ const HeaderMenu = styled.button`
 `;
 
 const HeaderSidebar = styled.div`
+    display: none;
+
+    @media (max-width: 768px){
     width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     position: fixed;
     top: 10vh;
     left: 0;
@@ -176,6 +288,7 @@ const HeaderSidebar = styled.div`
     transition: transform 0.3s ease-in-out;
     transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(-100%)")};
     z-index: 1000;
+    }
 `;
 
 const HeaderButton = styled.div`
@@ -209,9 +322,9 @@ const Header = () => {
                             <div>
                                 <HeaderSelect />
                             </div>
-                            <li onClick={() => Navigate=("/monte-sua-casa")}>Monte sua casa</li>
-                            <li onClick={() => Navigate=("/sobre")}>Sobre nós</li>
-                            <li onClick={() => Navigate=("/parcerias")}>Parcerias</li>
+                            <li onClick={() => navigate=("/monte-sua-casa")}>Monte sua casa</li>
+                            <li onClick={() => navigate=("/sobre")}>Sobre nós</li>
+                            <li onClick={() => navigate=("/parcerias")}>Parcerias</li>
                         </ul>
                     </HeaderLinks>
                     <HeaderButton>
@@ -234,7 +347,32 @@ const Header = () => {
             </HeaderContainer>
 
             <HeaderSidebar isOpen={isSidebarOpen}>
-                {/* Conteúdo da sidebar pode ser adicionado aqui */}
+                <HeaderSidebarContainer>
+                    <HeaderSidebarLinks>
+                        <ul>
+                            <div>
+                                <HeaderSelect />
+                            </div>
+                            <li onClick={() => navigate=("/monte-sua-casa")}>Monte sua casa</li>
+                            <li onClick={() => navigate=("/sobre")}>Sobre nós</li>
+                            <li onClick={() => navigate=("/parcerias")}>Parcerias</li>
+                        </ul>
+                    </HeaderSidebarLinks>
+
+                    <HeaderSidebarImage>
+                        <img onClick={() => navigate=("/catalogo")} src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/70a9ba30-6754-4d9d-0a68-8e6a98db7a00/public" alt="projeto-fast-homes" loading="" />
+                    </HeaderSidebarImage>
+
+                    <HeaderSidebarButton>
+                        <GlobalButton 
+                            text="Solicitar orçamento"
+                            background1="#ffffff"
+                            background2="#ffffff"
+                            colorIcon="#000000"
+                            colorText="#000000"
+                        />
+                    </HeaderSidebarButton>
+                </HeaderSidebarContainer>
             </HeaderSidebar>
         </>
     );

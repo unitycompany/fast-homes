@@ -42,6 +42,11 @@ const Button = styled.button`
         font-weight: 400;
         font-size: 16px;
         z-index: 2;
+
+        @media (max-width: 768px){
+            font-size: 14px;
+            padding: 8px 20px;
+        }
     }
 
     & > div:nth-child(2){
