@@ -211,7 +211,7 @@ const HeaderSidebarButton = styled.div`
 
 const HeaderSidebarImage = styled.div`
     width: 97.5%;
-    height: 300px;
+    height: 250px;
     overflow: hidden;
     border: 2px solid #fff;
     position: relative;
@@ -282,7 +282,7 @@ const HeaderSidebar = styled.div`
     position: fixed;
     top: 10vh;
     left: 0;
-    height: 90vh;
+    height: 90dvh;
     background-color: var(--color--black);
     border-top: 2px solid #fff;
     transition: transform 0.3s ease-in-out;
