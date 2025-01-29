@@ -53,12 +53,13 @@ const HeaderLinks = styled.div`
         gap: 20px;  
 
         & > li {
-            font-weight: 300;
-            font-size: 14px;
+            font-weight: 400;
+            font-size: 12px;
             cursor: pointer;
-            padding: 10px;
+            padding: 10px 8px;
             background: transparent;
             border: none;
+            text-transform: uppercase;
             position: relative;
             transition: 0.5s ease;
             z-index: 2;

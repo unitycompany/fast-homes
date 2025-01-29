@@ -16,10 +16,11 @@ const DropdownHeader = styled.div`
   justify-content: space-between;
   gap: 15px;
   align-items: center;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 300;
   color: ${({ colorText }) => colorText || '#fff' };
   transition: all .2s ease;
+  text-transform: uppercase;
 
   &:hover {
     border-bottom: 1px solid #fff;
@@ -35,10 +36,10 @@ const DropdownList = styled.div`
   position: absolute;
   top: ${({ isOpen }) => (isOpen ? "calc(100% + 0.5rem)" : "calc(100% + 0.5rem)")};
   left: 0;
-  width: 200px;
+  width: 150px;
   right: 0;
   background-color: var(--color--black);
-  border: 2px solid #fff;
+  border-top: 2px solid #fff;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   z-index: 10;
   overflow: hidden;
@@ -61,6 +62,7 @@ const DropdownItem = styled.div`
   font-size: 12px;
   color: #fff;
   transition: background-color 0.2s ease;
+  text-transform: uppercase;
 
   @media (max-width: 768px) {
     padding: 12px;
