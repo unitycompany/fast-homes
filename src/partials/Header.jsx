@@ -149,7 +149,7 @@ const HeaderMenu = styled.button`
 const HeaderSidebar = styled.div`
     width: 250px;
     position: fixed;
-    bottom: 0;
+    top: 10vh;
     left: 0;
     height: 90vh;
     background-color: var(--color--black);
