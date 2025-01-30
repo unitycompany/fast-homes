@@ -27,8 +27,8 @@ const Button = styled.button`
     }
 
     & > div:nth-child(1){
-        height: 45px;
-        padding: 10px 30px;
+        height: 40px;
+        padding: 10px 20px;
         border-radius: 100px;
         background-color: ${({ background1 }) => background1 || '#ffffff' };
         color: ${({ colorText }) => colorText || '#0000000' };
@@ -40,7 +40,7 @@ const Button = styled.button`
         overflow: hidden;
         transition: all .4s ease;
         font-weight: 400;
-        font-size: 16px;
+        font-size: 14px;
         z-index: 2;
 
         @media (max-width: 768px){
@@ -50,8 +50,8 @@ const Button = styled.button`
     }
 
     & > div:nth-child(2){
-        height: 45px;
-        width: 45px;
+        height: 40px;
+        width: 40px;
         border-radius: 50%;
         display: flex;
         align-items: center;

@@ -26,19 +26,15 @@ const HeaderAll = styled.div`
     transform: translateX(-50%);
     position: relative;
     width: 100%;
-    height: 8vh;
+    height: 10vh;
     padding: 0 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    @media (max-width: 768px){
-        height: 10vh;
-    }
 `
 
 const HeaderImage = styled.div`
-    width: 200px;
+    width: 160px;
 
     @media (max-width: 768px){
         width: 200px;
@@ -46,6 +42,15 @@ const HeaderImage = styled.div`
 
     & > button {
         cursor: pointer;
+
+        & > img {
+            transition: all .2s ease;
+            
+            &:hover {
+                filter: invert(20%);
+                transform: scale(1.05);
+            }
+        }
     }
 `;
 
@@ -54,7 +59,7 @@ const HeaderLinks = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: auto;
 
     @media (max-width: 768px){
         display: none;
@@ -265,7 +270,7 @@ const HeaderSidebar = styled.div`
     top: 10vh;
     left: 0;
     height: 90dvh;
-    background-color: var(--color--black);
+    background: var(--color--black);
     border-top: 2px solid #fff;
     transition: transform 0.3s ease-in-out;
     transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(-100%)")};
