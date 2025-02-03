@@ -64,7 +64,6 @@ const HomeCenter = styled.div`
     display: flex;
     position: relative;
     z-index: 2;
-    display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -72,9 +71,6 @@ const HomeCenter = styled.div`
     padding: 0 5%;
     gap: 80px;
     height: auto;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
 
     @media (max-width: 768px){
         flex-direction: column;
