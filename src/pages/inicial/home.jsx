@@ -39,7 +39,7 @@ const HomeBackground = styled.div`
     position: absolute;
 
     background-color: var(--color--white);
-    --gap: 5em;
+    --gap: 3em;
     --line: 1px;
     --color: rgba(0, 0, 0, 0.05);
 
