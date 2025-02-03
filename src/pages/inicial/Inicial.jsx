@@ -1,13 +1,11 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
+
+import Home from "./home";
 
 const PaginaInicial = () => {
     return (
         <>
-            <Helmet>
-                <title>Início | Fast Homes</title>
-            </Helmet>
-            <h1>Bem-vindo à Fast Homes</h1>
+            <Home />
         </>
     );
 };

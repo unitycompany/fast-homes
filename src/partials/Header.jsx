@@ -12,6 +12,33 @@ const HeaderContainer = styled.header`
     align-items: center;
     justify-content: space-between;
     position: fixed;
+    z-index: 9999;
+
+    &::before{
+        content: '';
+        width: 100%;
+        height: 110%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-color: var(--color--black);
+        opacity: 0.5;
+        clip-path: polygon(100% 0, 100% 100%, 60% 90%, 0 100%, 0 0);
+    }
+
+    &::after{
+        content: '';
+        width: 100%;
+        height: 120%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-color: var(--color--black);
+        opacity: 0.3;
+        clip-path: polygon(100% 0, 100% 100%, 40% 80%, 0 100%, 0 0);
+    }
 
     @media (max-width: 768px){
         height: 10vh;
@@ -34,7 +61,7 @@ const HeaderAll = styled.div`
 `
 
 const HeaderImage = styled.div`
-    width: 160px;
+    width: 200px;
 
     @media (max-width: 768px){
         width: 200px;
@@ -73,10 +100,10 @@ const HeaderLinks = styled.div`
         padding: 0;
         margin: 0;
         display: flex;
-        gap: 20px;  
+        gap: 10px;  
 
         & > li {
-            font-weight: 400;
+            font-weight: 500;
             font-size: 12px;
             cursor: pointer;
             padding: 10px 8px;

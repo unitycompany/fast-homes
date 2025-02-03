@@ -17,7 +17,7 @@ const DropdownHeader = styled.div`
   gap: 15px;
   align-items: center;
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 500;
   color: ${({ colorText }) => colorText || '#fff' };
   transition: all .2s ease;
   text-transform: uppercase;
