@@ -288,22 +288,37 @@ const HeaderSidebar = styled.div`
     display: none;
 
     @media (max-width: 768px){
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    position: fixed;
-    top: 10vh;
-    left: 0;
-    height: 90dvh;
-    background: var(--color--black);
-    border-top: 2px solid #fff;
-    transition: transform 0.3s ease-in-out;
-    transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(-100%)")};
-    z-index: 1000;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        position: fixed;
+        top: 10vh;
+        left: 0;
+        height: 90dvh;
+        background: var(--color--black);
+        border-top: 2px solid #fff;
+        transition: transform 0.3s ease-in-out;
+        transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(-100%)")};
+        z-index: 1000;
+
+        &::before {
+            content: '';
+            width: 100vw;
+            height: 100%;
+            top: 0;
+            left: 250px;
+            position: absolute;
+            z-index: -1;
+            background: #000000;
+            opacity: ${({ isOpen }) => (isOpen ? "0.7" : "0")};
+            transition: opacity 0.3s ease-in-out;
+            transition-delay: ${({ isOpen }) => (isOpen ? "0.1s" : "0s")}; /* Delay na entrada, imediato na saída */
+        }
     }
 `;
+
 
 const HeaderButton = styled.div`
     @media (max-width: 768px){
