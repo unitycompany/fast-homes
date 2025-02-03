@@ -1,10 +1,6 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import styled from "styled-components";
 
-const Espaco = styled.div`
-  height: 100vh;
-`
 
 import "./styles/global.css";
 import "./styles/reset.css";
@@ -18,7 +14,6 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-        <Espaco />
         <PaginaInicial />
       <Footer />
     </BrowserRouter>

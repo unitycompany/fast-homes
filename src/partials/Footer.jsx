@@ -21,6 +21,7 @@ const FooterContainer = styled.footer`
     width: 100%;
     padding: 2.5% 0;
     font-family: "Montserrat", serif;
+    z-index: 10;
 
     &::before{
         content: '';
@@ -253,12 +254,13 @@ const FooterForm = styled.div`
             background: var(--color--white);
             color: var(--color--black);
             letter-spacing: 1px;
+            font-weight: 500;
         }
 
         &::before{
             content: "";
             position: absolute;
-            width: 200px; /* Ajuste conforme necessário */
+            width: 200px; 
             height: 100%;
             background-image: linear-gradient(
                 120deg,
