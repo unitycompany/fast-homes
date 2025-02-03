@@ -287,7 +287,7 @@ const HeaderMenu = styled.button`
 const HeaderSidebar = styled.div`
     display: none;
 
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
         width: 250px;
         display: flex;
         flex-direction: column;
@@ -310,14 +310,15 @@ const HeaderSidebar = styled.div`
             top: 0;
             left: 250px;
             position: absolute;
-            z-index: -1;
-            background: #000000;
+            z-index: -5;
+            background: #000;
             opacity: ${({ isOpen }) => (isOpen ? "0.7" : "0")};
-            transition: opacity 0.3s ease-in-out;
-            transition-delay: ${({ isOpen }) => (isOpen ? "0.1s" : "0s")}; /* Delay na entrada, imediato na saída */
+            visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
+            transition: opacity 0.3s ease-in-out, visibility 0s linear ${({ isOpen }) => (isOpen ? "0.1s" : "0s")};
         }
     }
 `;
+
 
 
 const HeaderButton = styled.div`
