@@ -22,6 +22,7 @@ const FooterContainer = styled.footer`
     background-color: var(--color--black);
     width: 100%;
     padding: 2.5% 0;
+    font-family: "Montserrat", serif;
 
     &::before{
         content: '';
@@ -117,7 +118,7 @@ const FooterCard = styled.div`
         }
 
         &:hover::before{
-            font-size: 16px;
+            font-size: 12px;
             padding-right: 5px;
         }
 
@@ -191,7 +192,7 @@ const FooterForm = styled.div`
 
         &::placeholder{
             font-size: 16px;
-            font-weight: 200;
+            font-weight: 300;
         }
     }
 
@@ -235,7 +236,7 @@ const FooterForm = styled.div`
 
     & > p {
         color: #ffffff70;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 120%;
         font-size: 14px;
 
