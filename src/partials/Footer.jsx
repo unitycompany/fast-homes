@@ -1,8 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-import { BsArrowUpRight } from "react-icons/bs";
-
 const shine = keyframes `
     0% {
       left: -100px;
@@ -36,6 +34,11 @@ const FooterContainer = styled.footer`
         opacity: 0.4;
         clip-path: polygon(100% 0, 100% 100%, 30% 97.5%, 0 100%, 0 0);
         transform: rotate(180deg);
+
+        @media (max-width: 768px){
+            height: 101%;
+            clip-path: polygon(100% 0, 100% 100%, 30% 99%, 0 100%, 0 0);
+        }
     }
 
     &::after{
@@ -50,6 +53,11 @@ const FooterContainer = styled.footer`
         opacity: 0.2;
         clip-path: polygon(100% 0, 100% 100%, 30% 95%, 0 100%, 0 0);
         transform: rotate(180deg);
+
+        @media (max-width: 768px){
+            height: 102%;
+            clip-path: polygon(100% 0, 100% 100%, 30% 98%, 0 100%, 0 0);
+        }
     }
 `
 
@@ -59,12 +67,18 @@ const FooterTop = styled.div `
     justify-content: space-between;
     height: auto;
     width: 100%;
-    width: 1280px;
+    max-width: 1280px;
     position: relative;
     left: 50%;
     top: 0;
     padding: 5%;
     transform: translateX(-50%);
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        gap: 30px;
+        padding: 10% 5%;
+    }
 `
 
 const FooterCard = styled.div`
@@ -77,10 +91,18 @@ const FooterCard = styled.div`
     border-left: 1px solid var(--color--white);
     padding-left: 10px;
 
+    @media (max-width: 768px){
+        width: 100%;
+    }
+
     &:nth-child(1){
         width: 30%;
         padding-left: 0;
         border-left: 0;
+
+        @media (max-width: 768px){
+            width: 100%;
+        }
     }
 
     & > img {
@@ -93,6 +115,11 @@ const FooterCard = styled.div`
         font-family: var(--font--aboreto);
         color: var(--color--white);
         padding-bottom: 10px;
+
+        @media (max-width: 768px){
+            padding-bottom: 0;
+        }
+
     }
 
     & > h2 {
@@ -101,12 +128,20 @@ const FooterCard = styled.div`
         color: var(--color--white);
         padding-bottom: 10px;
         line-height: 100%;
+
+        @media (max-width: 768px){
+            padding-bottom: 15px;
+        }
     }
 
     & > a {
         color: #fff;
         font-weight: 200;
         font-size: 16px;
+
+        @media (max-width: 768px){
+            font-size: 14px;
+        }
 
         &::before{
             content: '•';
@@ -131,7 +166,7 @@ const FooterCard = styled.div`
 
 const FooterCenter = styled.div `
     width: 100%;
-    width: 1280px;
+    max-width: 1280px;
     position: relative;
     left: 50%;
     top: 0;
@@ -141,6 +176,10 @@ const FooterCenter = styled.div `
     align-items: center;
     justify-content: space-between;
     gap: 50px;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+    }
 `
 
 const FooterTitle = styled.div`
@@ -255,7 +294,7 @@ const FooterForm = styled.div`
 
 const FooterBottom = styled.div`
     width: 100%;
-    width: 1280px;
+    max-width: 1280px;
     position: relative;
     left: 50%;
     top: 0;
@@ -267,6 +306,14 @@ const FooterBottom = styled.div`
     align-items: center;
     justify-content: space-between;
 
+    @media (max-width: 768px){
+        flex-direction: column-reverse;
+        background-color: transparent;
+        margin-top: 40px;
+        gap: 50px;
+        padding: 2.5%;
+    }
+
     & > p{
         font-size: 16px;
         font-weight: 300;
@@ -276,12 +323,34 @@ const FooterBottom = styled.div`
         gap: 10px;
         color: #00000095;
 
+        &:nth-child(1){
+            @media (max-width: 768px){
+                gap: 5px;
+                line-height: 120%;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px){
+            color: #fff;
+            text-align: center;
+            font-size: 12px;
+        }
+
         & > a > img {
             width: 75px;
             transition: all .1s ease;
 
+            @media (max-width: 768px){
+                filter: invert(500%);
+            }
+
             &:hover {
                 filter: invert(20%);
+
+                @media (max-width: 768px){
+                    filter: invert(400%);
+                }
             }
         }
     }
@@ -405,7 +474,7 @@ const Footer = () => {
 
                 <FooterBottom>
                     <p>
-                        Todos os direitos reservados |  CNPJ: 45.989.824/0001-74 - Fast Homes
+                        Todos os direitos reservados |<span> CNPJ: 45.989.824/0001-74 - Fast Homes</span>
                     </p>
                     <p>
                         Desenvolvido por 
