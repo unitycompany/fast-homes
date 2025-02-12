@@ -1,9 +1,10 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-import { BsHouse, BsArrowUpRight } from "react-icons/bs";
 import GlobalButton2 from "../../components/buttons/GlobalButton2";
 import GlobalButton3 from "../../components/buttons/GlobalButton3";
+
+import { BsArrowUpRight } from "react-icons/bs";
 
 
 const moveBackground = keyframes`
@@ -21,7 +22,7 @@ const moveBackground = keyframes`
 const HomeContainer = styled.section`
     width: 100%;
     height: auto;
-    padding: 15% 0 5% 0;
+    padding: 10% 0 5% 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,6 +44,7 @@ const HomeBackground = styled.div`
     background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/10052673-3243-41df-76b4-22bb1ad2e100/public');
     background-position: center;
     background-size: contain;
+    background-repeat: no-repeat;
 `;
 
 const HomeCenter = styled.div`
@@ -132,19 +134,52 @@ const HomeImages = styled.div`
         position: absolute;
         z-index: 10;
         cursor: pointer;
-        padding: 10px 25px;
-        background-color: #00000010;
-        border-radius: 20px;
-        backdrop-filter: blur(3px);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        color: var(--color--white);
-        transition: all .4s ease;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff80;
+        backdrop-filter: blur(1px);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        color: #fff;
+        transition: all .2s ease;
+
+        & > span {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -50px;
+            width: 200px;
+            padding: 10px 10px 15px 10px;
+            background-color: #fff;
+            clip-path: polygon(50% 0%, 100% 0, 100% 90%, 60% 90%, 50% 100%, 50% 100%, 40% 90%, 0 90%, 0 0);
+            transform: scale(0);
+            transition: all .2s ease;
+        }
+
+        & > svg {
+            font-size: 25px;
+            transform: rotate(45deg);
+            transition: all .2s ease;
+        }
 
         &:hover {
             background-color: #fff;
             color: var(--color--black);
             transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8)
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        &:hover > span {
+            transform: scale(1);
+        }
+
+        &:hover > svg {
+            transform: rotate(-45deg);
         }
     } 
 
@@ -206,7 +241,10 @@ const Home = () => {
 
                 <HomeImages>
                     <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/905e6a45-b84d-43f7-2a56-51a5966f4f00/public" alt="" />
-                    <button>Conhecer casa</button>
+                    <button>
+                        <span>Conhecer essa casa</span>
+                        <BsArrowUpRight />
+                    </button>
                 </HomeImages>
             </HomeCenter>
         </HomeContainer>
