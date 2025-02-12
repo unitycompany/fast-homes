@@ -13,6 +13,13 @@ const CardContainer = styled.div`
     position: relative;
     transition: all .3s ease;
 
+    @media (max-width: 768px){
+        flex-direction: column;
+        width: 100%;
+        height: 500px;
+    }
+
+
     &:hover {
         transform: scale(1.02);
     }
@@ -23,6 +30,11 @@ const CardImage = styled.div`
     width: 45%;
     height: 100%;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 768px){
+        width: 100%;
+    }
+
 
     & > img {
         width: 100%;
@@ -44,6 +56,11 @@ const CardText = styled.div`
     font-family: var(--font--montserrat);
     transition: all .3s ease;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 768px){
+        width: 100%;
+    }
+
 
     & > h2 {
         font-size: 26px;

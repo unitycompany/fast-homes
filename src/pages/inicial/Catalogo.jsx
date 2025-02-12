@@ -87,7 +87,14 @@ const CatalogoTop = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid red;
+    width: 100%;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
 
     & > h1 {
         display: flex;
@@ -98,10 +105,23 @@ const CatalogoTop = styled.div`
         font-family: var(--font--aboreto);
         line-height: 100%;
 
+        @media (max-width: 768px){
+            text-align: left;
+            display: block;
+            font-size: 30px;
+        }
+
+
         & > a {
             color: var(--color--green--very--low);
             border-bottom: 1px solid var(--color--green--very--low);
             transition: all .4s ease;
+
+            @media (max-width: 768px){
+                border: none;
+                margin-left: 5px;
+            }    
+
 
             &:hover {
                 color: var(--color--green--medium);
@@ -113,10 +133,6 @@ const CatalogoTop = styled.div`
 `
 
 const CatalogoCards = styled.div`
-    max-width: 1280px;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
     position: relative;
     width: 100%;
     padding: 2.5% 5%;
@@ -125,6 +141,12 @@ const CatalogoCards = styled.div`
     gap: 20px;
     align-items: flex-start;
     padding-bottom: 80px;
+
+    @media (max-width: 768px){
+        padding-bottom: 40px;
+        padding-top: 20px;
+    }
+
 
     &::after {
         content: "";
@@ -136,6 +158,11 @@ const CatalogoCards = styled.div`
         background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0));
         pointer-events: none;
         z-index: 2;
+
+        @media (max-width: 768px){
+            width: 150px;
+        }
+
     }
 `;
 
@@ -145,9 +172,13 @@ const StyledSwiper = styled(Swiper)`
 `
 
 const CatalogoCardContainer = styled.div`
+    @media (max-width: 768px){
+        
+    }
 `
-
+g
 const CatalogoItems = styled.div`
+    width: 100%;
 `
 
 const Catalogo = () => {

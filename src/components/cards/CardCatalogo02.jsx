@@ -14,6 +14,11 @@ const CardContainer = styled.div`
     margin-top: -100px;
     transition: all .3s ease;
 
+    @media (max-width: 768px){
+        display:none ;
+    }
+
+
     &:hover {
         transform: scale(1.02);
     }

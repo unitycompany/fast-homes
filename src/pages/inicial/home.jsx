@@ -47,7 +47,7 @@ const HomeBackground = styled.div`
     background-repeat: no-repeat;
 
     @media(max-width: 768px){
-        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/836dabcf-264b-47db-4517-bb59f6620300/public');
+        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/bfbb6c6e-0afb-4531-b0e7-971164932500/public');
         background-position: top;
     }
 `;
