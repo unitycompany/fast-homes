@@ -176,7 +176,7 @@ const CatalogoCardContainer = styled.div`
         
     }
 `
-g
+
 const CatalogoItems = styled.div`
     width: 100%;
 `
