@@ -33,6 +33,17 @@ const CatalogoContainer = styled.section`
     font-family: "Montserrat", serif;
     flex-direction: column;
 
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+        pointer-events: none;
+        z-index: -1;
+    }
+
     @media (max-width: 768px){
         padding: 30% 0 20% 0;
     }
@@ -42,10 +53,12 @@ const CatalogoBackground = styled.div`
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: var(--color--white);
-    --gap: 10em;
+    background-color: #fff;
+
+    --gap: 2em;
     --line: 1px;
     --color: rgba(0, 0, 0, 0.05);
+    z-index: -2;
 
     background-image: linear-gradient(
         -90deg,
@@ -121,7 +134,7 @@ const CatalogoCards = styled.div`
         top: 0;
         width: 400px;
         height: 100%;
-        background: linear-gradient(to left, var(--color--white), rgba(255, 255, 255, 0));
+        background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0));
         pointer-events: none;
         z-index: 2;
     }
@@ -136,7 +149,6 @@ const CatalogoCardContainer = styled.div`
 `
 
 const CatalogoItems = styled.div`
-    border: 1px solid;
 `
 
 const Catalogo = () => {

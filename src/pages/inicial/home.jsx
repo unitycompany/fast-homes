@@ -132,11 +132,20 @@ const HomeImages = styled.div`
         position: absolute;
         z-index: 10;
         cursor: pointer;
-        padding: 10px 15px;
-        background-color: #00000020;
-        backdrop-filter: blur(5px);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        padding: 10px 25px;
+        background-color: #00000010;
+        border-radius: 20px;
+        backdrop-filter: blur(3px);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         color: var(--color--white);
+        transition: all .4s ease;
+
+        &:hover {
+            background-color: #fff;
+            color: var(--color--black);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8)
+        }
     } 
 
     & > img {

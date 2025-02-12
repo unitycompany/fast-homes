@@ -18,14 +18,12 @@ const CardContainer = styled.div`
         transform: scale(1.02);
     }
 
-    &:hover > .CardText{
-        background-color: #fff;
-    }
 `
 
 const CardImage = styled.div`
     width: 45%;
     height: 100%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 
     & > img {
         width: 100%;
@@ -46,6 +44,7 @@ const CardText = styled.div`
     gap: 10px;
     font-family: var(--font--montserrat);
     transition: all .3s ease;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 
     & > h2 {
         font-size: 26px;
