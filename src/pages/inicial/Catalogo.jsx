@@ -23,15 +23,19 @@ const moveBackground = keyframes`
 `;
 
 const CatalogoContainer = styled.section`
-    width: 100%;
     height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     overflow: hidden;
     font-family: "Montserrat", serif;
     flex-direction: column;
+    max-width: 1280px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    position: relative;
+    width: 100%;
 
     &::after {
         content: "";
@@ -45,7 +49,7 @@ const CatalogoContainer = styled.section`
     }
 
     @media (max-width: 768px){
-        padding: 30% 0 20% 0;
+        padding: 0% 0 0% 0;
     }
 `
 
@@ -78,17 +82,12 @@ const CatalogoBackground = styled.div`
 `;
 
 const CatalogoTop = styled.div`
-    max-width: 1280px;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    position: relative;
-    width: 100%;
     padding: 2.5% 5%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid red;
 
     & > h1 {
         display: flex;

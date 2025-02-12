@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components";
 import GlobalButton2 from "../../components/buttons/GlobalButton2";
 import GlobalButton3 from "../../components/buttons/GlobalButton3";
 
-import { BsArrowUpRight } from "react-icons/bs";
+import { BsArrowUpRight, BsHouseDoor } from "react-icons/bs";
 
 
 const moveBackground = keyframes`
@@ -33,7 +33,7 @@ const HomeContainer = styled.section`
     background-size: cover;
 
     @media (max-width: 768px){
-        padding: 30% 0 20% 0;
+        padding: 30% 0 0% 0;
     }
 `;
 
@@ -45,6 +45,11 @@ const HomeBackground = styled.div`
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+
+    @media(max-width: 768px){
+        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/836dabcf-264b-47db-4517-bb59f6620300/public');
+        background-position: top;
+    }
 `;
 
 const HomeCenter = styled.div`
@@ -146,11 +151,17 @@ const HomeImages = styled.div`
         color: #fff;
         transition: all .2s ease;
 
+        @media (max-width: 768px){
+            top: 40%;
+            transform: translateY(-50%);
+        }
+
         & > span {
             position: absolute;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 14px;
             top: -50px;
             width: 200px;
             padding: 10px 10px 15px 10px;
@@ -158,6 +169,14 @@ const HomeImages = styled.div`
             clip-path: polygon(50% 0%, 100% 0, 100% 90%, 60% 90%, 50% 100%, 50% 100%, 40% 90%, 0 90%, 0 0);
             transform: scale(0);
             transition: all .2s ease;
+            gap: 10px;
+            color: var(--color--black);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+
+            & > svg {
+                font-size: 16px;
+                fill: var(--color--black);
+            }
         }
 
         & > svg {
@@ -242,7 +261,10 @@ const Home = () => {
                 <HomeImages>
                     <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/905e6a45-b84d-43f7-2a56-51a5966f4f00/public" alt="" />
                     <button>
-                        <span>Conhecer essa casa</span>
+                        <span>
+                            <BsHouseDoor />
+                            Conhecer essa casa
+                        </span>
                         <BsArrowUpRight />
                     </button>
                 </HomeImages>
