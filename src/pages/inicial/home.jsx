@@ -28,6 +28,8 @@ const HomeContainer = styled.section`
     position: relative;
     overflow: hidden;
     font-family: "Montserrat", serif;
+    background-position: center;
+    background-size: cover;
 
     @media (max-width: 768px){
         padding: 30% 0 20% 0;
@@ -38,27 +40,9 @@ const HomeBackground = styled.div`
     width: 100%;
     height: 100%;
     position: absolute;
-
-    background-color: var(--color--white);
-    --gap: 10em;
-    --line: 1px;
-    --color: rgba(0, 0, 0, 0.05);
-
-    background-image: linear-gradient(
-        -90deg,
-        transparent calc(var(--gap) - var(--line)),
-        var(--color) calc(var(--gap) - var(--line) + 1px),
-        var(--color) var(--gap)
-        ),
-        linear-gradient(
-        0deg,
-        transparent calc(var(--gap) - var(--line)),
-        var(--color) calc(var(--gap) - var(--line) + 1px),
-        var(--color) var(--gap)
-        );
-
-    background-size: var(--gap) var(--gap);
-    animation: ${moveBackground} 10s infinite alternate ease-in-out;
+    background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/10052673-3243-41df-76b4-22bb1ad2e100/public');
+    background-position: center;
+    background-size: contain;
 `;
 
 const HomeCenter = styled.div`
@@ -137,16 +121,35 @@ const HomeImages = styled.div`
     width: 50%;
     height: 600px;
     position: relative;
-    background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ff1b4765-6b9d-42ed-fddf-71cb28fb9700/public');
-    background-size: cover;
-    background-position: center center;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
     color: var(--color--white);
     padding: 20px;
     gap: 20px;
-    margin-right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > button {
+        position: absolute;
+        z-index: 10;
+        cursor: pointer;
+        padding: 10px 15px;
+        background-color: #00000020;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        color: var(--color--white);
+    } 
+
+    & > img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: -50px;
+        right: -100px;
+        transform: scale(1.7);
+        transition: all 1s ease;
+        z-index: 1;
+        display: none;
+    }
 
     @media (max-width: 768px){
         width: 100%;
@@ -154,214 +157,7 @@ const HomeImages = styled.div`
         flex-direction: column;
     }
 
-    &::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 25px;
-        left: 25px;
-        background-color: transparent;
-        border: 1px solid var(--color--green--very--high);
-        opacity: 0.6;
-        z-index: -1;
-        border-radius: 0px 40px 0px 40px;
-
-        @media (max-width: 768px){
-            top: 10px;
-            left: 10px;
-        }
-    }
     
-    &::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: -25px;
-        left: -25px;
-        background-color: transparent;
-        border: 1px solid var(--color--green--high);
-        opacity: 0.6;
-        z-index: -5;
-        border-radius: 0px 40px 0px 40px;
-
-        @media (max-width: 768px){
-            top: -10px;
-            left: -10px;
-        }
-    }
-
-    & > div:nth-child(1) {
-        width: 30%;
-        height: 100px;
-
-        & > button {
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff05;
-            backdrop-filter: blur(2px);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 10px;
-            cursor: pointer;
-            transition: all .3s ease-in-out;
-
-            @media (max-width: 768px){
-                display: none;
-            }
-
-            &:hover {
-                background-color: #ffffff10;
-                backdrop-filter: blur(2px);
-                box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-            }
-
-            &:hover > span {
-                font-size: 14px;
-            }
-
-            &:hover > svg {
-                font-size: 40px;
-
-                @media (max-width: 768px){
-                    font-size: 30px;
-                }
-            }
-
-            & > span {
-                font-size: 0;
-                transition: all .3s ease-in-out;
-
-                @media (max-width: 768px){
-                    color: #000;
-                }
-
-                @media (max-width: 768px){
-                    font-size: 12px;
-                }
-            }
-
-            & > svg {
-                font-size: 50px;
-                transition: all .3s ease-in-out;
-
-                @media (max-width: 768px){
-                    font-size: 25px;
-                    fill: #000;
-                }
-            }
-        }
-    }
-
-    & > div:nth-child(2) {
-        height: 100px;
-        padding: 10px 5px 10px 20px;
-        border-radius: 20px;
-        background-color: #ffffff05;
-        backdrop-filter: blur(2px);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        transition: all .3s ease-in-out;
-
-        @media (max-width: 768px){
-            padding: 10px 10px 10px 20px;
-        }
-
-        &:hover {
-            background-color: #ffffff10;
-            backdrop-filter: blur(2px);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-        }
-
-        & > div:nth-child(1){
-            width: 70%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            gap: 5px;
-
-            @media (max-width: 768px){
-                width: 80%;
-            }
-
-            & > span {
-                font-size: 18px;
-                font-weight: 500;
-                color: #fff;
-
-                @media (max-width: 768px){
-                    font-size: 16px;
-                }
-            }
-
-            & > p {
-                font-size: 14px;
-                line-height: 110%;
-                font-weight: 300;
-                color: #fff;
-
-                @media (max-width: 768px){
-                    font-size: 14px;
-                }
-            }
-        }
-
-        & > div:nth-child(2){
-            background-color: #ffffff;
-            backdrop-filter: blur(20px);
-            height: 90px;
-            width: 95px;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all .1s ease-in-out;
-
-            @media (max-width: 768px){
-                height: 50px;
-                width: 50px;
-                align-items: flex-end;
-                justify-content: flex-end;
-            }
-
-            &:hover {
-                transform: scale(0.95);
-            }
-
-            & > button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                width: 100%;
-                height: 100%;
-                transition: all .2s ease-in-out;
-
-                &:hover > svg {
-                    transform: rotate(45deg);
-                }
-                
-                & > svg {
-                    font-size: 40px;
-                    fill: var(--color--black);
-                    transition: all .2s ease-in-out;
-
-                    @media (max-width: 768px){
-                        font-size: 20px;
-                    }
-                }
-            }
-            
-            
-        }
-    }
 `
 
 const Home = () => {
@@ -400,23 +196,8 @@ const Home = () => {
                 </HomeTexts>
 
                 <HomeImages>
-                    <div>
-                        <button>
-                            <BsHouse />
-                            <span>Catálogo</span>
-                        </button>
-                    </div>
-                    <div>
-                        <div className="backgroundCasa">
-                            <span>Nome da casa</span>
-                            <p>Descrição breve sobre a casa que está sendo apresentada acima</p>
-                        </div>
-                        <div>
-                            <button>
-                                <BsArrowUpRight />
-                            </button>
-                        </div>
-                    </div>
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/905e6a45-b84d-43f7-2a56-51a5966f4f00/public" alt="" />
+                    <button>Conhecer casa</button>
                 </HomeImages>
             </HomeCenter>
         </HomeContainer>
