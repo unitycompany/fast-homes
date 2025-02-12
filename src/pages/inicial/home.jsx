@@ -20,7 +20,8 @@ const moveBackground = keyframes`
 
 const HomeContainer = styled.section`
     width: 100%;
-    padding: 12.5% 0 10% 0;
+    height: auto;
+    padding: 15% 0 5% 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,7 +40,7 @@ const HomeBackground = styled.div`
     position: absolute;
 
     background-color: var(--color--white);
-    --gap: 3em;
+    --gap: 10em;
     --line: 1px;
     --color: rgba(0, 0, 0, 0.05);
 
@@ -68,7 +69,6 @@ const HomeCenter = styled.div`
     justify-content: center;
     width: 100%;
     max-width: 1280px;
-    padding: 0 5%;
     gap: 80px;
     height: auto;
 
@@ -85,6 +85,7 @@ const HomeTexts = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    padding-left: 5%;
 
     @media (max-width: 768px){
         width: 100%;
@@ -134,7 +135,7 @@ const HomeTexts = styled.div`
 
 const HomeImages = styled.div`
     width: 50%;
-    height: 650px;
+    height: 600px;
     position: relative;
     background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ff1b4765-6b9d-42ed-fddf-71cb28fb9700/public');
     background-size: cover;
@@ -145,8 +146,7 @@ const HomeImages = styled.div`
     color: var(--color--white);
     padding: 20px;
     gap: 20px;
-    border-radius: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-right: 5%;
 
     @media (max-width: 768px){
         width: 100%;
@@ -165,7 +165,7 @@ const HomeImages = styled.div`
         border: 1px solid var(--color--green--very--high);
         opacity: 0.6;
         z-index: -1;
-        border-radius: 50px;
+        border-radius: 0px 40px 0px 40px;
 
         @media (max-width: 768px){
             top: 10px;
@@ -184,7 +184,7 @@ const HomeImages = styled.div`
         border: 1px solid var(--color--green--high);
         opacity: 0.6;
         z-index: -5;
-        border-radius: 50px;
+        border-radius: 0px 40px 0px 40px;
 
         @media (max-width: 768px){
             top: -10px;

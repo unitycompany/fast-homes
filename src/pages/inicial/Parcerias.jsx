@@ -1,0 +1,166 @@
+import React from "react";
+import styled from "styled-components";
+import GlobalButton2 from "../../components/buttons/GlobalButton2";
+import Form from "../../components/form";
+
+const ParceriasContainer = styled.section`
+    width: 100%;
+    max-width: 1280px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    height: auto;
+    padding: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font--montserrat);
+    color: #fff;
+`
+
+const ParceriasBackground = styled.div`
+    background-color: var(--color--black);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+`
+ 
+const ParceriasConteudo = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px;
+`
+
+const ParceriasTexts = styled.div`
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+
+    & > h1 {
+        font-family: var(--font--aboreto);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 35px;
+        line-height: 100%;
+
+        & > a {
+            border-bottom: 1px solid #fff;
+            transition: all .3s ease;
+
+            &:hover{
+                transform: scale(0.97);
+                color: #e2e2e2;
+            }
+        }
+    }
+
+    & > p {
+        font-size: 16px;
+    }
+
+
+`
+
+const ParceriasImagens = styled.div`
+    width: 50%;
+`
+
+const ParceriasImageDiv = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    & > a {
+        width: 48%;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        margin: 5px;
+        border: 5px solid #fff;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(2px);
+        transition: all .4s ease;
+        overflow: hidden;
+
+        &:hover {
+            background-color: #fff;
+            
+        }
+
+        &:hover > img {
+            filter: invert(500%);
+            transform: scale(1.1);
+        }
+
+        & > img {
+            transition: all .4s ease;
+        }
+    }
+`
+
+const Parcerias = () => {
+    return (
+        <>
+            <ParceriasContainer>
+                <ParceriasBackground></ParceriasBackground>
+
+                <ParceriasConteudo>
+                    <ParceriasTexts>
+                        <h1>
+                            Nossas 
+                            <a href="/parcerias">
+                                Parcerias
+                            </a>
+                        </h1>
+                        <p>
+                        enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+                        </p>
+                        <GlobalButton2
+                            text="Solicitar meu orçamento"
+                            background1="#fff"
+                            background2="#fff"
+                            colorIcon="#353535"
+                            colorText="#353535"
+                        />
+                    </ParceriasTexts>
+
+                    <ParceriasImagens>
+                        <ParceriasImageDiv>
+                            <a href="/parcerias#ecoframe">
+                                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1eb3f29b-d879-41f9-9870-ffec8fd83100/public" alt="ecoframe" />
+                            </a>
+                            <a href="/parcerias#fastsistemasconstrutivos">
+                                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6b64f421-c21d-418a-22df-aeb637cc8800/public" alt="fastsistemasconstrutivos" />
+                            </a>
+                            <a href="/parcerias#novametalica">
+                                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c12d51c8-2ed5-4b88-b069-c85191014100/public" alt="novametalica" />
+                            </a>
+                            <a href="/parcerias#saintgobain">
+                                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/978e5875-90fe-47bc-0e0c-973e5b58fb00/public" alt="saintgobain" />
+                            </a>
+                        </ParceriasImageDiv>
+                    </ParceriasImagens>
+                </ParceriasConteudo>
+
+                <Form />
+            </ParceriasContainer>
+        </>
+    )
+} 
+
+export default Parcerias;
