@@ -6,7 +6,6 @@ import GlobalButton3 from "../../components/buttons/GlobalButton3";
 
 import { BsArrowUpRight, BsHouseDoor } from "react-icons/bs";
 
-
 const moveBackground = keyframes`
     0% {
         background-position: 0 0;

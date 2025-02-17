@@ -5,12 +5,7 @@ import Form from "../../components/form";
 
 const ParceriasContainer = styled.section`
     width: 100%;
-    max-width: 1280px;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
     height: auto;
-    padding: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +17,7 @@ const ParceriasContainer = styled.section`
     color: #fff;
 
     @media (max-width: 768px){
-        padding: 10% 5%;
+        padding: 10% 0%;
     }
 `
 
@@ -40,9 +35,12 @@ const ParceriasConteudo = styled.div`
     justify-content: space-between;
     width: 100%;
     gap: 50px;
+    max-width: 1280px;
+    padding: 2% 5%;
 
     @media (max-width: 768px){
         flex-direction: column;
+        padding: 2% 0;
     }
 `
 
@@ -56,6 +54,7 @@ const ParceriasTexts = styled.div`
 
     @media (max-width: 768px){
         width: 100%;
+        padding-left: 5%;
     }
 
     & > h1 {
@@ -93,6 +92,8 @@ const ParceriasImagens = styled.div`
 
     @media (max-width: 768px){
         width: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
     }
 `
 
@@ -108,7 +109,7 @@ const ParceriasImageDiv = styled.div`
     }
 
     & > a {
-        width: 48%;
+        width: 47%;
         height: 250px;
         display: flex;
         align-items: center;
@@ -140,6 +141,16 @@ const ParceriasImageDiv = styled.div`
             transition: all .4s ease;
         }
     }
+`
+
+const FormContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px;
+    max-width: 1280px;
+    padding: 0 5% 3.5% 5%;
 `
 
 const Parcerias = () => {
@@ -186,7 +197,9 @@ const Parcerias = () => {
                     </ParceriasImagens>
                 </ParceriasConteudo>
 
-                <Form />
+                <FormContainer>
+                    <Form />
+                </FormContainer>
             </ParceriasContainer>
         </>
     )
