@@ -26,6 +26,10 @@ const FormContainer = styled.section`
     width: 100%;
     gap: 50px;
     font-family: var(--font--montserrat);
+
+    @media (max-width: 768px){
+        flex-direction: column;
+    }
 `
 
 const FormText = styled.div`
@@ -36,9 +40,18 @@ const FormText = styled.div`
     justify-content: center;
     gap: 25px;
 
+    @media (max-width: 768px){
+        width: 100%;
+    }
+
     & > h1 {
         font-size: 35px;
         font-family: var(--font--aboreto);
+
+        @media (max-width: 768px){
+            line-height: 120%;
+            font-size: 30px;
+        }
     }
 
     & > p {
@@ -54,6 +67,11 @@ const Formulario = styled.form`
     align-items: flex-start;
     gap: 20px;
     padding: 25px;
+
+    @media (max-width: 768px){
+        width: 100%;
+        padding: 0;
+    }
 
     & > button {
         width: 100%;

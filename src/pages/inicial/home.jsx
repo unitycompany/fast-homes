@@ -152,8 +152,7 @@ const HomeImages = styled.div`
         transition: all .2s ease;
 
         @media (max-width: 768px){
-            top: 40%;
-            transform: translateY(-50%);
+            display: none;
         }
 
         & > span {

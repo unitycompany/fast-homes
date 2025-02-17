@@ -20,6 +20,10 @@ const ParceriasContainer = styled.section`
     overflow: hidden;
     font-family: var(--font--montserrat);
     color: #fff;
+
+    @media (max-width: 768px){
+        padding: 10% 5%;
+    }
 `
 
 const ParceriasBackground = styled.div`
@@ -36,6 +40,10 @@ const ParceriasConteudo = styled.div`
     justify-content: space-between;
     width: 100%;
     gap: 50px;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+    }
 `
 
 const ParceriasTexts = styled.div`
@@ -46,6 +54,10 @@ const ParceriasTexts = styled.div`
     justify-content: center;
     gap: 30px;
 
+    @media (max-width: 768px){
+        width: 100%;
+    }
+
     & > h1 {
         font-family: var(--font--aboreto);
         display: flex;
@@ -53,6 +65,10 @@ const ParceriasTexts = styled.div`
         gap: 10px;
         font-size: 35px;
         line-height: 100%;
+
+        @media (max-width: 768px){
+            font-size: 30px;
+        }
 
         & > a {
             border-bottom: 1px solid #fff;
@@ -74,6 +90,10 @@ const ParceriasTexts = styled.div`
 
 const ParceriasImagens = styled.div`
     width: 50%;
+
+    @media (max-width: 768px){
+        width: 100%;
+    }
 `
 
 const ParceriasImageDiv = styled.div`
@@ -82,6 +102,10 @@ const ParceriasImageDiv = styled.div`
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
+    @media (max-width: 768px){
+        justify-content: space-between;
+    }
 
     & > a {
         width: 48%;
@@ -96,6 +120,11 @@ const ParceriasImageDiv = styled.div`
         backdrop-filter: blur(2px);
         transition: all .4s ease;
         overflow: hidden;
+
+        @media (max-width: 768px){
+            height: 160px;
+            width: 47%;
+        }
 
         &:hover {
             background-color: #fff;

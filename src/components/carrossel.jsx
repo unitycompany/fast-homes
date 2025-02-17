@@ -18,7 +18,7 @@ const Container = styled.div`
   font-family: var(--font--montserrat);
 
   @media (max-width: 768px){
-    height: 5vh;
+    height: 300px;
   }
 
   .swiper-slide {
@@ -29,6 +29,11 @@ const Container = styled.div`
     justify-content: center;
     white-space: nowrap;
     flex-wrap: nowrap;
+
+    @media (max-width: 768px){
+      height: 300px!important;
+      width: 100%;
+    }
 
     & > div{
         display: flex;
@@ -73,8 +78,8 @@ const Container = styled.div`
       transition: all .5s ease-in-out;
 
       @media (max-width: 768px) {
-        width: 20px;
-        height: 20px;
+        width: 100%;
+        height: 100%;
       }
     }
 
@@ -103,6 +108,7 @@ const Carrossel = () => {
             autoplay={{
                 delay: 0,
                 disableOnInteraction: false, 
+                reverseDirection: true,
             }}
             spaceBetween={0} 
             slidesPerView={4} 

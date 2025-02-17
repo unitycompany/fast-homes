@@ -18,7 +18,7 @@ const Container = styled.div`
   font-family: var(--font--montserrat);
 
   @media (max-width: 768px){
-    height: 5vh;
+    height: 7vh;
   }
 
   .swiper-slide {
@@ -79,8 +79,8 @@ const Faixa = () => {
             pagination={false} 
             breakpoints={{
             0: {
-                slidesPerView: 1, 
-                spaceBetween: 10,
+                slidesPerView: 2, 
+                spaceBetween: 40,
             },
             1080: {
                 slidesPerView: 4,
