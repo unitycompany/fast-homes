@@ -27,7 +27,7 @@ const SobreBackground = styled.div`
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: transparent;
+    background-color: #fff;
 
     --gap: 2em;
     --line: 1px;
@@ -49,6 +49,17 @@ const SobreBackground = styled.div`
 
     background-size: var(--gap) var(--gap);
     animation: ${moveBackground} 10s infinite alternate ease-in-out;
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+        pointer-events: none;
+        z-index: -1;
+    }
 `;
 
 const SobreConteudo = styled.div`
@@ -74,9 +85,9 @@ const SobreImage = styled.div`
     position: relative;
 
     @media (max-width: 768px) {
-        width: 80%;
+        width: 90%;
         height: 400px;
-        margin-top: 50px;
+        margin-top: 15px;
     }
 
     &::before{
@@ -90,8 +101,8 @@ const SobreImage = styled.div`
         z-index: -1;
 
         @media (max-width: 768px) {
-            top: -10px;
-            left: -10px;
+            top: -5px;
+            left: -5px;
         }
     }
 
@@ -106,8 +117,8 @@ const SobreImage = styled.div`
         z-index: -1;
 
         @media (max-width: 768px) {
-            bottom: -10px;
-            right: -10px;
+            bottom: -5px;
+            right: -5px;
         }
     }
 
