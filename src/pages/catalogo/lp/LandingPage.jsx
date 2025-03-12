@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import Name from "./Name";
 import Home from "./Home";
-import Dobra2 from "./Dobra2";
+import Dobra2 from "./dobra2.jsx";
 import Dobra3 from "./Dobra3";
 import Dobra4 from "./Dobra4";
 import FormLP from "../../../components/form-lp";
