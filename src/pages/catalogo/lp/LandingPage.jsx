@@ -6,9 +6,9 @@ import styled from "styled-components";
 
 import Name from "./Name";
 import Home from "./Home";
-import dobra2 from "./dobra2";
-import Dobra3 from "./dobra3";
-import Dobra4 from "./dobra4";
+import Dobra2 from "./DobraDois";
+import Dobra3 from "./DobraTres";
+import Dobra4 from "./DobraQuatro";
 import FormLP from "../../../components/form-lp";
 import CardsCarrosselLP from "../../../components/cards/CardCarrosselLP";
 import PacoteCompleto from "../../../components/cards/Modal01";
@@ -78,7 +78,7 @@ const LandingPage = () => {
                     churrasqueira={dados.churrasqueira} 
                     piscina={dados.piscina} 
                 />
-                {dados.dobra2 && <dobra2 title1={dados.dobra2?.title1} descricao={dados.dobra2?.descricao} imagens={dados.dobra2?.carrossel} area={dados.area} />}
+                {dados.dobra2 && <Dobra2 title1={dados.dobra2?.title1} descricao={dados.dobra2?.descricao} imagens={dados.dobra2?.carrossel} area={dados.area} />}
                 {dados.dobra3 && <Dobra3 title={dados.dobra3?.title} descricao={dados.dobra3?.descricao} 
                     carrosselEsquerda={dados.dobra3?.carrosselEsquerda} carrosselDireita={dados.dobra3?.carrosselDireita} />}
                 {dados.dobra4 && <Dobra4 imagem={dados.dobra4?.imagem} />}
