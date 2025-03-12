@@ -1,179 +1,168 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-// Import Swiper e módulos necessários
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, FreeMode, Pagination } from "swiper/modules"; // para autoplay
-import "swiper/css"; // CSS base do Swiper
+import { Autoplay, FreeMode, Pagination } from "swiper/modules";
+import "swiper/css";
 import "swiper/css/pagination";
 import { useNavigate } from "react-router-dom";
+import { db } from "../services/firebaseConfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const Container = styled.div`
   width: 100%;
-  height: 350px;
+  height: 100%;
   display: flex;
-  gap: 20px;
   align-items: center;
   justify-content: center;
-  background: var(--color--green--very--low);
   font-family: var(--font--montserrat);
+  background-color: #000;
 
-  @media (max-width: 768px){
-    height: 300px;
+  .swiper {
+    width: 100%;
+    height: 350px;
+
+    @media (max-width: 768px){
+      height: 300px;
+    }
   }
 
   .swiper-slide {
     display: flex;
-    height: 350px!important;
-    gap: 10px;
     align-items: center;
     justify-content: center;
-    white-space: nowrap;
-    flex-wrap: nowrap;
+    height: 100%;
+    position: relative;
+    transition: opacity 0.2s ease-in-out;
 
-    @media (max-width: 768px){
-      height: 300px!important;
+    div {
       width: 100%;
-    }
-
-    & > div{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        height: 100%!important;
-        width: 100%;
-        overflow: hidden;
-        position: relative;
-
-        & > button {
-          transform: scale(0);
-          position: absolute;
-          color: #fff;
-          background-color: #00000020;
-          padding: 8px 15px;
-          backdrop-filter: blur(2px);
-          z-index: 2;
-          transition: all .4s ease-in-out;
-
-          &:hover {
-              background-color: var(--color--white);
-              color: var(--color--black);
-              cursor: pointer;
-          }
-        }
-
-        &:hover > img {
-          transform: scale(1.2) rotate(2deg);
-        }
-
-        &:hover > button {
-          transform: scale(1);
-        }
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     img {
       object-fit: cover;
       width: 100%;
       height: 100%;
-      transition: all .5s ease-in-out;
-
-      @media (max-width: 768px) {
-        width: 100%;
-        height: 100%;
-      }
+      transition: all 0.5s ease-in-out;
     }
 
-    h3 {
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--color--white);
-
-      @media (max-width: 768px) {
-        font-size: 16px;
-      }
+    button {
+      position: absolute;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 8px 10px;
+      backdrop-filter: blur(2px);
+      font-size: 12px;
+      z-index: 5;
+      transition: all 0.4s ease-in-out;
+      transform: scale(0);
+      cursor: pointer;
     }
+
+    &:hover img {
+      transform: scale(1.2);
+    }
+
+    &:hover button {
+      transform: scale(1);
+    }
+
+    span {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 10px;
+      cursor: default;
+      text-shadow: 0 0 10px #000000;
+      font-weight: 500;
+    }
+  }
+
+  /* Aplica opacidade reduzida nos slides que não estão em hover */
+  .swiper-slide.dimmed {
+    opacity: 0.2;
   }
 `;
 
-
-const Carrossel = () => {
+const Carrossel = ({ category }) => {
+  const [casas, setCasas] = useState([]);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchCasas = async () => {
+      try {
+        const casasRef = collection(db, "imagens");
+        const casasQuery = query(casasRef, where("category", "==", category));
+        const querySnapshot = await getDocs(casasQuery);
+
+        let casasArray = [];
+        querySnapshot.forEach((doc) => {
+          casasArray.push({ id: doc.id, ...doc.data() });
+        });
+
+        setCasas(casasArray.sort(() => 0.5 - Math.random()).slice(0, 6));
+      } catch (error) {
+        console.error("Erro ao buscar imagens do Firebase:", error);
+      }
+    };
+
+    fetchCasas();
+  }, [category]);
+
   return (
-    <>
-        <Container data-aos="fade-in">
-        <Swiper
-            modules={[Autoplay, FreeMode, Pagination]} 
-            loop={true}
-            autoplay={{
-                delay: 0,
-                disableOnInteraction: false, 
-                reverseDirection: true,
-            }}
-            spaceBetween={0} 
-            slidesPerView={4} 
-            freeMode={false}
-            speed={2500} 
-            pagination={false} 
-            breakpoints={{
-            0: {
-                slidesPerView: 1, 
-                spaceBetween: 0,
-            },
-            1080: {
-                slidesPerView: 4,
-                spaceBetween: 0, 
-                },
-            }}
-        >
-            <SwiperSlide>
-            <div>
-                <button onClick={() => navigate('/catalogo-de-casas')}>
+    <Container data-aos="fade-in">
+      <Swiper
+        modules={[Autoplay, FreeMode, Pagination]}
+        loop={true}
+        autoplay={{
+          delay: 0,
+          disableOnInteraction: false,
+          reverseDirection: true,
+        }}
+        spaceBetween={0}
+        slidesPerView={4}
+        freeMode={false}
+        speed={2500}
+        pagination={false}
+        breakpoints={{
+          0: { slidesPerView: 1, spaceBetween: 0 },
+          1080: { slidesPerView: 4, spaceBetween: 0 },
+        }}
+      >
+        {casas.length === 0 ? (
+          <p>Carregando imagens...</p>
+        ) : (
+          casas.map((casa, index) => (
+            <SwiperSlide
+              key={casa.id}
+              className={hoveredIndex !== null && hoveredIndex !== index ? "dimmed" : ""}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div>
+                <button onClick={() => navigate(casa.destinationUrl)}>
                   Conhecer Casa
                 </button>
-                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ff1b4765-6b9d-42ed-fddf-71cb28fb9700/public" alt="" />
-            </div>
+                {casa.imageUrl ? (
+                  <img src={casa.imageUrl} alt={casa.name} />
+                ) : (
+                  <p>Imagem não disponível</p>
+                )}
+                <span>{casa.name}</span>
+              </div>
             </SwiperSlide>
-
-            <SwiperSlide>
-            <div>
-               <button onClick={() => navigate('/catalogo-de-casas')}>
-                  Conhecer Casa
-                </button>
-                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ff1b4765-6b9d-42ed-fddf-71cb28fb9700/public" alt="" />
-            </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-            <div>
-                <button onClick={() => navigate('/catalogo-de-casas')}>
-                  Conhecer Casa
-                </button>
-                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ff1b4765-6b9d-42ed-fddf-71cb28fb9700/public" alt="" />
-            </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-            <div>
-               <button onClick={() => navigate('/catalogo-de-casas')}>
-                  Conhecer Casa
-                </button>
-                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ff1b4765-6b9d-42ed-fddf-71cb28fb9700/public" alt="" />
-            </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-            <div>
-                <button onClick={() => navigate('/catalogo-de-casas')}>
-                  Conhecer Casa
-                </button>
-                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ff1b4765-6b9d-42ed-fddf-71cb28fb9700/public" alt="" />
-            </div>
-            </SwiperSlide>
-        </Swiper>
-        </Container>
-
-    </>
+          ))
+        )}
+      </Swiper>
+    </Container>
   );
 };
 

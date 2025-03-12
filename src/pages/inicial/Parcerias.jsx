@@ -121,6 +121,7 @@ const ParceriasImageDiv = styled.div`
         backdrop-filter: blur(2px);
         transition: all .4s ease;
         overflow: hidden;
+        border-radius: 30px;
 
         @media (max-width: 768px){
             height: 160px;

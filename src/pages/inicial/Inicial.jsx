@@ -12,11 +12,11 @@ const PaginaInicial = () => {
         <>
             <Home />
                 <Catalogo />
-                    <Faixa />
+                    <Faixa categoria="interiores"/>
                         <Sobre />
-                            <Faixa />
+                            <Faixa categoria="interiores"/>
                                 <Parcerias />
-                                    <Faixa />
+                                    <Faixa categoria="interiores"/>
         </>
     );
 };

@@ -236,6 +236,31 @@ const FooterForm = styled.div`
         }
     }
 
+    & > textarea {
+        padding: 10px 0px;
+        border-bottom: 1px solid #ffffff80;
+        width: 100%;
+        min-height: 120px;
+        height: auto;
+        overflow-y: hidden;
+        color: #fff;
+        transition: all 0.3s ease-in-out; 
+
+        &:focus{
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #ffffff80;
+            border-left: 1px solid #ffffff80;
+            padding-left: 10px;
+            color: var(--color--white);
+        }
+
+        &::placeholder{
+            font-size: 16px;
+            font-weight: 300;
+        }
+    }
+
     & > button {
         width: 100%;
         padding: 15px;
@@ -465,8 +490,14 @@ const Footer = () => {
                             placeholder="Seu e-mail" 
                             required 
                         />
+
+                        <textarea 
+                            type="text" 
+                            id="textarea" 
+                            placeholder="Qual a sua dúvida"
+                        />
                         <button type="submit">
-                            Solicitar orçamento
+                            Fale conosco
                         </button>
                         <p>
                             *Todas as informações serão usadas apenas para fins de contato, pode consultar nossa <a href="#">politica de privacidade</a> e <a href="">termos de condições</a>.

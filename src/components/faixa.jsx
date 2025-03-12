@@ -9,12 +9,12 @@ import Carrossel from "./carrossel";
 
 const Container = styled.div`
   width: 100%;
-  height: 7.5vh;
+  height: 5vh;
   display: flex;
   gap: 20px;
   align-items: center;
   justify-content: center;
-  background: var(--color--green--very--low);
+  background: linear-gradient(90deg, #000, #1d1d1d);
   font-family: var(--font--montserrat);
 
   @media (max-width: 768px){
@@ -48,19 +48,20 @@ const Container = styled.div`
     }
 
     h3 {
-      font-size: 20px;
+      font-size: 16px;
+      font-family: var(--font--aboreto);
       font-weight: 400;
-      color: var(--color--white);
+      color: #fff;
 
       @media (max-width: 768px) {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
   }
 `;
 
 
-const Faixa = () => {
+const Faixa = ({ categoria }) => {
 
   return (
     <>
@@ -120,7 +121,7 @@ const Faixa = () => {
         </Swiper>
         </Container>
 
-        <Carrossel />
+        <Carrossel category={categoria}/>
 
     </>
   );

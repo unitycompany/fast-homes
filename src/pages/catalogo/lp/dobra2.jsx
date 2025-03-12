@@ -1,0 +1,105 @@
+import React from "react";
+import styled from "styled-components";
+import CarrosselLP from "../../../components/carrossel-lp";
+
+const Content = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5% 5%;
+    gap: 30px;
+    max-width: 1280px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    position: relative;
+`
+
+const Left = styled.div`
+    width: 45%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100%;
+    min-height: 90dvh;
+    position: relative;
+
+    & div {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 20px;
+        flex-direction: column;
+
+        & h1 {
+            font-size: 40px;
+            font-family: var(--font--aboreto);
+            line-height: 100%;
+        }
+
+        & p {
+            font-size: 18px;
+            line-height: 110%;
+            width: 95%;
+        }
+    }
+
+    & div:nth-child(2){
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%);
+        align-items: center;
+        gap: 5px;
+
+        & h1 {
+            font-size: 100px;
+            font-family: var(--font--aboreto);
+            line-height: 100%;
+        }
+
+        & p {
+            font-size: 24px;
+            line-height: 110%;
+        }
+    }
+`
+
+const Right = styled.div`
+    width: 55%;
+    height: 100%;
+
+    & img {
+        height: 90dvh;
+    }
+`
+
+const Dobra2 = ({ title1, area, descricao, imagens }) => {
+    return (
+        <>
+            <Content>
+                <Left>
+                    <div>
+                        <h1>{title1}</h1>
+                        <p>{descricao}</p>
+                    </div>
+                    <div>
+                        <h1>{area}</h1>
+                        <span>Área construida</span>
+                    </div>
+                </Left>
+                <Right>
+                    <CarrosselLP
+                        images={imagens}
+                        width="100%"
+                        height="90dvh"
+                    />
+                </Right>
+            </Content>
+        </>
+    )
+}
+
+export default Dobra2;

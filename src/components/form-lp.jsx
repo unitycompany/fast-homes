@@ -26,7 +26,12 @@ const FormContainer = styled.section`
     width: 100%;
     gap: 50px;
     font-family: var(--font--montserrat);
-
+    padding: 2.5% 5%;
+    max-width: 1280px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    position: relative;
 
     @media (max-width: 768px){
         flex-direction: column;
@@ -83,21 +88,18 @@ const Formulario = styled.form`
         position: relative;
         overflow: hidden;
         transition: all .2s ease!important;
-        border: 1px solid #fff;
+        border: 1px solid #00000050;
+        border-radius: 5px;
         color: #fff;
         letter-spacing: 1px;
         font-weight: 300;
-
-        @media (max-width: 768px){
-            font-size: 12px;
-            white-space: nowrap;
-        }
+        background-color: #000;
 
         &:hover{
-            background: #fff;
+            background: transparent;
             color: var(--color--black);
             letter-spacing: 1px;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         &::before{
@@ -121,7 +123,8 @@ const Formulario = styled.form`
     & > label {
         display: flex;
         flex-direction: column;
-        border: 1px solid #fff;
+        border: 1px solid #00000050;
+        border-radius: 5px;
         width: 100%;
         padding: 10px 15px;
         position: relative;
@@ -129,7 +132,7 @@ const Formulario = styled.form`
         & > span {
             position: absolute;
             top: -10px;
-            background-color: var(--color--black);
+            background-color: #fff;
             padding: 0 10px;
             font-size: 12px;
             font-weight: 300;
@@ -164,7 +167,8 @@ const FormInputs = styled.div`
     & > label {
         display: flex;
         flex-direction: column;
-        border: 1px solid #fff;
+        border: 1px solid #00000050;
+        border-radius: 5px;
         width: 100%;
         padding: 10px 15px;
         position: relative;
@@ -173,7 +177,7 @@ const FormInputs = styled.div`
         & > span {
             position: absolute;
             top: -10px;
-            background-color: var(--color--black);
+            background-color: #fff;
             padding: 0 10px;
             font-size: 12px;
             font-weight: 300;
@@ -206,7 +210,8 @@ const FormSelect = styled.div`
 const FormPlaceholder = styled.div`
     display: flex;
     padding: 15px 15px;
-    border: 1px solid #fff;
+    border: 1px solid #00000050;
+    border-radius: 5px;
     align-items: center;
     justify-content: space-between;
     position: relative;
@@ -215,7 +220,7 @@ const FormPlaceholder = styled.div`
     & > span {
         position: absolute;
         top: -10px;
-        background-color: var(--color--black);
+        background-color: #fff;
         padding: 0 10px;
         font-size: 12px;
         font-weight: 300;  
@@ -234,10 +239,10 @@ const FormPlaceholder = styled.div`
 `
 
 const FormOptions = styled.div`
-    border: 1px solid #fff;
+    border: 1px solid #00000050;
     border-top: 0;
-    background: var(--color--black);
-    color: #fff;
+    background: #fff;
+    color: #000;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -264,8 +269,8 @@ const FormOptions = styled.div`
         background-color: #ffffff10;
 
         &:hover {
-            background-color: #ffffff40;
-            color: #fff;
+            background-color: #00000010;
+            color: #000;
         }
 
         & > span {
@@ -290,7 +295,7 @@ const FormOptions = styled.div`
     }
 `
 
-const Form = () => {
+const FormLP = () => {
 
     const [IsOpenSelect, setIsOpenSelect] = useState(false);
     const [selectedOption, setSelectedOption] = useState('');
@@ -375,4 +380,4 @@ const Form = () => {
     )
 }
 
-export default Form;
+export default FormLP;

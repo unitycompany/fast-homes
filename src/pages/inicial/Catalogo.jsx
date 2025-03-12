@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
+import { db } from "../../services/firebaseConfig";
+import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -9,6 +11,7 @@ import { Autoplay } from 'swiper/modules';
 import GlobalButton3 from "../../components/buttons/GlobalButton3";
 import CardCatalogo from "../../components/cards/CardCatalogo01";
 import CardCatalogo2 from "../../components/cards/CardCatalogo02";
+import Filtro from "../../components/filtro";
 
 const moveBackground = keyframes`
     0% {
@@ -36,20 +39,11 @@ const CatalogoContainer = styled.section`
     transform: translateX(-50%);
     position: relative;
     width: 100%;
-
-    &::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
-        pointer-events: none;
-        z-index: -1;
-    }
+    padding: 40px 0;
 
     @media (max-width: 768px){
-        padding: 0% 0 0% 0;
+        padding: 5% 0;
+        gap: 40px;
     }
 `
 
@@ -59,7 +53,7 @@ const CatalogoBackground = styled.div`
     position: absolute;
     background-color: #fff;
 
-    --gap: 2em;
+    --gap: 10em;
     --line: 1px;
     --color: rgba(0, 0, 0, 0.05);
     z-index: -2;
@@ -82,7 +76,7 @@ const CatalogoBackground = styled.div`
 `;
 
 const CatalogoTop = styled.div`
-    padding: 2.5% 5%;
+    padding: 0% 5% 3% 5%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -91,7 +85,7 @@ const CatalogoTop = styled.div`
 
     @media (max-width: 768px){
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 30px;
     }
 
@@ -107,10 +101,9 @@ const CatalogoTop = styled.div`
 
         @media (max-width: 768px){
             text-align: left;
-            display: block;
+            display: none;
             font-size: 30px;
         }
-
 
         & > a {
             color: var(--color--green--very--low);
@@ -121,7 +114,6 @@ const CatalogoTop = styled.div`
                 border: none;
                 margin-left: 5px;
             }    
-
 
             &:hover {
                 color: var(--color--green--medium);
@@ -135,34 +127,16 @@ const CatalogoTop = styled.div`
 const CatalogoCards = styled.div`
     position: relative;
     width: 100%;
-    padding: 2.5% 5%;
+    padding: 3% 5% 1% 5%;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 20px;
     align-items: flex-start;
-    padding-bottom: 80px;
 
     @media (max-width: 768px){
-        padding-bottom: 40px;
+        padding-bottom: 50px;
         padding-top: 20px;
-    }
-
-
-    &::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 400px;
-        height: 100%;
-        background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0));
-        pointer-events: none;
-        z-index: 2;
-
-        @media (max-width: 768px){
-            width: 150px;
-        }
-
     }
 `;
 
@@ -171,23 +145,93 @@ const StyledSwiper = styled(Swiper)`
     display: flex;
 `
 
-const CatalogoCardContainer = styled.div`
+const CatalogoItems = styled.div`
+    width: 100%;
+
     @media (max-width: 768px){
-        
+        width: 95%;
     }
 `
 
-const CatalogoItems = styled.div`
-    width: 100%;
-`
-
 const Catalogo = () => {
+    const [casas, setCasas] = useState([]);
+    const [isMobile, setIsMobile] = useState(false);
+
+
+  useEffect(() => {
+    const fetchCasas = async () => {
+      try {
+        const casasQuery = query(collection(db, "catalogo"), orderBy("nome", "desc"), limit(4));
+        const querySnapshot = await getDocs(casasQuery);
+        const casasArray = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setCasas(casasArray);
+      } catch (error) {
+        console.error("Erro ao buscar casas no Firebase:", error);
+      }
+    };
+
+    fetchCasas();
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Define o breakpoint para mobile
+    };
+
+    handleResize(); // Verifica o tamanho inicial
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
     return (
         <>
             <CatalogoContainer>
                 <CatalogoBackground />
 
                 <CatalogoItems>
+                    <Filtro />
+                    
+                    {isMobile ? (
+                        <StyledSwiper slidesPerView={1} spaceBetween={10} pagination={{ clickable: true }}>
+                        {casas.map((casa) => (
+                            <SwiperSlide key={casa.id}>
+                            <CardCatalogo
+                                titulo={casa.nome}
+                                area={casa.area}
+                                largura={casa.largura}
+                                lote={casa.lote}
+                                imagem={casa.imagem}
+                            />
+                            </SwiperSlide>
+                        ))}
+                        </StyledSwiper>
+                    ) : (
+                        <CatalogoCards>
+                        {casas.map((casa, index) =>
+                            index < 2 ? (
+                            <CardCatalogo
+                                key={casa.id}
+                                titulo={casa.nome}
+                                area={casa.area}
+                                largura={casa.largura}
+                                lote={casa.lote}
+                                imagem={casa.imagem}
+                            />
+                            ) : (
+                            <CardCatalogo2
+                                key={casa.id}
+                                titulo={casa.nome}
+                                area={casa.area}
+                                largura={casa.largura}
+                                lote={casa.lote}
+                                imagem={casa.imagem}
+                            />
+                            )
+                        )}
+                        </CatalogoCards>
+                    )}
+
                     <CatalogoTop>
                         <h1>
                             Nosso  
@@ -207,42 +251,6 @@ const Catalogo = () => {
                         />
 
                     </CatalogoTop>
-
-                    <CatalogoCards>
-                        <StyledSwiper
-                            slidesPerView={2}
-                            spaceBetween={20}
-                            loop={true}
-                            speed={4000}
-                            autoplay={{ delay: 5000, disableOnInteraction: false }}
-                            breakpoints={{
-                                0: { slidesPerView: 1 },
-                                768: { slidesPerView: 2 },
-                            }}
-                            modules={[Autoplay]}
-                        >
-                            <SwiperSlide>
-                                <CatalogoCardContainer>
-                                    <CardCatalogo />
-                                    <CardCatalogo2 />
-                                </CatalogoCardContainer>
-                            </SwiperSlide>
-
-                            <SwiperSlide>
-                                <CatalogoCardContainer>
-                                    <CardCatalogo />
-                                    <CardCatalogo2 />
-                                </CatalogoCardContainer>
-                            </SwiperSlide>
-
-                            <SwiperSlide>
-                                <CatalogoCardContainer>
-                                    <CardCatalogo />
-                                    <CardCatalogo2 />
-                                </CatalogoCardContainer>
-                            </SwiperSlide>
-                        </StyledSwiper>
-                    </CatalogoCards>
                 </CatalogoItems>
                 
                 

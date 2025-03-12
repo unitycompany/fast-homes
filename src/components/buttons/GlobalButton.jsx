@@ -1,6 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
 import { BsArrowUpRight } from "react-icons/bs";
 
 const Button = styled.button`
@@ -10,6 +10,9 @@ const Button = styled.button`
     cursor: pointer;
     position: relative;
     font-family: var(--font--montserrat);
+    border: none;
+    background: none;
+    padding: 0;
 
     &:hover > div:nth-child(2){
         border-radius: 0 50px 50px 0;
@@ -31,7 +34,7 @@ const Button = styled.button`
         padding: 10px 20px;
         border-radius: 100px;
         background-color: ${({ background1 }) => background1 || '#ffffff' };
-        color: ${({ colorText }) => colorText || '#0000000' };
+        color: ${({ colorText }) => colorText || '#000000' };
         display: flex;
         align-items: center;
         justify-content: center;
@@ -66,21 +69,33 @@ const Button = styled.button`
             fill: ${({ colorIcon }) => colorIcon || '#000000' };
         }
     }
-`
+`;
 
-const GlobalButton = ({ text, background1, background2, colorIcon, colorText }) => {
+const GlobalButton = ({ text, background1, background2, colorIcon, colorText, to }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        if (to) {
+            navigate(to);
+        }
+    };
+
     return (
-        <>
-            <Button background1={background1} background2={background2} colorIcon={colorIcon} colorText={colorText}>
-                <div>
-                    <span>{text}</span>
-                </div>
-                <div>
-                    <BsArrowUpRight />
-                </div>
-            </Button>
-        </>
-    )
-}
+        <Button 
+            background1={background1} 
+            background2={background2} 
+            colorIcon={colorIcon} 
+            colorText={colorText} 
+            onClick={handleClick}
+        >
+            <div>
+                <span>{text}</span>
+            </div>
+            <div>
+                <BsArrowUpRight />
+            </div>
+        </Button>
+    );
+};
 
 export default GlobalButton;

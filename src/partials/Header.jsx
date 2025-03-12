@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import GlobalButton from "../components/buttons/GlobalButton";
 import HeaderSelect from "./HeaderSelect";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
 
 const HeaderContainer = styled.header`
     background-color: var(--color--black);
@@ -99,7 +99,6 @@ const HeaderLinks = styled.div`
         list-style: none;
         padding: 0;
         margin: 0;
-        display: flex;
         gap: 10px;  
 
         & > li {
@@ -115,46 +114,41 @@ const HeaderLinks = styled.div`
             z-index: 2;
             font-family: var(--font--montserrat);
 
-            &::before{
+            &::before, &::after {
                 content: '';
                 position: absolute;
                 left: 0;
                 bottom: 0;
-                height: 2px;
-                width: 0px;
-                background-color: #fff;
-                transition: 0.5s ease;
-            }
-
-            &:hover{
-                color: var(--color--black);
-                transition-delay: 0.5s;
-            }
-
-            &:hover::before{
-                width: 100%;
-            }
-
-            &::after{
-                content: '';
-                position: absolute;
-                left: 0;
-                bottom: 0;
-                height: 0;
                 width: 100%;
                 background-color: #fff;
-                transition: .4s ease;
+                transition: 0.7s ease;
                 z-index: -1;
             }
 
-            &:hover::after{
+            &::before {
+                height: 2px;
+                width: 0;
+            }
+
+            &:hover::before, &.active::before {
+                width: 100%;
+            }
+
+            &::after {
+                height: 0;
+            }
+
+            &:hover::after, &.active::after {
                 height: 100%;
-                transition-delay: .4s;
+                transition-delay: 0.4s;
+            }
+
+            &:hover, &.active {
                 color: var(--color--black);
             }
         }
     }
-`
+`;
 
 const HeaderSidebarLinks = styled.div`
     color: #fff;
@@ -327,6 +321,7 @@ const HeaderButton = styled.div`
 
 const Header = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const toggleSidebar = () => {
@@ -350,18 +345,29 @@ const Header = () => {
                             <div>
                                 <HeaderSelect />
                             </div>
-                            <li onClick={() => navigate=("/monte-sua-casa")}>Monte sua casa</li>
-                            <li onClick={() => navigate=("/sobre")}>Sobre nós</li>
-                            <li onClick={() => navigate=("/parcerias")}>Parcerias</li>
+                            {/* <li onClick={() => navigate=("/monte-sua-casa")}>Monte sua casa</li> */}
+                            <li 
+                                onClick={() => navigate("/sobre-nos")} 
+                                className={location.pathname === "/sobre-nos" ? "active" : ""}
+                            >
+                                Sobre nós
+                            </li>
+                            <li 
+                                onClick={() => navigate("/projetos-personalizados")} 
+                                className={location.pathname === "/projetos-personalizados" ? "active" : ""}
+                            >
+                                Projetos personalizados
+                            </li>
                         </ul>
                     </HeaderLinks>
                     <HeaderButton>
                         <GlobalButton 
-                            text="Solicitar orçamento"
+                            text="Conhecer catálogo"
                             background1="#ffffff"
                             background2="#ffffff"
                             colorIcon="#000000"
                             colorText="#000000"
+                            to="/catalogo-de-casas"
                         />
                     </HeaderButton>
                     <HeaderMenu onClick={toggleSidebar} isOpen={isSidebarOpen}>
@@ -381,9 +387,9 @@ const Header = () => {
                             <div>
                                 <HeaderSelect />
                             </div>
-                            <li onClick={() => navigate=("/monte-sua-casa")}>Monte sua casa</li>
-                            <li onClick={() => navigate=("/sobre")}>Sobre nós</li>
-                            <li onClick={() => navigate=("/parcerias")}>Parcerias</li>
+                            <li onClick={() => navigate("/monte-sua-casa")}>Monte sua casa</li>
+                            <li onClick={() => navigate("/sobre")}>Sobre nós</li>
+                            <li onClick={() => navigate("/parcerias")}>Parcerias</li>
                         </ul>
                     </HeaderSidebarLinks>
                     <HeaderSidebarButton>
@@ -393,6 +399,7 @@ const Header = () => {
                             background2="#ffffff"
                             colorIcon="#000000"
                             colorText="#000000"
+                            to="/catalogo-de-casas"
                         />
                     </HeaderSidebarButton>
                 </HeaderSidebarContainer>

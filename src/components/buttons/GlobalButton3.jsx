@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { BsArrowUpRight } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const Button = styled.button`
     display: flex;
@@ -72,19 +73,33 @@ const Button = styled.button`
     }
 `
 
-const GlobalButton3 = ({ text, background1, background2, colorIcon, colorText, border1, border2 }) => {
+const GlobalButton3 = ({ text, background1, background2, colorIcon, colorText, border1, border2, to }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        if (to) {
+            navigate(to);
+        }
+    };
+
     return (
-        <>
-            <Button background1={background1} background2={background2} colorIcon={colorIcon} colorText={colorText} border1={border1} border2={border2}>
-                <div>
-                    <span>{text}</span>
-                </div>
-                <div>
-                    <BsArrowUpRight />
-                </div>
-            </Button>
-        </>
-    )
-}
+        <Button 
+            background1={background1} 
+            background2={background2} 
+            colorIcon={colorIcon} 
+            colorText={colorText} 
+            border1={border1} 
+            border2={border2} 
+            onClick={handleClick}
+        >
+            <div>
+                <span>{text}</span>
+            </div>
+            <div>
+                <BsArrowUpRight />
+            </div>
+        </Button>
+    );
+};
 
 export default GlobalButton3;

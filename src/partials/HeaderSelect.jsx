@@ -35,29 +35,19 @@ const DropdownHeader = styled.div`
 
 const DropdownList = styled.div`
   position: absolute;
-  top: ${({ isOpen }) => (isOpen ? "calc(100% + 0.5rem)" : "calc(100% + 0.5rem)")};
+  top: calc(100% + 0.5rem);
   left: 0;
   width: 200px;
-  right: 0;
   background-color: var(--color--black);
   border-top: 2px solid #fff;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   z-index: 10;
   overflow: hidden;
-  max-height: ${({ isOpen }) => (isOpen ? "300px" : "0")};
+  max-height: ${({ isOpen }) => (isOpen ? "auto" : "0")};
   transform: ${({ isOpen }) => (isOpen ? "scaleY(1)" : "scaleY(0)")};
   transform-origin: top;
   transition: transform 0.3s ease, max-height 0.3s ease;
   font-family: var(--font--montserrat);
-
-  @media (max-width: 768px) {
-    border-top: none;
-    border-left: 1px solid #fff;
-    max-width: ${({ isOpen }) => (isOpen ? "150px" : "0")};
-    top: 10px;
-    max-height: 300px;
-    left: ${({ isOpen }) => (isOpen ? "calc(100% + 0.3rem)" : "calc(100% + 0.5rem)")};
-  }
 `;
 
 const DropdownItem = styled.div`
@@ -67,18 +57,35 @@ const DropdownItem = styled.div`
   color: #fff;
   transition: background-color 0.2s ease;
   text-transform: uppercase;
-
-  @media (max-width: 768px) {
-    padding: 12px;
-    font-size: 11px;
-    border: none;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   &:hover {
     background-color: #fff;
     color: var(--color--black);
   }
+`;
 
+const Submenu = styled.div`
+  max-height: ${({ isOpen }) => (isOpen ? "200px" : "0")};
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background-color: #222;
+`;
+
+const SubmenuItem = styled.div`
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 11px;
+  color: #ddd;
+  transition: background-color 0.2s ease;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: #fff;
+    color: var(--color--black);
+  }
 `;
 
 const DropdownArrow = styled.span`
@@ -90,32 +97,52 @@ const DropdownArrow = styled.span`
   justify-content: center;
 
   ${({ isOpen }) => isOpen && `transform: rotate(180deg);`}
-
-  @media (max-width: 768px) {
-    ${({ isOpen }) => isOpen && `transform: rotate(-90deg);`}
-  }
 `;
 
 const HeaderSelect = ({ colorIcon, colorText }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [openSubmenuIndex, setOpenSubmenuIndex] = useState(null);
   const navigate = useNavigate();
 
   const options = [
-    { label: "Opção 1", path: "/" },
-    { label: "Opção 2", path: "/" },
-    { label: "Opção 3", path: "/" },
+    { label: "Pavimentos", submenu: [
+        { label: "1 pavimento", path: "/sub1" },
+        { label: "2 pavimentos", path: "/sub2" },
+        { label: "3 pavimentos", path: "/sub3" },
+      ] },
+    { label: "Quartos", submenu: [
+        { label: "1 quarto", path: "/sub4" },
+        { label: "2 quartos", path: "/sub5" },
+        { label: "3 quartos", path: "/sub6" },
+      ] },
+    { label: "Área Construída", submenu: [
+        { label: "100m² até 200m²", path: "/sub7" },
+        { label: "200m² até 300m²", path: "/sub8" },
+        { label: "300m² até 400m²", path: "/sub9" },
+      ] },
+    { label: "Banheiros", submenu: [
+        { label: "1 banheiro", path: "/sub7" },
+        { label: "2 banheiros", path: "/sub8" },
+        { label: "3 banheiros", path: "/sub9" },
+        { label: "4 banheiros", path: "/sub9" },
+      ] },
   ];
 
-  const handleSelect = (option) => {
-    setIsOpen(false);
-    navigate(option.path);
+  const handleSelect = (index) => {
+    setOpenSubmenuIndex(openSubmenuIndex === index ? null : index);
   };
 
-  // Fecha o dropdown ao rolar a página
+  const handleSubSelect = (path) => {
+    setIsOpen(false);
+    setOpenSubmenuIndex(null);
+    navigate(path);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (isOpen) {
         setIsOpen(false);
+        setOpenSubmenuIndex(null);
       }
     };
 
@@ -127,20 +154,33 @@ const HeaderSelect = ({ colorIcon, colorText }) => {
 
   return (
     <DropdownContainer>
-      <DropdownHeader onClick={() => setIsOpen(!isOpen)} color={colorText}>
+      <DropdownHeader onClick={() => setIsOpen(!isOpen)} colorText={colorText}>
         Catálogo de Casas
         <DropdownArrow isOpen={isOpen} colorIcon={colorIcon}>
           <IoIosArrowDown />
         </DropdownArrow>
       </DropdownHeader>
       <DropdownList isOpen={isOpen}>
-        {options.map((option) => (
-          <DropdownItem
-            key={option.path}
-            onClick={() => handleSelect(option)}
-          >
-            {option.label}
-          </DropdownItem>
+        {options.map((option, index) => (
+          <div key={index}>
+            <DropdownItem onClick={() => handleSelect(index)}>
+              {option.label}
+              {option.submenu && (
+                <DropdownArrow isOpen={openSubmenuIndex === index}>
+                  <IoIosArrowDown />
+                </DropdownArrow>
+              )}
+            </DropdownItem>
+            {option.submenu && (
+              <Submenu isOpen={openSubmenuIndex === index}>
+                {option.submenu.map((sub, subIndex) => (
+                  <SubmenuItem key={subIndex} onClick={() => handleSubSelect(sub.path)}>
+                    {sub.label}
+                  </SubmenuItem>
+                ))}
+              </Submenu>
+            )}
+          </div>
         ))}
       </DropdownList>
     </DropdownContainer>

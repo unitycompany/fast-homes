@@ -1,53 +1,33 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useEffect, useState } from "react";
+import { db } from "../../services/firebaseConfig";
+import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import styled from "styled-components";
+import "swiper/css";
+import "swiper/css/pagination";
 
 import GlobalButton2 from "../../components/buttons/GlobalButton2";
 import GlobalButton3 from "../../components/buttons/GlobalButton3";
 
-import { BsArrowUpRight, BsHouseDoor } from "react-icons/bs";
-
-const moveBackground = keyframes`
-    0% {
-        background-position: 0 0;
-    }
-    50% {
-        background-position: -20px -20px;
-    }
-    100% {
-        background-position: 0 0;
-    }
-`;
 
 const HomeContainer = styled.section`
     width: 100%;
     height: auto;
-    padding: 10% 0 5% 0;
+    padding: 5% 0;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     position: relative;
     overflow: hidden;
     font-family: "Montserrat", serif;
     background-position: center;
     background-size: cover;
+    min-height: 100dvh;
+    border-image: fill 0 linear-gradient(45deg, #000000, #0000);
 
     @media (max-width: 768px){
-        padding: 30% 0 0% 0;
-    }
-`;
-
-const HomeBackground = styled.div`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/10052673-3243-41df-76b4-22bb1ad2e100/public');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    @media(max-width: 768px){
-        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/bfbb6c6e-0afb-4531-b0e7-971164932500/public');
-        background-position: top;
+        padding: 30% 0 5% 0;
     }
 `;
 
@@ -70,7 +50,7 @@ const HomeCenter = styled.div`
 `
 
 const HomeTexts = styled.div`
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -89,6 +69,7 @@ const HomeTexts = styled.div`
         justify-content: center;
         font-family: var(--font--aboreto);
         padding-bottom: 15px;
+        color: #fff;
 
         & > h2 {
             font-size: 35px;
@@ -100,12 +81,12 @@ const HomeTexts = styled.div`
         }
 
         & > h1 {
-            font-size: 100px;
+            font-size: 84px;
             line-height: 100%;
-            color: var(--color--green--very--low);
+            color: #fff;
 
             @media (max-width: 768px){
-                font-size: 58px;
+                font-size: 48px;
             }
         }
     }
@@ -115,6 +96,12 @@ const HomeTexts = styled.div`
         line-height: 120%;
         font-weight: 400;
         padding-bottom: 35px;
+        color: #fff;
+
+        @media (max-width: 768px){
+          font-size: 14px;
+          width: 95%;
+        }
     }
 
     & > button {
@@ -123,115 +110,114 @@ const HomeTexts = styled.div`
     
 `
 
-const HomeImages = styled.div`
-    width: 50%;
-    height: 600px;
-    position: relative;
-    color: var(--color--white);
-    padding: 20px;
-    gap: 20px;
+const BackgroundWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1; /* Para ficar atrás do conteúdo */
+`;
+
+const StyledSwiper = styled(Swiper)`
+  width: 100%;
+  height: 100%;
+  
+
+  /* Paginação (Dots) */
+  .swiper-pagination {
+    bottom: 50px !important; 
+    left: 85%!important;
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    & > button {
-        position: absolute;
-        z-index: 10;
-        cursor: pointer;
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #ffffff80;
-        backdrop-filter: blur(1px);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        color: #fff;
-        transition: all .2s ease;
-
-        @media (max-width: 768px){
-            display: none;
-        }
-
-        & > span {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            top: -50px;
-            width: 200px;
-            padding: 10px 10px 15px 10px;
-            background-color: #fff;
-            clip-path: polygon(50% 0%, 100% 0, 100% 90%, 60% 90%, 50% 100%, 50% 100%, 40% 90%, 0 90%, 0 0);
-            transform: scale(0);
-            transition: all .2s ease;
-            gap: 10px;
-            color: var(--color--black);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-
-            & > svg {
-                font-size: 16px;
-                fill: var(--color--black);
-            }
-        }
-
-        & > svg {
-            font-size: 25px;
-            transform: rotate(45deg);
-            transition: all .2s ease;
-        }
-
-        &:hover {
-            background-color: #fff;
-            color: var(--color--black);
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-            transform: scale(1.1);
-        }
-
-        &:hover > span {
-            transform: scale(1);
-        }
-
-        &:hover > svg {
-            transform: rotate(-45deg);
-        }
-    } 
-
-    & > img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: -50px;
-        right: -100px;
-        transform: scale(1.7);
-        transition: all 1s ease;
-        z-index: 1;
-        display: none;
-    }
+    gap: 2px; 
 
     @media (max-width: 768px){
-        width: 100%;
-        height: 400px;
-        flex-direction: column;
+      display: none;
     }
+  }
 
-    
-`
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: white;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #fff;
+    width: 18px; /* Aumentar tamanho do ativo */
+    height: 10px;
+    opacity: 1;
+  }
+
+  /* Slides */
+  .swiper-slide {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8;
+  }
+
+  .swiper-slide-active {
+    transform: scale(1.1); /* Aumenta um pouco o ativo */
+    opacity: 1;
+  }
+`;
+
+const SlideImage = styled.div`
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-image: fill 0 linear-gradient(45deg, #000000, #0000);
+  transition: all .5s ease-in-out;
+`;
 
 const Home = () => {
+    const [loadedImages, setLoadedImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const casasQuery = query(collection(db, "catalogo"), orderBy("nome", "desc"), limit(5));
+        const querySnapshot = await getDocs(casasQuery);
+        const imagensArray = querySnapshot.docs
+          .map(doc => doc.data().imagem) // Pegando apenas o campo de imagem
+          .filter(img => img); // Filtrando para evitar imagens vazias ou undefined
+
+        setLoadedImages(imagensArray);
+      } catch (error) {
+        console.error("Erro ao buscar imagens no Firebase:", error);
+      }
+    };
+
+    fetchImages();
+  }, []);
 
     return (
         <HomeContainer>
-            <HomeBackground />
+            <BackgroundWrapper>
+                <StyledSwiper
+                    modules={[Autoplay, Pagination, EffectFade]}
+                    effect="fade"
+                    autoplay={{ delay: 5000, disableOnInteraction: false }}
+                    loop={true}
+                    pagination={{ clickable: true }}
+                    >
+                    {loadedImages.map((img, index) => (
+                        <SwiperSlide key={index}>
+                        <SlideImage style={{ backgroundImage: `url(${img})` }} />
+                        </SwiperSlide>
+                    ))}
+                </StyledSwiper>
+            </BackgroundWrapper>
 
             <HomeCenter>
                 <HomeTexts>
                     <div>
                         <h2>O novo conceito de lar é</h2>
-                        <h1>Modular</h1>
+                        <h1>Fast Homes</h1>
                     </div>
                     <p>
                         Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos<br /> <br />
@@ -240,32 +226,23 @@ const Home = () => {
                     </p>
                     <GlobalButton2
                             text="Solicitar meu orçamento"
-                            background1="var(--color--green--very--low)"
-                            background2="var(--color--green--very--low)"
-                            colorIcon="#fff"
-                            colorText="#fff"
+                            background1="#fff"
+                            background2="#fff"
+                            colorIcon="#000"
+                            colorText="#000"
+                            to="/#Form"
                     />
                     <GlobalButton3
                             text="Conhecer catálogo"
                             background1="transparent"
                             background2="transparent"
-                            colorIcon="#000"
-                            colorText="#000"
-                            border1="#000"
-                            border2="#000"
+                            colorIcon="#fff"
+                            colorText="#fff"
+                            border1="#fff"
+                            border2="#fff"
+                            to="/catalogo-de-casas"
                     />
                 </HomeTexts>
-
-                <HomeImages>
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/905e6a45-b84d-43f7-2a56-51a5966f4f00/public" alt="" />
-                    <button>
-                        <span>
-                            <BsHouseDoor />
-                            Conhecer essa casa
-                        </span>
-                        <BsArrowUpRight />
-                    </button>
-                </HomeImages>
             </HomeCenter>
         </HomeContainer>
     );

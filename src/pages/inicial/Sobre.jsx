@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import GlobalButton3 from "../../components/buttons/GlobalButton3";
+import CarrosselLP from "../../components/carrossel-lp";
 
 const moveBackground = keyframes`
     0% {
@@ -19,6 +20,7 @@ const SobreContainer = styled.section`
     align-items: center;
     justify-content: center;
     width: 100%;
+    padding: 2.5% 0;
     height: auto;
     position: relative;
 `
@@ -81,12 +83,24 @@ const SobreConteudo = styled.div`
 
 const SobreImage = styled.div`
     width: 45%;
-    height: 650px;
+    height: 650px!important;
     position: relative;
+    border-radius: 30px;
+
+    & img {
+        object-fit: cover!important;
+        height: 650px;
+        border-radius: 30px;
+
+        @media (max-width: 768px){
+            height: 400px;
+            border-radius: 15px;
+        }
+    }
 
     @media (max-width: 768px) {
         width: 90%;
-        height: 400px;
+        height: 400px!important;
         margin-top: 15px;
     }
 
@@ -99,10 +113,12 @@ const SobreImage = styled.div`
         height: 100%;
         border: 1px solid var(--color--green--very--high);
         z-index: -1;
+        border-radius: 30px;
 
         @media (max-width: 768px) {
-            top: -5px;
-            left: -5px;
+            top: -10px;
+            left: -10px;
+            border-radius: 15px;
         }
     }
 
@@ -112,13 +128,15 @@ const SobreImage = styled.div`
         right: -20px;
         position: absolute;
         width: 100%;
-        height: 60%;
+        height: 80%;
         border: 1px solid var(--color--green--very--high);
         z-index: -1;
+        border-radius: 30px;
 
         @media (max-width: 768px) {
-            bottom: -5px;
-            right: -5px;
+            bottom: -10px;
+            right: -10px;
+            border-radius: 15px;
         }
     }
 
@@ -126,6 +144,7 @@ const SobreImage = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
+        border-radius: 20px;
     }
 `
 
@@ -173,6 +192,13 @@ const SobreTexts = styled.div`
     }
 `
 
+const imagens = [
+    "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/d6f1822f-7d40-4253-c464-ecbed208f000/public",
+    "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/9b28040e-5590-471a-3689-0f46105a5300/public",
+    "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/7bced151-b442-4e16-35ad-50925f6b7f00/public",
+    "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/73ffb0e2-19a5-4cf5-e84b-5dbcbb3f6200/public"
+]
+
 const Sobre = () => {
     return (
         <>
@@ -181,7 +207,11 @@ const Sobre = () => {
 
                 <SobreConteudo>
                     <SobreImage>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ff1b4765-6b9d-42ed-fddf-71cb28fb9700/public" alt="" loading="lazy" />
+                        <CarrosselLP 
+                            images={imagens}
+                            width="100%"
+                            height="650px"
+                        />
                     </SobreImage>
                     <SobreTexts>
                         <h1>

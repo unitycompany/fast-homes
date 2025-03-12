@@ -1,6 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
 import { BsArrowUpRight } from "react-icons/bs";
 
 const Button = styled.button`
@@ -66,12 +66,26 @@ const Button = styled.button`
             fill: ${({ colorIcon }) => colorIcon || '#000000' };
         }
     }
-`
+`;
 
-const GlobalButton2 = ({ text, background1, background2, colorIcon, colorText }) => {
+const GlobalButton2 = ({ text, background1, background2, colorIcon, colorText, to }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        if (to) {
+            navigate(to);
+        }
+    };
+
     return (
         <>
-            <Button background1={background1} background2={background2} colorIcon={colorIcon} colorText={colorText}>
+            <Button 
+                background1={background1} 
+                background2={background2} 
+                colorIcon={colorIcon} 
+                colorText={colorText} 
+                onClick={handleClick}
+            >
                 <div>
                     <span>{text}</span>
                 </div>
@@ -80,7 +94,7 @@ const GlobalButton2 = ({ text, background1, background2, colorIcon, colorText })
                 </div>
             </Button>
         </>
-    )
-}
+    );
+};
 
 export default GlobalButton2;
