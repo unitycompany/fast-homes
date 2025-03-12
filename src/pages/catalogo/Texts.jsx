@@ -28,6 +28,10 @@ const Card = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 20px;
+
+    @media (max-width: 768px){
+      padding: 0 5%;
+    }
   }
 
   h1 {
@@ -36,11 +40,19 @@ const Card = styled.div`
     line-height: 100%;
     margin-bottom: 10px;
     font-family: var(--font--aboreto);
+
+    @media (max-width: 768px){
+      font-size: 24px;
+    }
   }
 
   p {
     font-size: 14px;
     width: 80%;
+
+    @media (max-width: 768px){
+      width: 100%;
+    }
   }
 `;
 
@@ -54,7 +66,7 @@ const Texts = () => {
           width: "100%", // Largura total
           arrows: false, // Sem setas
           pagination: false, // Sem paginação
-          drag: true, // Sem arrastar manual
+          drag: false, // Sem arrastar manual
           autoplay: true, // Ativar rotação automática
           interval: 3000, // Tempo entre slides (3 segundos)
           speed: 800, // Velocidade da animação

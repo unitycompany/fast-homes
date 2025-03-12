@@ -16,7 +16,7 @@ const Content = styled.div `
     width: 100%;
     height: auto;
     min-height: 80dvh;
-    margin-top: 5%;
+    margin-top: 7.5%;
     padding: 2.5% 5%;
     display: flex;
     align-items: flex-start;

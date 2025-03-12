@@ -14,15 +14,15 @@ const Header = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1% 5%;
+    padding: 1.5% 5%;
 
     &::before{
         content: '';
         position: absolute;
         width: 100vw;
         height: 100%;
-        background: #000000;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        background: #ffffff15;
+        backdrop-filter: blur(150px);
         backdrop-filter: blur(2px);
         top: 0!important;
         left: 50%;
@@ -45,11 +45,11 @@ const HeaderTexts = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 10px;
-    color: #fff;
+    color: #000;
 
     & h1 {
-        font-size: 30px;
-        font-weight: 400;
+        font-size: 28px;
+        font-weight: 600;
         font-family: var(--font--aboreto);
         line-height: 100%;
     }
@@ -69,10 +69,10 @@ const Name = ({ nomeDaCasa, descricaoDaCasa }) => {
                 <HeaderBtns>
                     <GlobalButton2
                         text="Solicitar meu orçamento"
-                        background1="#fff"
-                        background2="#fff"
-                        colorIcon="#000"
-                        colorText="#000"
+                        background1="#000"
+                        background2="#000"
+                        colorIcon="#fff"
+                        colorText="#fff"
                         to="#Form"
                     />
                     
@@ -80,10 +80,10 @@ const Name = ({ nomeDaCasa, descricaoDaCasa }) => {
                         text="Catálogo"
                         background1="transparent"
                         background2="transparent"
-                        colorIcon="#fff"
-                        colorText="#fff"
-                        border1="#fff"
-                        border2="#fff"
+                        colorIcon="#000"
+                        colorText="#000"
+                        border1="#000"
+                        border2="#000"
                         to="/catalogo-de-casas"
                     />
                 </HeaderBtns>

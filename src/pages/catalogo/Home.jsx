@@ -20,6 +20,10 @@ const HomeContent = styled.div`
     position: relative;
     top: 0;
     transform: translateX(-50%);
+
+    @media (max-width: 768px){
+        padding: 25% 0 5% 0;
+    }
 `;
 
 const HomeTop = styled.div`
@@ -30,10 +34,19 @@ const HomeTop = styled.div`
     justify-content: center;
     gap: 30px;
 
+    @media (max-width: 768px){
+        padding: 0 5%;
+    }
+
     & h1 {
         font-family: var(--font--aboreto);
         font-size: 30px;
         text-align: center;
+
+        @media (max-width: 768px){
+            font-size: 24px;
+            line-height: 100%;
+        }
     }
 
     & p {
@@ -42,6 +55,10 @@ const HomeTop = styled.div`
         text-align: center;
         line-height: 120%;
         margin-top: -20px;
+
+        @media (max-width: 768px){
+            width: 100%;
+        }
     }
 `;
 
@@ -54,6 +71,10 @@ const HomeCatalogo = styled.div`
     flex-wrap: wrap;
     padding: 0 5%;
     gap: 20px;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+    }
 `;
 
 const LoadMoreButton = styled.button`

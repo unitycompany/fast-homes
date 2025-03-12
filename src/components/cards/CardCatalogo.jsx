@@ -16,6 +16,10 @@ const Card = styled.div`
     border: 1px solid #00000020;
     transition: all .4s ease-in-out;
     cursor: pointer;
+
+    @media (max-width: 768px){
+        width: 100%;
+    }
     
     & button {
         position: absolute;
