@@ -38,7 +38,6 @@ const Header = styled.div`
         width: 100vw;
         height: 100%;
         background: #ffffff15;
-        backdrop-filter: blur(150px);
         backdrop-filter: blur(2px);
         top: 0!important;
         left: 50%;
@@ -47,6 +46,8 @@ const Header = styled.div`
 
         @media (max-width: 768px){
             bottom: 0!important;
+            background: #ffffff80;
+            backdrop-filter: blur(2px);
         }
     }
 `;
@@ -99,7 +100,7 @@ const Name = ({ nomeDaCasa, descricaoDaCasa }) => {
         const handleScroll = () => {
             setIsHidden(true);
             clearTimeout(timeoutRef);
-            timeoutRef = setTimeout(() => setIsHidden(false), 1000);
+            timeoutRef = setTimeout(() => setIsHidden(false), 500);
         };
 
         window.addEventListener("scroll", handleScroll);
