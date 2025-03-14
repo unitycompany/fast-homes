@@ -215,7 +215,7 @@ const Sobre = () => {
                     </SobreImage>
                     <SobreTexts>
                         <h1>
-                            Conheça a <a href="/sobre">Fast Homes</a>
+                            Conheça a <a href="/sobre-nos">Fast Homes</a>
                         </h1>
                         <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut <br /> <br />
@@ -234,6 +234,7 @@ const Sobre = () => {
                                     colorText="#000"
                                     border1="#000"
                                     border2="#000"
+                                    to="/catalogo-de-casas"
                             />
                     </SobreTexts>
                 </SobreConteudo>

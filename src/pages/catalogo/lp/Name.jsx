@@ -16,6 +16,13 @@ const Header = styled.div`
     justify-content: space-between;
     padding: 1.5% 5%;
 
+    @media (max-width: 768px){
+        flex-direction: column;
+        padding: 2.5% 5%;
+        gap: 20px;
+        top: 0%!important;
+    }
+
     &::before{
         content: '';
         position: absolute;
@@ -28,6 +35,10 @@ const Header = styled.div`
         left: 50%;
         transform: translateX(-50%);
         z-index: -1;
+
+        @media (max-width: 768px){
+            bottom: 0!important;
+        }
     }
 `
 
@@ -36,6 +47,10 @@ const HeaderBtns = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+    }
 `
 
 const HeaderTexts = styled.div`

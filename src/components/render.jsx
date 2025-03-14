@@ -6,7 +6,7 @@ import { BsPlay } from "react-icons/bs";
 
 // 🎨 Estiliza o Container do Canvas
 const CanvasContainer = styled.div`
-  width: 90%;
+  width: 95%;
   max-width: 1280px;
   margin-top: 40px;
   border-radius: 15px;

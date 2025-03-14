@@ -1,10 +1,11 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import styled from "styled-components";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { delay } from "framer-motion";
 
 // 🎨 Estilos personalizados
 const CarouselContainer = styled.div`
@@ -53,9 +54,14 @@ const CarrosselLP = ({ images, width, height }) => {
   return (
     <CarouselContainer width={width} height={height}>
       <Swiper
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         spaceBetween={10}
         slidesPerView={1}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        loop={true}
         navigation={{
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, FreeMode, Pagination } from "swiper/modules";
+import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useNavigate } from "react-router-dom";
@@ -120,18 +120,18 @@ const Carrossel = ({ category }) => {
   return (
     <Container data-aos="fade-in">
       <Swiper
-        modules={[Autoplay, FreeMode, Pagination]}
+        modules={[Autoplay, Pagination, Navigation]}
         loop={true}
         autoplay={{
-          delay: 0,
+          delay: 1,
           disableOnInteraction: false,
           reverseDirection: true,
         }}
         spaceBetween={0}
         slidesPerView={4}
-        freeMode={false}
         speed={2500}
         pagination={false}
+        navigation={false}
         breakpoints={{
           0: { slidesPerView: 1, spaceBetween: 0 },
           1080: { slidesPerView: 4, spaceBetween: 0 },

@@ -26,7 +26,7 @@ const FormContainer = styled.section`
     width: 100%;
     gap: 50px;
     font-family: var(--font--montserrat);
-    padding: 2.5% 5%;
+    padding: 2.5% 2.5%;
     max-width: 1280px;
     left: 50%;
     top: 0;

@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 
 import GlobalButton2 from "../../components/buttons/GlobalButton2";
 import GlobalButton3 from "../../components/buttons/GlobalButton3";
+import { useLocation } from "react-router-dom";
 
 
 const HomeContainer = styled.section`
@@ -177,6 +178,18 @@ const SlideImage = styled.div`
 const Home = () => {
     const [loadedImages, setLoadedImages] = useState([]);
 
+    const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#form') {
+      const element = document.getElementById('form');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
+
   useEffect(() => {
     const fetchImages = async () => {
       try {
@@ -230,7 +243,7 @@ const Home = () => {
                             background2="#fff"
                             colorIcon="#000"
                             colorText="#000"
-                            to="/#Form"
+                            to="/#form"
                     />
                     <GlobalButton3
                             text="Conhecer catálogo"

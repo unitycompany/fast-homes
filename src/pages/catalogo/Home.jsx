@@ -69,7 +69,7 @@ const HomeCatalogo = styled.div`
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0 5%;
+    padding: 0 2.5%;
     gap: 20px;
 
     @media (max-width: 768px){

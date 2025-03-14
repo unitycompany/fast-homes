@@ -309,7 +309,7 @@ const Form = () => {
             <FormContainer id="form">
                 <FormText>
                     <h1>
-                        Solicite seu orçamento
+                        Fale com um consultor
                     </h1>
                     <p>
                     Todas as informações serão usadas apenas para fins de contato, pode consultar nossa <a href="/politica">politica de privacidade</a> e <a href="/termos">termos de condições.</a>
@@ -322,6 +322,7 @@ const Form = () => {
                         colorText="#fff"
                         border1="#fff"
                         border2="#fff"
+                        to="/catalogo-de-casas"
                     />
                 </FormText>
 

@@ -321,7 +321,7 @@ const FooterForm = styled.div`
 
 const FooterBottom = styled.div`
     width: 100%;
-    max-width: 1280px;
+    max-width: calc(1280px - 128px);
     position: relative;
     left: 50%;
     top: 0;
@@ -348,7 +348,7 @@ const FooterBottom = styled.div`
         align-items: center;
         justify-content: center;
         gap: 10px;
-        color: #00000095;
+        color: #000000;
 
         &:nth-child(1){
             @media (max-width: 768px){
@@ -394,7 +394,7 @@ const Footer = () => {
                             alt="logo-fast-homes" 
                         />
                         <h2>
-                            O Novo conceito de lar é modular
+                            O Novo conceito de lar é Fast Homes
                         </h2>
                         <a href="mailto:contato@fasthomes.com.br" target="_blank">
                             contato@fasthomes.com.br
@@ -414,13 +414,13 @@ const Footer = () => {
                         <a href="/catalogo-de-casas">
                             Catálogo de casas
                         </a>
-                        <a href="/monte-sua-casa">
-                            Monte sua casa
+                        <a href="/projetos-personalizados">
+                            Projetos personalizados
                         </a>
                         <a href="/sobre">
                             Sobre nós
                         </a>
-                        <a href="/parcerias">
+                        <a href="/#parcerias">
                             Parcerias
                         </a>
                     </FooterCard>
@@ -500,7 +500,7 @@ const Footer = () => {
                             Fale conosco
                         </button>
                         <p>
-                            *Todas as informações serão usadas apenas para fins de contato, pode consultar nossa <a href="#">politica de privacidade</a> e <a href="">termos de condições</a>.
+                            *Todas as informações serão usadas apenas para fins de contato, pode consultar nossa <a href="/politica-de-privacidade">politica de privacidade</a> e <a href="/termos-e-condicoes">termos e condições</a>.
                         </p>
                     </FooterForm>
                 </FooterCenter>

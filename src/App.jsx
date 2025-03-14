@@ -14,6 +14,10 @@ import PaginaSobre from "./pages/sobre/Inicial";
 import PaginaProjeto from "./pages/projetos/Inicial";
 import LandingPage from "./pages/catalogo/lp/LandingPage";
 
+import Privacidade from "./pages/politicas/Privacidade";
+import Termos from "./pages/politicas/Termos";
+import Cookie from "./pages/politicas/Cookie";
+
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.4 } },
@@ -46,6 +50,8 @@ const AppContent = () => {
             <Route path="/sobre-nos" element={<PaginaSobre />} />
             <Route path="/projetos-personalizados" element={<PaginaProjeto />} />
             <Route path="/catalogo-de-casas/:slug" element={<LandingPage />} />
+            <Route path="/termos-e-condicoes" element={<Termos />} />
+            <Route path="/politica-de-privacidade" element={<Privacidade />} />
           </Routes>
         </motion.div>
       </AnimatePresence>
@@ -58,6 +64,7 @@ function App() {
   return (
     <BrowserRouter>
       <AppContent />
+      <Cookie />
     </BrowserRouter>
   );
 }

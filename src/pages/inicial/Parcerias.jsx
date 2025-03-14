@@ -15,6 +15,7 @@ const ParceriasContainer = styled.section`
     overflow: hidden;
     font-family: var(--font--montserrat);
     color: #fff;
+    padding: 5% 0;
 
     @media (max-width: 768px){
         padding: 10% 0%;
@@ -163,42 +164,40 @@ const Parcerias = () => {
                 <ParceriasConteudo>
                     <ParceriasTexts>
                         <h1>
-                            Nossas 
-                            <a href="/parcerias">
-                                Parcerias
-                            </a>
+                            Nossas Parcerias
                         </h1>
                         <p>
                         enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
                         </p>
                         <GlobalButton2
-                            text="Solicitar meu orçamento"
+                            text="Catalogo de casas"
                             background1="#fff"
                             background2="#fff"
                             colorIcon="#353535"
                             colorText="#353535"
+                            to="/catalogo-de-casas"
                         />
                     </ParceriasTexts>
 
                     <ParceriasImagens>
                         <ParceriasImageDiv>
-                            <a href="/parcerias#ecoframe">
+                            <a href="https://esquadrias.fastsistemasconstrutivos.com.br/" target="_blank">
                                 <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1eb3f29b-d879-41f9-9870-ffec8fd83100/public" alt="ecoframe" />
                             </a>
-                            <a href="/parcerias#fastsistemasconstrutivos">
+                            <a href="https://fastdrywall.com.br/" target="_blank">
                                 <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6b64f421-c21d-418a-22df-aeb637cc8800/public" alt="fastsistemasconstrutivos" />
                             </a>
-                            <a href="/parcerias#novametalica">
+                            <a href="https://novametalica.com.br/" target="_blank">
                                 <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c12d51c8-2ed5-4b88-b069-c85191014100/public" alt="novametalica" />
                             </a>
-                            <a href="/parcerias#saintgobain">
+                            <a href="https://www.saint-gobain.com.br/" target="_blank">
                                 <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/978e5875-90fe-47bc-0e0c-973e5b58fb00/public" alt="saintgobain" />
                             </a>
                         </ParceriasImageDiv>
                     </ParceriasImagens>
                 </ParceriasConteudo>
 
-                <FormContainer>
+                <FormContainer id="form">
                     <Form />
                 </FormContainer>
             </ParceriasContainer>
