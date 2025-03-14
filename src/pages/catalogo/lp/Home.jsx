@@ -24,15 +24,32 @@ const Content = styled.div`
     gap: 10px;
     font-family: var(--font--montserrat);
     overflow: hidden;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        min-height: 60vh;
+    }
 `
 
 const Left = styled.div`
     width: 58%;
     height: 100%;
 
+    @media (max-width: 768px){
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80dvh;
+    }
+
     & img {
         height: 80dvh;
         object-fit: cover;
+
+        @media (max-width: 768px){
+            height: 80dvh;
+        }
     }
 `
 
@@ -44,6 +61,10 @@ const Right = styled.div`
     justify-content: center;
     gap: 10px;
     min-height: 550px;
+
+    @media (max-width: 768px){
+        width: 100%;
+    }
 `
 
 const RightTop = styled.div`

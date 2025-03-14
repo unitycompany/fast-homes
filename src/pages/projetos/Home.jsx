@@ -20,7 +20,7 @@ const Option = styled.div`
 
     @media (max-width: 768px){
         &:nth-child(1){
-            padding: 12.5% 2.5% 0 2.5%;;
+            padding: 15% 2.5% 0 2.5%;;
         }
 
         &:nth-child(2){

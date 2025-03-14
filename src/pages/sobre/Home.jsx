@@ -13,6 +13,13 @@ const Content = styled.section`
     justify-content: flex-end;
     flex-direction: row;
     gap: 50px;
+
+    @media (max-width: 768px){
+        flex-direction: column-reverse;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 10% 0 0 5%;
+    }
 `
 
 const Left = styled.section`
@@ -22,6 +29,12 @@ const Left = styled.section`
     align-items: flex-start;
     justify-content: center;
     gap: 40px;
+
+    @media (max-width: 768px){
+        width: 100%;
+        gap: 20px;
+        margin-top: -50px;
+    }
 
     & div {
         display: flex;
@@ -33,6 +46,10 @@ const Left = styled.section`
             font-size: 28px;
             line-height: 100%;
             font-family: var(--font--aboreto);
+
+            @media (max-width: 768px){
+                font-size: 22px;
+            }
         }
 
         & h1 {
@@ -41,10 +58,20 @@ const Left = styled.section`
             line-height: 100%;
             margin-left: -7px;
             color: var(--color--brown--medium);
+
+            @media (max-width: 768px){
+                font-size: 40px;
+                margin-left: -3px;
+            }
         }
     }
 
     & p {
+
+        @media (max-width: 768px){
+            font-size: 14px;
+        }
+
     }
 
     & article {
@@ -63,6 +90,11 @@ const Right = styled.section`
     align-items: center;
     justify-content: center;
     position: relative;
+
+    @media (max-width: 768px){
+        width: 80%;
+        height: 300px;
+    }
 
     &::before{
         content: '';
@@ -121,7 +153,7 @@ const Home = () => {
                             background2="var(--color--brown--medium)"
                             colorIcon="#fff"
                             colorText="#fff"
-                            to="/#Form"
+                            to="/#form"
                         />
                         <GlobalButton3
                             text="Conhecer catálogo"

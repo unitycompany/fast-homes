@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import GlobalButton2 from "../../../components/buttons/GlobalButton2";
 import GlobalButton3 from "../../../components/buttons/GlobalButton3";
@@ -15,12 +15,21 @@ const Header = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 1.5% 5%;
+    transition: transform 0.5s ease-in-out, scale 0.5s ease-in-out;
 
     @media (max-width: 768px){
         flex-direction: column;
-        padding: 2.5% 5%;
+        padding: 5% 5%;
         gap: 20px;
-        top: 0%!important;
+        height: 250px;
+        top: 100%!important;
+        left: 50%;
+        transform: translateY(-100%) translateX(-50%);
+        bottom: 0!important;
+
+        ${({ isHidden }) => isHidden && `
+            transform: translateY(-100%) translateX(-50%) scale(0);
+        `}
     }
 
     &::before{
@@ -40,7 +49,7 @@ const Header = styled.div`
             bottom: 0!important;
         }
     }
-`
+`;
 
 const HeaderBtns = styled.div`
     display: flex;
@@ -51,7 +60,7 @@ const HeaderBtns = styled.div`
     @media (max-width: 768px){
         flex-direction: column;
     }
-`
+`;
 
 const HeaderTexts = styled.div`
     text-align: right;
@@ -61,6 +70,11 @@ const HeaderTexts = styled.div`
     flex-direction: column;
     gap: 10px;
     color: #000;
+
+    @media (max-width: 768px){
+        align-items: center;
+        text-align: center;
+    }
 
     & h1 {
         font-size: 28px;
@@ -75,41 +89,59 @@ const HeaderTexts = styled.div`
         width: 80%;
         line-height: 100%;
     }
-`
+`;
 
 const Name = ({ nomeDaCasa, descricaoDaCasa }) => {
+    const [isHidden, setIsHidden] = useState(false);
+    let timeoutRef = null;
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsHidden(true);
+            clearTimeout(timeoutRef);
+            timeoutRef = setTimeout(() => setIsHidden(false), 2000);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("touchmove", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("touchmove", handleScroll);
+            clearTimeout(timeoutRef);
+        };
+    }, []);
+
     return (
-        <>
-            <Header>
-                <HeaderBtns>
-                    <GlobalButton2
-                        text="Solicitar meu orçamento"
-                        background1="#000"
-                        background2="#000"
-                        colorIcon="#fff"
-                        colorText="#fff"
-                        to="#Form"
-                    />
-                    
-                    <GlobalButton3
-                        text="Catálogo"
-                        background1="transparent"
-                        background2="transparent"
-                        colorIcon="#000"
-                        colorText="#000"
-                        border1="#000"
-                        border2="#000"
-                        to="/catalogo-de-casas"
-                    />
-                </HeaderBtns>
+        <Header isHidden={isHidden}>
+            <HeaderBtns>
+                <GlobalButton2
+                    text="Solicitar meu orçamento"
+                    background1="#000"
+                    background2="#000"
+                    colorIcon="#fff"
+                    colorText="#fff"
+                    to="#Form"
+                />
                 
-                <HeaderTexts>
-                    <h1>{nomeDaCasa}</h1>
-                    <p>{descricaoDaCasa}</p>
-                </HeaderTexts>
-            </Header>
-        </>
-    )
-}
+                <GlobalButton3
+                    text="Catálogo"
+                    background1="transparent"
+                    background2="transparent"
+                    colorIcon="#000"
+                    colorText="#000"
+                    border1="#000"
+                    border2="#000"
+                    to="/catalogo-de-casas"
+                />
+            </HeaderBtns>
+            
+            <HeaderTexts>
+                <h1>{nomeDaCasa}</h1>
+                <p>{descricaoDaCasa}</p>
+            </HeaderTexts>
+        </Header>
+    );
+};
 
 export default Name;

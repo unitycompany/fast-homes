@@ -43,9 +43,11 @@ const NavButton = styled.div`
 
   &.swiper-button-prev {
     left: -40px;
+    display: none;
   }
   &.swiper-button-next {
     right: -40px;
+    display: none;
   }
 `;
 

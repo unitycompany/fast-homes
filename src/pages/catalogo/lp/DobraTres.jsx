@@ -27,9 +27,21 @@ const Top = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+    flex-direction: column;
+
+    & div {
+        @media (max-width: 768px){
+            width: 100%;
+        }
+    }
 
     & img {
         height: 550px;
+
+        @media (max-width: 768px){
+            height: 300px;
+            object-fit: cover;
+        }
     }
 `
 
@@ -44,6 +56,11 @@ const Bottom = styled.div`
     & h1 {
         font-size: 30px;
         font-family: var(--font--aboreto);
+
+        @media (max-width: 768px){
+            font-size: 26px;
+            line-height: 110%;
+        }
     }
 
     & p {

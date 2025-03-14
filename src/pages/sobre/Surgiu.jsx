@@ -13,6 +13,11 @@ const Content = styled.div`
     height: auto;
     gap: 50px;
     padding: 7.5% 5%;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        padding: 15% 5%;
+    }
 `
 
 const Left = styled.div`
@@ -22,6 +27,12 @@ const Left = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
+
+    @media (max-width: 768px){
+        width: 100%;
+        height: 400px;
+        margin-left: -50%;
+    }
 
     &::before{
         content: '';
@@ -63,10 +74,26 @@ const Right = styled.div`
     justify-content: center;
     gap: 40px;
 
+    @media (max-width: 768px){
+        width: 100%;
+    }
+
     & h2 {
         font-family: var(--font--aboreto);
         font-size: 30px;
         color: var(--color--brown--low);
+
+        @media (max-width: 768px){
+            font-size: 26px;
+            line-height: 110%;
+        }
+    }
+
+    & p {
+        @media (max-width: 768px){
+            font-size: 14px;
+            line-height: 120%;
+        } 
     }
 
     & div {

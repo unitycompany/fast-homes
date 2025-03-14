@@ -12,6 +12,12 @@ const Content = styled.div`
     justify-content: center;
     flex-direction: row;
     gap: 50px;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        padding: 2.5% 5% 2.5% 5%;
+        gap: 0;
+    }
 `
 
 const Left = styled.div`
@@ -22,10 +28,27 @@ const Left = styled.div`
     justify-content: center;
     gap: 25px;
 
+    @media (max-width: 768px){
+        width: 100%;
+    }
+
     & h2 {
         font-size: 30px;
         font-family: var(--font--aboreto);
         color: var(--color--brown--low);
+
+        @media (max-width: 768px){
+            font-size: 26px;
+            line-height: 110%;
+            width: 100%;
+        }
+    }
+
+    & p {
+        @media (max-width: 768px){
+            font-size: 14px;
+            line-height: 120%;
+        }
     }
 
     & div {
@@ -80,6 +103,12 @@ const Right = styled.div`
     flex-wrap: wrap;
     height: 650px;
     padding: 20px;
+
+    @media (max-width: 768px){
+        width: 100%;
+        padding: 0;
+        height: 500px;
+    }
 
     & img {
         width: 100%;

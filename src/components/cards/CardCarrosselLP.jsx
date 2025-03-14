@@ -24,6 +24,10 @@ const Top = styled.div`
     & h1 {
         font-size: 30px;
         font-family: var(--font--aboreto);
+
+        @media (max-width: 768px){
+            font-size: 26px;
+        }
     }
 `;
 

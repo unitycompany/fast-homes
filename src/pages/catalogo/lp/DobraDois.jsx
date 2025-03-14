@@ -14,6 +14,10 @@ const Content = styled.div`
     top: 0;
     transform: translateX(-50%);
     position: relative;
+
+    @media (max-width: 768px){
+        flex-direction: column-reverse;
+    }
 `
 
 const Left = styled.div`
@@ -25,6 +29,10 @@ const Left = styled.div`
     height: 100%;
     min-height: 90dvh;
     position: relative;
+
+    @media (max-width: 768px){
+        width: 100%;
+    }
 
     & div {
         display: flex;
@@ -71,8 +79,18 @@ const Right = styled.div`
     width: 55%;
     height: 100%;
 
+    @media (max-width: 768px){
+        width: 100%;
+        border: 1px solid red;
+        height: 60dvh;
+    }
+
     & img {
         height: 90dvh;
+
+        @media (max-width: 768px){
+            height: 60dvh;
+        }
     }
 `
 
