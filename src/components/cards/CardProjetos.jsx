@@ -16,6 +16,11 @@ const Content = styled.div`
     background-image: ${({ image }) => (image ? `url(${image})` : "none")};
     background-position: center;
     background-size: cover;
+
+    @media (max-width: 768px){
+        height: 80vh;
+        justify-content: flex-end;    
+    }
     
     &::before{
         content: '';
@@ -25,6 +30,13 @@ const Content = styled.div`
         ${({ position }) => (position === "left" ? "left: 0;" : "right: 0;")}
         position: absolute;
         border-image: fill 0 ${({ direction }) => (direction ? "linear-gradient(90deg, #000, #0000)" : "linear-gradient(-90deg, #000, #0000)")};
+
+        @media (max-width: 768px){
+            width: 100%;
+            top: 50%;
+            height: 50%;
+            border-image: fill 0 ${({ direction }) => (direction ? "linear-gradient(0deg, #000, #0000)" : "linear-gradient(0deg, #000, #0000)")};
+        }
     }
 `
 
@@ -43,11 +55,22 @@ const Texts = styled.div`
     text-align: ${({ text }) => (text ? "left" : "right")};
     color: #fff;
 
+    @media (max-width: 768px){
+        width: 100%;
+        padding: 20px;
+        height: 100%;
+        justify-content: flex-end;
+    }
+
     & h1 {
         font-size: 36px;
         font-family: var(--font--aboreto);
         line-height: 110%;
         text-align: ${({ text }) => (text ? "left" : "right")};
+
+        @media (max-width: 768px){
+            font-size: 26px;
+        }
     }
 
     & p {
@@ -55,6 +78,10 @@ const Texts = styled.div`
         font-weight: 400;
         line-height: 120%;
         text-align: ${({ text }) => (text ? "left" : "right")};
+
+        @media (max-width: 768px){
+            font-size: 14px;
+        }
     }
 `
 
@@ -66,7 +93,7 @@ const CardProjeto = ({ title, description, direction, position, text, image, ite
                     <h1>{title}</h1>
                     <p>{description}</p>
                     <GlobalButton3
-                        text="Enviar meu projeto para o meu consultor"
+                        text="Conversar com um consultor"
                         background1="transparent"
                         background2="transparent"
                         colorIcon="#fff"

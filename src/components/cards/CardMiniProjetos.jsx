@@ -23,6 +23,10 @@ const Content = styled.div`
         left: 0;
         position: absolute;
         border-image: fill 0 linear-gradient(0deg, #000, #0000);
+
+        @media (max-width: 768px){
+            height: 50%;
+        }
     }
 `
 
@@ -39,16 +43,28 @@ const Text = styled.div`
     position: relative;
     z-index: 2;
 
+    @media (max-width: 768px){
+        padding: 20px;
+    }
+
     & h1 {
         font-size: 50px;
         line-height: 100%;
         font-family: var(--font--aboreto);
+
+        @media (max-width: 768px){
+            font-size: 30px;
+        }
     }
 
     & p {
         font-size: 14px;
         line-height: 120%;
         font-weight: 400;
+
+        @media (max-width: 768px){
+            font-size: 12px;
+        }
     }
 `
 

@@ -35,6 +35,8 @@ const FormContainer = styled.section`
 
     @media (max-width: 768px){
         flex-direction: column;
+        gap: 0px;
+        padding: 0% 5% 10% 5%;
     }
 `
 
@@ -48,6 +50,7 @@ const FormText = styled.div`
 
     @media (max-width: 768px){
         width: 100%;
+        gap: 10px;
     }
 
     & > h1 {
@@ -56,12 +59,16 @@ const FormText = styled.div`
 
         @media (max-width: 768px){
             line-height: 120%;
-            font-size: 30px;
+            font-size: 26px;
         }
     }
 
     & > p {
         font-size: 16px;
+
+        @media (max-width: 768px){
+            line-height: 120%;
+        }
     }
 `
 

@@ -417,7 +417,7 @@ const Footer = () => {
                         <a href="/projetos-personalizados">
                             Projetos personalizados
                         </a>
-                        <a href="/sobre">
+                        <a href="/sobre-nos">
                             Sobre nós
                         </a>
                         <a href="/#parcerias">

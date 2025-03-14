@@ -17,7 +17,7 @@ const FiltroContainer = styled.div`
     @media (max-width: 768px){
         flex-direction: column;
         gap: 20px;
-        padding: 5%;
+        padding: 5% 2.5%;
     }
 `;
 

@@ -387,9 +387,8 @@ const Header = () => {
                             <div>
                                 <HeaderSelect />
                             </div>
-                            <li onClick={() => navigate("/monte-sua-casa")}>Monte sua casa</li>
-                            <li onClick={() => navigate("/sobre")}>Sobre nós</li>
-                            <li onClick={() => navigate("/parcerias")}>Parcerias</li>
+                            <li onClick={() => navigate("/projetos-personalizados")}>Projetos Personalizados</li>
+                            <li onClick={() => navigate("/sobre-nos")}>Sobre nós</li>
                         </ul>
                     </HeaderSidebarLinks>
                     <HeaderSidebarButton>
