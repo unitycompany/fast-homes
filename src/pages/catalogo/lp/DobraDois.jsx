@@ -81,7 +81,6 @@ const Right = styled.div`
 
     @media (max-width: 768px){
         width: 100%;
-        border: 1px solid red;
         height: 60dvh;
     }
 

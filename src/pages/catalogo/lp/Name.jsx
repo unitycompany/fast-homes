@@ -99,7 +99,7 @@ const Name = ({ nomeDaCasa, descricaoDaCasa }) => {
         const handleScroll = () => {
             setIsHidden(true);
             clearTimeout(timeoutRef);
-            timeoutRef = setTimeout(() => setIsHidden(false), 2000);
+            timeoutRef = setTimeout(() => setIsHidden(false), 1000);
         };
 
         window.addEventListener("scroll", handleScroll);
