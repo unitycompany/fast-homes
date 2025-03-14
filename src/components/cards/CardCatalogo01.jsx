@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { BsArrowRightShort } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const CardContainer = styled.div`
     width: 550px;
@@ -148,7 +149,17 @@ const CardInfo = styled.div`
     }
 `
 
-const CardCatalogo = ({ titulo, area, largura, lote, imagem }) => {
+const CardCatalogo = ({ titulo, area, largura, lote, imagem, slug }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        if (!slug) {
+            console.error(`❌ Erro: slug indefinido para a casa ${nome}`);
+            return;
+        }
+        navigate(`/catalogo-de-casas/${slug}`);
+    };
+
     return (
         <>
 
@@ -186,7 +197,7 @@ const CardCatalogo = ({ titulo, area, largura, lote, imagem }) => {
                             <span>{lote}</span>
                         </CardInfo>
                     </CardInfos>
-                    <button>
+                    <button onClick={handleClick}>
                         Conhecer mais
                         <BsArrowRightShort />
                     </button>

@@ -86,7 +86,7 @@ const Dobra2 = ({ title1, area, descricao, imagens }) => {
                         <p>{descricao}</p>
                     </div>
                     <div>
-                        <h1>{area}</h1>
+                        <h1>{area}M²</h1>
                         <span>Área construida</span>
                     </div>
                 </Left>

@@ -155,7 +155,7 @@ const HeaderSelect = ({ colorIcon, colorText }) => {
   return (
     <DropdownContainer>
       <DropdownHeader onClick={() => setIsOpen(!isOpen)} colorText={colorText}>
-        Catálogo de Casas
+        Econtre sua casa
         <DropdownArrow isOpen={isOpen} colorIcon={colorIcon}>
           <IoIosArrowDown />
         </DropdownArrow>

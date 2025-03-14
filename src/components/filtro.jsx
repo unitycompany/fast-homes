@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BsChevronRight } from "react-icons/bs";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const FiltroContainer = styled.div`
     width: 100%;
@@ -124,21 +125,48 @@ const FiltroRight = styled.div`
     }
 `;
 
-const Filtro = () => {
+const options = {
+    "N° de pavimentos": ["1 pavimento", "2 pavimentos", "3 pavimentos", "4 pavimentos"],
+    "Área construída": ["0-50", "51-100", "101-200", "201-400"],
+    "N° de quartos": ["1", "2", "3", "4"],
+    "N° de banheiros": ["1", "2", "3", "4"]
+};
+
+
+const Filtro = ({ onSearch }) => {
     const [selectedOptions, setSelectedOptions] = useState({});
     const [openSelect, setOpenSelect] = useState(null);
-
-    const options = {
-        "N° de pavimentos": ["1 pavimento", "2 pavimentos", "3 pavimentos", "4 pavimentos"],
-        "Área construída": ["0 a 50m²", "50m² a 100m²", "100m² a 200m²", "200m² a 400m²"],
-        "N° de quartos": ["1 quarto", "2 quartos", "3 quartos", "4 quartos"],
-        "N° de banheiros": ["1 banheiro", "2 banheiros", "3 banheiros", "4 banheiros"]
-    };
+    const [hasSearched, setHasSearched] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSelect = (category, value) => {
         setSelectedOptions((prev) => ({ ...prev, [category]: value }));
         setOpenSelect(null);
     };
+
+    const handleSearch = () => {
+        if (!location.pathname.includes("/catalogo-de-casas")) {
+            navigate("/catalogo-de-casas", { state: { selectedOptions } });
+        } else {
+            onSearch(selectedOptions);
+            setHasSearched(true);
+        }
+    };
+  
+    const handleClear = () => {
+        setSelectedOptions({});
+        onSearch(null);
+        setHasSearched(false);
+    };
+  
+    useEffect(() => {
+        if (location.state?.selectedOptions) {
+            setSelectedOptions(location.state.selectedOptions);
+            onSearch(location.state.selectedOptions);
+            setHasSearched(true);
+        }
+    }, [location.state]);
 
     return (
         <FiltroContainer>
@@ -159,9 +187,12 @@ const Filtro = () => {
                     </FiltroSelect>
                 ))}
             </FiltroLeft>
-
             <FiltroRight>
-                <button>Buscar</button>
+                {!hasSearched ? (
+                    <button onClick={handleSearch}>Buscar</button>
+                ) : (
+                    <button onClick={handleClear}>Limpar</button>
+                )}
             </FiltroRight>
         </FiltroContainer>
     );

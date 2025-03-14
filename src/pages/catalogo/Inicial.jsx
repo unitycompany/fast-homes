@@ -35,16 +35,6 @@ const PaginaCatalogo = () => {
                         image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
                         itemDirection={true}
                     />
-
-                    <CardProjeto 
-                        title="Já tem o projeto da sua casa?"
-                        description="Aqui na Fast Homes, nós adaptamos seu projeto para Steel Frame, sem dor de cabeça, cuidamos de tudo, e você não terá gasto nenhum com isso."
-                        direction={false}
-                        position="right"
-                        text={false}
-                        image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
-                        itemDirection={false}
-                    />
                 </Projetos>
                     <HouseModel />
                             <Texts />

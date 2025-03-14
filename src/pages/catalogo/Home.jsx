@@ -4,6 +4,7 @@ import { db } from "./../../services/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import Filtro from "../../components/filtro";
 import CardCatalogo from "../../components/cards/CardCatalogo";
+import { useLocation } from "react-router-dom";
 
 const HomeContent = styled.div`
     height: auto;
@@ -94,40 +95,87 @@ const LoadMoreButton = styled.button`
     }
 `;
 
+const LoadingText = styled.div`
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+`;
+
 const Home = () => {
-    const [cards, setCards] = useState([]); // Armazena todos os cards do Firebase
-    const [visibleCount, setVisibleCount] = useState(6); // Controla quantos são visíveis
+    const [cards, setCards] = useState([]);
+    const [filteredCards, setFilteredCards] = useState([]);
+    const [visibleCount, setVisibleCount] = useState(6);
+    const [loading, setLoading] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const fetchCards = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, "catalogo")); 
-                const data = querySnapshot.docs.map(doc => {
-                    const casa = {
-                        id: doc.id,
-                        ...doc.data(),
-                    };
-                    console.log("🏠 Dados da casa:", casa); // LOG PARA DEPURAÇÃO
-                    return casa;
-                });
-                setCards(data);
-            } catch (error) {
-                console.error("❌ Erro ao buscar dados:", error);
-            }
+            const snapshot = await getDocs(collection(db, "catalogo"));
+            const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            setCards(data);
+            setFilteredCards(data);
         };
-    
         fetchCards();
     }, []);
-    
-    
 
+    const aplicarFiltro = (selectedOptions) => {
+        setLoading(true);
+
+        console.log("Filtro selecionado:", selectedOptions);
+        console.log("Dados das casas carregadas:", cards);
+
+            
+        setTimeout(() => {
+            if (!selectedOptions || Object.keys(selectedOptions).length === 0) {
+                setFilteredCards(cards);
+                setVisibleCount(6);
+                setLoading(false);
+                return;
+            }
+    
+            const filtered = cards.filter((casa) => {
+                let matches = [];
+    
+                if (selectedOptions["N° de pavimentos"]) {
+                    matches.push(casa.pavimentos === selectedOptions["N° de pavimentos"]);
+                }
+    
+                if (selectedOptions["N° de quartos"]) {
+                    matches.push(casa.quartos === parseInt(selectedOptions["N° de quartos"]));
+                }
+    
+                if (selectedOptions["N° de banheiros"]) {
+                    matches.push(casa.banheiros === parseInt(selectedOptions["N° de banheiros"]));
+                }
+    
+                if (selectedOptions["Área construída"]) {
+                    const [min, max] = selectedOptions["Área construída"].split("-").map(Number);
+                    matches.push(casa.area >= min && casa.area <= max);
+                }
+    
+                return matches.length > 0 && matches.some(Boolean);
+            });
+    
+            setFilteredCards(filtered);
+            setVisibleCount(6);
+            setLoading(false);
+        }, 800);
+    };
+    
+    useEffect(() => {
+        if (location.state?.selectedOptions) {
+            aplicarFiltro(location.state.selectedOptions);
+        }
+    }, [cards, location.state]);
+    
     return (
         <>
             <HomeContent>
                 <HomeTop>
                     <h1>Conheça nosso catálogo de casas</h1>
                     <p>Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos</p>
-                    <Filtro />
+                    <Filtro onSearch={aplicarFiltro}/>
                 </HomeTop>
                 <HomeCatalogo>
                     {cards.slice(0, visibleCount).map((card) => (

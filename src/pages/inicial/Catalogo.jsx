@@ -217,6 +217,7 @@ const Catalogo = () => {
                                 largura={casa.largura}
                                 lote={casa.lote}
                                 imagem={casa.imagem}
+                                slug={casa.slug}
                             />
                             ) : (
                             <CardCatalogo2
@@ -226,6 +227,7 @@ const Catalogo = () => {
                                 largura={casa.largura}
                                 lote={casa.lote}
                                 imagem={casa.imagem}
+                                slug={casa.slug}
                             />
                             )
                         )}
