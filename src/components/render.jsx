@@ -4,7 +4,6 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import styled from "styled-components";
 import { BsPlay } from "react-icons/bs";
 
-// 🎨 Estiliza o Container do Canvas
 const CanvasContainer = styled.div`
   width: 95%;
   max-width: 1280px;

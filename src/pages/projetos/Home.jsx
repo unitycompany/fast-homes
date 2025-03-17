@@ -52,6 +52,7 @@ const Left = styled.div`
     align-items: flex-start;
     justify-content: center;
     gap: 30px;
+    flex-direction: column;
 
     @media (max-width: 768px){
         width: 100%;

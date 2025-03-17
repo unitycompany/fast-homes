@@ -98,7 +98,7 @@ const Right = styled.div`
 
     & div {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         width: 100%;
 

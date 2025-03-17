@@ -27,7 +27,10 @@ const Top = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    flex-direction: column;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+    }
 
     & div {
         @media (max-width: 768px){
