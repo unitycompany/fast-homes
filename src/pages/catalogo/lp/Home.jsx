@@ -269,25 +269,14 @@ const CardDado = styled.div`
 
 const pacotes = [
     {
-        titulo: "Pacote completo",
-        conteudo: [
-            "Pacote de projetos",
-            "Estrutura de Light Steel Frame",
-            "Sistemas de vedação",
-            "Forro de cobertura",
-            "Acabamentos internos e externos",
-            "Mão de obra especializada"
-        ]
-    },
-    {
         titulo: "Pacote básico",
         conteudo: [
-            "Pacote de projetos",
-            "Estrutura de Light Steel Frame",
-            "Sistemas de vedação",
-            "Forro de cobertura",
-            "Sem acabamentos internos",
-            "Entrega da estrutura montada"
+            "Cálculo e Projeto Estrutural LSF",
+            "Fundação tipo Radier",
+            "Fechamentos Externos",
+            "Acabamento Externo em Textura",
+            "Telhados e Telhas",
+            "Fechamentos Internos, Forros e Isolamentos Térmicos"
         ]
     }
 ];
@@ -346,8 +335,6 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
                         ))}
                     </RightPacotes>
 
-                    {/* Modais individuais */}
-                    <PacoteCompleto visivel={mostrarPacoteCompleto} fechar={() => setMostrarPacoteCompleto(false)} />
                     <PacoteBasico visivel={mostrarPacoteBasico} fechar={() => setMostrarPacoteBasico(false)} />
 
                     <RightDados>

@@ -2,8 +2,6 @@ import React from "react";
 import { BsCheckLg, BsX } from "react-icons/bs";
 import styled, {keyframes} from "styled-components";
 
-
-
 const Background = styled.div`
     width: 100%;
     height: 100vh;
