@@ -170,7 +170,7 @@ const Filtro = ({ onSearch }) => {
 
     return (
         <FiltroContainer>
-            <FiltroLeft>
+            <FiltroLeft data-aos="zoom-in" data-aos-delay="100">
                 {Object.keys(options).map((category) => (
                     <FiltroSelect key={category}>
                         <span onClick={() => setOpenSelect(openSelect === category ? null : category)}>
@@ -187,7 +187,7 @@ const Filtro = ({ onSearch }) => {
                     </FiltroSelect>
                 ))}
             </FiltroLeft>
-            <FiltroRight>
+            <FiltroRight data-aos="zoom-in" data-aos-delay="300">
                 {!hasSearched ? (
                     <button onClick={handleSearch}>Buscar</button>
                 ) : (

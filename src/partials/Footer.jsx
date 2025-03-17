@@ -388,7 +388,7 @@ const Footer = () => {
         <>
             <FooterContainer>
                 <FooterTop>
-                    <FooterCard>
+                    <FooterCard data-aos="fade-up" data-aos-delay="100">
                         <img 
                             src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8997c35e-ec2d-4f63-c868-82af3c925c00/public" 
                             alt="logo-fast-homes" 
@@ -404,7 +404,7 @@ const Footer = () => {
                         </a>
                     </FooterCard>
 
-                    <FooterCard>
+                    <FooterCard data-aos="fade-up" data-aos-delay="200">
                         <h1>
                             Mapa do site
                         </h1>
@@ -425,7 +425,7 @@ const Footer = () => {
                         </a>
                     </FooterCard>
 
-                    <FooterCard>
+                    <FooterCard data-aos="fade-up" data-aos-delay="300">
                         <h1>
                             Parcerias
                         </h1>
@@ -443,7 +443,7 @@ const Footer = () => {
                         </a>
                     </FooterCard>
 
-                    <FooterCard>
+                    <FooterCard data-aos="fade-up" data-aos-delay="400">
                         <h1>
                             Contato
                         </h1>
@@ -461,16 +461,17 @@ const Footer = () => {
 
                 <FooterCenter>
                     <FooterTitle>
-                        <h1>
+                        <h1 data-aos="fade-up" data-aos-delay="100">
                             Ficou com alguma dúvida?
                         </h1>
-                        <p>
+                        <p data-aos="fade-up" data-aos-delay="400"> 
                             Preencha o formulário ao lado para que possamos entrar em contato para tirar todas as suas dúvidas
                         </p>
                     </FooterTitle>
 
                     <FooterForm>
                         <input 
+                            data-aos="fade-up" data-aos-delay="100"
                             type="text" 
                             id="name" 
                             placeholder="Diga seu nome"
@@ -478,13 +479,15 @@ const Footer = () => {
                         />
 
                         <input 
+                            data-aos="fade-up" data-aos-delay="200"
                             type="tel" 
                             id="tel" 
                             placeholder="(24) 98131-1321" 
                             required 
                         />
 
-                        <input 
+                        <input
+                            data-aos="fade-up" data-aos-delay="300" 
                             type="email" 
                             id="email" 
                             placeholder="Seu e-mail" 
@@ -492,14 +495,15 @@ const Footer = () => {
                         />
 
                         <textarea 
+                            data-aos="fade-up" data-aos-delay="400"
                             type="text" 
                             id="textarea" 
                             placeholder="Qual a sua dúvida"
                         />
-                        <button type="submit">
+                        <button type="submit" data-aos="fade-up" data-aos-delay="600">
                             Fale conosco
                         </button>
-                        <p>
+                        <p data-aos="zoom-in" data-aos-delay="1000">
                             *Todas as informações serão usadas apenas para fins de contato, pode consultar nossa <a href="/politica-de-privacidade">politica de privacidade</a> e <a href="/termos-e-condicoes">termos e condições</a>.
                         </p>
                     </FooterForm>

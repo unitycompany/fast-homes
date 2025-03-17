@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import "./styles/global.css";
 import "./styles/reset.css";
@@ -30,6 +32,16 @@ const AppContent = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Faz a página começar sempre do topo
   }, [location.pathname]);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // Duração padrão das animações
+      offset: 150,
+      easing: "ease-in-out", // Tipo de animação
+      once: true, // Executa a animação apenas uma vez
+      mirror: true, // Não anima ao rolar para cima
+    });
+  }, []);
 
   const isLandingPage = location.pathname.startsWith("/catalogo-de-casas/");
 

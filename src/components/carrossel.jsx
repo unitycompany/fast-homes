@@ -118,7 +118,7 @@ const Carrossel = ({ category }) => {
   }, [category]);
 
   return (
-    <Container data-aos="fade-in">
+    <Container data-aos="zoom-in" data-aos-delay="100">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
         loop={true}

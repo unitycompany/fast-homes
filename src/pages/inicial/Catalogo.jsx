@@ -207,7 +207,7 @@ const Catalogo = () => {
                         ))}
                         </StyledSwiper>
                     ) : (
-                        <CatalogoCards>
+                        <CatalogoCards data-aos="fade-up" data-aos-delay="100">
                         {casas.map((casa, index) =>
                             index < 2 ? (
                             <CardCatalogo
@@ -235,7 +235,7 @@ const Catalogo = () => {
                     )}
 
                     <CatalogoTop>
-                        <h1>
+                        <h1 data-aos="fade-up-right" data-aos-delay="200">
                             Nosso  
                             <a href="/catalogo-de-casas">
                                 Catálogo de casas

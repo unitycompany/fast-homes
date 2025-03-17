@@ -308,10 +308,10 @@ const Form = () => {
         <>
             <FormContainer id="form">
                 <FormText>
-                    <h1>
+                    <h1 data-aos="fade-up" data-aos-delay="100">
                         Fale com um consultor
                     </h1>
-                    <p>
+                    <p data-aos="fade-up" data-aos-delay="400">
                     Todas as informações serão usadas apenas para fins de contato, pode consultar nossa <a href="/politica">politica de privacidade</a> e <a href="/termos">termos de condições.</a>
                     </p>
                     <GlobalButton3
@@ -327,29 +327,29 @@ const Form = () => {
                 </FormText>
 
                 <Formulario id="contactForm">
-                    <label>
+                    <label data-aos="fade-up" data-aos-delay="100">
                         <span>Nome</span>
                         <input type="text" id="name" placeholder="Digite seu nome aqui" required />
                     </label>
-                    <label>
+                    <label data-aos="fade-up" data-aos-delay="200">
                         <span>WhatsApp</span>
                         <input type="tel" id="tel" placeholder="+55 (24) 98141-1940" required />
                     </label>
-                    <label>
+                    <label data-aos="fade-up" data-aos-delay="300">
                         <span>E-mail</span>
                         <input type="email" id="email" placeholder="contato@fasthomes.com.br" required />
                     </label>
                     <FormInputs>
-                        <label>
+                        <label data-aos="fade-up" data-aos-delay="400">
                             <span>Cidade</span>
                             <input type="text" id="cidade" placeholder="Miguel Pereira" required />
                         </label>
-                        <label>
+                        <label data-aos="fade-up" data-aos-delay="500">
                             <span>Estado</span>
                             <input type="text" id="estado" placeholder="Rio de Janeiro" required />
                         </label>
                     </FormInputs>
-                    <FormSelect>
+                    <FormSelect data-aos="fade-up" data-aos-delay="600">
                         <FormPlaceholder itemSelecionado={!!selectedOption} onClick={toggleSelect}>
                             <span>Que tipo de cliente você é</span>
                             <p>{selectedOption || "Selecione uma opção"}</p>
@@ -367,7 +367,7 @@ const Form = () => {
                             </div>
                         </FormOptions>
                     </FormSelect>
-                    <button type="submit">
+                    <button type="submit" data-aos="fade-up" data-aos-delay="800">
                     Agende uma reunião com nosso consultor
                     </button>
                 </Formulario>

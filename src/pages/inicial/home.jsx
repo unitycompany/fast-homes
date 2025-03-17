@@ -229,10 +229,10 @@ const Home = () => {
             <HomeCenter>
                 <HomeTexts>
                     <div>
-                        <h2>O novo conceito de lar é</h2>
-                        <h1>Fast Homes</h1>
+                        <h2 data-aos="fade-up" data-aos-delay="100">O novo conceito de lar é</h2>
+                        <h1 data-aos="fade-up" data-aos-delay="400">Fast Homes</h1>
                     </div>
-                    <p>
+                    <p data-aos="fade-up-right" data-aos-delay="600">
                         Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos<br /> <br />
 
                         Colocar uma descrição curta e objetiva falando sobre a fast homes.

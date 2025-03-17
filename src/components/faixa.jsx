@@ -65,7 +65,7 @@ const Faixa = ({ categoria }) => {
 
   return (
     <>
-        <Container data-aos="fade-in">
+        <Container data-aos="fade-in" data-aos-delay="100">
         <Swiper
             modules={[Autoplay, FreeMode, Pagination]} 
             loop={true}

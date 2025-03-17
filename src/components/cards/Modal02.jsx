@@ -19,7 +19,7 @@ const Content = styled.div`
     transform: translateX(-50%) translateY(-50%);
     z-index: 99999;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     padding: 20px 30px;
     gap: 30px;
@@ -95,6 +95,7 @@ const Option = styled.div`
         width: 150px;
         transition: all .2s ease-in-out;
         border: 1px solid #00000040;
+        border-radius: 10px;
 
         &:hover {
             filter: contrast(110%) brightness(110%);
