@@ -54,7 +54,7 @@ const NavButton = styled.div`
 
 const CarrosselLP = ({ images, width, height }) => {
   return (
-    <CarouselContainer width={width} height={height}>
+    <CarouselContainer width={width} height={height} data-aos="fade-up" data-aos-delay="100">
       <Swiper
         modules={[Navigation, Autoplay]}
         spaceBetween={10}

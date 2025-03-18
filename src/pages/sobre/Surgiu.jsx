@@ -138,19 +138,19 @@ const Surgiu = () => {
     return (
         <>
             <Content>
-                <Left>
+                <Left data-aos="zoom-in" data-aos-delay="100">
                     <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5493a461-fb61-43ac-8edb-b734ca35fc00/public" loading="lazy" />
                 </Left>
                 <Right>
-                    <h2>Como a Fast Homes surgiu?</h2>
-                    <p>
+                    <h2 data-aos="fade-up" data-aos-delay="100">Como a Fast Homes surgiu?</h2>
+                    <p data-aos="fade-up" data-aos-delay="300">
                         Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
 
                         <br /><br />
 
                         Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos, colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
                     </p>
-                    <div>
+                    <div data-aos="fade-up" data-aos-delay="400">
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5493a461-fb61-43ac-8edb-b734ca35fc00/public" loading="lazy" />
 
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5493a461-fb61-43ac-8edb-b734ca35fc00/public" loading="lazy" />
@@ -158,7 +158,7 @@ const Surgiu = () => {
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5493a461-fb61-43ac-8edb-b734ca35fc00/public" loading="lazy" />
                     </div>
 
-                    <article>
+                    <article data-aos="zoom-in" data-aos-delay="300">
                         <GlobalButton2
                             text="Solicitar meu orçamento"
                             background1="var(--color--brown--medium)"

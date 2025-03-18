@@ -23,7 +23,7 @@ const Dobra4 = ({ imagem }) => {
     return (
         <>
             <Content>
-                <img src={imagem} alt="" />
+                <img data-aos="fade-up" data-aos-delay="100" src={imagem} alt="" />
             </Content>
         </>
     )

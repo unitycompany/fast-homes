@@ -115,7 +115,7 @@ const Name = ({ nomeDaCasa, descricaoDaCasa }) => {
 
     return (
         <Header isHidden={isHidden}>
-            <HeaderBtns>
+            <HeaderBtns data-aos="fade-up" data-aos-delay="100"> 
                 <GlobalButton2
                     text="Solicitar meu orçamento"
                     background1="#000"
@@ -138,8 +138,8 @@ const Name = ({ nomeDaCasa, descricaoDaCasa }) => {
             </HeaderBtns>
             
             <HeaderTexts>
-                <h1>{nomeDaCasa}</h1>
-                <p>{descricaoDaCasa}</p>
+                <h1 data-aos="zoom-in" data-aos-delay="100">{nomeDaCasa}</h1>
+                <p data-aos="fade-up" data-aos-delay="300">{descricaoDaCasa}</p>
             </HeaderTexts>
         </Header>
     );

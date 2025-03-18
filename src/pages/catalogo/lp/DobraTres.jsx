@@ -77,7 +77,7 @@ const Dobra3 = ({ descricao, title, carrosselDireita, carrosselEsquerda }) => {
     return (
         <>
             <Content>
-                <Top>
+                <Top data-aos="zoom-in" data-aos-delay="100">
                     <CarrosselLP
                         images={carrosselEsquerda}
                         width="50%"
@@ -90,10 +90,10 @@ const Dobra3 = ({ descricao, title, carrosselDireita, carrosselEsquerda }) => {
                     />
                 </Top>
                 <Bottom>
-                    <h1>
+                    <h1 data-aos="fade-up" data-aos-delay="100">
                         {title}
                     </h1>
-                    <p>
+                    <p data-aos="fade-up" data-aos-delay="300">
                         {descricao}
                     </p>
                 </Bottom>

@@ -173,11 +173,11 @@ const Home = () => {
         <>
             <HomeContent>
                 <HomeTop>
-                    <h1>Conheça nosso catálogo de casas</h1>
-                    <p>Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos</p>
+                    <h1 data-aos="fade-up" data-aos-delay="100">Conheça nosso catálogo de casas</h1>
+                    <p data-aos="fade-up" data-aos-delay="300">Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos</p>
                     <Filtro onSearch={aplicarFiltro}/>
                 </HomeTop>
-                <HomeCatalogo>
+                <HomeCatalogo data-aos="fade-up" data-aos-delay="100">
                     {cards.slice(0, visibleCount).map((card) => (
                         <CardCatalogo 
                             slug={card.slug} 

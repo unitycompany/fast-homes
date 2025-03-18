@@ -118,14 +118,13 @@ const Right = styled.div`
 
 `
 
-
 const Porque = () => {
     return (
         <>
             <Content>
                 <Left>
-                    <h2>Por que escolher a Fast Homes?</h2>
-                    <p>
+                    <h2 data-aos="fade-up" data-aos-delay="100">Por que escolher a Fast Homes?</h2>
+                    <p data-aos="fade-up" data-aos-delay="300">
                         Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
 
                         <br /> <br />
@@ -133,7 +132,7 @@ const Porque = () => {
                         Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos, colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
                     </p>
 
-                    <div>
+                    <div data-aos="fade-up" data-aos-delay="400">
                         <div>
                             <span>100%</span>
                             <p>Satisfação</p>    
@@ -165,7 +164,7 @@ const Porque = () => {
                     />
                 </Left>
 
-                <Right>
+                <Right data-aos="fade-up" data-aos-delay="200">
                     <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c835ab0f-4548-4a35-f25d-0fc75ccb0000/public" alt="" />
                 </Right>
             </Content>

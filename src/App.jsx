@@ -30,16 +30,16 @@ const AppContent = () => {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Faz a página começar sempre do topo
+    window.scrollTo(0, 0); 
   }, [location.pathname]);
 
   useEffect(() => {
     AOS.init({
-      duration: 800, // Duração padrão das animações
-      offset: 150,
-      easing: "ease-in-out", // Tipo de animação
-      once: true, // Executa a animação apenas uma vez
-      mirror: true, // Não anima ao rolar para cima
+      duration: 1200, 
+      offset: 50,
+      easing: "ease-in-out", 
+      once: true, 
+      mirror: true,
     });
   }, []);
 

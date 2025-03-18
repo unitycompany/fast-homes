@@ -99,15 +99,15 @@ const Dobra2 = ({ title1, area, descricao, imagens }) => {
             <Content>
                 <Left>
                     <div>
-                        <h1>{title1}</h1>
-                        <p>{descricao}</p>
+                        <h1 data-aos="fade-up" data-aos-delay="100">{title1}</h1>
+                        <p data-aos="fade-up" data-aos-delay="300">{descricao}</p>
                     </div>
                     <div>
-                        <h1>{area}M²</h1>
-                        <span>Área construida</span>
+                        <h1 data-aos="zoom-in" data-aos-delay="100">{area}M²</h1>
+                        <span data-aos="fade-up" data-aos-delay="500">Área construida</span>
                     </div>
                 </Left>
-                <Right>
+                <Right data-aos="fade-up-left" data-aos-delay="100">
                     <CarrosselLP
                         images={imagens}
                         width="100%"

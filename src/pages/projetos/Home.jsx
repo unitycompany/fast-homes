@@ -16,7 +16,7 @@ const Option = styled.div`
     position: relative;
     left: 50%;
     top: 0;
-    transform: translateX(-50%);
+    transform: translateX(-50%)!important;
 
     @media (max-width: 768px){
         &:nth-child(1){
@@ -113,7 +113,7 @@ const Right = styled.div`
 const Home = () => {
     return (
         <>
-            <Option>
+            <Option data-aos="fade-up" data-aos-delay="100">
                 <CardProjeto 
                     title="Já tem o projeto da sua casa?"
                     description="Aqui na Fast Homes, nós adaptamos seu projeto para Steel Frame, sem dor de cabeça, cuidamos de tudo, e você não terá gasto nenhum com isso."
@@ -172,7 +172,7 @@ const Home = () => {
                 </article>
             </Option>
             
-            <Option>
+            <Option data-aos="zoom-in" data-aos-delay="100">
                 <CardProjeto 
                     title="Já tem o projeto da sua casa?"
                     description="Aqui na Fast Homes, nós adaptamos seu projeto para Steel Frame, sem dor de cabeça, cuidamos de tudo, e você não terá gasto nenhum com isso."

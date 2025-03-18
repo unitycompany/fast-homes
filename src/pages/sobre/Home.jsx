@@ -134,11 +134,11 @@ const Home = () => {
             <Content>
                 <Left>
                     <div>
-                        <p>Saiba quem é a</p>
-                        <h1>FAST HOMES</h1>
+                        <p data-aos="fade-up" data-aos-delay="100">Saiba quem é a</p>
+                        <h1 data-aos="fade-up" data-aos-delay="400">FAST HOMES</h1>
                     </div>
 
-                    <p>
+                    <p data-aos="fade-up" data-aos-delay="400">
                         Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
 
                         <br /> <br />
@@ -146,7 +146,7 @@ const Home = () => {
                         Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
                     </p>
 
-                    <article>
+                    <article data-aos="fade-up" data-aos-delay="500">
                         <GlobalButton2
                             text="Solicitar meu orçamento"
                             background1="var(--color--brown--medium)"
@@ -168,7 +168,7 @@ const Home = () => {
                     </article>
                 </Left>
 
-                <Right>
+                <Right data-aos="fade-up-left" data-aos-delay="200">
                     <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5493a461-fb61-43ac-8edb-b734ca35fc00/public" loading="lazy" />
                 </Right>
             </Content>

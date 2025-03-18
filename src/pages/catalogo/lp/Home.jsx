@@ -294,7 +294,7 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
     return (
         <>
             <Content>
-                <Left>
+                <Left data-aos="fade-up" data-aos-delay="100">
                     <CarrosselLP
                         images={imagens}
                         width="100%"
@@ -303,11 +303,11 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
                 </Left>
                 <Right>
                     <RightTop>
-                        <span>{area}m²</span>
-                        <h4>Área construida</h4>
+                        <span data-aos="fade-up" data-aos-delay="100">{area}m²</span>
+                        <h4 data-aos="fade-up" data-aos-delay="100">Área construida</h4>
                     </RightTop>
 
-                    <RightPacotes>
+                    <RightPacotes data-aos="fade-up" data-aos-delay="300">
                         {pacotes.map((pacote, index) => (
                             <Pacote key={index} ativo={ativo === index}>
                                 <article onClick={() => togglePacote(index)}>
@@ -337,7 +337,7 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
 
                     <PacoteBasico visivel={mostrarPacoteBasico} fechar={() => setMostrarPacoteBasico(false)} />
 
-                    <RightDados>
+                    <RightDados data-aos="fade-up" data-aos-delay="300">
                         <DadosArea>
                             <h4>Área da casa e do lote</h4>
 
