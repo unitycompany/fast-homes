@@ -20,6 +20,12 @@ import Privacidade from "./pages/politicas/Privacidade";
 import Termos from "./pages/politicas/Termos";
 import Cookie from "./pages/politicas/Cookie";
 
+// Importe aqui sua nova página administrativa
+import AdicionarCasa from "./pages/Admin/AdicionarCasa";
+import LoginPage from "./pages/Admin/Login";
+import Options from "./pages/Admin/Options";
+import CasasCadastradas from "./pages/Admin/CasasCadastradas";
+
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.4 } },
@@ -43,11 +49,12 @@ const AppContent = () => {
     });
   }, []);
 
-  const isLandingPage = location.pathname.startsWith("/catalogo-de-casas/");
+  const hideLayout = location.pathname.startsWith("/catalogo-de-casas/") || location.pathname.startsWith("/admin");
+
 
   return (
     <>
-      {!isLandingPage && <Header />}
+      {!hideLayout && <Header />}
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}
@@ -64,10 +71,16 @@ const AppContent = () => {
             <Route path="/catalogo-de-casas/:slug" element={<LandingPage />} />
             <Route path="/termos-e-condicoes" element={<Termos />} />
             <Route path="/politica-de-privacidade" element={<Privacidade />} />
+
+            {/* Nova rota administrativa */}
+            <Route path="/admin" element={<LoginPage />} />
+            <Route path="/admin/options" element={<Options />} />
+            <Route path="/admin/options/adicionar-casa" element={<AdicionarCasa />} />
+            <Route path="/admin/options/casas-cadastradas" element={<CasasCadastradas />} />
           </Routes>
         </motion.div>
       </AnimatePresence>
-      <Footer />
+      {!hideLayout && <Footer />}
     </>
   );
 };

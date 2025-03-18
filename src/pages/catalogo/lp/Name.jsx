@@ -94,7 +94,7 @@ const HeaderTexts = styled.div`
     }
 `;
 
-const Name = ({ nomeDaCasa, descricaoDaCasa }) => {
+const Name = ({ nome, descricao }) => {
     const [isHidden, setIsHidden] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
@@ -179,8 +179,8 @@ const Name = ({ nomeDaCasa, descricaoDaCasa }) => {
             </HeaderBtns>
             
             <HeaderTexts>
-                <h1 data-aos="zoom-in" data-aos-delay="100">{nomeDaCasa}</h1>
-                <p data-aos="fade-up" data-aos-delay="300">{descricaoDaCasa}</p>
+                <h1 data-aos="zoom-in" data-aos-delay="100">{nome}</h1>
+                <p data-aos="fade-up" data-aos-delay="300">{descricao}</p>
             </HeaderTexts>
         </Header>
     );
