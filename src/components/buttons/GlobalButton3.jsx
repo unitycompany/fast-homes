@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
 import { BsArrowUpRight } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Button = styled.button`
     display: flex;
@@ -34,7 +33,7 @@ const Button = styled.button`
         padding: 10px 30px;
         border-radius: 100px;
         background-color: ${({ background1 }) => background1 || '#ffffff' };
-        color: ${({ colorText }) => colorText || '#0000000' };
+        color: ${({ colorText }) => colorText || '#000000' };
         border: 1px solid ${({ border2 }) => border2 || '#ffffff' };
         display: flex;
         align-items: center;
@@ -71,13 +70,30 @@ const Button = styled.button`
             fill: ${({ colorIcon }) => colorIcon || '#000000' };
         }
     }
-`
+`;
 
 const GlobalButton3 = ({ text, background1, background2, colorIcon, colorText, border1, border2, to }) => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleClick = () => {
-        if (to) {
+        if (!to) return;
+
+        // Se houver uma âncora no link (exemplo: "/sobre-nos#form")
+        if (to.includes("#")) {
+            const [path, hash] = to.split("#");
+
+            if (location.pathname === path) {
+                // Se já estiver na página correta, rola diretamente para o elemento
+                const element = document.getElementById(hash);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }
+            } else {
+                // Se não estiver na página correta, navega até lá e rola ao carregar
+                navigate(path, { state: { scrollTo: hash } });
+            }
+        } else {
             navigate(to);
         }
     };

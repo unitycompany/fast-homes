@@ -22,56 +22,32 @@ const HomeContent = styled.div`
     top: 0;
     transform: translateX(-50%);
 
+    & h1 {
+        font-size: 32px;
+        font-family: var(--font--aboreto);
+    }
+
+    & p {
+        margin-top: -30px;
+        width: 60%;
+        text-align: center;
+    }
+
     @media (max-width: 768px){
         padding: 25% 0 5% 0;
     }
 `;
 
-const HomeTop = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-
-    @media (max-width: 768px){
-        padding: 0 5%;
-    }
-
-    & h1 {
-        font-family: var(--font--aboreto);
-        font-size: 30px;
-        text-align: center;
-
-        @media (max-width: 768px){
-            font-size: 24px;
-            line-height: 100%;
-        }
-    }
-
-    & p {
-        width: 40%;
-        font-size: 14px;
-        text-align: center;
-        line-height: 120%;
-        margin-top: -20px;
-
-        @media (max-width: 768px){
-            width: 100%;
-        }
-    }
-`;
-
 const HomeCatalogo = styled.div`
     width: 100%;
-    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 0 2.5%;
     gap: 20px;
+    opacity: ${({ isLoading }) => (isLoading ? 0 : 1)};
+    transition: opacity 0.5s ease-in-out;
 
     @media (max-width: 768px){
         flex-direction: column;
@@ -95,11 +71,40 @@ const LoadMoreButton = styled.button`
     }
 `;
 
-const LoadingText = styled.div`
+const LoadingSpinner = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+
+    &::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        border: 5px solid #ccc;
+        border-top-color: #000;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+`;
+
+const NotFoundContainer = styled.div`
     text-align: center;
     padding: 20px;
     font-size: 16px;
     font-weight: bold;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
 `;
 
 const Home = () => {
@@ -107,99 +112,122 @@ const Home = () => {
     const [filteredCards, setFilteredCards] = useState([]);
     const [visibleCount, setVisibleCount] = useState(6);
     const [loading, setLoading] = useState(false);
+    const [hasSearched, setHasSearched] = useState(false);
+    const [countdown, setCountdown] = useState(null);
     const location = useLocation();
 
     useEffect(() => {
         const fetchCards = async () => {
+            setLoading(true);
             const snapshot = await getDocs(collection(db, "catalogo"));
             const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             setCards(data);
             setFilteredCards(data);
+            setLoading(false);
+            console.log("📌 Dados carregados do Firebase:", data);
         };
         fetchCards();
     }, []);
 
     const aplicarFiltro = (selectedOptions) => {
         setLoading(true);
+        console.log("🔍 Aplicando filtro:", selectedOptions);
 
-        console.log("Filtro selecionado:", selectedOptions);
-        console.log("Dados das casas carregadas:", cards);
-
-            
         setTimeout(() => {
             if (!selectedOptions || Object.keys(selectedOptions).length === 0) {
                 setFilteredCards(cards);
-                setVisibleCount(6);
+                setHasSearched(false);
                 setLoading(false);
                 return;
             }
-    
+
             const filtered = cards.filter((casa) => {
-                let matches = [];
-    
+                let matches = true;
+
                 if (selectedOptions["N° de pavimentos"]) {
-                    matches.push(casa.pavimentos === selectedOptions["N° de pavimentos"]);
+                    matches = matches && casa.pavimentos === selectedOptions["N° de pavimentos"];
                 }
-    
+
                 if (selectedOptions["N° de quartos"]) {
-                    matches.push(casa.quartos === parseInt(selectedOptions["N° de quartos"]));
+                    matches = matches && casa.quartos === parseInt(selectedOptions["N° de quartos"]);
                 }
-    
+
                 if (selectedOptions["N° de banheiros"]) {
-                    matches.push(casa.banheiros === parseInt(selectedOptions["N° de banheiros"]));
+                    matches = matches && casa.banheiros === parseInt(selectedOptions["N° de banheiros"]);
                 }
-    
+
                 if (selectedOptions["Área construída"]) {
                     const [min, max] = selectedOptions["Área construída"].split("-").map(Number);
-                    matches.push(casa.area >= min && casa.area <= max);
+                    matches = matches && casa.area >= min && casa.area <= max;
                 }
-    
-                return matches.length > 0 && matches.some(Boolean);
+
+                return matches;
             });
-    
+
+            console.log("✅ Casas filtradas:", filtered);
             setFilteredCards(filtered);
-            setVisibleCount(6);
+            setHasSearched(true);
             setLoading(false);
+
+            if (filtered.length === 0) {
+                iniciarContagemRegressiva();
+            }
         }, 800);
     };
-    
-    useEffect(() => {
-        if (location.state?.selectedOptions) {
-            aplicarFiltro(location.state.selectedOptions);
-        }
-    }, [cards, location.state]);
-    
+
+    const iniciarContagemRegressiva = () => {
+        let tempo = 5;
+        setCountdown(tempo);
+
+        const interval = setInterval(() => {
+            tempo -= 1;
+            setCountdown(tempo);
+
+            if (tempo === 0) {
+                clearInterval(interval);
+                limparFiltro();
+            }
+        }, 1000);
+    };
+
+    const limparFiltro = () => {
+        console.log("🗑️ Limpando filtros automaticamente.");
+        setFilteredCards(cards);
+        setHasSearched(false);
+        setCountdown(null);
+    };
+
     return (
-        <>
-            <HomeContent>
-                <HomeTop>
-                    <h1 data-aos="fade-up" data-aos-delay="100">Conheça nosso catálogo de casas</h1>
-                    <p data-aos="fade-up" data-aos-delay="300">Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos</p>
-                    <Filtro onSearch={aplicarFiltro}/>
-                </HomeTop>
-                <HomeCatalogo data-aos="fade-up" data-aos-delay="100">
-                    {cards.slice(0, visibleCount).map((card) => (
-                        <CardCatalogo 
-                            slug={card.slug} 
-                            imagem={card.imagem}
-                              id={card.id}  
-                            imagemDois={card.imagemDois} 
-                            key={card.id} 
-                            nome={card.nome} 
-                            pavimentos={card.pavimentos} 
-                            area={card.area} 
-                            largura={card.largura} 
-                            lote={card.lote} 
-                        />
-                    ))}
-                </HomeCatalogo>
-                {visibleCount < cards.length && (
-                    <LoadMoreButton onClick={() => setVisibleCount(prev => prev + 6)}>
-                        Ver mais
-                    </LoadMoreButton>
-                )}
-            </HomeContent>
-        </>
+        <HomeContent>
+            <h1 data-aos="fade-up" data-aos-delay="100">Conheça nosso catálogo de casas</h1>
+            <p data-aos="fade-up" data-aos-delay="300">Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos</p>
+
+            <Filtro onSearch={aplicarFiltro} hasSearched={hasSearched} />
+
+            {loading ? (
+                <LoadingSpinner />
+            ) : (
+                <>
+                    {filteredCards.length === 0 ? (
+                        <NotFoundContainer>
+                            Nenhuma casa encontrada com os filtros selecionados.<br />
+                        </NotFoundContainer>
+                    ) : (
+                        <HomeCatalogo isLoading={loading}>
+                            {filteredCards.slice(0, visibleCount).map((card) => (
+                                <CardCatalogo key={card.id} {...card} />
+                            ))}
+                        </HomeCatalogo>
+                    )}
+                </>
+            )}
+
+            {visibleCount < filteredCards.length && (
+                <LoadMoreButton onClick={() => setVisibleCount(prev => prev + 6)}>
+                    Ver mais
+                </LoadMoreButton>
+            )}
+        </HomeContent>
     );
 };
 

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { BsArrowRightShort, BsChevronRight } from "react-icons/bs";
+import { BsArrowRightShort, BsCCircleFill, BsChevronRight } from "react-icons/bs";
 import CarrosselLP from "../../../components/carrossel-lp";
 import PacoteCompleto from "../../../components/cards/Modal01";
 import PacoteBasico from "../../../components/cards/Modal02";
+
+import { IoCheckmarkDoneCircleOutline, IoCheckmarkDoneCircle } from "react-icons/io5";
 
 const Content = styled.div`
     display: flex;
@@ -109,10 +111,6 @@ const Pacote = styled.div`
         transition: all 0.2s ease-in-out;
         ${({ ativo }) => ativo && "border-bottom: none;"}
 
-        &:hover svg {
-            transform: rotate(90deg);
-        }
-
         & span {
             font-weight: 500;
             font-size: 18px;
@@ -124,7 +122,6 @@ const Pacote = styled.div`
             fill: ${({ ativo }) => (ativo ? "var(--color--green--very--low)" : "#000")};
             font-size: 25px;
             transition: all .4s ease-in-out;
-            transform: ${({ ativo }) => (ativo ? "rotate(90deg)" : "rotate(0)")}; /* Ícone gira no ativo */
         }
     }
 
@@ -312,8 +309,9 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
                             <Pacote key={index} ativo={ativo === index}>
                                 <article onClick={() => togglePacote(index)}>
                                     <span>{pacote.titulo}</span>
-                                    <BsArrowRightShort />
+                                    {ativo === index ? <IoCheckmarkDoneCircle /> : <IoCheckmarkDoneCircleOutline />}
                                 </article>
+
 
                                 <div>
                                     <ul>

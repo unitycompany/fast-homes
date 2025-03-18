@@ -100,7 +100,7 @@ const CardProjeto = ({ title, description, direction, position, text, image, ite
                         colorText="#fff"
                         border1="#fff"
                         border2="#fff"
-                        to="/catalogo-de-casas"
+                        to="/projetos-personalizados#form"
                     />
                 </Texts>
             </Content>

@@ -105,26 +105,29 @@ const HeaderSelect = ({ colorIcon, colorText }) => {
   const navigate = useNavigate();
 
   const options = [
-    { label: "Pavimentos", submenu: [
-        { label: "1 pavimento", path: "/sub1" },
-        { label: "2 pavimentos", path: "/sub2" },
-        { label: "3 pavimentos", path: "/sub3" },
+    { label: "N° de pavimentos", field: "N° de pavimentos", submenu: [
+        { label: "1 pavimento", value: "1 pavimento" },
+        { label: "2 pavimentos", value: "2 pavimentos" },
+        { label: "3 pavimentos", value: "3 pavimentos" },
+        { label: "4 pavimentos", value: "4 pavimentos" },
       ] },
-    { label: "Quartos", submenu: [
-        { label: "1 quarto", path: "/sub4" },
-        { label: "2 quartos", path: "/sub5" },
-        { label: "3 quartos", path: "/sub6" },
+    { label: "N° de quartos", field: "N° de quartos", submenu: [
+        { label: "1 quarto", value: "1" },
+        { label: "2 quartos", value: "2" },
+        { label: "3 quartos", value: "3" },
+        { label: "4 quartos", value: "4" },
       ] },
-    { label: "Área Construída", submenu: [
-        { label: "100m² até 200m²", path: "/sub7" },
-        { label: "200m² até 300m²", path: "/sub8" },
-        { label: "300m² até 400m²", path: "/sub9" },
+    { label: "Área construída", field: "Área construída", submenu: [
+        { label: "0m² até 50m²", value: "0-50" },
+        { label: "51m² até 100m²", value: "51-100" },
+        { label: "101m² até 200m²", value: "101-200" },
+        { label: "201m² até 400m²", value: "201-400" },
       ] },
-    { label: "Banheiros", submenu: [
-        { label: "1 banheiro", path: "/sub7" },
-        { label: "2 banheiros", path: "/sub8" },
-        { label: "3 banheiros", path: "/sub9" },
-        { label: "4 banheiros", path: "/sub9" },
+    { label: "N° de banheiros", field: "N° de banheiros", submenu: [
+        { label: "1 banheiro", value: "1" },
+        { label: "2 banheiros", value: "2" },
+        { label: "3 banheiros", value: "3" },
+        { label: "4 banheiros", value: "4" },
       ] },
   ];
 
@@ -132,10 +135,15 @@ const HeaderSelect = ({ colorIcon, colorText }) => {
     setOpenSubmenuIndex(openSubmenuIndex === index ? null : index);
   };
 
-  const handleSubSelect = (path) => {
+  const handleSubSelect = (field, value) => {
     setIsOpen(false);
     setOpenSubmenuIndex(null);
-    navigate(path);
+
+    const selectedFilter = { [field]: value };
+
+    console.log("🔍 Redirecionando para catálogo com filtro:", selectedFilter);
+
+    navigate("/catalogo-de-casas", { state: { selectedOptions: selectedFilter } });
   };
 
   useEffect(() => {
@@ -155,7 +163,7 @@ const HeaderSelect = ({ colorIcon, colorText }) => {
   return (
     <DropdownContainer>
       <DropdownHeader onClick={() => setIsOpen(!isOpen)} colorText={colorText}>
-        Econtre sua casa
+        Encontre sua casa
         <DropdownArrow isOpen={isOpen} colorIcon={colorIcon}>
           <IoIosArrowDown />
         </DropdownArrow>
@@ -165,21 +173,17 @@ const HeaderSelect = ({ colorIcon, colorText }) => {
           <div key={index}>
             <DropdownItem onClick={() => handleSelect(index)}>
               {option.label}
-              {option.submenu && (
-                <DropdownArrow isOpen={openSubmenuIndex === index}>
-                  <IoIosArrowDown />
-                </DropdownArrow>
-              )}
+              <DropdownArrow isOpen={openSubmenuIndex === index}>
+                <IoIosArrowDown />
+              </DropdownArrow>
             </DropdownItem>
-            {option.submenu && (
-              <Submenu isOpen={openSubmenuIndex === index}>
-                {option.submenu.map((sub, subIndex) => (
-                  <SubmenuItem key={subIndex} onClick={() => handleSubSelect(sub.path)}>
-                    {sub.label}
-                  </SubmenuItem>
-                ))}
-              </Submenu>
-            )}
+            <Submenu isOpen={openSubmenuIndex === index}>
+              {option.submenu.map((sub, subIndex) => (
+                <SubmenuItem key={subIndex} onClick={() => handleSubSelect(option.field, sub.value)}>
+                  {sub.label}
+                </SubmenuItem>
+              ))}
+            </Submenu>
           </div>
         ))}
       </DropdownList>

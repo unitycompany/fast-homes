@@ -238,7 +238,7 @@ const Home = () => {
                         Colocar uma descrição curta e objetiva falando sobre a fast homes.
                     </p>
                     <GlobalButton2
-                            text="Solicitar meu orçamento"
+                            text="Falar com um consultor"
                             background1="#fff"
                             background2="#fff"
                             colorIcon="#000"

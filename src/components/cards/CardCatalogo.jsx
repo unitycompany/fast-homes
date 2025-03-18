@@ -108,9 +108,9 @@ const CardDados = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 5px 0px!important;
-    gap: 5px;
+    gap: 5px!important;
     border-radius: 0 0 15px 15px;
-    border: none!important;
+    border: none;
 `
 
 const CardDado = styled.div`
@@ -138,10 +138,10 @@ const CardDado = styled.div`
     & p {
         font-weight: 600;
         text-align: center;
-        width: 100%;
+        width: 100%!important;
         font-size: 14px;
         white-space: nowrap;
-        margin-top: -14px;
+        margin-top: -14px!important;
         color: #000;
     }
 `

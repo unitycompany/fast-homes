@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 const FiltroContainer = styled.div`
     width: 100%;
     max-width: 1280px;
-    padding: 2% 5% 2% 5%;
+    padding: 2% 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -14,7 +14,7 @@ const FiltroContainer = styled.div`
     border-left: 0;
     border-right: 0;
 
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
         flex-direction: column;
         gap: 20px;
         padding: 5% 2.5%;
@@ -27,7 +27,7 @@ const FiltroLeft = styled.div`
     justify-content: space-between;
     width: 80%;
 
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
         width: 100%;
         flex-direction: column;
         gap: 10px;
@@ -38,7 +38,7 @@ const FiltroSelect = styled.div`
     width: 22.5%;
     position: relative;
 
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
         width: 100%;
     }
 
@@ -53,18 +53,6 @@ const FiltroSelect = styled.div`
         border-radius: 5px;
         user-select: none;
         font-size: 14px;
-
-        @media (max-width: 768px){
-            font-size: 12px;
-        }
-
-        & svg {
-            font-size: 14px;
-
-            @media (max-width: 768px){
-                font-size: 12px;
-            }
-        }
     }
 `;
 
@@ -86,10 +74,6 @@ const FiltroOption = styled.div`
         cursor: pointer;
         border-bottom: 1px solid #F0F0F0;
 
-        &:last-child {
-            border-bottom: none;
-        }
-
         &:hover {
             background-color: #f9f9f9;
         }
@@ -97,8 +81,7 @@ const FiltroOption = styled.div`
 `;
 
 const FiltroRight = styled.div`
-
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
         width: 100%;
     }
 
@@ -106,17 +89,12 @@ const FiltroRight = styled.div`
         padding: 10px 60px;
         font-size: 14px;
         font-weight: 600;
-        background: linear-gradient(145deg, #000, #353535);
+        background: ${({ hasSearched }) => (hasSearched ? "#720404" : "#000")};
         color: #fff;
         border-radius: 5px;
         cursor: pointer;
-        transition: all .2s ease-out;
-        position: relative;
+        transition: all 0.2s ease-out;
         text-transform: uppercase;
-
-        @media (max-width: 768px){
-            width: 100%;
-        }
 
         &:hover {
             transform: scale(0.98);
@@ -132,11 +110,9 @@ const options = {
     "N° de banheiros": ["1", "2", "3", "4"]
 };
 
-
-const Filtro = ({ onSearch }) => {
+const Filtro = ({ onSearch, hasSearched, onClearFilters }) => {
     const [selectedOptions, setSelectedOptions] = useState({});
     const [openSelect, setOpenSelect] = useState(null);
-    const [hasSearched, setHasSearched] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -148,29 +124,22 @@ const Filtro = ({ onSearch }) => {
     const handleSearch = () => {
         if (!location.pathname.includes("/catalogo-de-casas")) {
             navigate("/catalogo-de-casas", { state: { selectedOptions } });
-        } else {
-            onSearch(selectedOptions);
-            setHasSearched(true);
+            return;
         }
+        console.log("🔍 Aplicando filtro com opções:", selectedOptions);
+        onSearch(selectedOptions);
     };
-  
+
     const handleClear = () => {
+        console.log("🗑️ Limpando filtros");
         setSelectedOptions({});
         onSearch(null);
-        setHasSearched(false);
+        onClearFilters(); // Agora notifica o catálogo para limpar os filtros.
     };
-  
-    useEffect(() => {
-        if (location.state?.selectedOptions) {
-            setSelectedOptions(location.state.selectedOptions);
-            onSearch(location.state.selectedOptions);
-            setHasSearched(true);
-        }
-    }, [location.state]);
 
     return (
         <FiltroContainer>
-            <FiltroLeft data-aos="zoom-in" data-aos-delay="100">
+            <FiltroLeft>
                 {Object.keys(options).map((category) => (
                     <FiltroSelect key={category}>
                         <span onClick={() => setOpenSelect(openSelect === category ? null : category)}>
@@ -187,15 +156,16 @@ const Filtro = ({ onSearch }) => {
                     </FiltroSelect>
                 ))}
             </FiltroLeft>
-            <FiltroRight data-aos="zoom-in" data-aos-delay="300">
-                {!hasSearched ? (
-                    <button onClick={handleSearch}>Buscar</button>
-                ) : (
+            <FiltroRight hasSearched={hasSearched}>
+                {hasSearched ? (
                     <button onClick={handleClear}>Limpar</button>
+                ) : (
+                    <button onClick={handleSearch}>Buscar</button>
                 )}
             </FiltroRight>
         </FiltroContainer>
     );
 };
+
 
 export default Filtro;

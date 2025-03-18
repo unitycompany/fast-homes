@@ -148,12 +148,12 @@ const Home = () => {
 
                     <article data-aos="fade-up" data-aos-delay="500">
                         <GlobalButton2
-                            text="Solicitar meu orçamento"
+                            text="Falar com um consultor"
                             background1="var(--color--brown--medium)"
                             background2="var(--color--brown--medium)"
                             colorIcon="#fff"
                             colorText="#fff"
-                            to="/#form"
+                            to="/sobre-nos#form"
                         />
                         <GlobalButton3
                             text="Conhecer catálogo"

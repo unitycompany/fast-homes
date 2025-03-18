@@ -155,12 +155,12 @@ const Porque = () => {
                     </div>
 
                     <GlobalButton2
-                        text="Solicitar meu orçamento"
+                        text="Falar com um consultor"
                         background1="var(--color--brown--medium)"
                         background2="var(--color--brown--medium)"
                         colorIcon="#fff"
                         colorText="#fff"
-                        to="/#Form"
+                        to="/sobre-nos#form"
                     />
                 </Left>
 

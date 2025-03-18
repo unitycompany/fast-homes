@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import GlobalButton2 from "../../../components/buttons/GlobalButton2";
 import GlobalButton3 from "../../../components/buttons/GlobalButton3";
+import { useLocation, useNavigate } from "react-router-dom";
+import GlobalButton4 from "../../../components/buttons/GlobalButton4";
 
 const Header = styled.div`
     position: fixed!important;
@@ -94,6 +96,8 @@ const HeaderTexts = styled.div`
 
 const Name = ({ nomeDaCasa, descricaoDaCasa }) => {
     const [isHidden, setIsHidden] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
     let timeoutRef = null;
 
     useEffect(() => {
@@ -113,16 +117,53 @@ const Name = ({ nomeDaCasa, descricaoDaCasa }) => {
         };
     }, []);
 
+    const handleConsultorClick = () => {
+        console.log("🔵 Botão de Consultor clicado!");
+        console.log("📍 URL atual:", location.pathname);
+
+        const formElement = document.getElementById("form");
+
+        if (location.pathname.includes("/catalogo-de-casas")) {
+            console.log("✅ Já está na página correta!");
+
+            if (formElement) {
+                console.log("🎯 Elemento `#form` encontrado, rolando...");
+                formElement.scrollIntoView({ behavior: "smooth" });
+            } else {
+                console.log("⚠️ Elemento `#form` não encontrado na página!");
+            }
+        } else {
+            console.log("🔀 Redirecionando para `/catalogo-de-casas`...");
+            navigate("/catalogo-de-casas", { state: { scrollTo: "form" } });
+        }
+    };
+
+    useEffect(() => {
+        if (location.state?.scrollTo) {
+            console.log("📌 Página carregada com estado `scrollTo`:", location.state.scrollTo);
+            
+            setTimeout(() => {
+                const element = document.getElementById(location.state.scrollTo);
+                if (element) {
+                    console.log("🎯 ROLANDO para `#form`...");
+                    element.scrollIntoView({ behavior: "smooth" });
+                } else {
+                    console.log("⚠️ Elemento `#form` ainda não foi carregado!");
+                }
+            }, 300);
+        }
+    }, [location]);
+
     return (
         <Header isHidden={isHidden}>
             <HeaderBtns data-aos="fade-up" data-aos-delay="100"> 
-                <GlobalButton2
-                    text="Solicitar meu orçamento"
+                <GlobalButton4
+                    text="Falar com um consultor"
                     background1="#000"
                     background2="#000"
                     colorIcon="#fff"
                     colorText="#fff"
-                    to="#Form"
+                    to="#form"
                 />
                 
                 <GlobalButton3
