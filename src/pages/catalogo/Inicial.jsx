@@ -36,7 +36,7 @@ const PaginaCatalogo = () => {
                         itemDirection={true}
                     />
                 </Projetos>
-                    <HouseModel />
+                    {/* <HouseModel /> */}
                             <Texts />
         </>
     )

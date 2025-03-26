@@ -26,7 +26,10 @@ const LandingPreview = ({ dados }) => {
         <Content>
             <Name nome={dados.nome} descricao={dados.descricao} />
             <Home
-                imagens={[dados.imagem, dados.imagemDois]}
+                imagens={[
+                    dados.imagemPreview || dados.imagem, // Mostra o preview antes do upload
+                    dados.imagemDoisPreview || dados.imagemDois
+                  ]}
                 area={dados.area}
                 largura={dados.largura}
                 lote={dados.lote}

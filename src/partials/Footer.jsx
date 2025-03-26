@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 const shine = keyframes `
@@ -207,7 +207,7 @@ const FooterTitle = styled.div`
     }
 `
 
-const FooterForm = styled.div`
+const FooterForm = styled.form`
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -382,147 +382,223 @@ const FooterBottom = styled.div`
         }
     }
 `
-
 const Footer = () => {
+    // Estados para os campos do formulário
+    const [name, setName] = useState('');
+    const [tel, setTel] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
+  
+    // Função para gerar um ID único
+    const generateUniqueId = () => {
+      return new Date().getTime().toString();
+    };
+  
+    // Função para capturar os UTMs da URL
+    const getUTMs = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      return {
+        utm_source: urlParams.get('utm_source'),
+        utm_medium: urlParams.get('utm_medium'),
+        utm_campaign: urlParams.get('utm_campaign'),
+        utm_content: urlParams.get('utm_content'),
+        utm_term: urlParams.get('utm_term'),
+      };
+    };
+  
+    // Função de envio do formulário
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      console.log('Formulário enviado!');
+
+      // Validação básica
+      if (!name || !tel || !email || !message) {
+        alert("Por favor, preencha todos os campos corretamente.");
+        return;
+      }
+  
+      setLoading(true);
+      const utms = getUTMs();
+      const interesse = "interesse: " + window.location.pathname;
+  
+      // Montagem do payload a ser enviado
+      const payload = {
+        rules: {
+          update: "false",
+          filter_status_update: "open",
+          equal_pipeline: "true",
+          status: "open",
+          validate_cpf: "false",
+        },
+        leads: [
+          {
+            id: "FORMULARIO FOOTER - FAST HOMES" + " - " + name,
+            user: name,
+            email: email,
+            name: name,
+            personal_phone: tel,
+            mobile_phone: tel,
+            last_conversion: {
+              source: "FORMULARIO FOOTER - FAST HOMES"
+            },
+            custom_fields: {
+              uniqueId: generateUniqueId(),
+              utm_source: utms.utm_source || "",
+              utm_medium: utms.utm_medium || "",
+              utm_campaign: utms.utm_campaign || "",
+              utm_content: utms.utm_content || "",
+              utm_term: utms.utm_term || "",
+              page_referrer: window.location.href || "URL não encontrada",
+              message: message
+            },
+            notes: {
+                notas: interesse
+            }
+          }
+        ]
+      };
+  
+      try {
+        const response = await fetch('https://app.pipe.run/webservice/integradorJson?hash=1e28b707-3c02-4393-bb9d-d3826b060dcd', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+  
+        const data = await response.json();
+        console.log('Success:', data);
+        alert("Formulário enviado com sucesso!");
+        // Reseta os campos do formulário
+        setName('');
+        setTel('');
+        setEmail('');
+        setMessage('');
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Houve um erro ao enviar o formulário.");
+      } finally {
+        setLoading(false);
+      }
+    };
+  
     return (
-        <>
-            <FooterContainer>
-                <FooterTop>
-                    <FooterCard data-aos="fade-up" data-aos-delay="100">
-                        <img 
-                            src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8997c35e-ec2d-4f63-c868-82af3c925c00/public" 
-                            alt="logo-fast-homes" 
-                        />
-                        <h2>
-                            O Novo conceito de lar é Fast Homes
-                        </h2>
-                        <a href="mailto:contato@fasthomes.com.br" target="_blank">
-                            contato@fasthomes.com.br
-                        </a>
-                        <a href="#">
-                            Solicite um orçamento
-                        </a>
-                    </FooterCard>
-
-                    <FooterCard data-aos="fade-up" data-aos-delay="200">
-                        <h1>
-                            Mapa do site
-                        </h1>
-                        <a href="/">
-                            Inicio
-                        </a>
-                        <a href="/catalogo-de-casas">
-                            Catálogo de casas
-                        </a>
-                        <a href="/projetos-personalizados">
-                            Projetos personalizados
-                        </a>
-                        <a href="/sobre-nos">
-                            Sobre nós
-                        </a>
-                        <a href="/#parcerias">
-                            Parcerias
-                        </a>
-                    </FooterCard>
-
-                    <FooterCard data-aos="fade-up" data-aos-delay="300">
-                        <h1>
-                            Parcerias
-                        </h1>
-                        <a href="https://fastdrywall.com.br" target="_blank">
-                            Fast Drywall
-                        </a>
-                        <a href="https://esquadrias.fastsistemasconstrutivos.com.br" target="_blank">
-                            EcoFrame
-                        </a>
-                        <a href="https://novametalica.com.br" target="_blank">
-                            Nova Metálica
-                        </a>
-                        <a href="https://saintgobain.com.br" target="_blank">
-                            Saint Gobain
-                        </a>
-                    </FooterCard>
-
-                    <FooterCard data-aos="fade-up" data-aos-delay="400">
-                        <h1>
-                            Contato
-                        </h1>
-                        <a href="#" target="_blank">
-                            WhatsApp
-                        </a>
-                        <a href="#" target="_blank">
-                            +55 (24) 98141-4121
-                        </a>
-                        <a href="#" target="_blank">
-                            contato@fasthomes.com.br
-                        </a>
-                    </FooterCard>
-                </FooterTop>
-
-                <FooterCenter>
-                    <FooterTitle>
-                        <h1 data-aos="fade-up" data-aos-delay="100">
-                            Ficou com alguma dúvida?
-                        </h1>
-                        <p data-aos="fade-up" data-aos-delay="400"> 
-                            Preencha o formulário ao lado para que possamos entrar em contato para tirar todas as suas dúvidas
-                        </p>
-                    </FooterTitle>
-
-                    <FooterForm>
-                        <input 
-                            data-aos="fade-up" data-aos-delay="100"
-                            type="text" 
-                            id="name" 
-                            placeholder="Diga seu nome"
-                            required 
-                        />
-
-                        <input 
-                            data-aos="fade-up" data-aos-delay="200"
-                            type="tel" 
-                            id="tel" 
-                            placeholder="(24) 98131-1321" 
-                            required 
-                        />
-
-                        <input
-                            data-aos="fade-up" data-aos-delay="300" 
-                            type="email" 
-                            id="email" 
-                            placeholder="Seu e-mail" 
-                            required 
-                        />
-
-                        <textarea 
-                            data-aos="fade-up" data-aos-delay="400"
-                            type="text" 
-                            id="textarea" 
-                            placeholder="Qual a sua dúvida"
-                        />
-                        <button type="submit" data-aos="fade-up" data-aos-delay="600">
-                            Fale conosco
-                        </button>
-                        <p data-aos="zoom-in" data-aos-delay="1000">
-                            *Todas as informações serão usadas apenas para fins de contato, pode consultar nossa <a href="/politica-de-privacidade">politica de privacidade</a> e <a href="/termos-e-condicoes">termos e condições</a>.
-                        </p>
-                    </FooterForm>
-                </FooterCenter>
-
-                <FooterBottom>
-                    <p>
-                        Todos os direitos reservados |<span> CNPJ: 45.989.824/0001-74 - Fast Homes</span>
-                    </p>
-                    <p>
-                        Desenvolvido por 
-                        <a href="https://www.alephsramos.com.br" target="_blank">
-                            <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/aa412b31-1015-40a2-cfd6-ab7afce75500/public" alt="logo do aleph desenvolvedor web" />
-                        </a>
-                    </p>
-                </FooterBottom>
-            </FooterContainer>
-        </>
-    )
-}
-
-export default Footer;
+      <FooterContainer>
+        <FooterTop>
+          <FooterCard data-aos="fade-up" data-aos-delay="100">
+            <img 
+              src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8997c35e-ec2d-4f63-c868-82af3c925c00/public" 
+              alt="logo-fast-homes" 
+            />
+            <h2>O Novo conceito de lar é Fast Homes</h2>
+            <a href="mailto:contato@fasthomes.com.br" target="_blank" rel="noopener noreferrer">
+              contato@fasthomes.com.br
+            </a>
+            <a href="#">
+              Solicite um orçamento
+            </a>
+          </FooterCard>
+  
+          <FooterCard data-aos="fade-up" data-aos-delay="200">
+            <h1>Mapa do site</h1>
+            <a href="/">Início</a>
+            <a href="/catalogo-de-casas">Catálogo de casas</a>
+            <a href="/projetos-personalizados">Projetos personalizados</a>
+            <a href="/sobre-nos">Sobre nós</a>
+            <a href="/#parcerias">Parcerias</a>
+          </FooterCard>
+  
+          <FooterCard data-aos="fade-up" data-aos-delay="300">
+            <h1>Parcerias</h1>
+            <a href="https://fastdrywall.com.br" target="_blank" rel="noopener noreferrer">Fast Drywall</a>
+            <a href="https://esquadrias.fastsistemasconstrutivos.com.br" target="_blank" rel="noopener noreferrer">EcoFrame</a>
+            <a href="https://novametalica.com.br" target="_blank" rel="noopener noreferrer">Nova Metálica</a>
+            <a href="https://saintgobain.com.br" target="_blank" rel="noopener noreferrer">Saint Gobain</a>
+          </FooterCard>
+  
+          <FooterCard data-aos="fade-up" data-aos-delay="400">
+            <h1>Contato</h1>
+            <a href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">+55 (24) 98141-4121</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">contato@fasthomes.com.br</a>
+          </FooterCard>
+        </FooterTop>
+  
+        <FooterCenter>
+          <FooterTitle>
+            <h1 data-aos="fade-up" data-aos-delay="100">
+              Ficou com alguma dúvida?
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="400">
+              Preencha o formulário ao lado para que possamos entrar em contato para tirar todas as suas dúvidas
+            </p>
+          </FooterTitle>
+  
+          <FooterForm id="contactForm" onSubmit={handleSubmit}>
+            <input 
+              data-aos="fade-up" data-aos-delay="100"
+              type="text" 
+              id="name" 
+              placeholder="Diga seu nome"
+              required 
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+  
+            <input 
+              data-aos="fade-up" data-aos-delay="200"
+              type="tel" 
+              id="tel" 
+              placeholder="(24) 98131-1321" 
+              required 
+              value={tel}
+              onChange={(e) => setTel(e.target.value)}
+            />
+  
+            <input
+              data-aos="fade-up" data-aos-delay="300" 
+              type="email" 
+              id="email" 
+              placeholder="Seu e-mail" 
+              required 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+  
+            <textarea 
+              data-aos="fade-up" data-aos-delay="400"
+              id="textarea" 
+              placeholder="Qual a sua dúvida"
+              required
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+  
+            <button type="submit" data-aos="fade-up" data-aos-delay="600" disabled={loading}>
+              {loading ? "Enviando..." : "Fale conosco"}
+            </button>
+  
+            <p data-aos="zoom-in" data-aos-delay="1000">
+              *Todas as informações serão usadas apenas para fins de contato, pode consultar nossa <a href="/politica-de-privacidade">política de privacidade</a> e <a href="/termos-e-condicoes">termos e condições</a>.
+            </p>
+          </FooterForm>
+        </FooterCenter>
+  
+        <FooterBottom>
+          <p>
+            Todos os direitos reservados |<span> CNPJ: 45.989.824/0001-74 - Fast Homes</span>
+          </p>
+          <p>
+            Desenvolvido por 
+            <a href="https://www.alephsramos.com.br" target="_blank" rel="noopener noreferrer">
+              <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/aa412b31-1015-40a2-cfd6-ab7afce75500/public" alt="logo do aleph desenvolvedor web" />
+            </a>
+          </p>
+        </FooterBottom>
+      </FooterContainer>
+    );
+  };
+  
+  export default Footer;

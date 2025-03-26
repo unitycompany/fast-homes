@@ -6,9 +6,9 @@ import styled from "styled-components";
 import { AiOutlineCheckCircle, AiOutlineClose, AiOutlineCloseCircle, AiOutlineMenu } from "react-icons/ai";
 
 const Sidebar = styled.aside`
-  width: 320px;
+  width: 500px;
   position: fixed;
-  left: ${({ isOpen }) => (isOpen ? "0" : "-330px")};
+  left: ${({ isOpen }) => (isOpen ? "0" : "-500px")};
   transition: left 0.3s ease-in-out; /* Animação suave */
   top: 50%;
   transform: translateY(-50%);
@@ -42,6 +42,14 @@ const Sidebar = styled.aside`
     position: relative;
     padding: 10px;
     border: 1px solid #00000050;
+
+    & select {
+      width: 100%;
+
+      & option {
+        padding: 10px;
+      }
+    }
 
     & input {
         font-size: 16px;
@@ -83,7 +91,7 @@ const Sidebar = styled.aside`
 
 const ToggleButton = styled.button`
   position: fixed;
-  left: ${({ isOpen }) => (isOpen ? "320px" : "10px")};
+  left: ${({ isOpen }) => (isOpen ? "500px" : "10px")};
   top: 50%;
   transform: translateY(-50%);
   background: var(--color--green--low);
@@ -140,6 +148,9 @@ const MainContent = styled.main`
   width: 100%;
   flex: 1;
   overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const AdicionarCasa = () => {
@@ -171,66 +182,119 @@ const AdicionarCasa = () => {
 
   const handleInputChange = (e, section = null, field = null, index = null) => {
     const { name, value, type, checked } = e.target;
-    const newValue = type === "checkbox" ? checked : type === "number" ? Number(value) : value;
+    
+    // Converte valores de select "true"/"false" para booleanos
+    const newValue = type === "checkbox" ? checked 
+                  : type === "number" ? Number(value) 
+                  : value === "true" ? true 
+                  : value === "false" ? false 
+                  : value;
 
     if (section && field && index !== null) {
-      setDados((prev) => {
-        const updatedArray = [...prev[section][field]];
-        updatedArray[index] = newValue;
-        return { ...prev, [section]: { ...prev[section], [field]: updatedArray } };
-      });
+        setDados((prev) => {
+            const updatedArray = [...prev[section][field]];
+            updatedArray[index] = newValue;
+            return { ...prev, [section]: { ...prev[section], [field]: updatedArray } };
+        });
     } else if (section && field) {
-      setDados((prev) => ({ ...prev, [section]: { ...prev[section], [field]: newValue } }));
+        setDados((prev) => ({ ...prev, [section]: { ...prev[section], [field]: newValue } }));
     } else {
-      setDados((prev) => ({ ...prev, [name]: newValue }));
+        setDados((prev) => ({ ...prev, [name]: newValue }));
     }
-  };
-
-  const uploadImage = async (file) => {
-    if (!file) return null;
-
+};
+  
+  const getCloudflareUploadURL = async () => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_CLOUDFLARE_PUBLIC_URL}/${file.name}`,
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_CLOUDFLARE_API_TOKEN}`,
-            "Content-Type": file.type,
-          },
-          body: file,
+        const response = await fetch("http://localhost:5001/api/get-upload-url", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            return data.result.uploadURL; // URL gerada pelo Cloudflare
+        } else {
+            console.error("Erro ao obter URL de upload:", data.errors);
+            return null;
         }
-      );
-
-      if (!response.ok) throw new Error("Erro ao enviar imagem");
-
-      return `${process.env.NEXT_PUBLIC_CLOUDFLARE_PUBLIC_URL}/${file.name}`;
     } catch (error) {
-      console.error("Erro no upload:", error);
-      alert("❌ Falha ao fazer upload da imagem");
-      return null;
+        console.error("Erro ao buscar URL de upload:", error);
+        return null;
     }
-  };
+};
 
-  const handleImageUpload = async (e, fieldName) => {
-    const file = e.target.files[0];
-    if (!file) return;
 
-    const imageUrl = await uploadImage(file);
-    if (imageUrl) {
-      setDados((prev) => ({ ...prev, [fieldName]: imageUrl }));
-    }
-  };
+const handleImageUpload = async (e, fieldName) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-  const publicarCasa = async () => {
-    try {
-      const docRef = await addDoc(collection(db, "catalogo"), { ...dados, slug: gerarSlug(dados.nome) });
+  // Criar um preview local antes do upload
+  const previewURL = URL.createObjectURL(file);
+  setDados(prev => ({
+      ...prev,
+      [`${fieldName}Preview`]: previewURL // Mostra o preview antes do upload
+  }));
+
+  try {
+      // Obter a URL de upload do Cloudflare
+      const uploadURL = await getCloudflareUploadURL();
+      if (!uploadURL) return;
+
+      // Criar FormData e enviar a imagem
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch(uploadURL, {
+          method: "POST",
+          body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+          const imageUrl = data.result.variants[0]; // URL real da imagem no Cloudflare
+
+          // Atualizar o estado corretamente para enviar ao Firebase
+          setDados(prev => ({
+              ...prev,
+              [fieldName]: imageUrl, // Salva a URL final
+              [`${fieldName}Preview`]: imageUrl // Substitui o preview com a URL real
+          }));
+
+          console.log("✅ Imagem enviada com sucesso:", imageUrl);
+      } else {
+          console.error("❌ Erro ao enviar a imagem:", data.errors);
+      }
+  } catch (error) {
+      console.error("❌ Erro no upload:", error);
+  }
+};
+
+const publicarCasa = async () => {
+  try {
+      // Antes de salvar no Firebase, garante que a URL correta está no estado
+      const dadosParaSalvar = { ...dados };
+
+      // Remover os previews antes de salvar no Firebase
+      delete dadosParaSalvar.imagemPreview;
+      delete dadosParaSalvar.imagemDoisPreview;
+
+      // Salva a casa com as URLs finais
+      const docRef = await addDoc(collection(db, "catalogo"), {
+          ...dadosParaSalvar,
+          slug: gerarSlug(dados.nome)
+      });
+
       alert("✅ Casa publicada com sucesso! ID: " + docRef.id);
-    } catch (error) {
+  } catch (error) {
       console.error("❌ Erro ao publicar:", error);
       alert("Erro ao publicar: " + error.message);
-    }
-  };
+  }
+};
+
+
 
   return (
     <div className="flex">
@@ -297,25 +361,33 @@ const AdicionarCasa = () => {
             
             <label>
                 <span>Área gourmet</span>
-                <input name="churrasqueira" placeholder="Sim" value={dados.churrasqueira} onChange={handleInputChange} />
+                <select name="churrasqueira" value={dados.churrasqueira ? "true" : "false"} onChange={handleInputChange}>
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                </select>
             </label>
-            
+
             <label>
                 <span>Piscina</span>
-                <input name="piscina" placeholder="Não" value={dados.piscina} onChange={handleInputChange} />
+                <select name="piscina" value={dados.piscina ? "true" : "false"} onChange={handleInputChange}>
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                </select>
             </label>
-            
+
             <label>
                 <span>Imagem de capa</span>
                 <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, "imagem")} />
-                {dados.imagem && <img src={dados.imagem} alt="Imagem Principal" width="100%" />}
+                {dados.imagemPreview && <img src={dados.imagemPreview} alt="Preview Imagem Principal" width="100%" />}
             </label>
-            
+
             <label>
                 <span>Imagem secundária</span>
                 <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, "imagemDois")} />
-                {dados.imagemDois && <img src={dados.imagemDois} alt="Imagem Secundária" width="100%" />}
+                {dados.imagemDoisPreview && <img src={dados.imagemDoisPreview} alt="Preview Imagem Secundária" width="100%" />}
             </label>
+
+
             
         </div>
         

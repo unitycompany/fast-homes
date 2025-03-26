@@ -291,89 +291,223 @@ const FormOptions = styled.div`
 `
 
 const Form = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [whatsapp, setWhatsapp] = useState('');
+  const [cidade, setCidade] = useState('');
+  const [estado, setEstado] = useState('');
+  const [selectedOption, setSelectedOption] = useState('');
+  const [isOpenSelect, setIsOpenSelect] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-    const [IsOpenSelect, setIsOpenSelect] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('');
+  const toggleSelect = () => {
+    setIsOpenSelect(prev => !prev);
+  };
 
-    const toggleSelect = () => {
-        setIsOpenSelect((prev) => !prev);
+  const handleSelectOption = (option) => {
+    setSelectedOption(option);
+    setIsOpenSelect(false);
+  };
+
+  const generateUniqueId = () => new Date().getTime().toString();
+
+  const getUTMs = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return {
+      utm_source: urlParams.get('utm_source'),
+      utm_medium: urlParams.get('utm_medium'),
+      utm_campaign: urlParams.get('utm_campaign'),
+      utm_content: urlParams.get('utm_content'),
+      utm_term: urlParams.get('utm_term'),
+    };
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Validação básica para todos os campos
+    if (!name || !email || !whatsapp || !cidade || !estado || !selectedOption) {
+      alert("Por favor, preencha todos os campos corretamente.");
+      return;
     }
 
-    const handleSelectOption = (option) => {
-        setSelectedOption(option);
-        setIsOpenSelect(false);
+    setLoading(true);
+    const utms = getUTMs();
+
+    // Captura o interesse dinâmico baseado na página atual
+    const interesse = "Interesse: " + window.location.pathname;
+
+    const payload = {
+      rules: {
+        update: "false",
+        filter_status_update: "open",
+        equal_pipeline: "true",
+        status: "open",
+        validate_cpf: "false",
+      },
+      leads: [
+        {
+          id: "FORMULARIO - FAST HOMES" + " - " + name,
+          user: name,
+          email: email,
+          name: name,
+          personal_phone: whatsapp,
+          mobile_phone: whatsapp,
+          last_conversion: {
+            source: "FORMULARIO - FAST HOMES"
+          },
+          custom_fields: {
+            uniqueId: generateUniqueId(),
+            utm_source: utms.utm_source || "",
+            utm_medium: utms.utm_medium || "",
+            utm_campaign: utms.utm_campaign || "",
+            utm_content: utms.utm_content || "",
+            utm_term: utms.utm_term || "",
+            page_referrer: window.location.href || "URL não encontrada",
+            cidade: cidade,
+            estado: estado,
+            tipoCliente: selectedOption,
+            notas: interesse
+          }
+        }
+      ]
+    };
+
+    try {
+      const response = await fetch('https://app.pipe.run/webservice/integradorJson?hash=1e28b707-3c02-4393-bb9d-d3826b060dcd', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json();
+      console.log('Success:', data);
+      alert('Formulário enviado com sucesso!');
+      // Reseta os campos do formulário
+      setName('');
+      setEmail('');
+      setWhatsapp('');
+      setCidade('');
+      setEstado('');
+      setSelectedOption('');
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Houve um erro ao enviar o formulário.');
+    } finally {
+      setLoading(false);
     }
+  };
 
-    return (
-        <>
-            <FormContainer id="form">
-                <FormText>
-                    <h1 data-aos="fade-up" data-aos-delay="100">
-                        Fale com um consultor
-                    </h1>
-                    <p data-aos="fade-up" data-aos-delay="400">
-                    Todas as informações serão usadas apenas para fins de contato, pode consultar nossa <a href="/politica">politica de privacidade</a> e <a href="/termos">termos de condições.</a>
-                    </p>
-                    <GlobalButton3
-                        text="Conhecer catálogo"
-                        background1="transparent"
-                        background2="transparent"
-                        colorIcon="#fff"
-                        colorText="#fff"
-                        border1="#fff"
-                        border2="#fff"
-                        to="/catalogo-de-casas"
-                    />
-                </FormText>
+  return (
+    <FormContainer id="form">
+      <FormText>
+        <h1 data-aos="fade-up" data-aos-delay="100">
+          Fale com um consultor
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="400">
+          Todas as informações serão usadas apenas para fins de contato, podendo ser consultadas nossa <a href="/politica">política de privacidade</a> e <a href="/termos">termos de condições</a>.
+        </p>
+        <GlobalButton3
+          text="Conhecer catálogo"
+          background1="transparent"
+          background2="transparent"
+          colorIcon="#fff"
+          colorText="#fff"
+          border1="#fff"
+          border2="#fff"
+          to="/catalogo-de-casas"
+        />
+      </FormText>
 
-                <Formulario id="contactForm">
-                    <label data-aos="fade-up" data-aos-delay="100">
-                        <span>Nome</span>
-                        <input type="text" id="name" placeholder="Digite seu nome aqui" required />
-                    </label>
-                    <label data-aos="fade-up" data-aos-delay="200">
-                        <span>WhatsApp</span>
-                        <input type="tel" id="tel" placeholder="+55 (24) 98141-1940" required />
-                    </label>
-                    <label data-aos="fade-up" data-aos-delay="300">
-                        <span>E-mail</span>
-                        <input type="email" id="email" placeholder="contato@fasthomes.com.br" required />
-                    </label>
-                    <FormInputs>
-                        <label data-aos="fade-up" data-aos-delay="400">
-                            <span>Cidade</span>
-                            <input type="text" id="cidade" placeholder="Miguel Pereira" required />
-                        </label>
-                        <label data-aos="fade-up" data-aos-delay="500">
-                            <span>Estado</span>
-                            <input type="text" id="estado" placeholder="Rio de Janeiro" required />
-                        </label>
-                    </FormInputs>
-                    <FormSelect data-aos="fade-up" data-aos-delay="600">
-                        <FormPlaceholder itemSelecionado={!!selectedOption} onClick={toggleSelect}>
-                            <span>Que tipo de cliente você é</span>
-                            <p>{selectedOption || "Selecione uma opção"}</p>
-                            <BsArrowDown />
-                        </FormPlaceholder>
-                        <FormOptions isOpen={IsOpenSelect}>
-                            {["Construtor", "Arquiteto", "Empresário", "Engenheiro"].map((option) => (
-                                <div key={option} onClick={() => handleSelectOption(option)}>
-                                    <span>{option}</span>
-                                </div>
-                            ))}
-                            <div>
-                                <span>Outro:</span>
-                                <input type="text" id="tipoCliente" placeholder="Digite qual" onBlur={(e) => handleSelectOption(e.target.value)}/>
-                            </div>
-                        </FormOptions>
-                    </FormSelect>
-                    <button type="submit" data-aos="fade-up" data-aos-delay="800">
-                    Agende uma reunião com nosso consultor
-                    </button>
-                </Formulario>
-            </FormContainer>
-        </>
-    )
-}
+      <Formulario id="contactForm" onSubmit={handleSubmit}>
+        <label data-aos="fade-up" data-aos-delay="100">
+          <span>Nome</span>
+          <input
+            type="text"
+            id="name"
+            placeholder="Digite seu nome aqui"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <label data-aos="fade-up" data-aos-delay="200">
+          <span>WhatsApp</span>
+          <input
+            type="tel"
+            id="tel"
+            placeholder="+55 (24) 98141-1940"
+            required
+            value={whatsapp}
+            onChange={(e) => setWhatsapp(e.target.value)}
+          />
+        </label>
+        <label data-aos="fade-up" data-aos-delay="300">
+          <span>E-mail</span>
+          <input
+            type="email"
+            id="email"
+            placeholder="contato@fasthomes.com.br"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <FormInputs>
+          <label data-aos="fade-up" data-aos-delay="400">
+            <span>Cidade</span>
+            <input
+              type="text"
+              id="cidade"
+              placeholder="Miguel Pereira"
+              required
+              value={cidade}
+              onChange={(e) => setCidade(e.target.value)}
+            />
+          </label>
+          <label data-aos="fade-up" data-aos-delay="500">
+            <span>Estado</span>
+            <input
+              type="text"
+              id="estado"
+              placeholder="Rio de Janeiro"
+              required
+              value={estado}
+              onChange={(e) => setEstado(e.target.value)}
+            />
+          </label>
+        </FormInputs>
+        <FormSelect data-aos="fade-up" data-aos-delay="600">
+          <FormPlaceholder itemSelecionado={!!selectedOption} onClick={toggleSelect}>
+            <span>Que tipo de cliente você é</span>
+            <p>{selectedOption || "Selecione uma opção"}</p>
+            <BsArrowDown />
+          </FormPlaceholder>
+          <FormOptions isOpen={isOpenSelect}>
+            {["Construtor", "Arquiteto", "Empresario", "Engenheiro"].map((option) => (
+              <div key={option} onClick={() => handleSelectOption(option)}>
+                <span>{option}</span>
+              </div>
+            ))}
+            <div>
+              <span>Outro:</span>
+              <input
+                type="text"
+                id="tipoCliente"
+                placeholder="Digite qual"
+                onBlur={(e) => handleSelectOption(e.target.value)}
+              />
+            </div>
+          </FormOptions>
+        </FormSelect>
+        <button type="submit" data-aos="fade-up" data-aos-delay="800" disabled={loading}>
+          {loading ? "Enviando..." : "Agende uma reunião com nosso consultor"}
+        </button>
+      </Formulario>
+    </FormContainer>
+  );
+};
 
 export default Form;

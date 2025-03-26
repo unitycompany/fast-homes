@@ -21,6 +21,11 @@ const Content = styled.div`
     overflow-x: hidden;
 `
 
+const FormDiv = styled.div`
+    padding: 0 2.5%;
+    max-width: 1280px;
+`
+
 const PaginaSobre = () => {
     return (
         <>
@@ -28,7 +33,9 @@ const PaginaSobre = () => {
                 <Home />
                     <Surgiu />
                         <Porque />
-                            <FormLP />
+                            <FormDiv>
+                               <FormLP />
+                            </FormDiv>
                                 <Faixa categoria="interiores"/>
             </Content>
             

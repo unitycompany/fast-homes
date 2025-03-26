@@ -104,7 +104,7 @@ const FiltroRight = styled.div`
 `;
 
 const options = {
-    "N° de pavimentos": ["1 pavimento", "2 pavimentos", "3 pavimentos", "4 pavimentos"],
+    "N° de pavimentos": ["1 pavimento", "2 pavimentos"],
     "Área construída": ["0-50", "51-100", "101-200", "201-400"],
     "N° de quartos": ["1", "2", "3", "4"],
     "N° de banheiros": ["1", "2", "3", "4"]

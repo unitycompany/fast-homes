@@ -428,9 +428,6 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
                                 </CardDado>
                             </CardDados>
                         </DadosArea>
-
-                        <button>Conferir tudo que está incluso <BsChevronRight />
-                        </button>
                     </RightDados>
                 </Right>
             </Content>
