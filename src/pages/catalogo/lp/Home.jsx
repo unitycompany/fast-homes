@@ -18,7 +18,7 @@ const Content = styled.div`
     width: 100%;
     height: auto;
     min-height: 80dvh;
-    margin-top: 7.5%;
+    margin-top: 5%;
     padding: 2.5% 5%;
     display: flex;
     align-items: flex-start;
@@ -46,7 +46,7 @@ const Left = styled.div`
     }
 
     & img {
-        height: 80dvh;
+        height: 100dvh;
         object-fit: cover;
 
         @media (max-width: 768px){
@@ -295,7 +295,7 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
                     <CarrosselLP
                         images={imagens}
                         width="100%"
-                        height="80dvh"
+                        height="100dvh"
                     />
                 </Left>
                 <Right>
