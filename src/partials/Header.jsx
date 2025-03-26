@@ -6,15 +6,23 @@ import HeaderSelect from "./HeaderSelect";
 import { Navigate, useNavigate, useLocation } from "react-router-dom";
 
 const HeaderContainer = styled.header`
-    background-color: var(--color--black);
+    background-color: #000;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: fixed;
+    top: 5px;
     z-index: 9999;
+    border-bottom: 1px solid #ffffff50;
+    border-top: 1px solid #ffffff50;
 
-    &::before{
+    @media (max-width: 768px){
+        top: 0;
+        border: none;
+    }
+
+    /* &::before{
         content: '';
         width: 100%;
         height: 110%;
@@ -22,7 +30,7 @@ const HeaderContainer = styled.header`
         top: 0;
         left: 0;
         z-index: -1;
-        background-color: var(--color--black);
+        background-color: #000;
         opacity: 0.5;
         clip-path: polygon(100% 0, 100% 100%, 60% 90%, 0 100%, 0 0);
     }
@@ -35,10 +43,10 @@ const HeaderContainer = styled.header`
         top: 0;
         left: 0;
         z-index: -1;
-        background-color: var(--color--black);
+        background-color: #000;
         opacity: 0.3;
         clip-path: polygon(100% 0, 100% 100%, 40% 80%, 0 100%, 0 0);
-    }
+    } */
 
     @media (max-width: 768px){
         height: 10vh;
@@ -46,14 +54,14 @@ const HeaderContainer = styled.header`
 `;
 
 const HeaderAll = styled.div`
-    background-color: var(--color--black);
+    background-color: #00000080;
     max-width: 1280px;
     left: 50%;
     top: 0;
     transform: translateX(-50%);
     position: relative;
     width: 100%;
-    height: 10vh;
+    height: 7.5vh;
     padding: 0 5%;
     display: flex;
     align-items: center;
@@ -113,6 +121,11 @@ const HeaderLinks = styled.div`
             transition: 0.5s ease;
             z-index: 2;
             font-family: var(--font--montserrat);
+
+            &:nth-child(6){
+                border: 1px solid #fff;
+                padding: 10px 15px;
+            }
 
             &::before, &::after {
                 content: '';
@@ -291,7 +304,7 @@ const HeaderSidebar = styled.div`
         top: 10vh;
         left: 0;
         height: 90dvh;
-        background: var(--color--black);
+        background: #000;
         border-top: 2px solid #fff;
         transition: transform 0.3s ease-in-out;
         transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(-100%)")};
@@ -301,7 +314,7 @@ const HeaderSidebar = styled.div`
             content: '';
             width: 100vw;
             height: 100%;
-            top: 0;
+            top: -2px;
             left: 250px;
             position: absolute;
             z-index: -5;
@@ -346,6 +359,25 @@ const Header = () => {
                                 <HeaderSelect />
                             </div>
                             {/* <li onClick={() => navigate=("/monte-sua-casa")}>Monte sua casa</li> */}
+                            
+                            <li 
+                                onClick={() => navigate("/projetos-personalizados")} 
+                                className={location.pathname === "/projetos-personalizados" ? "active" : ""}
+                            >
+                                Seu projeto
+                            </li>
+                            <li 
+                                onClick={() => navigate("/financiamento")} 
+                                className={location.pathname === "/financiamento" ? "active" : ""}
+                            >
+                                Financiamento
+                            </li>
+                            <li 
+                                onClick={() => navigate("/modular")} 
+                                className={location.pathname === "/modular" ? "active" : ""}
+                            >
+                                Modular
+                            </li>
                             <li 
                                 onClick={() => navigate("/sobre-nos")} 
                                 className={location.pathname === "/sobre-nos" ? "active" : ""}
@@ -353,14 +385,14 @@ const Header = () => {
                                 Sobre nós
                             </li>
                             <li 
-                                onClick={() => navigate("/projetos-personalizados")} 
-                                className={location.pathname === "/projetos-personalizados" ? "active" : ""}
+                                onClick={() => navigate("/catalogo-de-casas")} 
+                                className={location.pathname === "/catalogo-de-casas" ? "active" : ""}
                             >
-                                Projetos personalizados
+                                Catálogo
                             </li>
                         </ul>
                     </HeaderLinks>
-                    <HeaderButton>
+                    {/* <HeaderButton>
                         <GlobalButton 
                             text="Conhecer catálogo"
                             background1="#ffffff"
@@ -369,7 +401,7 @@ const Header = () => {
                             colorText="#000000"
                             to="/catalogo-de-casas"
                         />
-                    </HeaderButton>
+                    </HeaderButton> */}
                     <HeaderMenu onClick={toggleSidebar} isOpen={isSidebarOpen}>
                         <div className="hamburger">
                             <span className="bar"></span>
@@ -387,13 +419,16 @@ const Header = () => {
                             <div>
                                 <HeaderSelect />
                             </div>
-                            <li onClick={() => navigate("/projetos-personalizados")}>Projetos Personalizados</li>
+                            <li onClick={() => navigate("/projetos-personalizados")}>Seu projeto</li>
+                            <li onClick={() => navigate("/financiamento")}>Financiamento</li>
+                            <li onClick={() => navigate("/modular")}>Modular</li>
                             <li onClick={() => navigate("/sobre-nos")}>Sobre nós</li>
+                            <li onClick={() => navigate("/catalogo-de-casas")}>Catálogo</li>
                         </ul>
                     </HeaderSidebarLinks>
                     <HeaderSidebarButton>
                         <GlobalButton 
-                            text="Solicitar orçamento"
+                            text="Conhecer catálogo"
                             background1="#ffffff"
                             background2="#ffffff"
                             colorIcon="#000000"

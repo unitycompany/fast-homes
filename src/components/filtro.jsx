@@ -10,7 +10,6 @@ const FiltroContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid #00000010;
     border-left: 0;
     border-right: 0;
 

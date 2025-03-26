@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { db } from "../../services/firebaseConfig";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import { Autoplay, Pagination, EffectFade, Navigation } from "swiper/modules";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import styled from "styled-components";
 import "swiper/css";
 import "swiper/css/pagination";
+import { SlArrowRight, SlArrowLeft } from "react-icons/sl";
+
 
 import GlobalButton2 from "../../components/buttons/GlobalButton2";
 import GlobalButton3 from "../../components/buttons/GlobalButton3";
@@ -73,8 +76,16 @@ const HomeTexts = styled.div`
         color: #fff;
 
         & > h2 {
-            font-size: 35px;
+            font-size: 20px;
+            padding-left: 7.5px;
+            font-weight: 200;
             line-height: 100%;
+            font-family: var(--font--montserrat);
+            text-transform: uppercase;
+
+            & b {
+              font-weight: 400;
+            }
 
             @media (max-width: 768px){
                 font-size: 20px;
@@ -82,7 +93,7 @@ const HomeTexts = styled.div`
         }
 
         & > h1 {
-            font-size: 84px;
+            font-size: 80px;
             line-height: 100%;
             color: #fff;
 
@@ -94,8 +105,9 @@ const HomeTexts = styled.div`
 
     & > p {
         font-size: 16px;
+        width: 40%;
         line-height: 120%;
-        font-weight: 400;
+        font-weight: 300;
         padding-bottom: 35px;
         color: #fff;
 
@@ -117,13 +129,60 @@ const BackgroundWrapper = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1; /* Para ficar atrás do conteúdo */
+  z-index: 1; 
+
+  &::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    z-index: 2;
+    clip-path: polygon(80% 98%, 0% 100%, 100% 100%);
+
+    background-color: #fff;
+  }
 `;
+
+const ArrowButton = styled.button`
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+`;
+
+// Botão da seta anterior
+const PrevButton = styled(ArrowButton)`
+  left: 15px;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+// Botão da seta seguinte
+const NextButton = styled(ArrowButton)`
+  right: 25px;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
 
 const StyledSwiper = styled(Swiper)`
   width: 100%;
   height: 100%;
-  
 
   /* Paginação (Dots) */
   .swiper-pagination {
@@ -177,6 +236,8 @@ const SlideImage = styled.div`
 
 const Home = () => {
     const [loadedImages, setLoadedImages] = useState([]);
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
 
     const location = useLocation();
 
@@ -211,25 +272,41 @@ const Home = () => {
     return (
         <HomeContainer>
             <BackgroundWrapper>
-                <StyledSwiper
-                    modules={[Autoplay, Pagination, EffectFade]}
-                    effect="fade"
-                    autoplay={{ delay: 5000, disableOnInteraction: false }}
-                    loop={true}
-                    pagination={{ clickable: true }}
-                    >
-                    {loadedImages.map((img, index) => (
-                        <SwiperSlide key={index}>
-                        <SlideImage style={{ backgroundImage: `url(${img})` }} />
-                        </SwiperSlide>
-                    ))}
-                </StyledSwiper>
+              <StyledSwiper
+                modules={[Autoplay, Pagination, EffectFade, Navigation]}
+                navigation={{
+                  prevEl: prevRef.current,
+                  nextEl: nextRef.current,
+                }}
+                onBeforeInit={(swiper) => {
+                  // Define as referências para os botões de navegação
+                  swiper.params.navigation.prevEl = prevRef.current;
+                  swiper.params.navigation.nextEl = nextRef.current;
+                }}
+                effect="fade"
+                autoplay={{ delay: 5000, disableOnInteraction: false }}
+                loop={true}
+                pagination={{ clickable: true }}
+              >
+                {loadedImages.map((img, index) => (
+                  <SwiperSlide key={index}>
+                    <SlideImage  style={{ backgroundImage: `url(${img})`, height: "100%", backgroundSize: "cover", backgroundAttachment: "fixed" }} />
+                  </SwiperSlide>
+                ))}
+              </StyledSwiper>
+
+              <PrevButton ref={prevRef}>
+                <SlArrowLeft size={24} color="#fff" />
+              </PrevButton>
+              <NextButton ref={nextRef}>
+                <SlArrowRight size={24} color="#fff" />
+              </NextButton>
             </BackgroundWrapper>
 
             <HomeCenter>
                 <HomeTexts>
                     <div>
-                        <h2 data-aos="fade-up" data-aos-delay="100">O novo conceito de lar é</h2>
+                        <h2 data-aos="fade-up" data-aos-delay="100">O novo <b>conceito de lar</b> é</h2>
                         <h1 data-aos="fade-up" data-aos-delay="400">Fast Homes</h1>
                     </div>
                     <p data-aos="fade-up-right" data-aos-delay="600">

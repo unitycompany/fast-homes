@@ -108,8 +108,6 @@ const HeaderSelect = ({ colorIcon, colorText }) => {
     { label: "N° de pavimentos", field: "N° de pavimentos", submenu: [
         { label: "1 pavimento", value: "1 pavimento" },
         { label: "2 pavimentos", value: "2 pavimentos" },
-        { label: "3 pavimentos", value: "3 pavimentos" },
-        { label: "4 pavimentos", value: "4 pavimentos" },
       ] },
     { label: "N° de quartos", field: "N° de quartos", submenu: [
         { label: "1 quarto", value: "1" },
@@ -163,7 +161,7 @@ const HeaderSelect = ({ colorIcon, colorText }) => {
   return (
     <DropdownContainer>
       <DropdownHeader onClick={() => setIsOpen(!isOpen)} colorText={colorText}>
-        Encontre sua casa
+        Sua casa
         <DropdownArrow isOpen={isOpen} colorIcon={colorIcon}>
           <IoIosArrowDown />
         </DropdownArrow>

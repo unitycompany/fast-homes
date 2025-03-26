@@ -39,7 +39,8 @@ const CatalogoContainer = styled.section`
     transform: translateX(-50%);
     position: relative;
     width: 100%;
-    padding: 40px 0;
+    padding: 10px 0 0 0;
+    border: 1px solid red;
 
     @media (max-width: 768px){
         padding: 5% 0;
@@ -131,7 +132,7 @@ const CatalogoCards = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     align-items: flex-start;
 
     @media (max-width: 768px){
@@ -236,10 +237,7 @@ const Catalogo = () => {
 
                     <CatalogoTop>
                         <h1 data-aos="fade-up-right" data-aos-delay="200">
-                            Nosso  
-                            <a href="/catalogo-de-casas">
-                                Catálogo de casas
-                            </a>
+                            Nosso Catálogo de casas
                         </h1>
 
                         <GlobalButton3
