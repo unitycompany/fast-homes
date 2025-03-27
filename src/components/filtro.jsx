@@ -36,6 +36,8 @@ const FiltroLeft = styled.div`
 const FiltroSelect = styled.div`
     width: 22.5%;
     position: relative;
+    border: 1px solid #00000040;
+    border-radius: 5px;
 
     @media (max-width: 768px) {
         width: 100%;
@@ -48,7 +50,6 @@ const FiltroSelect = styled.div`
         justify-content: space-between;
         padding: 10px 15px;
         cursor: pointer;
-        background-color: #F0F0F0;
         border-radius: 5px;
         user-select: none;
         font-size: 14px;

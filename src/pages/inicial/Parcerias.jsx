@@ -59,7 +59,6 @@ const ParceriasTexts = styled.div`
     }
 
     & > h1 {
-        font-family: var(--font--aboreto);
         display: flex;
         align-items: center;
         gap: 10px;

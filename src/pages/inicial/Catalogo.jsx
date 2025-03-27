@@ -40,7 +40,7 @@ const CatalogoContainer = styled.section`
     position: relative;
     width: 100%;
     padding: 10px 0 0 0;
-    border: 1px solid red;
+    
 
     @media (max-width: 768px){
         padding: 5% 0;
@@ -92,35 +92,22 @@ const CatalogoTop = styled.div`
 
 
     & > h1 {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
         gap: 5px;
+        font-weight: 400;
         font-size: 35px;
-        font-family: var(--font--aboreto);
         line-height: 100%;
+        
+        & b {
+            font-weight: 500;
+            color: transparent;
+            background: linear-gradient(90deg, #576628, #B05216, #603813, #1d1b1d);
+            -webkit-background-clip: text;
+        }
 
         @media (max-width: 768px){
             text-align: left;
             display: none;
             font-size: 30px;
-        }
-
-        & > a {
-            color: var(--color--green--very--low);
-            border-bottom: 1px solid var(--color--green--very--low);
-            transition: all .4s ease;
-
-            @media (max-width: 768px){
-                border: none;
-                margin-left: 5px;
-            }    
-
-            &:hover {
-                color: var(--color--green--medium);
-                cursor: pointer;
-                transform: scale(0.98);
-            }
         }
     }
 `
@@ -200,8 +187,8 @@ const Catalogo = () => {
                             <CardCatalogo
                                 titulo={casa.nome}
                                 area={casa.area}
-                                largura={casa.largura}
-                                lote={casa.lote}
+                                quartos={casa.quartos}
+                                banheiros={casa.banheiros}
                                 imagem={casa.imagem}
                             />
                             </SwiperSlide>
@@ -215,8 +202,8 @@ const Catalogo = () => {
                                 key={casa.id}
                                 titulo={casa.nome}
                                 area={casa.area}
-                                largura={casa.largura}
-                                lote={casa.lote}
+                                quartos={casa.quartos}
+                                banheiros={casa.banheiros}
                                 imagem={casa.imagem}
                                 slug={casa.slug}
                             />
@@ -225,8 +212,8 @@ const Catalogo = () => {
                                 key={casa.id}
                                 titulo={casa.nome}
                                 area={casa.area}
-                                largura={casa.largura}
-                                lote={casa.lote}
+                                quartos={casa.quartos}
+                                banheiros={casa.banheiros}
                                 imagem={casa.imagem}
                                 slug={casa.slug}
                             />
@@ -237,7 +224,7 @@ const Catalogo = () => {
 
                     <CatalogoTop>
                         <h1 data-aos="fade-up-right" data-aos-delay="200">
-                            Nosso Catálogo de casas
+                            Nosso <b>catálogo de casas</b>
                         </h1>
 
                         <GlobalButton3

@@ -9,7 +9,7 @@ import Carrossel from "./carrossel";
 
 const Container = styled.div`
   width: 100%;
-  height: 5vh;
+  height: 6vh;
   display: flex;
   gap: 20px;
   align-items: center;

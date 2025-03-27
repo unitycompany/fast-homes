@@ -2,10 +2,10 @@ import React from "react";
 import Home from "./home";
 import Catalogo from "./Catalogo";
 import Faixa from "../../components/faixa";
-import Sobre from "./Sobre";
 import Parcerias from "./Parcerias";
-
-
+import Trajetoria from "./Trajetoria";
+import Financiamento from "./Financiamento";
+import SobreNos from "./SobreNos";
 
 const PaginaInicial = () => {
     return (
@@ -13,10 +13,12 @@ const PaginaInicial = () => {
             <Home />
                 <Catalogo />
                     <Faixa categoria="interiores"/>
-                        <Sobre />
-                            <Faixa categoria="interiores"/>
-                                <Parcerias />
-                                    <Faixa categoria="interiores"/>
+                        <Trajetoria />
+                            <Financiamento />
+                                <Faixa categoria="interiores"/>
+                                    <SobreNos />
+                                        <Parcerias />
+                                            <Faixa categoria="interiores"/>
         </>
     );
 };

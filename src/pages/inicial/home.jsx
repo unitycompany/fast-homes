@@ -31,7 +31,7 @@ const HomeContainer = styled.section`
     border-image: fill 0 linear-gradient(45deg, #000000, #0000);
 
     @media (max-width: 768px){
-        padding: 30% 0 5% 0;
+        padding: 30% 0 10% 0;
     }
 `;
 
@@ -88,7 +88,7 @@ const HomeTexts = styled.div`
             }
 
             @media (max-width: 768px){
-                font-size: 20px;
+                font-size: 16px;
             }
         }
 
@@ -157,6 +157,10 @@ const ArrowButton = styled.button`
   align-items: center;
   justify-content: center;
   opacity: 0.6;
+
+  @media (max-width: 768px){
+    top: 30%;
+  }
 `;
 
 // Botão da seta anterior
@@ -171,7 +175,7 @@ const PrevButton = styled(ArrowButton)`
 
 // Botão da seta seguinte
 const NextButton = styled(ArrowButton)`
-  right: 25px;
+  right: 15px;
   transition: all .2s ease-in-out;
 
   &:hover {

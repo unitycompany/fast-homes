@@ -47,7 +47,6 @@ const FormText = styled.div`
 
     & > h1 {
         font-size: 35px;
-        font-family: var(--font--aboreto);
 
         @media (max-width: 768px){
             line-height: 120%;
