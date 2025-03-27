@@ -16,7 +16,7 @@ const Content = styled.div`
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    overflow: hidden;
+    overflow: hidden!important;
 
     @media (max-width: 768px){
         gap: 50px;

@@ -23,7 +23,7 @@ const HomeContainer = styled.section`
     align-items: flex-end;
     justify-content: center;
     position: relative;
-    overflow: hidden;
+    overflow: hidden!important;
     font-family: "Montserrat", serif;
     background-position: center;
     background-size: cover;

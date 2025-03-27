@@ -15,6 +15,7 @@ const Content = styled.div`
     left: 50%;
     top: 0;
     transform: translateX(-50%);
+    overflow-x: hidden;
 
     @media (max-width: 768px){
         flex-direction: column;
@@ -28,9 +29,9 @@ const Background = styled.div`
     position: absolute;
     height: 60%;
     bottom: 0;
-    background-color: #f5f5f5;
+    background-color: #fafafa;
     z-index: -1;
-    border-top: 2px solid #00000010;
+    border-top: 1px solid #00000005;
 
     @media (max-width: 768px){
         left: 0;
