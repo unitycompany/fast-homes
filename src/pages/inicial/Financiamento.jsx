@@ -18,6 +18,7 @@ const Content = styled.div`
     color: #000;
     min-height: 100vh;
     z-index: 1;
+    overflow: hidden;
 
     @media (max-width: 768px){
         flex-direction: column;

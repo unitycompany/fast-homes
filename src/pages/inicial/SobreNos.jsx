@@ -28,7 +28,6 @@ const Background = styled.div`
     position: absolute;
     height: 60%;
     bottom: 0;
-    left: -50%;
     background-color: #f5f5f5;
     z-index: -1;
     border-top: 2px solid #00000010;
