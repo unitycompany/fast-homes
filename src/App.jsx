@@ -15,6 +15,7 @@ import PaginaCatalogo from "./pages/catalogo/Inicial";
 import PaginaSobre from "./pages/sobre/Inicial";
 import PaginaProjeto from "./pages/projetos/Inicial";
 import LandingPage from "./pages/catalogo/lp/LandingPage";
+import PaginaModular from "./pages/Modular/Inicial";
 
 import Privacidade from "./pages/politicas/Privacidade";
 import Termos from "./pages/politicas/Termos";
@@ -67,6 +68,7 @@ const AppContent = () => {
             <Route path="/" element={<PaginaInicial />} />
             <Route path="/catalogo-de-casas" element={<PaginaCatalogo />} />
             <Route path="/sobre-nos" element={<PaginaSobre />} />
+            <Route path="/modular" element={<PaginaModular />} />
             <Route path="/projetos-personalizados" element={<PaginaProjeto />} />
             <Route path="/catalogo-de-casas/:slug" element={<LandingPage />} />
             <Route path="/termos-e-condicoes" element={<Termos />} />

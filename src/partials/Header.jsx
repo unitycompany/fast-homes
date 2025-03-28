@@ -367,8 +367,8 @@ const Header = () => {
                                 Seu projeto
                             </li>
                             <li 
-                                onClick={() => navigate("/financiamento")} 
-                                className={location.pathname === "/financiamento" ? "active" : ""}
+                                onClick={() => navigate("/#financiamento")} 
+                                className={location.pathname === "/#financiamento" ? "active" : ""}
                             >
                                 Financiamento
                             </li>

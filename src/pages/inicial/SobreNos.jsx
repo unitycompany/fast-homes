@@ -27,7 +27,7 @@ const Content = styled.div`
 const Background = styled.div`
     width: 100vw;
     position: absolute;
-    height: 60%;
+    height: 55%;
     bottom: 0;
     background-color: #fafafa;
     z-index: -1;
@@ -53,7 +53,7 @@ const Left = styled.div`
     }
 
     & img {
-        height: 400px;
+        height: 500px;
         object-fit: cover;
         border-radius: 20px;
         border: 5px solid #fff;
