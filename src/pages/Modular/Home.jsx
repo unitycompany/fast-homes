@@ -10,7 +10,7 @@ const Content = styled.section`
     justify-content: center;
     flex-direction: column;
     gap: 50px;
-    padding: 7.5% 5% 5% 5%;
+    padding: 10% 5% 0% 5%;
 `
 
 const Top = styled.div`
@@ -23,11 +23,11 @@ const Top = styled.div`
 
     & h1 {
         font-size: 36px;
-        font-weight: 400;
+        font-weight: 300;
         line-height: 100%;
          
         & b {
-            font-weight: 600;
+            font-weight: 500;
             color: transparent;
             background: linear-gradient(90deg, #576628, #B05216, #603813, #1d1b1d);
             -webkit-background-clip: text;

@@ -8,7 +8,7 @@ const Content = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5% 2.5%;
+    padding: 5% 5%;
     position: relative;
     gap: 80px;
     top: 0;

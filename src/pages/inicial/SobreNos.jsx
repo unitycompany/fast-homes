@@ -5,7 +5,7 @@ import GlobalButton2 from "../../components/buttons/GlobalButton2";
 const Content = styled.div`
     width: 100%;
     max-width: 1280px;
-    padding: 7.5% 2.5% 5% 2.5%;
+    padding: 7.5% 5% 5% 5%;
     position: relative;
     display: flex;
     align-items: flex-end;

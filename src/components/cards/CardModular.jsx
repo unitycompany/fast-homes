@@ -24,7 +24,7 @@ const Card = styled.div`
     gap: 20px;
     position: relative;
     overflow: hidden;
-    box-shadow: 5px 5px 15px #4d561514;
+    border: 1px solid #00000020;
     
     &::before{
         content: '';
@@ -43,14 +43,14 @@ const Card = styled.div`
     }
 
     & svg {
-        width: 40px;
+        width: 30px;
         height: auto;
-        fill: #4D5615;
+        fill: #000000;
     }
 
     & p {
         font-size: 18px;
-        color: #4D5615;
+        color: #000000;
         line-height: 120%;
     }
 `

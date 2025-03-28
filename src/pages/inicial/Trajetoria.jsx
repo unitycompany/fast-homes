@@ -8,7 +8,7 @@ const Content = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 90px;
-    padding: 5% 2.5%;
+    padding: 5% 5%;
     max-width: 1280px;
     position: relative;
     width: 100%;
