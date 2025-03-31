@@ -244,7 +244,13 @@ const Home = () => {
             <h1 data-aos="fade-up" data-aos-delay="100">Conheça nosso <b>catálogo de casas</b></h1>
             <p data-aos="fade-up" data-aos-delay="300">Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos</p>
 
-            <Filtro onSearch={aplicarFiltro} hasSearched={hasSearched} />
+            <Filtro
+                cards={cards}
+                onSearch={aplicarFiltro}
+                hasSearched={hasSearched}
+                onClearFilters={limparFiltro}
+                />
+
 
             {loading ? (
                 <LoadingSpinner />

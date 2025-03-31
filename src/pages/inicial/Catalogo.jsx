@@ -240,9 +240,6 @@ const Catalogo = () => {
 
                     </CatalogoTop>
                 </CatalogoItems>
-                
-                
-
             </CatalogoContainer>
         </>
     )
