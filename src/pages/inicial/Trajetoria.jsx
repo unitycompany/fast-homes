@@ -116,21 +116,21 @@ const Button = styled.div`
 
 `
 
-
 const Trajetoria = () => {
     return(
         <>
             
             <Content>
                 <Top>
-                    <h1>Como será sua <b>trajetória para ter sua casa?</b></h1>
-                    <p>
+                    <h1 data-aos="fade-up" data-aos-delay="100">Como será sua <b>trajetória para ter sua casa?</b></h1>
+                    <p data-aos="fade-up" data-aos-delay="300">
                     O processo irá depender de vários fatores, porém abaixo é apenas uma forma de você enxergar como será a parte do processo
                     </p>
                 </Top>
 
                 <Cards>
-                    <CardTrajetoria 
+                    <CardTrajetoria
+                        animateDelay="50"
                         color="#576628"
                         numero="1"
                         assunto="Conversa"
@@ -138,13 +138,15 @@ const Trajetoria = () => {
                     />
 
                     <CardTrajetoria 
+                        animateDelay="200"
                         color="#B05216"
                         numero="2"
                         assunto="Pagamento"
                         descricao="Descrição sobre como irá funcionar a etapa, bem objetivo e claro, sem muita enrolação"
                     />
 
-                    <CardTrajetoria 
+                    <CardTrajetoria
+                        animateDelay="350"
                         color="#603813"
                         numero="3"
                         assunto="Entrega"
@@ -152,13 +154,14 @@ const Trajetoria = () => {
                     />
 
                     <CardTrajetoria 
+                        animateDelay="500"
                         color="#1d1b1d"
                         numero="4"
                         assunto="Feedback"
                         descricao="Descrição sobre como irá funcionar a etapa, bem objetivo e claro, sem muita enrolação"
                     />
                 </Cards>
-                <Button>
+                <Button data-aos="fade-up" data-aos-delay="100">
                     <GlobalButton3
                             text="Falar com um consultor"
                             background1="transparent"

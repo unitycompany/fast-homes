@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import Home from "./Home";
-import HouseModel from "../../components/render";
-import Texts from "./Texts";
 import CardProjeto from "../../components/cards/CardProjetos";
 
 const Projetos = styled.div`
@@ -36,8 +34,6 @@ const PaginaCatalogo = () => {
                         itemDirection={true}
                     />
                 </Projetos>
-                    {/* <HouseModel /> */}
-                            <Texts />
         </>
     )
 }

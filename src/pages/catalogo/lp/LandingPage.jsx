@@ -103,7 +103,7 @@ const LandingPage = () => {
     return (
         <>
             <PacoteCompleto />
-            <Name nomeDaCasa={dados.nome} descricaoDaCasa={dados.descricao} />
+            <Name nome={dados.nome} descricao={dados.descricao} />
             <Home 
                 imagens={[dados.imagem, dados.imagemDois]} 
                 area={dados.area} 
@@ -114,7 +114,7 @@ const LandingPage = () => {
                 banheiros={dados.banheiros} 
                 garagem={dados.garagem} 
                 churrasqueira={dados.churrasqueira} 
-                piscina={dados.piscina} 
+                pavimentos={dados.pavimentos} 
             />
             {dados.dobra2 && <Dobra2 title1={dados.dobra2?.title1} descricao={dados.dobra2?.descricao} imagens={dados.dobra2?.carrossel} area={dados.area} />}
             {dados.dobra3 && <Dobra3 title={dados.dobra3?.title} descricao={dados.dobra3?.descricao} 

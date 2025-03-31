@@ -85,10 +85,10 @@ const Content = styled.div`
     }
 `
 
-const CardTrajetoria = ({ numero, assunto, descricao, color }) => {
+const CardTrajetoria = ({ numero, assunto, descricao, color, animateDelay }) => {
     return(
         <>
-            <Card>
+            <Card data-aos="fade-right" data-aos-delay={animateDelay}>
                 <Top color={color}>
                     <span>{numero}</span>
                 </Top>

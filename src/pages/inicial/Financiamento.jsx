@@ -197,24 +197,24 @@ const Financiamento = (  ) => {
     return (
         <>
             <Content id="financiamento">
-                <Left>
+                <Left data-aos="fade-up" data-aos-delay="100">
                     <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/dddba69f-9274-4622-53cc-e397bf590900/public" alt="" loading="lazy" />
                 </Left>
 
                 <Right>
                     <Texts>
-                        <h1>Sua casa <b>pode ser financiada</b></h1>
-                        <p>O processo irá depender de vários fatores, porém abaixo é apenas uma forma de você enxergar como será a parte do processo, O processo irá depender de vários fatores, porém abaixo é apenas uma forma de você enxergar como será a parte do processo </p>
+                        <h1 data-aos="fade-up" data-aos-delay="0">Sua casa <b>pode ser financiada</b></h1>
+                        <p data-aos="fade-up" data-aos-delay="100">O processo irá depender de vários fatores, porém abaixo é apenas uma forma de você enxergar como será a parte do processo, O processo irá depender de vários fatores, porém abaixo é apenas uma forma de você enxergar como será a parte do processo </p>
                     </Texts>
                     <Cards>
-                        <Card>
+                        <Card data-aos="fade-up" data-aos-delay="100">
                             <div>
                                 <h2>Titulo sobre algo</h2>
                                 <p>O processo irá depender de vários fatores, porém abaixo é apenas uma forma de você enxergar como será a parte do processo. </p>
                             </div>
                         </Card>
 
-                        <Card>
+                        <Card data-aos="fade-up" data-aos-delay="300">
                             <div>
                                 <h2>Titulo sobre algo</h2>
                                 <p>O processo irá depender de vários fatores, porém abaixo é apenas uma forma de você enxergar como será a parte do processo. </p>

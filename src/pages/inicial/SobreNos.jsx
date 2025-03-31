@@ -15,7 +15,7 @@ const Content = styled.div`
     left: 50%;
     top: 0;
     transform: translateX(-50%);
-    overflow-x: hidden;
+    overflow: hidden;
 
     @media (max-width: 768px){
         flex-direction: column;
@@ -175,9 +175,9 @@ const SobreNos = () => {
             <Content>
                 <Background></Background>
                 <Left>
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/dddba69f-9274-4622-53cc-e397bf590900/public" alt="" loading="lazy" />
+                    <img data-aos="zoom-in" data-aos-delay="0" src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/dddba69f-9274-4622-53cc-e397bf590900/public" alt="" loading="lazy" />
                     <Cards>
-                        <Card>
+                        <Card data-aos="fade-up" data-aos-delay="100">
                             <div>
                                 <svg id="fi_3388524" enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path d="m18.5 24h-16c-1.378 0-2.5-1.122-2.5-2.5v-16c0-1.378 1.122-2.5 2.5-2.5h12.5c.276 0 .5.224.5.5s-.224.5-.5.5h-12.5c-.827 0-1.5.673-1.5 1.5v16c0 .827.673 1.5 1.5 1.5h16c.827 0 1.5-.673 1.5-1.5v-8.5c0-.276.224-.5.5-.5s.5.224.5.5v8.5c0 1.378-1.122 2.5-2.5 2.5z"></path></g><g><path d="m12.5 15.25c-.128 0-.256-.049-.354-.146l-4.5-4.5c-.195-.195-.195-.512 0-.707s.512-.195.707 0l4.146 4.146 10.647-10.647c.195-.195.512-.195.707 0s.195.512 0 .707l-11 11c-.097.098-.225.147-.353.147z"></path></g></svg>
                             </div>
@@ -187,7 +187,7 @@ const SobreNos = () => {
                             </div>
                         </Card>
 
-                        <Card>
+                        <Card data-aos="fade-up" data-aos-delay="200">
                             <div>
                                 <svg id="fi_3388524" enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path d="m18.5 24h-16c-1.378 0-2.5-1.122-2.5-2.5v-16c0-1.378 1.122-2.5 2.5-2.5h12.5c.276 0 .5.224.5.5s-.224.5-.5.5h-12.5c-.827 0-1.5.673-1.5 1.5v16c0 .827.673 1.5 1.5 1.5h16c.827 0 1.5-.673 1.5-1.5v-8.5c0-.276.224-.5.5-.5s.5.224.5.5v8.5c0 1.378-1.122 2.5-2.5 2.5z"></path></g><g><path d="m12.5 15.25c-.128 0-.256-.049-.354-.146l-4.5-4.5c-.195-.195-.195-.512 0-.707s.512-.195.707 0l4.146 4.146 10.647-10.647c.195-.195.512-.195.707 0s.195.512 0 .707l-11 11c-.097.098-.225.147-.353.147z"></path></g></svg>
                             </div>
@@ -199,9 +199,9 @@ const SobreNos = () => {
                     </Cards>
                 </Left>
                 <Right>
-                    <h6>Conheça a gente</h6>
-                    <h1>A Fast Homes <b>o futuro</b> está aqui!</h1>
-                    <p>
+                    <h6 data-aos="zoom-in" data-aos-delay="50">Conheça a gente</h6>
+                    <h1 data-aos="fade-up" data-aos-delay="150">A Fast Homes <b>o futuro</b> está aqui!</h1>
+                    <p data-aos="fade-up" data-aos-delay="200">
                         O processo irá depender de vários fatores, porém abaixo é apenas uma forma de você enxergar como será a parte do processo, O processo irá depender de vários fatores, porém abaixo é apenas uma forma de você enxergar como será a parte do processo
                     </p>
                     <GlobalButton2

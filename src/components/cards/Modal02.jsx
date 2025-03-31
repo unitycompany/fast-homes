@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsCheckLg, BsX } from "react-icons/bs";
 import styled from "styled-components";
 
 const Background = styled.div`
     width: 100%;
     height: 100vh;
-    z-index: 99998;
+    z-index: 99998!important;
     position: fixed;
     display: ${({ visivel }) => (visivel ? "block" : "none")};
-`
+    background: rgba(0, 0, 0, 0.5);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+`;
 
 const Content = styled.div`
     position: fixed;
     width: 850px;
-    height: 600px;
+    height: 500px;
     left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    top: 40%;
+    transform: translate(-50%, -50%);
     z-index: 99999;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -27,7 +31,7 @@ const Content = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-`
+`;
 
 const Top = styled.div`
     display: flex;
@@ -59,7 +63,7 @@ const Top = styled.div`
             transform: scale(0.95) rotate(360deg);
         }
     }
-`
+`;
 
 const Center = styled.div`
     width: 100%;
@@ -70,7 +74,7 @@ const Center = styled.div`
     justify-content: flex-start;
     gap: 20px;
     flex-direction: column;
-`
+`;
 
 const Option = styled.div`
     display: flex;
@@ -131,9 +135,22 @@ const Option = styled.div`
         width: 95%;
         margin-top: -10px;
     }
-`
+`;
 
 const PacoteBasico = ({ visivel, fechar }) => {
+
+    useEffect(() => {
+        if (visivel) {
+            // Bloqueia o scroll e evita interação com o restante da página
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [visivel]);
+
     return (
         <>
             <Background visivel={visivel} onClick={fechar}></Background>

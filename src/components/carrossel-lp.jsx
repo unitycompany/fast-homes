@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import styled from "styled-components";
@@ -26,30 +26,35 @@ const NavButton = styled.div`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 100!important;
+  z-index: 100 !important;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 20px;
   color: #fff;
   background: rgba(0, 0, 0, 0.5);
   padding: 10px;
   border-radius: 50%;
   user-select: none;
   transition: 0.3s;
-  fill: #000;
-  
+
+  /* Removendo o pseudo-elemento padrão do Swiper */
+  &::after {
+    display: none;
+  }
+
   &:hover {
     background: rgba(0, 0, 0, 0.8);
   }
 
   &.swiper-button-prev {
-    left: -40px;
-    display: none;
+    left: 20px;
+    width: auto;
   }
   &.swiper-button-next {
-    right: -40px;
-    display: none;
+    right: 20px;
+    width: auto;
   }
 `;
+
 
 
 const CarrosselLP = ({ images, width, height }) => {

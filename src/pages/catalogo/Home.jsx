@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 
 const HomeContent = styled.div`
     height: auto;
-    padding-top: 12%;
+    padding-top: 7.5%;
     width: 100%;
     max-width: 1280px;
     display: flex;
@@ -16,20 +16,48 @@ const HomeContent = styled.div`
     justify-content: center;
     font-family: var(--font--montserrat);
     flex-direction: column;
-    gap: 40px;
+    gap: 25px;
     left: 50%;
     position: relative;
     top: 0;
     transform: translateX(-50%);
+    position: relative;
+    overflow: hidden;
+
+    &::before{
+        content: '';
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 75%;
+        z-index: -1;
+        transform: scale(1) translateX(30px);
+        opacity: 0.02;
+        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5747517e-c1c9-4ad6-3cbe-0dcb2e775e00/public');
+        background-position: left;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
 
     & h1 {
         font-size: 32px;
-        font-family: var(--font--aboreto);
+        font-weight: 300;
+        line-height: 100%;
+        padding: 20px 0;
+
+        & b {
+            font-weight: 500;
+            color: transparent;
+            background: linear-gradient(90deg, #576628, #B05216, #603813, #1d1b1d);
+            -webkit-background-clip: text;
+        }
     }
 
     & p {
         margin-top: -30px;
-        width: 60%;
+        width: 40%;
+        line-height: 120%;
         text-align: center;
     }
 
@@ -199,7 +227,7 @@ const Home = () => {
 
     return (
         <HomeContent>
-            <h1 data-aos="fade-up" data-aos-delay="100">Conheça nosso catálogo de casas</h1>
+            <h1 data-aos="fade-up" data-aos-delay="100">Conheça nosso <b>catálogo de casas</b></h1>
             <p data-aos="fade-up" data-aos-delay="300">Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos</p>
 
             <Filtro onSearch={aplicarFiltro} hasSearched={hasSearched} />

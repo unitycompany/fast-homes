@@ -106,6 +106,25 @@ const FooterCard = styled.div`
         }
     }
 
+    & > p {
+      color: #fff;
+      font-size: 14px;
+      opacity: 0.7;
+      position: relative;
+      padding-left: 10px;
+
+      &::before{
+        content: '';
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        opacity: 0.7;
+      }
+    }
+
     & > img {
         width: 250px;
         padding-bottom: 10px;
@@ -499,6 +518,9 @@ const Footer = () => {
             <a href="#">
               Solicite um orçamento
             </a>
+            <p>
+              Av. Roberto Silveira, 251 - Centro, Miguel Pereira - RJ, 26900-000
+            </p>
           </FooterCard>
   
           <FooterCard data-aos="fade-up" data-aos-delay="200">

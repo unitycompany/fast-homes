@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const CardContainer = styled.div`
     width: 550px;
+    max-width: 49%;
     height: 250px;
     display: flex;
     align-items: flex-start;
@@ -43,6 +44,11 @@ const CardImage = styled.div`
         height: 100%;
         object-fit: cover;
         border-radius: 10px;
+        transition: all .2s linear;
+
+        &:hover {
+            filter: brightness(110%) contrast(110%);
+        }
     }
 `
 
@@ -104,25 +110,46 @@ const CardText = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 5px;
         cursor: pointer;
-        transition: all .3s ease;
+        transition: all .2s linear;
         font-weight: 400;
+        position: relative;
+        border-radius: 10px;
+
+        &::before{
+            content: '';
+            width: 0;
+            height: 110%;
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            background-color: var(--color--black);
+            border-radius: 10px;
+            transition: all .2s ease-in-out;
+            z-index: -1;
+        }
 
         &:hover {
-            color: var(--color--black);
+            color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        &:hover::before {
+            width: 110%;
+            font-weight: 400;
         }
 
         &:hover > svg {
-            fill: var(--color--black);
-            transform: rotate(0);
+            fill: #fff;
+            transform: rotate(-45deg);
         }
 
         & > svg {
             font-size: 22px;
-            transform: rotate(-45deg);
+            transform: rotate(0deg);
             fill: var(--color--black);
-            transition: all .3s ease;
+            transition: all .2s ease-in-out;
         }
     }
 `
@@ -149,6 +176,12 @@ const CardInfo = styled.div`
 
         & svg {
             width: 45px;
+            transition: all .1s ease-in-out;
+
+            &:hover {
+                fill: var(--color--brown--low);
+                transform: scale(0.95) translateY(-2px);
+            }
         }
 
         & span {
@@ -215,7 +248,7 @@ const CardCatalogo = ({ titulo, area, quartos, banheiros, imagem, slug }) => {
                         </CardInfo>
                     </CardInfos>
                     <button onClick={handleClick}>
-                        Conhecer mais
+                        Conhecer casa
                         <BsArrowRightShort />
                     </button>
                 </CardText>

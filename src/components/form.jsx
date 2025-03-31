@@ -485,20 +485,11 @@ const Form = () => {
             <BsArrowDown />
           </FormPlaceholder>
           <FormOptions isOpen={isOpenSelect}>
-            {["Construtor", "Arquiteto", "Empresario", "Engenheiro"].map((option) => (
+            {["Construtor/Investidor", "Arquiteto/Engenheiro", "Cliente Final", "Outro"].map((option) => (
               <div key={option} onClick={() => handleSelectOption(option)}>
                 <span>{option}</span>
               </div>
             ))}
-            <div>
-              <span>Outro:</span>
-              <input
-                type="text"
-                id="tipoCliente"
-                placeholder="Digite qual"
-                onBlur={(e) => handleSelectOption(e.target.value)}
-              />
-            </div>
           </FormOptions>
         </FormSelect>
         <button type="submit" data-aos="fade-up" data-aos-delay="800" disabled={loading}>

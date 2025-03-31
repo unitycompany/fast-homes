@@ -6,7 +6,6 @@ import Parcerias from "./Parcerias";
 import Trajetoria from "./Trajetoria";
 import Financiamento from "./Financiamento";
 import SobreNos from "./SobreNos";
-import styled from "styled-components";
 
 const PaginaInicial = () => {
     return (
