@@ -190,6 +190,7 @@ const Catalogo = () => {
                                 quartos={casa.quartos}
                                 banheiros={casa.banheiros}
                                 imagem={casa.imagem}
+                                slug={casa.slug}  // Adicione essa linha
                             />
                             </SwiperSlide>
                         ))}
@@ -221,6 +222,7 @@ const Catalogo = () => {
                         )}
                         </CatalogoCards>
                     )}
+
 
                     <CatalogoTop>
                         <h1 data-aos="fade-up-right" data-aos-delay="200">

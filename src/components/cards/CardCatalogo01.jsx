@@ -117,6 +117,12 @@ const CardText = styled.div`
         font-weight: 400;
         position: relative;
         border-radius: 10px;
+        z-index: 10;
+
+        @media (max-width: 768px){
+            z-index: 10!important;
+        }
+
 
         &::before{
             content: '';
@@ -205,11 +211,12 @@ const CardCatalogo = ({ titulo, area, quartos, banheiros, imagem, slug }) => {
 
     const handleClick = () => {
         if (!slug) {
-            console.error(`❌ Erro: slug indefinido para a casa ${nome}`);
+            console.error(`❌ Erro: slug indefinido para a casa ${titulo}`);
             return;
         }
         navigate(`/catalogo-de-casas/${slug}`);
     };
+    
 
     return (
         <>
