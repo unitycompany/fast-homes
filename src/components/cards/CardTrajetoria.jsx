@@ -16,7 +16,7 @@ const Card = styled.div`
     position: relative;
     border-radius: 20px;
     background-color: #fff;
-    transition: all .1250s ease-in-out;
+    transition: all .1250s ease-in-out!important;
 
     @media (max-width: 768px){
         width: 100%;
@@ -25,7 +25,7 @@ const Card = styled.div`
 
     &:hover {
         border-color: ${({color}) => color ? `${color}` : "#000" };
-        transform: translateY(-5px);
+        transform: translateY(-5px)!important;
 
         @media (max-width: 768px){
             transform: translateY(0);
@@ -70,13 +70,34 @@ const Content = styled.div`
         gap: 10px;
         font-size: 12px;
         transition: all .1250s ease-in-out;
+        position: relative;
+        border-radius: 10px;
+        cursor: pointer;
 
-        & svg {
-            transition: all .1250s ease-in-out;
+        &::before{
+            content: '';
+            width: 0;
+            height: 110%;
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            background-color: var(--color--black);
+            border-radius: 10px;
+            transition: all .2s ease-in-out;
+            z-index: -1;
         }
 
         &:hover {
-            color: ${({color}) => color ? `${color}` : "#000" };
+            color: #fff;
+        }
+
+        &:hover::before {
+            width: 110%;
+            font-weight: 400;
+        }
+
+        & svg {
+            transition: all .1250s ease-in-out;
         }
 
         &:hover svg {

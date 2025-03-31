@@ -162,6 +162,27 @@ const Card = styled.div`
     align-items: center;
     justify-content: center;
     gap: 20px;
+    transition: all .4s linear;
+    position: relative;
+
+    &::before{
+        content: '';
+        width: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #f9f9f9;
+        transition: all .2s linear;
+        z-index: -1;
+        border-radius: 10px;
+
+    }
+
+    &:hover::before {
+        width: 100%;
+        cursor: default;
+    }
 
     & div {
         display: flex;

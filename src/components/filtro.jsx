@@ -64,7 +64,7 @@ const FiltroOption = styled.div`
     margin-top: 10px;
     display: ${({ open }) => (open ? "flex" : "none")};
     flex-direction: column;
-    background: white;
+    background: #fff;
     z-index: 10;
     font-size: 14px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -93,11 +93,12 @@ const FiltroRight = styled.div`
         color: #fff;
         border-radius: 5px;
         cursor: pointer;
-        transition: all 0.2s ease-out;
+        transition: all 0.1s;
         text-transform: uppercase;
 
         &:hover {
             transform: scale(0.98);
+            background-color: #252525;
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
         }
     }
