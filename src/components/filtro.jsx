@@ -292,7 +292,6 @@ const Filtro = ({
               value && (
                 <FilterBadge key={key}>
                   <b>{key}</b>: {value}
-                  <RemoveIcon onClick={() => removeFilter(key)}>✕</RemoveIcon>
                 </FilterBadge>
               )
           )}
