@@ -348,7 +348,7 @@ const Header = () => {
                     <HeaderImage>
                         <button onClick={() => navigate('/')}> 
                             <img 
-                                src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/3d1440c5-f0d7-41e3-953e-64662df60e00/public" 
+                                src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6c41ef7f-d25f-46fc-305c-613f704db300/public" 
                                 alt="logo-fast-homes" 
                             />
                         </button>
