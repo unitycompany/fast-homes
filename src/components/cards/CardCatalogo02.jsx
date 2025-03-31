@@ -20,6 +20,7 @@ const CardContainer = styled.div`
         flex-direction: column;
         width: 100%;
         height: 500px;
+        max-width: 100%;
     }
 
 

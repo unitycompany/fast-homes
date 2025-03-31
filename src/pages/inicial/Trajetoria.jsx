@@ -170,7 +170,7 @@ const Trajetoria = () => {
                             colorText="#000"
                             border1="#000"
                             border2="#000"
-                            to="/catalogo-de-casas"
+                            to="/#form"
                     />
                 </Button>
                 

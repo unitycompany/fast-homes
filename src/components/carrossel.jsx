@@ -53,6 +53,7 @@ const Container = styled.div`
 
     button {
       position: absolute;
+      bottom: 0;
       color: #fff;
       background-color: rgba(0, 0, 0, 0.4);
       padding: 8px 10px;
@@ -62,14 +63,20 @@ const Container = styled.div`
       transition: all 0.4s ease-in-out;
       transform: scale(0);
       cursor: pointer;
+
+      &:hover {
+        background-color: #fff;
+        color: #000;
+      }
     }
 
     &:hover img {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
 
     &:hover button {
-      transform: scale(1);
+      bottom: 50%;
+      transform: scale(1) translateY(50%);
     }
 
     span {

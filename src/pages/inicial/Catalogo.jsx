@@ -54,9 +54,9 @@ const CatalogoBackground = styled.div`
     position: absolute;
     background-color: #fff;
 
-    --gap: 10em;
+    --gap: 2em;
     --line: 1px;
-    --color: rgba(0, 0, 0, 0.05);
+    --color: rgba(0, 0, 0, 0.03);
     z-index: -2;
 
     background-image: linear-gradient(

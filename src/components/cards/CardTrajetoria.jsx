@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { MdArrowOutward } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const Card = styled.div`
     border: 1px solid #00000050;
@@ -107,6 +109,8 @@ const Content = styled.div`
 `
 
 const CardTrajetoria = ({ numero, assunto, descricao, color, animateDelay }) => {
+    const navigate = useNavigate();
+
     return(
         <>
             <Card data-aos="fade-right" data-aos-delay={animateDelay}>
@@ -116,7 +120,7 @@ const CardTrajetoria = ({ numero, assunto, descricao, color, animateDelay }) => 
                 <Content color={color}>
                     <h1>{assunto}</h1>
                     <p>{descricao}</p>
-                    <button>
+                    <button onClick={() => navigate('/#form')}>
                         Falar com um consultor <MdArrowOutward />
                     </button>
                 </Content>
