@@ -3,21 +3,6 @@ import styled from "styled-components";
 import { FormControl, InputLabel, Select, MenuItem, Button } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 
-// Modal customizável – os estilos podem ser sobrescritos via prop modalConfig
-const ModalWrapper = styled.div`
-  position: fixed;
-  top: ${(props) => props.top || "10%"};
-  left: ${(props) => props.left || "50%"};
-  transform: translateX(-50%);
-  background: ${(props) => props.background || "#fff"};
-  width: ${(props) => props.width || "50%"};
-  padding: ${(props) => props.padding || "20px"};
-  border-radius: ${(props) => props.borderRadius || "8px"};
-  box-shadow: ${(props) => props.boxShadow || "0 0 10px rgba(0,0,0,0.3)"};
-  z-index: ${(props) => props.zIndex || "10000"};
-  text-align: ${(props) => props.textAlign || "center"};
-`;
-
 // Container principal para o filtro
 const FiltroContainer = styled.div`
   width: 100%;
@@ -49,6 +34,10 @@ const FiltroTop = styled.div`
   justify-content: space-between;
   gap: 10px;
   flex-wrap: nowrap;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
 `;
 
 // Área dos selects (lado esquerdo)
@@ -58,6 +47,10 @@ const FiltroLeft = styled.div`
   gap: 10px;
   flex-wrap: nowrap;
   flex: 1;
+
+  @media (max-width: 768px){
+    flex-direction: column;
+  }
 `;
 
 // Área do botão (lado direito)
@@ -124,7 +117,6 @@ const RemoveIcon = styled.span`
   }
 `;
 
-// Opções base (sempre exibidas) para cada categoria
 const baseOptions = {
   "N° de pavimentos": ["1 pavimento", "2 pavimentos"],
   "Área construída": ["0-50", "51-100", "101-200", "201-400"],
@@ -134,22 +126,18 @@ const baseOptions = {
 
 const filterCategories = Object.keys(baseOptions);
 
-// Se a prop "cards" não for fornecida (ou estiver vazia), tratamos como array vazio para liberar as opções.
 const Filtro = ({
   cards = [],
   onSearch = () => {},
   hasSearched = false,
   onClearFilters = () => {},
   onFilterChange = () => {},
-  modalConfig = {}
+  modalConfig = {} // propriedade mantida, mas não utilizada
 }) => {
   const [selectedOptions, setSelectedOptions] = useState({});
-  const [modalMessage, setModalMessage] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Se houver filtros no state da navegação (por exemplo, vindo da página intermediária)
-  // pré-carrega os filtros no componente.
   useEffect(() => {
     if (
       location.pathname.includes("/catalogo-de-casas") &&
@@ -159,16 +147,6 @@ const Filtro = ({
       setSelectedOptions(location.state.selectedOptions);
     }
   }, [location]);
-
-  // Esconde o modal automaticamente após 2 segundos
-  useEffect(() => {
-    if (modalMessage) {
-      const timer = setTimeout(() => {
-        setModalMessage(null);
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [modalMessage]);
 
   // Gera um resumo dos filtros já escolhidos (exceto o atual)
   const getSummarySelectedFilters = (excludeCategory) => {
@@ -181,7 +159,7 @@ const Filtro = ({
     return filters.join(", ") || "todos";
   };
 
-  // Se não houver cards (ou estiver vazio), todas as opções são consideradas disponíveis.
+  // Verifica se a opção está disponível com base nos cards
   const isOptionAvailable = (category, option) => {
     if (!cards || cards.length === 0) return true;
     const filtered = cards.filter((card) => {
@@ -216,16 +194,14 @@ const Filtro = ({
   };
 
   const handleSelect = (category, value) => {
-    // Se a opção não estiver disponível, exibe o modal de aviso
     if (!isOptionAvailable(category, value)) {
-      setModalMessage(
+      alert(
         `Não temos essa quantidade de ${category.toLowerCase()} para casas com ${getSummarySelectedFilters(
           category
         )}.`
       );
       return;
     }
-    // Se o botão estava "Limpar" e o usuário adiciona nova informação, chama onFilterChange para voltar a "Buscar"
     if (hasSearched && onFilterChange) {
       onFilterChange();
     }
@@ -236,7 +212,6 @@ const Filtro = ({
     setSelectedOptions((prev) => {
       const newFilters = { ...prev };
       delete newFilters[category];
-      // Se não houver mais filtros, chama onFilterChange para voltar a "Buscar"
       if (Object.keys(newFilters).length === 0 && onFilterChange) {
         onFilterChange();
       }
@@ -245,8 +220,6 @@ const Filtro = ({
   };
 
   const handleSearch = () => {
-    // Como este componente é um intermediador, ao clicar em "Buscar"
-    // redirecionamos para "/catalogo-de-casas" com os filtros selecionados.
     if (!location.pathname.includes("/catalogo-de-casas")) {
       navigate("/catalogo-de-casas", { state: { selectedOptions } });
       return;
@@ -324,11 +297,6 @@ const Filtro = ({
               )
           )}
         </SelectedFiltersContainer>
-      )}
-      {modalMessage && (
-        <ModalWrapper {...modalConfig}>
-          <p>{modalMessage}</p>
-        </ModalWrapper>
       )}
     </FiltroContainer>
   );
