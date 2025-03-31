@@ -43,9 +43,11 @@ const Left = styled.section`
         flex-direction: column;
 
         & p {
-            font-size: 28px;
+            font-size: 24px;
+            font-weight: 300;
+            text-transform: uppercase;
             line-height: 100%;
-            font-family: var(--font--aboreto);
+            font-family: var(--font--montserrat);
 
             @media (max-width: 768px){
                 font-size: 22px;

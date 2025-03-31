@@ -205,12 +205,12 @@ const SobreNos = () => {
                         O processo irá depender de vários fatores, porém abaixo é apenas uma forma de você enxergar como será a parte do processo, O processo irá depender de vários fatores, porém abaixo é apenas uma forma de você enxergar como será a parte do processo
                     </p>
                     <GlobalButton2
-                            text="Falar com um consultor"
+                            text="Conhecer a Fast Homes"
                             background1="#000"
                             background2="#000"
                             colorIcon="#fff"
                             colorText="#fff"
-                            to="/#form"
+                            to="/sobre-nos"
                     />
                 </Right>
             </Content>

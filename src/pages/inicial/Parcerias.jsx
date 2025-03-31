@@ -157,7 +157,7 @@ const FormContainer = styled.div`
 const Parcerias = () => {
     return (
         <>
-            <ParceriasContainer>
+            <ParceriasContainer id="parcerias">
                 <ParceriasBackground></ParceriasBackground>
 
                 <ParceriasConteudo>

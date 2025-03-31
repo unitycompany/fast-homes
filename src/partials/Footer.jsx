@@ -527,7 +527,9 @@ const Footer = () => {
             <h1>Mapa do site</h1>
             <a href="/">Início</a>
             <a href="/catalogo-de-casas">Catálogo de casas</a>
-            <a href="/projetos-personalizados">Projetos personalizados</a>
+            <a href="/projetos-personalizados">Seu projeto</a>
+            <a href="/#form">Financiamento</a>
+            <a href="/modular">Modular</a>
             <a href="/sobre-nos">Sobre nós</a>
             <a href="/#parcerias">Parcerias</a>
           </FooterCard>

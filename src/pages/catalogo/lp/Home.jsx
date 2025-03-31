@@ -30,6 +30,7 @@ const Content = styled.div`
     @media (max-width: 768px){
         flex-direction: column;
         min-height: 60vh;
+        gap: 20px;
     }
 `
 
@@ -39,10 +40,9 @@ const Left = styled.div`
 
     @media (max-width: 768px){
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 80dvh;
+        height: 70dvh;
+        object-fit: cover;
+        position: relative;
     }
 
     & img {
@@ -50,7 +50,7 @@ const Left = styled.div`
         object-fit: cover;
 
         @media (max-width: 768px){
-            height: 80dvh;
+            height: 70dvh;
         }
     }
 `
@@ -183,28 +183,6 @@ const RightDados = styled.div`
     align-items: flex-start;
     justify-content: center;
     gap: 10px;
-
-    & button {
-        border-bottom: 1px solid var(--color--black);
-        line-height: 100%;
-        font-size: 14px;
-        color: var(--color--black);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        cursor: pointer;
-        margin-top: 10px;
-
-        &:hover svg {
-            transform: rotate(-90deg);
-        }
-
-        & svg {
-            font-size:10px;
-            transition: all .4s ease-in-out;
-        }
-    }
 `
 
 const DadosArea = styled.div`
@@ -253,6 +231,10 @@ const CardDado = styled.div`
             font-size: 12px;
             line-height: 100%;
             font-weight: 400;
+
+            @media (max-width: 768px){
+                font-size: 11px;
+            }
         } 
     }
 
@@ -261,6 +243,10 @@ const CardDado = styled.div`
         text-align: left;
         width: 100%;
         font-size: 14px;
+
+        @media (max-width: 768px){
+            font-size: 12px;
+        }
     }
 `
 

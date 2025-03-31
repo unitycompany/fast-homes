@@ -24,6 +24,10 @@ const HomeContent = styled.div`
     position: relative;
     overflow: hidden;
 
+    @media (max-width: 768px){
+        gap: 15px;
+    }
+
     &::before{
         content: '';
         width: 100%;
@@ -45,6 +49,11 @@ const HomeContent = styled.div`
         font-weight: 300;
         line-height: 100%;
         padding: 20px 0;
+        text-align: center;
+
+        @media (max-width: 768px){
+            width: 90%;
+        }
 
         & b {
             font-weight: 500;
@@ -59,6 +68,11 @@ const HomeContent = styled.div`
         width: 40%;
         line-height: 120%;
         text-align: center;
+
+        @media (max-width: 768px){
+            width: 90%;
+            margin-top: -20px;
+        }
     }
 
     @media (max-width: 768px){
