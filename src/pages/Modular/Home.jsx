@@ -11,6 +11,10 @@ const Content = styled.section`
     flex-direction: column;
     gap: 50px;
     padding: 10% 5% 0% 5%;
+
+    @media (max-width: 768px){
+        padding: 25% 5% 0 5%;
+    }
 `
 
 const Top = styled.div`
@@ -25,6 +29,10 @@ const Top = styled.div`
         font-size: 36px;
         font-weight: 300;
         line-height: 100%;
+
+        @media (max-width: 768px){
+            font-size: 28px;
+        }
          
         & b {
             font-weight: 500;
@@ -38,6 +46,12 @@ const Top = styled.div`
         font-size: 18px;
         line-height: 120%;
         width: 80%;
+
+        @media (max-width: 768px){
+            width: 100%;
+            font-size: 16px;
+            line-height: 110%;
+        }
     }
 `
 
@@ -51,6 +65,11 @@ const Center = styled.div`
     gap: 20px;
     min-height: 60vh;
 
+    @media (max-width: 768px){
+        flex-direction: column;
+        gap: 10px;
+    }
+
     & article {
         width: 50%;
         display: flex;
@@ -59,15 +78,28 @@ const Center = styled.div`
         justify-content: center;
         gap: 15px;
 
+        @media (max-width: 768px){
+            width: 100%;
+            gap: 10px;
+        }
+
         &:nth-child(1){
             position: sticky;
             top: 80px;
             left: 0;
+
+            @media (max-width: 768px){
+                z-index: 2;
+            }
         }
 
         &:nth-child(2){
             margin-bottom: -20px;
             left: 0;
+
+            @media (max-width: 768px){
+                margin-bottom: 0;
+            }
         }
     }
 `

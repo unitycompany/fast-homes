@@ -25,6 +25,10 @@ const Card = styled.div`
     position: relative;
     overflow: hidden;
     border: 1px solid #00000020;
+
+    @media (max-width: 768px){
+        padding: 20px;
+    }
     
     &::before{
         content: '';
@@ -46,12 +50,20 @@ const Card = styled.div`
         width: 30px;
         height: auto;
         fill: #000000;
+
+        @media (max-width: 768px){
+            width: 25px;
+        }
     }
 
     & p {
         font-size: 18px;
         color: #000000;
         line-height: 120%;
+
+        @media (max-width: 768px){
+            font-size: 16px;
+        }
     }
 `
 

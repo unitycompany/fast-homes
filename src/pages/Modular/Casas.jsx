@@ -16,6 +16,12 @@ const Content = styled.div`
   flex-direction: column;
   gap: 50px;
   padding: 2.5% 5% 5% 5%;
+
+  @media (max-width: 768px){
+    gap: 20px;
+    padding: 2.5% 5% 0 5%;
+    min-height: auto;
+  }
 `;
 
 const Top = styled.div`
@@ -24,10 +30,21 @@ const Top = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 768px){
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+  }
+
   & h1 {
     font-size: 36px;
     font-weight: 300;
     line-height: 100%;
+
+    @media (max-width: 768px){
+      font-size: 28px;
+    }
+
     & b {
       font-weight: 500;
       color: transparent;
@@ -110,7 +127,7 @@ const Casas = () => {
             pagination={false}
             navigation={false}
             breakpoints={{
-              0: { slidesPerView: 1, spaceBetween: 0 },
+              0: { slidesPerView: 1, spaceBetween: 20 },
               1080: { slidesPerView: 3, spaceBetween: 20 },
             }}
             onSwiper={(swiper) => {

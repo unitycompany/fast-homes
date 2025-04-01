@@ -11,6 +11,10 @@ const Content = styled.div`
     position: relative;
     color: #fff;
     padding: 0% 5%;
+
+    @media (max-width: 768px){
+        padding: 2.5% 5%;
+    }
 `
 
 const Background = styled.div`
@@ -43,6 +47,11 @@ const Top = styled.div`
         font-weight: 300;
         line-height: 100%;
 
+        @media (max-width: 768px){
+            font-size: 28px;
+            line-height: 110%;
+        }
+
         & b {
             font-weight: 500;
         }
@@ -52,6 +61,10 @@ const Top = styled.div`
         font-size: 16px;
         width: 60%;
         line-height: 120%;
+
+        @media (max-width: 768px){
+            width: 100%;
+        }
     }
 `
 
@@ -61,6 +74,11 @@ const Cards = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 50px;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        gap: 20px;
+    }
 `
 
 const Card = styled.div`
@@ -75,6 +93,10 @@ const Card = styled.div`
     color: #000;
     background-color: #fff;
     border-radius: 20px;
+
+    @media (max-width: 768px){
+        min-height: 250px;
+    }
 
     & svg {
         font-size: 40px;

@@ -11,6 +11,10 @@ const Card = styled.div`
   justify-content: flex-start;
   gap: 20px;
   position: relative;
+
+  @media (max-width: 768px){
+    height: max-content;
+  }
 `;
 
 const VideoContainer = styled.div`

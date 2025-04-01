@@ -17,6 +17,11 @@ const Card = styled.div`
     position: relative;
     overflow: hidden;
     z-index: 2;
+
+    @media (max-width: 768px){
+        max-width: 98%;
+        margin-left: 1%;
+    }
     
     &::before{
         content: '';
