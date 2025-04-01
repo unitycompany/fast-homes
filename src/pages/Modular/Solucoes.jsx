@@ -42,6 +42,12 @@ const Top = styled.div`
     justify-content: center;
     gap: 10px;
 
+    @media (max-width: 768px){
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
     & h1 {
         font-size: 32px;
         font-weight: 300;
