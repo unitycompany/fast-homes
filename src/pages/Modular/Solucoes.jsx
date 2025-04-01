@@ -33,6 +33,10 @@ const Conteudo = styled.div`
     width: 100%;
     padding: 5% 0;
     gap: 50px;
+
+    @media (max-width: 768px){
+        align-items: center;
+    }
 `
 
 const Top = styled.div`
