@@ -308,9 +308,7 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
 
                                     {/* Botão para abrir o modal correto */}
                                     <button onClick={() =>
-                                        pacote.titulo === "Pacote completo"
-                                            ? setMostrarPacoteCompleto(true)
-                                            : setMostrarPacoteBasico(true)
+                                        setMostrarPacoteBasico(true)
                                     }>
                                         Conferir tudo que está incluso <BsChevronRight />
                                     </button>

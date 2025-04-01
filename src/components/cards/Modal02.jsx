@@ -1,68 +1,71 @@
+// PacoteBasicoModal.js
 import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
 import { BsCheckLg, BsX } from "react-icons/bs";
 import styled from "styled-components";
 
-const Background = styled.div`
-    width: 100%;
-    height: 100vh;
-    z-index: 99998!important;
-    position: fixed;
-    display: ${({ visivel }) => (visivel ? "block" : "none")};
-    background: rgba(0, 0, 0, 0.5);
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+const ModalBackground = styled.div`
+  display: ${({ visivel }) => (visivel ? "block" : "none")};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 `;
 
-const Content = styled.div`
-    position: fixed;
-    width: 850px;
-    height: 500px;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, -50%);
-    z-index: 99999;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    padding: 20px 30px;
-    gap: 30px;
-    display: ${({ visivel }) => (visivel ? "flex" : "none")};
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+const ModalContent = styled.div`
+  position: fixed;
+  width: 850px;
+  height: 600px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px 30px;
+  gap: 30px;
+  display: ${({ visivel }) => (visivel ? "flex" : "none")};
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  @media (max-width: 768px) {
+    width: 95%;
+    height: 600px;
+    padding: 20px;
+  }
 `;
 
 const Top = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px solid #00000020;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #00000020;
+  width: 100%;
 
-    & h2 {
-        font-size: 28px;
-        font-weight: 600;
-        font-family: var(--font--aboreto);
-        color: transparent;
-        background: linear-gradient(90deg, var(--color--black), var(--color--green--low));
-        -webkit-background-clip: text;
+  & h2 {
+    font-size: 28px;
+    font-weight: 600;
+    font-family: var(--font--aboreto);
+    color: transparent;
+    background: linear-gradient(90deg, var(--color--black), var(--color--green--low));
+    -webkit-background-clip: text;
+  }
+
+  & svg {
+    font-size: 28px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    &:hover {
+      fill: red;
+      transform: scale(0.95) rotate(360deg);
     }
-
-    & svg {
-        font-size: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all .5s ease-in-out;
-
-        &:hover {
-            fill: red;
-            transform: scale(0.95) rotate(360deg);
-        }
-    }
+  }
 `;
 
 const Center = styled.div`
@@ -87,6 +90,10 @@ const Option = styled.div`
     padding: 15px 0;
     transition: padding .3s ease-in-out, background-color .2s ease-in-out;
 
+    @media (max-width: 768px){
+        flex-direction: column;
+    }
+
     & div {
         display: flex;
         align-items: flex-start;
@@ -100,6 +107,12 @@ const Option = styled.div`
         transition: all .2s ease-in-out;
         border: 1px solid #00000040;
         border-radius: 10px;
+
+        @media (max-width: 768px){
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
 
         &:hover {
             filter: contrast(110%) brightness(110%);
@@ -137,32 +150,32 @@ const Option = styled.div`
     }
 `;
 
-const PacoteBasico = ({ visivel, fechar }) => {
 
-    useEffect(() => {
-        if (visivel) {
-            // Bloqueia o scroll e evita interação com o restante da página
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
-        return () => {
-            document.body.style.overflow = "auto";
-        };
-    }, [visivel]);
+const PacoteBasicoModal = ({ visivel, fechar }) => {
+  useEffect(() => {
+    if (visivel) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [visivel]);
 
-    return (
-        <>
-            <Background visivel={visivel} onClick={fechar}></Background>
-            <Content visivel={visivel}>
-                <Top>
-                    <h2>Pacote Básico</h2>
-                    <button onClick={fechar}>
-                        <BsX />
-                    </button>
-                </Top>
+  if (!visivel) return null;
 
-                <Center>
+  return ReactDOM.createPortal(
+    <>
+      <ModalBackground visivel={visivel} onClick={fechar} />
+      <ModalContent visivel={visivel}>
+        <Top>
+          <h2>Pacote Básico</h2>
+          <button onClick={fechar} style={{ background: "none", border: "none" }}>
+            <BsX />
+          </button>
+        </Top>
+        <Center>
                     <Option>
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/77c8b7e4-472e-43b4-a2d8-4562cb2bbe00/public" />
                         <div>
@@ -294,10 +307,21 @@ const PacoteBasico = ({ visivel, fechar }) => {
                             </p>
                         </div>
                     </Option>
-                </Center>
-            </Content>
-        </>
-    )
-}
 
-export default PacoteBasico;
+                    <Option>
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ce5c536b-2a52-425f-6b65-bd4bc1ab8300/public" />
+                        <div>
+                            <h4> <BsCheckLg />Isolamento Térmico e Acústico</h4>
+                            <p>
+                                Nosso sistema de isolamento térmico e acústico foi desenvolvido para proporcionar ambientes mais confortáveis e eficientes. Com materiais de alta performance, ele reduz a transferência de calor e bloqueia ruídos indesejados, garantindo bem-estar e economia de energia tanto em residências quanto em ambientes comerciais.
+                            </p>
+                        </div>
+                    </Option>
+                </Center>
+      </ModalContent>
+    </>,
+    document.getElementById("modal-root")
+  );
+};
+
+export default PacoteBasicoModal;
