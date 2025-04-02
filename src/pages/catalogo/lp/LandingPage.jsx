@@ -11,7 +11,6 @@ import Dobra3 from "./DobraTres";
 import Dobra4 from "./DobraQuatro";
 import FormLP from "../../../components/form-lp";
 import CardsCarrosselLP from "../../../components/cards/CardCarrosselLP";
-import PacoteCompleto from "../../../components/cards/Modal01";
 
 const LoadingWrapper = styled.div`
   display: flex;

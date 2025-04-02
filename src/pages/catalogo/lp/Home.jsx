@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import { BsArrowRightShort, BsCCircleFill, BsChevronRight } from "react-icons/bs";
 import CarrosselLP from "../../../components/carrossel-lp";
-import PacoteCompleto from "../../../components/cards/Modal01";
 import PacoteBasico from "../../../components/cards/Modal02";
 
 import { IoCheckmarkDoneCircleOutline, IoCheckmarkDoneCircle } from "react-icons/io5";

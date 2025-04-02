@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Home from "./Home";
 import CardProjeto from "../../components/cards/CardProjetos";
+import Text from "./Text";
 
 const Projetos = styled.div`
     max-width: 1280px;
@@ -34,6 +35,7 @@ const PaginaCatalogo = () => {
                         itemDirection={true}
                     />
                 </Projetos>
+                    <Text />
         </>
     )
 }
