@@ -85,8 +85,6 @@ const LandingPage = () => {
     const [timeoutExceeded, setTimeoutExceeded] = useState(false);
     const [liveViews, setLiveViews] = useState(0);
     const navigate = useNavigate();
-    const shouldDisplayView = (count) => count > 0;
-    const formatViewText = (count) => count === 1 ? `${count} pessoa` : `${count} pessoas`;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -172,14 +170,12 @@ const LandingPage = () => {
                 <title>{dados.nome} - Fast Homes</title>
                 <meta name="description" content={dados.descricao} />
             </Helmet>
-            {shouldDisplayView(liveViews) && (
-                <View>
-                    <FaCircle />
-                    <span>
-                    <b>{formatViewText(liveViews)}</b> vendo a casa - {dados.nome}
-                    </span>
-                </View>
-                )}
+            <View>
+                <FaCircle />
+                <span>
+                <b>{liveViews} pessoas</b> vendo a casa - {dados.nome}
+                </span>
+            </View>
 
             <Name nome={dados.nome} descricao={dados.descricao} />
             <Home 
