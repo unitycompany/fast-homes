@@ -36,8 +36,10 @@ const Header = styled.div`
 const HeaderBtns = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 10px;
+  min-width: 45%;
+  width: max-content;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -68,7 +70,7 @@ const HeaderTexts = styled.div`
   & p {
     font-size: 14px;
     font-weight: 400;
-    width: 80%;
+    width: 70%;
     line-height: 100%;
   }
 `;

@@ -29,8 +29,8 @@ const adicionarCasa = async () => {
             liveViews: 0,
             views: 100,
             piscina: false,
-            imagem: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/73ffb0e2-19a5-4cf5-e84b-5dbcbb3f6200/public",
-            imagemDois: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5493a461-fb61-43ac-8edb-b734ca35fc00/public",
+            imagem: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/125e075c-01b0-4341-29ce-7d2514099800/public",
+            imagemDois: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/14a05646-3816-41c1-91e5-54957e118500/public",
             dobra2: {
                 title1: "Área de Lazer",
                 descricao: "Espaço com piscina e churrasqueira.",

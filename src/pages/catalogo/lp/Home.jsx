@@ -45,7 +45,7 @@ const Left = styled.div`
     }
 
     & img {
-        height: 100dvh;
+        height: 90dvh;
         object-fit: cover;
 
         @media (max-width: 768px){
@@ -280,7 +280,7 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
                     <CarrosselLP
                         images={imagens}
                         width="100%"
-                        height="100dvh"
+                        height="90dvh"
                     />
                 </Left>
                 <Right>
