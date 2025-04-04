@@ -5,6 +5,7 @@ import Home from "./Home";
 import CardProjeto from "../../components/cards/CardProjetos";
 import Text from "./Text";
 import { Helmet } from "react-helmet-async";
+import Faixa from "../../components/faixa";
 
 const Projetos = styled.div`
     max-width: 1280px;
@@ -41,6 +42,7 @@ const PaginaCatalogo = () => {
                     />
                 </Projetos>
                     <Text />
+                        <Faixa categoria="interiores"/>
         </>
     )
 }
