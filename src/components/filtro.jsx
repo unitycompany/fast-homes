@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FormControl, InputLabel, Select, MenuItem, Button } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
+import { MdOutlineArrowRight } from "react-icons/md";
+
 
 // Container principal para o filtro
 const FiltroContainer = styled.div`
@@ -11,6 +13,7 @@ const FiltroContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  
   @media (max-width: 768px) {
     padding: 5% 2.5%;
   }
@@ -47,7 +50,6 @@ const FiltroLeft = styled.div`
   gap: 10px;
   flex-wrap: nowrap;
   flex: 1;
-
   @media (max-width: 768px){
     flex-direction: column;
   }
@@ -117,6 +119,48 @@ const RemoveIcon = styled.span`
   }
 `;
 
+// Botão centralizado para mobile
+const MobileToggleButton = styled.button`
+  display: none;
+
+  @media (max-width: 768px) {
+    width: max-content;
+    padding: 5px 5px 5px 10px;
+    gap: 10px;
+    border: 1px solid #00000021;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: all .2s ease-in-out;
+
+    &:hover svg {
+      transform: rotate(90deg);
+    }
+
+    & svg {
+      font-size: 22px;
+      transition: all .2s ease-in-out;
+    }
+  }
+`;
+
+// Container com animação para exibir/recolher o filtro no mobile
+const MobileFiltroContainer = styled.div`
+  overflow: hidden;
+  width: 100%;
+  transition: max-height 0.5s ease;
+  max-height: ${({ open }) => (open ? "1000px" : "0")};
+
+  @media (min-width: 769px) {
+    max-height: none;
+  }
+`;
+
 const baseOptions = {
   "N° de pavimentos": ["1 pavimento", "2 pavimentos"],
   "Área construída": ["0-50", "51-100", "101-200", "201-400"],
@@ -135,8 +179,20 @@ const Filtro = ({
   modalConfig = {} // propriedade mantida, mas não utilizada
 }) => {
   const [selectedOptions, setSelectedOptions] = useState({});
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    // Detecta se é mobile (tela <= 768px)
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (
@@ -222,10 +278,12 @@ const Filtro = ({
   const handleSearch = () => {
     if (!location.pathname.includes("/catalogo-de-casas")) {
       navigate("/catalogo-de-casas", { state: { selectedOptions } });
-      return;
+    } else {
+      console.log("🔍 Aplicando filtro com opções:", selectedOptions);
+      onSearch(selectedOptions);
     }
-    console.log("🔍 Aplicando filtro com opções:", selectedOptions);
-    onSearch(selectedOptions);
+    // Após buscar, se for mobile, recolhe o filtro
+    if (isMobile) setIsMobileFilterOpen(false);
   };
 
   const handleClear = () => {
@@ -235,8 +293,13 @@ const Filtro = ({
     onClearFilters();
   };
 
-  return (
-    <FiltroContainer>
+  const toggleMobileFilter = () => {
+    setIsMobileFilterOpen((prev) => !prev);
+  };
+
+  // Conteúdo do filtro (mesmo para mobile e desktop)
+  const filtroContent = (
+    <>
       <FiltroTop>
         <FiltroLeft>
           {filterCategories.map((category) => (
@@ -297,7 +360,24 @@ const Filtro = ({
           )}
         </SelectedFiltersContainer>
       )}
-    </FiltroContainer>
+    </>
+  );
+
+  return (
+    <>
+      {isMobile ? (
+        <>
+          <MobileToggleButton variant="contained" onClick={toggleMobileFilter}>
+            {isMobileFilterOpen ? "Fechar" : "Filtrar"}<MdOutlineArrowRight />
+          </MobileToggleButton>
+          <MobileFiltroContainer open={isMobileFilterOpen}>
+            <FiltroContainer>{filtroContent}</FiltroContainer>
+          </MobileFiltroContainer>
+        </>
+      ) : (
+        <FiltroContainer>{filtroContent}</FiltroContainer>
+      )}
+    </>
   );
 };
 

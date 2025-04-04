@@ -21,7 +21,6 @@ const HomeContent = styled.div`
     position: relative;
     top: 0;
     transform: translateX(-50%);
-    position: relative;
     overflow: hidden;
 
     @media (max-width: 768px){
@@ -152,11 +151,28 @@ const NotFoundContainer = styled.div`
 const Home = () => {
     const [cards, setCards] = useState([]);
     const [filteredCards, setFilteredCards] = useState([]);
-    const [visibleCount, setVisibleCount] = useState(6);
     const [loading, setLoading] = useState(false);
     const [hasSearched, setHasSearched] = useState(false);
     const [countdown, setCountdown] = useState(null);
+    const [isMobile, setIsMobile] = useState(false);
+    // O valor inicial será ajustado conforme o dispositivo: 6 para desktop e 3 para mobile
+    const [visibleCount, setVisibleCount] = useState(6);
     const location = useLocation();
+
+    // Detecta se o dispositivo é mobile (largura <= 768px)
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    // Atualiza o visibleCount sempre que o dispositivo mudar
+    useEffect(() => {
+        setVisibleCount(isMobile ? 3 : 6);
+    }, [isMobile]);
 
     useEffect(() => {
         setLoading(true);
@@ -169,7 +185,7 @@ const Home = () => {
           console.log("📌 Dados atualizados do Firebase:", data);
         });
         return () => unsubscribe();
-      }, []);
+    }, []);
 
     useEffect(() => {
         const fetchCards = async () => {
@@ -254,16 +270,19 @@ const Home = () => {
 
     return (
         <HomeContent>
-            <h1 data-aos="fade-up" data-aos-delay="100">Conheça nosso <b>catálogo de casas</b></h1>
-            <p data-aos="fade-up" data-aos-delay="300">Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos</p>
+            <h1 data-aos="fade-up" data-aos-delay="100">
+                Conheça nosso <b>catálogo de casas</b>
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="300">
+                Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
+            </p>
 
             <Filtro
                 cards={cards}
                 onSearch={aplicarFiltro}
                 hasSearched={hasSearched}
                 onClearFilters={limparFiltro}
-                />
-
+            />
 
             {loading ? (
                 <LoadingSpinner />
@@ -284,7 +303,7 @@ const Home = () => {
             )}
 
             {visibleCount < filteredCards.length && (
-                <LoadMoreButton onClick={() => setVisibleCount(prev => prev + 6)}>
+                <LoadMoreButton onClick={() => setVisibleCount(prev => prev + (isMobile ? 3 : 6))}>
                     Ver mais
                 </LoadMoreButton>
             )}
