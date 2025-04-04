@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../../../services/firebaseConfig";
-import { collection, getDocs, doc, updateDoc, onSnapshot, increment } from "firebase/firestore";
+import { doc, getDocs, collection, setDoc, deleteDoc, onSnapshot, serverTimestamp } from "firebase/firestore";
 import { useNavigate, useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
@@ -132,24 +132,50 @@ const LandingPage = () => {
 
     useEffect(() => {
         if (dados) {
-            const houseRef = doc(db, "catalogo", dados.id);
-            updateDoc(houseRef, { liveViews: increment(1)}).catch(error => {
-                console.log("Erro ao incrementar liveViews", error);
+          // Gera um ID único para o visualizador usando crypto.randomUUID se disponível
+          const viewerId = crypto.randomUUID ? crypto.randomUUID() : Date.now().toString();
+          
+          // Define a referência para o documento da casa e para a subcoleção "liveViews"
+          const houseDocRef = doc(db, "catalogo", dados.id);
+          const liveViewsCollectionRef = collection(houseDocRef, "liveViews");
+          const viewerDocRef = doc(liveViewsCollectionRef, viewerId);
+    
+          // Registra a visualização com um timestamp
+          setDoc(viewerDocRef, { lastActive: serverTimestamp() })
+            .catch(error => console.error("Erro ao registrar visualização:", error));
+    
+          // A cada 1 minuto, atualiza o timestamp para indicar que o usuário continua ativo
+          const heartbeatInterval = setInterval(() => {
+            setDoc(viewerDocRef, { lastActive: serverTimestamp() }, { merge: true })
+              .catch(error => console.error("Erro no heartbeat:", error));
+          }, 60000);
+    
+          // Escuta a subcoleção para contar as visualizações ativas
+          // Considera como ativo se o registro foi atualizado nos últimos 2 minutos (threshold ajustável)
+          const unsubscribe = onSnapshot(liveViewsCollectionRef, (snapshot) => {
+            const now = new Date();
+            let count = 0;
+            snapshot.forEach((docSnapshot) => {
+              const data = docSnapshot.data();
+              if (data.lastActive) {
+                const lastActiveDate = data.lastActive.toDate();
+                if (now - lastActiveDate < 2 * 60000) { // 2 minutos de tolerância
+                  count++;
+                }
+              }
             });
-
-            const unsubscribe = onSnapshot(houseRef, (snapshot) => {
-                const data = snapshot.data();
-                setLiveViews(data.liveViews < 0 ? 0 : data.liveViews);
-            });
-
-            return () => {
-                updateDoc(houseRef, {liveViews: increment(-1)}).catch(error => {
-                    console.log("Erro ao diminuir um incremento", error);
-                });
-                unsubscribe();
-            }
+            setLiveViews(count);
+          });
+    
+          // Cleanup: remove o heartbeat e o registro de visualização ao sair da página
+          return () => {
+            clearInterval(heartbeatInterval);
+            unsubscribe();
+            deleteDoc(viewerDocRef)
+              .catch(error => console.error("Erro ao remover visualização:", error));
+          };
         }
-    }, [dados])
+      }, [dados]);
 
     if (loading) {
         return (
