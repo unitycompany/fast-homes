@@ -23,14 +23,17 @@ import Cookie from "./pages/politicas/Cookie";
 
 import { HelmetProvider } from "react-helmet-async";
 
-// Importe aqui sua nova página administrativa
+// Páginas administrativas
 import AdicionarCasa from "./pages/Admin/AdicionarCasa";
 import LoginPage from "./pages/Admin/Login";
 import Options from "./pages/Admin/Options";
 import CasasCadastradas from "./pages/Admin/CasasCadastradas";
 
-// Importe o componente 404 (Card) – ajuste o caminho conforme necessário
+// Página 404
 import Error from "../404";
+
+// Importando o componente de efeito de clique com styled-components
+import ClickEffect from "./components/clickEffect"; // ajuste o caminho conforme sua estrutura
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -75,14 +78,8 @@ const AppContent = () => {
             <Route path="/catalogo-de-casas" element={<PaginaCatalogo />} />
             <Route path="/sobre-nos" element={<PaginaSobre />} />
             <Route path="/modular" element={<PaginaModular />} />
-            <Route
-              path="/projetos-personalizados"
-              element={<PaginaProjeto />}
-            />
-            <Route
-              path="/catalogo-de-casas/:slug"
-              element={<LandingPage />}
-            />
+            <Route path="/projetos-personalizados" element={<PaginaProjeto />} />
+            <Route path="/catalogo-de-casas/:slug" element={<LandingPage />} />
             <Route path="/termos-e-condicoes" element={<Termos />} />
             <Route path="/politica-de-privacidade" element={<Privacidade />} />
 
@@ -112,6 +109,7 @@ function App() {
   return (
     <BrowserRouter>
       <HelmetProvider>
+        <ClickEffect />
         <AppContent />
         <Cookie />
       </HelmetProvider>
