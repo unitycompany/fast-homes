@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../../../services/firebaseConfig";
-import { doc, getDocs, collection, setDoc, deleteDoc, onSnapshot, serverTimestamp } from "firebase/firestore";
+import { collection, getDocs, doc, updateDoc, onSnapshot, increment } from "firebase/firestore";
 import { useNavigate, useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
@@ -132,55 +132,24 @@ const LandingPage = () => {
 
     useEffect(() => {
         if (dados) {
-          // Gera um ID único para o visualizador
-          const viewerId = crypto.randomUUID ? crypto.randomUUID() : Date.now().toString();
-          
-          // Referência ao documento da casa e à subcoleção "liveViews"
-          const houseDocRef = doc(db, "catalogo", dados.id);
-          const liveViewsCollectionRef = collection(houseDocRef, "liveViews");
-          const viewerDocRef = doc(liveViewsCollectionRef, viewerId);
-    
-          // Função para atualizar o timestamp de atividade usando o relógio local
-          const updateTimestamp = () => {
-            setDoc(viewerDocRef, { lastActive: new Date() }, { merge: true })
-              .catch(error => console.error("Erro ao atualizar heartbeat:", error));
-          };
-    
-          // Registra a visualização inicialmente
-          updateTimestamp();
-    
-          // Atualiza o timestamp a cada 1 minuto (heartbeat)
-          const heartbeatInterval = setInterval(() => {
-            updateTimestamp();
-          }, 60000);
-    
-          // Escuta a subcoleção para contar visualizações ativas
-          // Considera ativo se o lastActive for atualizado nos últimos 2 minutos
-          const unsubscribe = onSnapshot(liveViewsCollectionRef, (snapshot) => {
-            const now = new Date();
-            let count = 0;
-            snapshot.forEach((docSnapshot) => {
-              const data = docSnapshot.data();
-              if (data.lastActive) {
-                // Pode vir como objeto Date ou como Timestamp do Firestore
-                const lastActiveDate = data.lastActive.toDate ? data.lastActive.toDate() : new Date(data.lastActive);
-                if (now - lastActiveDate < 2 * 60000) { // 2 minutos de tolerância
-                  count++;
-                }
-              }
+            const houseRef = doc(db, "catalogo", dados.id);
+            updateDoc(houseRef, { liveViews: increment(1)}).catch(error => {
+                console.log("Erro ao incrementar liveViews", error);
             });
-            setLiveViews(count);
-          });
-    
-          // Cleanup: limpa o intervalo, cancela a escuta e remove o registro
-          return () => {
-            clearInterval(heartbeatInterval);
-            unsubscribe();
-            deleteDoc(viewerDocRef)
-              .catch(error => console.error("Erro ao remover visualização:", error));
-          };
+
+            const unsubscribe = onSnapshot(houseRef, (snapshot) => {
+                const data = snapshot.data();
+                setLiveViews(data.liveViews < 0 ? 0 : data.liveViews);
+            });
+
+            return () => {
+                updateDoc(houseRef, {liveViews: increment(-1)}).catch(error => {
+                    console.log("Erro ao diminuir um incremento", error);
+                });
+                unsubscribe();
+            }
         }
-      }, [dados]);
+    }, [dados])
 
     if (loading) {
         return (
