@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../../../services/firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, updateDoc, onSnapshot, increment } from "firebase/firestore";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -13,6 +13,7 @@ import FormLP from "../../../components/form-lp";
 import CardsCarrosselLP from "../../../components/cards/CardCarrosselLP";
 import { Helmet } from "react-helmet-async";
 import Error from "../../../../404";
+import { FaUser } from "react-icons/fa";
 
 const LoadingWrapper = styled.div`
   display: flex;
@@ -37,12 +38,36 @@ const Spinner = styled.div`
   }
 `;
 
+const View = styled.aside`
+    position: fixed;
+    bottom: 20px;
+    left: 7.5%;
+    z-index: 99999;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    & svg {
+        font-size: 12px;
+        fill: #1f9202;
+    }
+
+    & span {
+        font-size: 12px;
+    }
+`
+
 const LandingPage = () => {
     const { slug } = useParams();
     console.log("🔍 Parâmetro da URL (slug):", slug);
     const [dados, setDados] = useState(null);
     const [loading, setLoading] = useState(true);
     const [timeoutExceeded, setTimeoutExceeded] = useState(false);
+    const [liveViews, setLiveViews] = useState(3);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -89,6 +114,27 @@ const LandingPage = () => {
         fetchData();
     }, [slug]);
 
+    useEffect(() => {
+        if (dados) {
+            const houseRef = doc(db, "catalogo", dados.id);
+            updateDoc(houseRef, { liveViews: increment(1)}).catch(error => {
+                console.log("Erro ao incrementar liveViews", error);
+            });
+
+            const unsubscribe = onSnapshot(houseRef, (snapshot) => {
+                const data = snapshot.data();
+                setLiveViews(data.liveViews < 3 ? 3 : data.liveViews);
+            });
+
+            return () => {
+                updateDoc(houseRef, {liveViews: increment(-1)}).catch(error => {
+                    console.log("Erro ao diminuir um incremento", error);
+                });
+                unsubscribe();
+            }
+        }
+    }, [dados])
+
     if (loading) {
         return (
             <LoadingWrapper>
@@ -108,6 +154,10 @@ const LandingPage = () => {
                 <title>{dados.nome} - Fast Homes</title>
                 <meta name="description" content={dados.descricao} />
             </Helmet>
+            <View>
+                <FaUser />
+                <span>{liveViews} Pessoas vendo a casa</span>
+            </View>
             <Name nome={dados.nome} descricao={dados.descricao} />
             <Home 
                 imagens={[dados.imagem, dados.imagemDois]} 
