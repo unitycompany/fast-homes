@@ -14,6 +14,7 @@ const CardContainer = styled.div`
     flex-direction: row;
     position: relative;
     transition: all .3s ease;
+    cursor: pointer;
 
     @media (max-width: 768px){
         flex-direction: column!important;
@@ -223,7 +224,7 @@ const CardCatalogo = ({ titulo, area, quartos, banheiros, imagem, slug }) => {
     return (
         <>
 
-            <CardContainer>
+            <CardContainer onClick={handleClick}>
                 <CardImage>
                     <img src={imagem} alt="" loading="lazy" />
                 </CardImage>

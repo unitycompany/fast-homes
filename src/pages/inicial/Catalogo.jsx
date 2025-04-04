@@ -12,6 +12,7 @@ import GlobalButton3 from "../../components/buttons/GlobalButton3";
 import CardCatalogo from "../../components/cards/CardCatalogo01";
 import CardCatalogo2 from "../../components/cards/CardCatalogo02";
 import Filtro from "../../components/filtro";
+import { useNavigate } from "react-router-dom";
 
 const moveBackground = keyframes`
     0% {
@@ -149,6 +150,7 @@ const CatalogoItems = styled.div`
 const Catalogo = () => {
     const [casas, setCasas] = useState([]);
     const [isMobile, setIsMobile] = useState(false);
+    const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -196,6 +198,7 @@ const Catalogo = () => {
                         {casas.map((casa) => (
                             <SwiperSlide key={casa.id}>
                             <CardCatalogo
+                                onClick={() => navigate(`/catalogo-de-casas/${casa.slug}`)}
                                 titulo={casa.nome}
                                 area={casa.area}
                                 quartos={casa.quartos}
@@ -211,6 +214,7 @@ const Catalogo = () => {
                         {casas.map((casa, index) =>
                             index < 2 ? (
                             <CardCatalogo
+                                onClick={() => navigate(`/catalogo-de-casas/${casa.slug}`)}
                                 key={casa.id}
                                 titulo={casa.nome}
                                 area={casa.area}
@@ -221,6 +225,7 @@ const Catalogo = () => {
                             />
                             ) : (
                             <CardCatalogo2
+                                onClick={() => navigate(`/catalogo-de-casas/${casa.slug}`)}
                                 key={casa.id}
                                 titulo={casa.nome}
                                 area={casa.area}

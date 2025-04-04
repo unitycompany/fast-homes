@@ -171,7 +171,7 @@ const ArrowButton = styled.button`
 `;
 
 const PrevButton = styled(ArrowButton)`
-  left: 15px;
+  left: 20px;
   transition: all .2s ease-in-out;
 
   &:hover {
@@ -180,7 +180,7 @@ const PrevButton = styled(ArrowButton)`
 `;
 
 const NextButton = styled(ArrowButton)`
-  right: 15px;
+  right: 30px;
   transition: all .2s ease-in-out;
 
   &:hover {

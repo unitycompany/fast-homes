@@ -382,6 +382,15 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
 
                                     <span>{banheiros}</span>
                                 </CardDado>
+                                
+                                <CardDado>
+                                    <div>
+                                    <svg id="fi_17115986" enable-background="new 0 0 16 16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g fill="rgb(0,0,0)"><path d="m15.855957 9.3813477-2-6c-.0512695-.1528321-.1943359-.2563477-.355957-.2563477h-11c-.1616211 0-.3046875.1035156-.355957.2563477l-2 6c-.0126953.0380859-.019043.078125-.019043.1186523v3c0 .2070313.1679688.375.375.375h15c.2070313 0 .375-.1679688.375-.375v-3c0-.0405273-.0063477-.0805664-.019043-.1186523zm-13.0854492-5.5063477h10.4589844l1.7501221 5.25h-13.9592286zm-1.8955078 8.25v-2.25h14.25v2.25z"></path><circle cx="2" cy="11" r=".375"></circle><circle cx="4" cy="11" r=".375"></circle><circle cx="6" cy="11" r=".375"></circle><circle cx="8" cy="11" r=".375"></circle><circle cx="10" cy="11" r=".375"></circle><circle cx="12" cy="11" r=".375"></circle><circle cx="14" cy="11" r=".375"></circle></g></svg>
+                                        <span>Pavimentos</span>
+                                    </div>
+
+                                    <span>{pavimentos}</span>
+                                </CardDado>
 
                                 <CardDado> {/* garem */}
                                     <div>
@@ -399,15 +408,6 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
                                     </div>
 
                                     <span>{churrasqueira ? "Sim" : "Não"}</span>
-                                </CardDado>
-
-                                <CardDado>
-                                    <div>
-                                    <svg id="fi_17115986" enable-background="new 0 0 16 16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g fill="rgb(0,0,0)"><path d="m15.855957 9.3813477-2-6c-.0512695-.1528321-.1943359-.2563477-.355957-.2563477h-11c-.1616211 0-.3046875.1035156-.355957.2563477l-2 6c-.0126953.0380859-.019043.078125-.019043.1186523v3c0 .2070313.1679688.375.375.375h15c.2070313 0 .375-.1679688.375-.375v-3c0-.0405273-.0063477-.0805664-.019043-.1186523zm-13.0854492-5.5063477h10.4589844l1.7501221 5.25h-13.9592286zm-1.8955078 8.25v-2.25h14.25v2.25z"></path><circle cx="2" cy="11" r=".375"></circle><circle cx="4" cy="11" r=".375"></circle><circle cx="6" cy="11" r=".375"></circle><circle cx="8" cy="11" r=".375"></circle><circle cx="10" cy="11" r=".375"></circle><circle cx="12" cy="11" r=".375"></circle><circle cx="14" cy="11" r=".375"></circle></g></svg>
-                                        <span>Pavimentos</span>
-                                    </div>
-
-                                    <span>{pavimentos}</span>
                                 </CardDado>
                             </CardDados>
                         </DadosArea>

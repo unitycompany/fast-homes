@@ -64,10 +64,7 @@ const CarrosselLP = ({ images, width, height }) => {
         modules={[Navigation, Autoplay]}
         spaceBetween={10}
         slidesPerView={1}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
+        autoplay={false}
         loop={true}
         navigation={{
           nextEl: ".swiper-button-next",

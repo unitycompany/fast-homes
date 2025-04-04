@@ -228,7 +228,7 @@ const CardCatalogo = ({ id, nome, pavimentos, area, quartos, banheiros, imagem, 
 
     return (
         <>
-            <Card  onClick={handleClick} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+            <Card onClick={handleClick} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
             >
                 <ImageWrapper>
                     <img
