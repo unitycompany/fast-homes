@@ -35,6 +35,7 @@ const Top = styled.div`
     & div {
         @media (max-width: 768px){
             width: 100%;
+            height: 500px;
         }
     }
 
