@@ -132,33 +132,38 @@ const LandingPage = () => {
 
     useEffect(() => {
         if (dados) {
-          // Gera um ID único para o visualizador usando crypto.randomUUID se disponível
+          // Gera um ID único para o visualizador
           const viewerId = crypto.randomUUID ? crypto.randomUUID() : Date.now().toString();
           
-          // Define a referência para o documento da casa e para a subcoleção "liveViews"
+          // Referência ao documento da casa e à subcoleção "liveViews"
           const houseDocRef = doc(db, "catalogo", dados.id);
           const liveViewsCollectionRef = collection(houseDocRef, "liveViews");
           const viewerDocRef = doc(liveViewsCollectionRef, viewerId);
     
-          // Registra a visualização com um timestamp
-          setDoc(viewerDocRef, { lastActive: serverTimestamp() })
-            .catch(error => console.error("Erro ao registrar visualização:", error));
+          // Função para atualizar o timestamp de atividade usando o relógio local
+          const updateTimestamp = () => {
+            setDoc(viewerDocRef, { lastActive: new Date() }, { merge: true })
+              .catch(error => console.error("Erro ao atualizar heartbeat:", error));
+          };
     
-          // A cada 1 minuto, atualiza o timestamp para indicar que o usuário continua ativo
+          // Registra a visualização inicialmente
+          updateTimestamp();
+    
+          // Atualiza o timestamp a cada 1 minuto (heartbeat)
           const heartbeatInterval = setInterval(() => {
-            setDoc(viewerDocRef, { lastActive: serverTimestamp() }, { merge: true })
-              .catch(error => console.error("Erro no heartbeat:", error));
+            updateTimestamp();
           }, 60000);
     
-          // Escuta a subcoleção para contar as visualizações ativas
-          // Considera como ativo se o registro foi atualizado nos últimos 2 minutos (threshold ajustável)
+          // Escuta a subcoleção para contar visualizações ativas
+          // Considera ativo se o lastActive for atualizado nos últimos 2 minutos
           const unsubscribe = onSnapshot(liveViewsCollectionRef, (snapshot) => {
             const now = new Date();
             let count = 0;
             snapshot.forEach((docSnapshot) => {
               const data = docSnapshot.data();
               if (data.lastActive) {
-                const lastActiveDate = data.lastActive.toDate();
+                // Pode vir como objeto Date ou como Timestamp do Firestore
+                const lastActiveDate = data.lastActive.toDate ? data.lastActive.toDate() : new Date(data.lastActive);
                 if (now - lastActiveDate < 2 * 60000) { // 2 minutos de tolerância
                   count++;
                 }
@@ -167,7 +172,7 @@ const LandingPage = () => {
             setLiveViews(count);
           });
     
-          // Cleanup: remove o heartbeat e o registro de visualização ao sair da página
+          // Cleanup: limpa o intervalo, cancela a escuta e remove o registro
           return () => {
             clearInterval(heartbeatInterval);
             unsubscribe();
