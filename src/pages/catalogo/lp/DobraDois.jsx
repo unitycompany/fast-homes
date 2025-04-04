@@ -66,6 +66,10 @@ const Left = styled.div`
             font-size: 100px;
             font-family: var(--font--aboreto);
             line-height: 100%;
+
+            @media (max-width: 768px){
+                font-size: 80px;
+            }
         }
 
         & p {
