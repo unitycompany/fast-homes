@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { BsEye } from "react-icons/bs";
+import { doc, updateDoc, increment } from "firebase/firestore";
+import { db } from "../../services/firebaseConfig";
 
 const Card = styled.div`
     width: 32%;
@@ -146,14 +149,45 @@ const CardDado = styled.div`
     }
 `
 
-const CardCatalogo = ({ id, nome, pavimentos, area, quartos, banheiros, imagem, imagemDois, slug }) => {
+const View = styled.aside`
+    position: absolute;
+    width: auto;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 7.5px;
+    background-color: #00000050;
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
+    padding: 2.5px 10px;
+    color: #fff;
+
+    & svg {
+        fill: #fff;
+        font-size: 12px;
+    }
+
+    & span {
+        font-size: 12px;
+    }
+`
+
+const CardCatalogo = ({ id, nome, pavimentos, area, quartos, banheiros, imagem, imagemDois, slug, views }) => {
     const [hover, setHover] = useState(false);
     const navigate = useNavigate();
 
-    const handleClick = () => {
+    const handleClick = async () => {
         if (!slug) {
             console.error(`❌ Erro: slug indefinido para a casa ${nome}`);
             return;
+        }
+        try {
+            await updateDoc(doc(db, "catalogo", id), {views: increment(1)});
+        } catch (error) {
+            console.error("Erro ao atulizar as visualizações", error);
         }
         navigate(`/catalogo-de-casas/${slug}`);
     };
@@ -177,6 +211,10 @@ const CardCatalogo = ({ id, nome, pavimentos, area, quartos, banheiros, imagem, 
                     />
                 </ImageWrapper>
                 <button to={`/casas/${id}`}>Conhecer casa</button>
+                <View>
+                    <BsEye />
+                    <span>{views ? views.toLocaleString() : 0}</span>
+                </View>
                 <div>
                     <h4>{nome}</h4>
                     <span>{pavimentos}</span>

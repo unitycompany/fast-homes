@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { db } from "./../../services/firebaseConfig"; 
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import Filtro from "../../components/filtro";
 import CardCatalogo from "../../components/cards/CardCatalogo";
 import { useLocation } from "react-router-dom";
@@ -157,6 +157,19 @@ const Home = () => {
     const [hasSearched, setHasSearched] = useState(false);
     const [countdown, setCountdown] = useState(null);
     const location = useLocation();
+
+    useEffect(() => {
+        setLoading(true);
+        // Usa onSnapshot para ouvir atualizações em tempo real da coleção "catalogo"
+        const unsubscribe = onSnapshot(collection(db, "catalogo"), (snapshot) => {
+          const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+          setCards(data);
+          setFilteredCards(data);
+          setLoading(false);
+          console.log("📌 Dados atualizados do Firebase:", data);
+        });
+        return () => unsubscribe();
+      }, []);
 
     useEffect(() => {
         const fetchCards = async () => {

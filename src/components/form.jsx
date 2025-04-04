@@ -353,7 +353,7 @@ const Form = () => {
           personal_phone: whatsapp,
           mobile_phone: whatsapp,
           last_conversion: {
-            source: "FORMULARIO - FAST HOMES"
+            source: "FORMULARIO - FAST HOMES",
           },
           custom_fields: {
             uniqueId: generateUniqueId(),
@@ -365,8 +365,10 @@ const Form = () => {
             page_referrer: window.location.href || "URL não encontrada",
             cidade: cidade,
             estado: estado,
-            tipoCliente: selectedOption,
-            notas: interesse
+            tipoCliente: selectedOption
+          },
+          notas: {
+            interesse: interesse
           }
         }
       ]
