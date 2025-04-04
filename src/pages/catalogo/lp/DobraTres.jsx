@@ -27,7 +27,6 @@ const Top = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-
     @media (max-width: 768px){
         flex-direction: column;
     }
