@@ -28,7 +28,7 @@ const NavButton = styled.aside`
   cursor: pointer;
   font-size: 20px;
   color: #fff;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
   width: 40px;
   height: 40px;
   border-radius: 50%;
