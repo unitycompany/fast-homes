@@ -49,6 +49,11 @@ const Content = styled.div`
     align-items: flex-start;
     gap: 80px;
     overflow: hidden;
+
+    @media (max-width: 768px){
+        height: auto;
+        padding: 15% 2.5% 5% 2.5%;
+    }
 `
 
 const Card = styled.div`
@@ -59,6 +64,10 @@ const Card = styled.div`
     position: relative;
     width: 100%;
     text-align: ${({ direction }) => (direction ? 'left' : 'right')};
+
+    @media (max-width: 768px){
+        height: auto;
+    }
 
     & span {
         position: absolute;
@@ -122,11 +131,21 @@ const Card = styled.div`
             width: 60%;
             line-height: 100%;
             color: var(--color--black);
+            
+            @media (max-width: 768px){
+                width: 100%;
+                font-size: 26px;
+            }
         }
 
         & p {
             width: 80%;
             line-height: 110%;
+
+            @media (max-width: 768px){
+                width: 100%;
+                font-size: 15px;
+            }
         }
     }
 
