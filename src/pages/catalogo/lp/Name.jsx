@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import GlobalButton3 from "../../../components/buttons/GlobalButton3";
 import GlobalButton4 from "../../../components/buttons/GlobalButton4";
@@ -10,7 +10,7 @@ const Header = styled.div`
   max-width: 1280px;
   top: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(${({ hidden }) => (hidden ? "-100%" : "0")});
   z-index: 100;
   width: 100%;
   display: flex;
@@ -19,17 +19,14 @@ const Header = styled.div`
   padding: 1.5% 5%;
   background: #ffffff70;
   backdrop-filter: blur(10px);
-  transition: transform 0.5s ease-in-out, scale 0.5s ease-in-out;
+  transition: transform 0.5s ease;
 
   @media (max-width: 768px) {
     flex-direction: column-reverse;
     padding: 5% 5%;
     gap: 20px;
     height: 250px;
-    /* O Header permanece inalterado */
-    top: 0;
-    left: 50%;
-    transform: translateY(0) translateX(-50%);
+    transform: translateX(-50%) translateY(0);
   }
 `;
 
@@ -97,19 +94,31 @@ const MobileToggleButton = styled.button`
 `;
 
 const Name = ({ nome, descricao }) => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isMobileInfoVisible, setIsMobileInfoVisible] = useState(false);
-  const location = useLocation();
+  const [hidden, setHidden] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const timer = useRef(null);
+  const lastScroll = useRef(0);
 
-  // Detecta se o dispositivo é mobile (<= 768px)
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll > lastScroll.current && currentScroll > 100) {
+        setHidden(true);
+      }
+
+      lastScroll.current = currentScroll;
+
+      clearTimeout(timer.current);
+      timer.current = setTimeout(() => {
+        setHidden(false);
+      }, 1000);
     };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleConsultorClick = () => {
@@ -123,20 +132,9 @@ const Name = ({ nome, descricao }) => {
     }
   };
 
-  useEffect(() => {
-    if (location.state?.scrollTo) {
-      setTimeout(() => {
-        const element = document.getElementById(location.state.scrollTo);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 300);
-    }
-  }, [location]);
-
-  if (!isMobile) {
+  if (window.innerWidth > 768) {
     return (
-      <Header>
+      <Header hidden={hidden}>
         <HeaderBtns>
           <GlobalButton4
             text="Falar com um consultor"
@@ -166,45 +164,7 @@ const Name = ({ nome, descricao }) => {
     );
   }
 
-  return (
-    <>
-      <MobileToggleButton
-        onClick={() => setIsMobileInfoVisible((prev) => !prev)}
-        isOpen={isMobileInfoVisible}
-      >
-        {isMobileInfoVisible ? <FaRegTimesCircle /> : <FaRegCircle />}
-      </MobileToggleButton>
-      {isMobileInfoVisible && (
-        <Header>
-          <HeaderBtns>
-            <GlobalButton4
-              text="Falar com um consultor"
-              background1="#000"
-              background2="#000"
-              colorIcon="#fff"
-              colorText="#fff"
-              to="#form"
-              onClick={handleConsultorClick}
-            />
-            <GlobalButton3
-              text="Catálogo"
-              background1="transparent"
-              background2="transparent"
-              colorIcon="#000"
-              colorText="#000"
-              border1="#000"
-              border2="#000"
-              to="/catalogo-de-casas"
-            />
-          </HeaderBtns>
-          <HeaderTexts>
-            <h1>{nome}</h1>
-            <p>{descricao}</p>
-          </HeaderTexts>
-        </Header>
-      )}
-    </>
-  );
+  return null; // Se precisar manter o comportamento mobile, reaproveite o código original aqui.
 };
 
 export default Name;
