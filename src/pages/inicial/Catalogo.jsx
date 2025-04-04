@@ -138,6 +138,11 @@ const CatalogoItems = styled.div`
 
     @media (max-width: 768px){
         width: 95%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        gap: 10px;
     }
 `
 

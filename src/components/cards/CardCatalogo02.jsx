@@ -34,9 +34,11 @@ const CardImage = styled.div`
     width: 40%;
     height: 100%;
     border-radius: 10px;
+    box-shadow:  10px 10px 50px #d9d9d9, -10px -10px 50px #ffffff;
 
     @media (max-width: 768px){
         width: 100%;
+        box-shadow: none!important;
     }
 
 

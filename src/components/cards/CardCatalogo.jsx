@@ -164,6 +164,7 @@ const View = styled.aside`
     border-radius: 20px;
     padding: 2.5px 10px;
     color: #fff;
+    transition: all .2s ease-in-out;
 
     & svg {
         fill: #fff;
@@ -199,6 +200,7 @@ const View = styled.aside`
     &:hover {
         background-color: #000;
         backdrop-filter: blur(0);
+        transform: scale(0.95);
     }
 
     &:hover p {

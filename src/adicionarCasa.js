@@ -9,23 +9,23 @@ const generateSlug = (name) => {
 // Função para adicionar uma casa ao Firestore
 const adicionarCasa = async () => {
     try {
-        const nomeCasa = "Colorada";
+        const nomeCasa = "Tennessee";
         const idDoc = `casa-${generateSlug(nomeCasa)}`;
 
         const novaCasa = {
             nome: nomeCasa,
             slug: generateSlug(nomeCasa),
-            descricao: "Colorado é uma casa minimalista e sofisticada.",
-            area: 120,
-            largura: "21,00 x 10,00",
-            lote: "40x20",
+            descricao: "Casa Tennessee: elegância em 216 m², 2 pavimentos, 3 suítes, espaços amplos e design sofisticado.",
+            area: 216.60,
+            largura: "15,30 x 10,60",
+            lote: "18,30 x 20,60",
             pavimentos: "2 pavimentos",
-            quartos: 4,
-            suites: 2,
-            banheiros: 3,
-            garagem: 2,
+            quartos: 1,
+            suites: 3,
+            banheiros: 6,
+            garagem: 1,
             create: serverTimestamp(),
-            churrasqueira: true,
+            churrasqueira: false,
             liveViews: 0,
             views: 100,
             piscina: false,
