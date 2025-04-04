@@ -16,7 +16,7 @@ const Content = styled.div`
     transform: translateX(-50%);
     width: 100%;
     height: auto;
-    min-height: 80dvh;
+    min-height: 100dvh;
     margin-top: 7.5%;
     padding: 2.5% 5%;
     display: flex;
