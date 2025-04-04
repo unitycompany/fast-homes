@@ -67,7 +67,7 @@ const LandingPage = () => {
     const [dados, setDados] = useState(null);
     const [loading, setLoading] = useState(true);
     const [timeoutExceeded, setTimeoutExceeded] = useState(false);
-    const [liveViews, setLiveViews] = useState(3);
+    const [liveViews, setLiveViews] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -123,7 +123,7 @@ const LandingPage = () => {
 
             const unsubscribe = onSnapshot(houseRef, (snapshot) => {
                 const data = snapshot.data();
-                setLiveViews(data.liveViews < 3 ? 3 : data.liveViews);
+                setLiveViews(data.liveViews < 0 ? 0 : data.liveViews);
             });
 
             return () => {
