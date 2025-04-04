@@ -170,7 +170,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
       <ModalBackground visivel={visivel} onClick={fechar} />
       <ModalContent visivel={visivel}>
         <Top>
-          <h2>Pacote Básico</h2>
+          <h2>Pacote Geral</h2>
           <button onClick={fechar} style={{ background: "none", border: "none" }}>
             <BsX />
           </button>

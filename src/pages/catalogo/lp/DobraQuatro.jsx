@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import CarrosselLP from "../../../components/carrossel-lp";
 
 const Content = styled.div`
     width: 100%;
@@ -12,18 +13,23 @@ const Content = styled.div`
     align-items: center;
     justify-content: center;
     padding: 5% 5%;
-    gap: 30px;
+    gap: 10px;
 
     & img {
         border-radius: 20px;
+        height: 100%;
     }
 `
 
-const Dobra4 = ({ imagem }) => {
+const Dobra4 = ({ plantaBaixa }) => {
     return (
         <>
             <Content>
-                <img data-aos="fade-up" data-aos-delay="100" src={imagem} alt="" />
+                <CarrosselLP
+                    images={plantaBaixa}
+                    width="100%"
+                    height="100%"
+                />
             </Content>
         </>
     )

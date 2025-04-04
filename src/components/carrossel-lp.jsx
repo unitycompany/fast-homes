@@ -76,7 +76,7 @@ const CarrosselLP = ({ images, width, height }) => {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <Image src={image} alt={`Slide ${index + 1}`} />
+            <Image src={image} alt={`Slide ${index + 1}`} loading="lazy" />
           </SwiperSlide>
         ))}
       </Swiper>

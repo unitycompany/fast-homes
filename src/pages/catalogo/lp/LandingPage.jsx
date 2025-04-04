@@ -11,6 +11,7 @@ import Dobra3 from "./DobraTres";
 import Dobra4 from "./DobraQuatro";
 import FormLP from "../../../components/form-lp";
 import CardsCarrosselLP from "../../../components/cards/CardCarrosselLP";
+import { Helmet } from "react-helmet-async";
 
 const LoadingWrapper = styled.div`
   display: flex;
@@ -101,7 +102,10 @@ const LandingPage = () => {
 
     return (
         <>
-            <PacoteCompleto />
+            <Helmet>
+                <title>{dados.nome} - Fast Homes</title>
+                <meta name="description" content={dados.descricao} />
+            </Helmet>
             <Name nome={dados.nome} descricao={dados.descricao} />
             <Home 
                 imagens={[dados.imagem, dados.imagemDois]} 
@@ -118,7 +122,7 @@ const LandingPage = () => {
             {dados.dobra2 && <Dobra2 title1={dados.dobra2?.title1} descricao={dados.dobra2?.descricao} imagens={dados.dobra2?.carrossel} area={dados.area} />}
             {dados.dobra3 && <Dobra3 title={dados.dobra3?.title} descricao={dados.dobra3?.descricao} 
                 carrosselEsquerda={dados.dobra3?.carrosselEsquerda} carrosselDireita={dados.dobra3?.carrosselDireita} />}
-            {dados.dobra4 && <Dobra4 imagem={dados.dobra4?.imagem} />}
+            {dados.dobra4 && <Dobra4 plantaBaixa={dados.dobra4?.plantaBaixa} />}
             <FormLP />
             <CardsCarrosselLP />
         </> 

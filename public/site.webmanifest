@@ -1,0 +1,20 @@
+{
+    "name": "Fast Homes - Casas Pré Fabricadas",
+    "short_name": "Fast Homes",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "icon": [
+        {
+            "src": "/favicon-fast-homes.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-fast-homes.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

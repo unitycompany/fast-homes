@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Home from "./Home";
 import CardProjeto from "../../components/cards/CardProjetos";
 import Text from "./Text";
+import { Helmet } from "react-helmet-async";
 
 const Projetos = styled.div`
     max-width: 1280px;
@@ -23,6 +24,10 @@ const Projetos = styled.div`
 const PaginaCatalogo = () => {
     return (
         <>
+            <Helmet>
+                <title>Catálogo - Fast Homes</title>
+                <meta name="description" content="Confira o catálogo completo de casas pré-fabricadas da Fast Homes. Projetos modernos, sustentáveis e prontos para personalização, ideais para seu estilo de vida." />
+            </Helmet>
             <Home />   
                 <Projetos>
                     <CardProjeto 

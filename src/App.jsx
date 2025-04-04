@@ -21,6 +21,8 @@ import Privacidade from "./pages/politicas/Privacidade";
 import Termos from "./pages/politicas/Termos";
 import Cookie from "./pages/politicas/Cookie";
 
+import { HelmetProvider } from "react-helmet-async";
+
 // Importe aqui sua nova página administrativa
 import AdicionarCasa from "./pages/Admin/AdicionarCasa";
 import LoginPage from "./pages/Admin/Login";
@@ -90,8 +92,10 @@ const AppContent = () => {
 function App() {
   return (
     <BrowserRouter>
-      <AppContent />
-      <Cookie />
+      <HelmetProvider>
+        <AppContent />
+        <Cookie />
+      </HelmetProvider>
     </BrowserRouter>
   );
 }

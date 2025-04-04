@@ -183,7 +183,6 @@ const NextButton = styled(ArrowButton)`
   }
 `;
 
-
 const StyledSwiper = styled(Swiper)`
   width: 100%;
   height: 100%;

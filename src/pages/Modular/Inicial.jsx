@@ -5,6 +5,7 @@ import Casas from "./Casas";
 import Solucoes from "./Solucoes";
 import Trajetoria from "../inicial/Trajetoria";
 import FormLP from "../../components/form-lp";
+import { Helmet } from "react-helmet-async";
 
 const Content = styled.section `
     width: 100%;
@@ -28,6 +29,10 @@ const Formulario = styled.div`
 const PaginaModular = () => {
     return (
         <>
+            <Helmet>
+                <title>Modular - Fast Homes</title>
+                <meta name="description" content="Conheça a Casa Modular da Fast Homes: moderna, sustentável e eficiente. Adaptamos seu projeto em módulos inteligentes, proporcionando rapidez e flexibilidade para sua nova moradia." />
+            </Helmet>
             <Content>
                 <Home />
                     <Casas />

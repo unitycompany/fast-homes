@@ -39,6 +39,10 @@ const infos = [
 const Content = styled.div`
     width: 100%;
     max-width: 1280px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    position: relative;
     padding: 5% 2.5%;
     display: flex;
     flex-direction: column;

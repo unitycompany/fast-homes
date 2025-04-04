@@ -165,7 +165,7 @@ const Porque = () => {
                 </Left>
 
                 <Right data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c835ab0f-4548-4a35-f25d-0fc75ccb0000/public" alt="" />
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c835ab0f-4548-4a35-f25d-0fc75ccb0000/public" loading=""/>
                 </Right>
             </Content>
         </>

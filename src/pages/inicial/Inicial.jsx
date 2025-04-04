@@ -7,10 +7,16 @@ import Trajetoria from "./Trajetoria";
 import Financiamento from "./Financiamento";
 import SobreNos from "./SobreNos";
 import styled from "styled-components";
+import { Helmet } from "react-helmet-async";
 
 const PaginaInicial = () => {
     return (
         <>
+            <Helmet>
+                <title>Inicio - Fast Homes</title>
+                <meta name="description" content="Fast Homes oferece casas pré-fabricadas sustentáveis, eficientes e personalizáveis para atender às suas necessidades de moradia moderna." />
+            </Helmet>
+
             <Home />
                 <Catalogo />
                     <Faixa categoria="interiores"/>

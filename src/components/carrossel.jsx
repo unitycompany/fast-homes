@@ -159,7 +159,7 @@ const Carrossel = ({ category }) => {
                   Conhecer Casa
                 </button>
                 {casa.imageUrl ? (
-                  <img src={casa.imageUrl} alt={casa.name} />
+                  <img src={casa.imageUrl} alt={casa.name} loading="lazy"/>
                 ) : (
                   <p>Imagem não disponível</p>
                 )}

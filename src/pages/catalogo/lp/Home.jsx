@@ -251,7 +251,7 @@ const CardDado = styled.div`
 
 const pacotes = [
     {
-        titulo: "Pacote básico",
+        titulo: "Pacote Geral",
         conteudo: [
             "Cálculo e Projeto Estrutural LSF",
             "Fundação tipo Radier",

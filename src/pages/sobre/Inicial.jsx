@@ -6,6 +6,7 @@ import Porque from "./Porque";
 import Form from "../../components/form";
 import FormLP from "../../components/form-lp";
 import Faixa from "../../components/faixa";
+import { Helmet } from "react-helmet-async";
 
 const Content = styled.div`
     height: auto;
@@ -29,6 +30,10 @@ const FormDiv = styled.div`
 const PaginaSobre = () => {
     return (
         <>
+            <Helmet>
+                <title>Sobre nos - Fast Homes</title>
+                <meta name="description" content="Conheça a Fast Homes, especialista em casas pré-fabricadas. Com compromisso em inovação, sustentabilidade e qualidade, ajudamos você a realizar o sonho da casa própria." />
+            </Helmet>
             <Content>
                 <Home />
                     <Surgiu />

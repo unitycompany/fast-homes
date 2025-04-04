@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Home from "./Home";
 import FormLP from "../../components/form-lp";
 import Faixa from "../../components/faixa";
+import { Helmet } from "react-helmet-async";
 
 const Content = styled.div`
     height: auto;
@@ -22,6 +23,10 @@ const Content = styled.div`
 const PaginaProjetos = () => {
     return (
         <>
+            <Helmet>
+                <title>Seu Projeto - Fast Homes</title>
+                <meta name="description" content="A Fast Homes adapta seu projeto e oferece casas pré-fabricadas personalizadas, sustentáveis e eficientes, ideais para atender suas necessidades específicas de moradia moderna." />
+            </Helmet>
             <Content>
                 <Home />
                     <FormLP />

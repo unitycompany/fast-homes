@@ -107,6 +107,7 @@ const GlobalButton3 = ({ text, background1, background2, colorIcon, colorText, b
             border1={border1} 
             border2={border2} 
             onClick={handleClick}
+            id="clickButton"
         >
             <div>
                 <span>{text}</span>
