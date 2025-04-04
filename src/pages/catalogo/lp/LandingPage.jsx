@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../../../services/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import Name from "./Name";
@@ -12,6 +12,7 @@ import Dobra4 from "./DobraQuatro";
 import FormLP from "../../../components/form-lp";
 import CardsCarrosselLP from "../../../components/cards/CardCarrosselLP";
 import { Helmet } from "react-helmet-async";
+import Error from "../../../../404";
 
 const LoadingWrapper = styled.div`
   display: flex;
@@ -42,6 +43,7 @@ const LandingPage = () => {
     const [dados, setDados] = useState(null);
     const [loading, setLoading] = useState(true);
     const [timeoutExceeded, setTimeoutExceeded] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -98,7 +100,7 @@ const LandingPage = () => {
         );
     }
 
-    if (!dados) return <p>Casa não encontrada. Verifique se o slug foi salvo corretamente no Firebase.</p>;
+    if (!dados) return <Error />;
 
     return (
         <>

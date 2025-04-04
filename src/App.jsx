@@ -29,6 +29,9 @@ import LoginPage from "./pages/Admin/Login";
 import Options from "./pages/Admin/Options";
 import CasasCadastradas from "./pages/Admin/CasasCadastradas";
 
+// Importe o componente 404 (Card) – ajuste o caminho conforme necessário
+import Error from "../404";
+
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.4 } },
@@ -39,21 +42,22 @@ const AppContent = () => {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0); 
+    window.scrollTo(0, 0);
   }, [location.pathname]);
 
   useEffect(() => {
     AOS.init({
-      duration: 1200, 
+      duration: 1200,
       offset: 50,
-      easing: "ease-in-out", 
-      once: true, 
+      easing: "ease-in-out",
+      once: true,
       mirror: true,
     });
   }, []);
 
-  const hideLayout = location.pathname.startsWith("/catalogo-de-casas/") || location.pathname.startsWith("/admin");
-
+  const hideLayout =
+    location.pathname.startsWith("/catalogo-de-casas/") ||
+    location.pathname.startsWith("/admin");
 
   return (
     <>
@@ -71,16 +75,31 @@ const AppContent = () => {
             <Route path="/catalogo-de-casas" element={<PaginaCatalogo />} />
             <Route path="/sobre-nos" element={<PaginaSobre />} />
             <Route path="/modular" element={<PaginaModular />} />
-            <Route path="/projetos-personalizados" element={<PaginaProjeto />} />
-            <Route path="/catalogo-de-casas/:slug" element={<LandingPage />} />
+            <Route
+              path="/projetos-personalizados"
+              element={<PaginaProjeto />}
+            />
+            <Route
+              path="/catalogo-de-casas/:slug"
+              element={<LandingPage />}
+            />
             <Route path="/termos-e-condicoes" element={<Termos />} />
             <Route path="/politica-de-privacidade" element={<Privacidade />} />
 
-            {/* Nova rota administrativa */}
+            {/* Rotas administrativas */}
             <Route path="/admin" element={<LoginPage />} />
             <Route path="/admin/options" element={<Options />} />
-            <Route path="/admin/options/adicionar-casa" element={<AdicionarCasa />} />
-            <Route path="/admin/options/casas-cadastradas" element={<CasasCadastradas />} />
+            <Route
+              path="/admin/options/adicionar-casa"
+              element={<AdicionarCasa />}
+            />
+            <Route
+              path="/admin/options/casas-cadastradas"
+              element={<CasasCadastradas />}
+            />
+
+            {/* Rota 404 para páginas não encontradas */}
+            <Route path="*" element={<Error />} />
           </Routes>
         </motion.div>
       </AnimatePresence>
