@@ -170,8 +170,40 @@ const View = styled.aside`
         font-size: 12px;
     }
 
+    & p {
+        position: absolute;
+        z-index: 10;
+        color: #000;
+        background-color: #fff;
+        width: auto;
+        min-width: max-content;
+        left: 0px;
+        top: 60px;
+        border-radius: 20px;
+        padding: 5px 10px;
+        font-size: 10px;
+        transform: scale(0);
+        transition: all .2s ease-in-out;
+        font-weight: 400;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+
+        & b {
+            font-weight: 600;
+        }
+    } 
+
     & span {
         font-size: 12px;
+    }
+
+    &:hover {
+        background-color: #000;
+        backdrop-filter: blur(0);
+    }
+
+    &:hover p {
+        transform: scale(1);
+        
     }
 `
 
@@ -213,7 +245,8 @@ const CardCatalogo = ({ id, nome, pavimentos, area, quartos, banheiros, imagem, 
                 <button to={`/casas/${id}`}>Conhecer casa</button>
                 <View>
                     <BsEye />
-                    <span>{views ? views.toLocaleString() : 0}</span>
+                    <span>{views ? views.toLocaleString() : 100}</span>
+                    <p>Visualizações da casa <b>{views}</b></p>
                 </View>
                 <div>
                     <h4>{nome}</h4>
