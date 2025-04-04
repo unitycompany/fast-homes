@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../../services/firebaseConfig";
 import { collection, getDocs, doc, updateDoc, onSnapshot, increment } from "firebase/firestore";
 import { useNavigate, useParams } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import Name from "./Name";
 import Home from "./Home";
@@ -13,7 +13,7 @@ import FormLP from "../../../components/form-lp";
 import CardsCarrosselLP from "../../../components/cards/CardCarrosselLP";
 import { Helmet } from "react-helmet-async";
 import Error from "../../../../404";
-import { FaUser } from "react-icons/fa";
+import { FaCircle, FaUser } from "react-icons/fa";
 
 const LoadingWrapper = styled.div`
   display: flex;
@@ -38,6 +38,15 @@ const Spinner = styled.div`
   }
 `;
 
+const pulse = keyframes`
+    0% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+`
+
 const View = styled.aside`
     position: fixed;
     bottom: 20px;
@@ -50,14 +59,21 @@ const View = styled.aside`
     align-items: center;
     justify-content: center;
     gap: 10px;
+    box-shadow: 0 0 5px rgba(9, 110, 0, 0.5);
 
     & svg {
         font-size: 12px;
         fill: #1f9202;
+        animation: ${pulse} 1s linear infinite alternate-reverse;
     }
 
     & span {
         font-size: 12px;
+
+        & b {
+            font-weight: 600;
+            color: #1f9202;
+        }
     }
 `
 
@@ -69,6 +85,8 @@ const LandingPage = () => {
     const [timeoutExceeded, setTimeoutExceeded] = useState(false);
     const [liveViews, setLiveViews] = useState(0);
     const navigate = useNavigate();
+    const shouldDisplayView = (count) => count > 0;
+    const formatViewText = (count) => count === 1 ? `${count} pessoa` : `${count} pessoas`;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -154,10 +172,15 @@ const LandingPage = () => {
                 <title>{dados.nome} - Fast Homes</title>
                 <meta name="description" content={dados.descricao} />
             </Helmet>
-            <View>
-                <FaUser />
-                <span>{liveViews} Pessoas vendo a casa</span>
-            </View>
+            {shouldDisplayView(liveViews) && (
+                <View>
+                    <FaCircle />
+                    <span>
+                    <b>{formatViewText(liveViews)}</b> vendo a casa - {dados.nome}
+                    </span>
+                </View>
+                )}
+
             <Name nome={dados.nome} descricao={dados.descricao} />
             <Home 
                 imagens={[dados.imagem, dados.imagemDois]} 

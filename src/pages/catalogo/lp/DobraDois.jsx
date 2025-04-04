@@ -107,7 +107,7 @@ const Dobra2 = ({ title1, area, descricao, imagens }) => {
                         <span data-aos="fade-up" data-aos-delay="500">Área construida</span>
                     </div>
                 </Left>
-                <Right data-aos="fade-up-left" data-aos-delay="100">
+                <Right data-aos="fade-up" data-aos-delay="100">
                     <CarrosselLP
                         images={imagens}
                         width="100%"
