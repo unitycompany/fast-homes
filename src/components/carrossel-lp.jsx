@@ -17,7 +17,7 @@ const CarouselContainer = styled.div`
   overflow: hidden;
 `;
 
-const NavButton = styled.div`
+const NavButton = styled.aside`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

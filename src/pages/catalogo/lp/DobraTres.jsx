@@ -27,6 +27,7 @@ const Top = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+
     @media (max-width: 768px){
         flex-direction: column;
     }
@@ -34,7 +35,7 @@ const Top = styled.div`
     & div {
         @media (max-width: 768px){
             width: 100%;
-            height: 500px;
+            height: 400px;
         }
     }
 
@@ -42,7 +43,7 @@ const Top = styled.div`
         height: 550px;
 
         @media (max-width: 768px){
-            height: 300px;
+            height: 400px!important;
             object-fit: cover;
         }
     }
