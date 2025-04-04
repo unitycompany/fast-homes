@@ -1,5 +1,5 @@
 import { db } from "./services/firebaseConfig.js"; // Importando sua configuração do Firebase
-import { collection, addDoc } from "firebase/firestore";
+import { doc, collection, setDoc, serverTimestamp } from "firebase/firestore";
 
 // Função para criar um slug automaticamente
 const generateSlug = (name) => {
@@ -9,9 +9,12 @@ const generateSlug = (name) => {
 // Função para adicionar uma casa ao Firestore
 const adicionarCasa = async () => {
     try {
+        const nomeCasa = "Colorada";
+        const idDoc = `casa-${generateSlug(nomeCasa)}`;
+
         const novaCasa = {
-            nome: "Colorada",
-            slug: generateSlug("colorado"),
+            nome: nomeCasa,
+            slug: generateSlug(nomeCasa),
             descricao: "Colorado é uma casa minimalista e sofisticada.",
             area: 120,
             largura: "21,00 x 10,00",
@@ -21,7 +24,10 @@ const adicionarCasa = async () => {
             suites: 2,
             banheiros: 3,
             garagem: 2,
+            create: serverTimestamp(),
             churrasqueira: true,
+            liveViews: 0,
+            views: 100,
             piscina: false,
             imagem: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/73ffb0e2-19a5-4cf5-e84b-5dbcbb3f6200/public",
             imagemDois: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5493a461-fb61-43ac-8edb-b734ca35fc00/public",
@@ -37,12 +43,12 @@ const adicionarCasa = async () => {
                 carrosselDireita: ["https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/7aa4063b-ba6f-4d57-4aea-49f569975c00/public", "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1a6ec363-cfb6-4c3f-a274-1d2925b69300/public"]
             },
             dobra4: {
-                imagem: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/9f52eb53-d876-4646-6db9-62d604a44000/public"
+                plantaBaixa: ["https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/9f52eb53-d876-4646-6db9-62d604a44000/public", "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/9f52eb53-d876-4646-6db9-62d604a44000/public"] 
             }
         };
 
-        const docRef = await addDoc(collection(db, "catalogo"), novaCasa);
-        console.log("✅ Casa adicionada com sucesso! ID:", docRef.id);
+        await setDoc(doc(db, "catalogo", idDoc), novaCasa);
+        console.log("✅ Casa adicionada com sucesso! ID:", idDoc);
         process.exit(); // Fecha o script após a execução
     } catch (error) {
         console.error("❌ Erro ao adicionar casa:", error);

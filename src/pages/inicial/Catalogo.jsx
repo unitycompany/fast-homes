@@ -148,15 +148,21 @@ const Catalogo = () => {
 
   useEffect(() => {
     const fetchCasas = async () => {
-      try {
-        const casasQuery = query(collection(db, "catalogo"), orderBy("nome", "desc"), limit(4));
-        const querySnapshot = await getDocs(casasQuery);
-        const casasArray = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        setCasas(casasArray);
-      } catch (error) {
-        console.error("Erro ao buscar casas no Firebase:", error);
-      }
-    };
+        try {
+          // Ordena os documentos pelo campo "create" em ordem decrescente (mais recentes primeiro)
+          const casasQuery = query(
+            collection(db, "catalogo"),
+            orderBy("create", "desc"),
+            limit(4)
+          );
+          const querySnapshot = await getDocs(casasQuery);
+          const casasArray = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+          setCasas(casasArray);
+        } catch (error) {
+          console.error("Erro ao buscar casas no Firebase:", error);
+        }
+      };
+      
 
     fetchCasas();
   }, []);

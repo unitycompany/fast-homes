@@ -174,15 +174,32 @@ const Home = () => {
         setVisibleCount(isMobile ? 3 : 6);
     }, [isMobile]);
 
+    // Função para ordenar os dados pela data de criação (mais recentes primeiro)
+    // Se o campo "create" não existir, assume uma data antiga (new Date(0))
+    const sortCards = (data) => {
+        return data.sort((a, b) => {
+          const dateA =
+            a.create && typeof a.create.toDate === "function"
+              ? a.create.toDate()
+              : new Date(a.create || 0);
+          const dateB =
+            b.create && typeof b.create.toDate === "function"
+              ? b.create.toDate()
+              : new Date(b.create || 0);
+          return dateB - dateA;
+        });
+      };
+      
     useEffect(() => {
         setLoading(true);
         // Usa onSnapshot para ouvir atualizações em tempo real da coleção "catalogo"
         const unsubscribe = onSnapshot(collection(db, "catalogo"), (snapshot) => {
           const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-          setCards(data);
-          setFilteredCards(data);
+          const sortedData = sortCards(data);
+          setCards(sortedData);
+          setFilteredCards(sortedData);
           setLoading(false);
-          console.log("📌 Dados atualizados do Firebase:", data);
+          console.log("📌 Dados atualizados do Firebase:", sortedData);
         });
         return () => unsubscribe();
     }, []);
@@ -192,10 +209,11 @@ const Home = () => {
             setLoading(true);
             const snapshot = await getDocs(collection(db, "catalogo"));
             const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            setCards(data);
-            setFilteredCards(data);
+            const sortedData = sortCards(data);
+            setCards(sortedData);
+            setFilteredCards(sortedData);
             setLoading(false);
-            console.log("📌 Dados carregados do Firebase:", data);
+            console.log("📌 Dados carregados do Firebase:", sortedData);
         };
         fetchCards();
     }, []);

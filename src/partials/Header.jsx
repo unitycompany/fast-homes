@@ -61,7 +61,7 @@ const HeaderAll = styled.div`
     transform: translateX(-50%);
     position: relative;
     width: 100%;
-    height: 7.5vh;
+    height: 8.5vh;
     padding: 0 5%;
     display: flex;
     align-items: center;

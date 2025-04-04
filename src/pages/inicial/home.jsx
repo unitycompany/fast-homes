@@ -3,17 +3,14 @@ import { db } from "../../services/firebaseConfig";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade, Navigation } from "swiper/modules";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import "swiper/css";
 import "swiper/css/pagination";
 import { SlArrowRight, SlArrowLeft } from "react-icons/sl";
 
-
 import GlobalButton2 from "../../components/buttons/GlobalButton2";
 import GlobalButton3 from "../../components/buttons/GlobalButton3";
-import { useLocation } from "react-router-dom";
-
+import { useLocation, useNavigate } from "react-router-dom";
 
 const HomeContainer = styled.section`
     width: 100%;
@@ -50,8 +47,7 @@ const HomeCenter = styled.div`
         flex-direction: column;
         gap: 40px;
     }
-
-`
+`;
 
 const HomeTexts = styled.div`
     width: 100%;
@@ -120,8 +116,7 @@ const HomeTexts = styled.div`
     & > button {
         padding-bottom: 10px;
     }
-    
-`
+`;
 
 const BackgroundWrapper = styled.div`
   position: absolute;
@@ -140,9 +135,21 @@ const BackgroundWrapper = styled.div`
     left: 0;
     z-index: 2;
     clip-path: polygon(80% 98%, 0% 100%, 100% 100%);
-
     background-color: #fff;
   }
+`;
+
+const Nome = styled.span`
+  z-index: 100!important;
+  position: absolute;
+  right: 5%;
+  top: 15%;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #000;
+  background-color: #ffffff50;
+  backdrop-filter: blur(2px);
 `;
 
 const ArrowButton = styled.button`
@@ -163,7 +170,6 @@ const ArrowButton = styled.button`
   }
 `;
 
-// Botão da seta anterior
 const PrevButton = styled(ArrowButton)`
   left: 15px;
   transition: all .2s ease-in-out;
@@ -173,7 +179,6 @@ const PrevButton = styled(ArrowButton)`
   }
 `;
 
-// Botão da seta seguinte
 const NextButton = styled(ArrowButton)`
   right: 15px;
   transition: all .2s ease-in-out;
@@ -187,7 +192,6 @@ const StyledSwiper = styled(Swiper)`
   width: 100%;
   height: 100%;
 
-  /* Paginação (Dots) */
   .swiper-pagination {
     bottom: 50px !important; 
     left: 85%!important;
@@ -210,19 +214,18 @@ const StyledSwiper = styled(Swiper)`
 
   .swiper-pagination-bullet-active {
     background: #fff;
-    width: 18px; /* Aumentar tamanho do ativo */
+    width: 18px;
     height: 10px;
     opacity: 1;
   }
 
-  /* Slides */
   .swiper-slide {
     transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 0.8;
   }
 
   .swiper-slide-active {
-    transform: scale(1.1); /* Aumenta um pouco o ativo */
+    transform: scale(1.1);
     opacity: 1;
   }
 `;
@@ -238,11 +241,12 @@ const SlideImage = styled.div`
 `;
 
 const Home = () => {
-    const [loadedImages, setLoadedImages] = useState([]);
+    // Agora guardamos os dados completos da casa (nome, imagem, etc.)
+    const [loadedCasas, setLoadedCasas] = useState([]);
     const prevRef = useRef(null);
     const nextRef = useRef(null);
-
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
       if (location.hash) {
@@ -253,26 +257,28 @@ const Home = () => {
         }
       }
     }, [location]);
-    
 
+    useEffect(() => {
+      const fetchCasas = async () => {
+        try {
+          // Ordena pela data "create" desc para pegar as casas mais recentes primeiro
+          const casasQuery = query(
+            collection(db, "catalogo"),
+            orderBy("create", "desc"),
+            limit(5)
+          );
+          const querySnapshot = await getDocs(casasQuery);
+          const casasArray = querySnapshot.docs
+            .map(doc => ({ id: doc.id, ...doc.data() })) // Busca todos os dados
+            .filter(casa => casa.imagem && casa.nome); // Garante que os campos existem
+          setLoadedCasas(casasArray);
+        } catch (error) {
+          console.error("Erro ao buscar casas no Firebase:", error);
+        }
+      };
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const casasQuery = query(collection(db, "catalogo"), orderBy("nome", "desc"), limit(5));
-        const querySnapshot = await getDocs(casasQuery);
-        const imagensArray = querySnapshot.docs
-          .map(doc => doc.data().imagem) // Pegando apenas o campo de imagem
-          .filter(img => img); // Filtrando para evitar imagens vazias ou undefined
-
-        setLoadedImages(imagensArray);
-      } catch (error) {
-        console.error("Erro ao buscar imagens no Firebase:", error);
-      }
-    };
-
-    fetchImages();
-  }, []);
+      fetchCasas();
+    }, []);
 
     return (
         <HomeContainer>
@@ -284,7 +290,6 @@ const Home = () => {
                   nextEl: nextRef.current,
                 }}
                 onBeforeInit={(swiper) => {
-                  // Define as referências para os botões de navegação
                   swiper.params.navigation.prevEl = prevRef.current;
                   swiper.params.navigation.nextEl = nextRef.current;
                 }}
@@ -293,9 +298,19 @@ const Home = () => {
                 loop={true}
                 pagination={{ clickable: true }}
               >
-                {loadedImages.map((img, index) => (
+                {loadedCasas.map((casa, index) => (
                   <SwiperSlide key={index}>
-                    <SlideImage  style={{ backgroundImage: `url(${img})`, height: "100%", backgroundSize: "cover", backgroundAttachment: "fixed" }} />
+                    <Nome>
+                      {casa.nome}
+                    </Nome>
+                    <SlideImage
+                      style={{ 
+                        backgroundImage: `url(${casa.imagem})`,
+                        height: "100%",
+                        backgroundSize: "cover",
+                        backgroundAttachment: "fixed"
+                      }}
+                    />
                   </SwiperSlide>
                 ))}
               </StyledSwiper>
@@ -311,12 +326,15 @@ const Home = () => {
             <HomeCenter>
                 <HomeTexts>
                     <div>
-                        <h2 data-aos="fade-up" data-aos-delay="100">O novo <b>conceito de lar</b> é</h2>
-                        <h1 data-aos="fade-up" data-aos-delay="400">Fast Homes</h1>
+                        <h2 data-aos="fade-up" data-aos-delay="100">
+                          O novo <b>conceito de lar</b> é
+                        </h2>
+                        <h1 data-aos="fade-up" data-aos-delay="400">
+                          Fast Homes
+                        </h1>
                     </div>
                     <p data-aos="fade-up-right" data-aos-delay="600">
-                        Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos<br /> <br />
-
+                        Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos<br /><br />
                         Colocar uma descrição curta e objetiva falando sobre a fast homes.
                     </p>
                     <GlobalButton2

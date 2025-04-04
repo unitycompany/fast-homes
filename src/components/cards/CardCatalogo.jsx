@@ -15,7 +15,7 @@ const Card = styled.div`
     justify-content: center;
     position: relative;
     background: #fff;
-    border: 1px solid #00000020;
+    box-shadow:  10px 10px 24px #e6e6e6, -10px -10px 24px #ffffff;
     transition: all .2s ease-in-out;
     cursor: pointer;
     overflow: hidden;
