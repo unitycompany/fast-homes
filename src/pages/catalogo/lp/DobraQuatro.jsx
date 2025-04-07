@@ -14,10 +14,16 @@ const Content = styled.div`
     justify-content: center;
     padding: 5% 5%;
     gap: 10px;
+    max-height: 100vh;
 
     & img {
         border-radius: 20px;
-        height: 100%;
+        height: 700px;
+        object-fit: contain;
+
+        @media (max-width: 768px){
+            height: 400px;
+        }
     }
 `
 
