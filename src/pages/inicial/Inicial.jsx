@@ -22,7 +22,7 @@ const PaginaInicial = () => {
                     <Faixa categoria="interiores"/>
                         <Trajetoria />
                             <Financiamento />
-                                <Faixa categoria="interiores"/>
+                                <Faixa categoria="fachadas"/>
                                     <SobreNos />
                                         <Parcerias />
                                             <Faixa categoria="interiores"/>
