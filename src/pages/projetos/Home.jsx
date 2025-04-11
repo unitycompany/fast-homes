@@ -120,7 +120,7 @@ const Home = () => {
                     direction={true}
                     position="left"
                     text={true}
-                    image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
+                    image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6e78ac0d-d748-41ef-c039-e41166058900/public"
                     itemDirection={true}
                 />
 
@@ -179,7 +179,7 @@ const Home = () => {
                     direction={false}
                     position="right"
                     text={false}
-                    image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
+                    image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2751c4a0-fc31-407c-244e-8277817bdc00/public"
                     itemDirection={false}
                 />
 

@@ -171,7 +171,7 @@ const Home = () => {
                 </Left>
 
                 <Right data-aos="fade-up-left" data-aos-delay="200">
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5493a461-fb61-43ac-8edb-b734ca35fc00/public" loading="lazy" />
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/91b8fb62-ea21-48b1-7333-9b49c434c000/public" loading="lazy" />
                 </Right>
             </Content>
         </>

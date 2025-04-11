@@ -139,7 +139,7 @@ const Surgiu = () => {
         <>
             <Content>
                 <Left data-aos="zoom-in" data-aos-delay="100">
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5493a461-fb61-43ac-8edb-b734ca35fc00/public" loading="lazy" />
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/63458025-85e6-434a-44b6-831d6e958700/public" loading="lazy" />
                 </Left>
                 <Right>
                     <h2 data-aos="fade-up" data-aos-delay="100">Como a Fast Homes surgiu?</h2>
@@ -151,11 +151,11 @@ const Surgiu = () => {
                         Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos, colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
                     </p>
                     <div data-aos="fade-up" data-aos-delay="400">
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5493a461-fb61-43ac-8edb-b734ca35fc00/public" loading="lazy" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2110b3ee-1420-4cf2-0987-dfc2143fee00/public" loading="lazy" />
 
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5493a461-fb61-43ac-8edb-b734ca35fc00/public" loading="lazy" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6e78ac0d-d748-41ef-c039-e41166058900/public" loading="lazy" />
 
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5493a461-fb61-43ac-8edb-b734ca35fc00/public" loading="lazy" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2751c4a0-fc31-407c-244e-8277817bdc00/public" loading="lazy" />
                     </div>
 
                     <article data-aos="zoom-in" data-aos-delay="300">
