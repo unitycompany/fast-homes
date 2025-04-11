@@ -65,7 +65,7 @@ const Left = styled.div`
         top: -20px;
         left: -20px;
         border-radius: 20px;
-        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/dddba69f-9274-4622-53cc-e397bf590900/public');
+        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2d3d382a-e73a-44e4-a075-117f555f1400/public');
         background-position: center;
         background-size: cover;
 
@@ -86,7 +86,7 @@ const Left = styled.div`
         bottom: 30px;
         right: -30px;
         border-radius: 20px;
-        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/dddba69f-9274-4622-53cc-e397bf590900/public');
+        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/23f025ab-2f14-4092-5b14-cc2dc094be00/public');
         background-position: center;
         background-size: cover;
 
@@ -219,7 +219,7 @@ const Financiamento = (  ) => {
         <>
             <Content id="financiamento">
                 <Left data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/dddba69f-9274-4622-53cc-e397bf590900/public" alt="" loading="lazy" />
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b3fa5fa4-dd1f-4610-c4b2-338813e3d700/public" alt="" loading="lazy" />
                 </Left>
 
                 <Right>

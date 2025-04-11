@@ -327,11 +327,14 @@ const Home = () => {
                 <HomeTexts>
                     <div>
                         <h2 data-aos="fade-up" data-aos-delay="100">
-                          O novo <b>conceito de lar</b> é
+                          Moderinadade e <b>bem estar</b>
                         </h2>
                         <h1 data-aos="fade-up" data-aos-delay="400">
                           Fast Homes
                         </h1>
+                        <h2 data-aos="fade-up" data-aos-delay="100">
+                          Um novo conceito de <b>lar</b>
+                        </h2>
                     </div>
                     <p data-aos="fade-up-right" data-aos-delay="600">
                         Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos<br /><br />

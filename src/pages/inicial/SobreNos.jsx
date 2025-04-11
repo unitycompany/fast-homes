@@ -175,7 +175,7 @@ const SobreNos = () => {
             <Content>
                 <Background></Background>
                 <Left>
-                    <img data-aos="zoom-in" data-aos-delay="0" src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/dddba69f-9274-4622-53cc-e397bf590900/public" alt="" loading="lazy" />
+                    <img data-aos="zoom-in" data-aos-delay="0" src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6e78ac0d-d748-41ef-c039-e41166058900/public" alt="" loading="lazy" />
                     <Cards>
                         <Card data-aos="fade-up" data-aos-delay="100">
                             <div>
