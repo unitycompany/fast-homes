@@ -21,7 +21,7 @@ const PaginaInicial = () => {
                 <Catalogo />
                     <Faixa categoria="interiores"/>
                         <Trajetoria />
-                            <Financiamento />
+                            {/* <Financiamento /> */}
                                 <Faixa categoria="fachadas"/>
                                     <SobreNos />
                                         <Parcerias />

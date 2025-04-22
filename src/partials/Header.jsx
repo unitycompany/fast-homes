@@ -366,18 +366,18 @@ const Header = () => {
                             >
                                 Seu projeto
                             </li>
-                            <li 
+                            {/* <li 
                                 onClick={() => navigate("/#financiamento")} 
                                 className={location.pathname === "/#financiamento" ? "active" : ""}
                             >
                                 Financiamento
-                            </li>
-                            <li 
+                            </li> */}
+                            {/* <li 
                                 onClick={() => navigate("/modular")} 
                                 className={location.pathname === "/modular" ? "active" : ""}
                             >
                                 Modular
-                            </li>
+                            </li> */}
                             <li 
                                 onClick={() => navigate("/sobre-nos")} 
                                 className={location.pathname === "/sobre-nos" ? "active" : ""}
@@ -420,8 +420,8 @@ const Header = () => {
                                 <HeaderSelect />
                             </div>
                             <li onClick={() => navigate("/projetos-personalizados")}>Seu projeto</li>
-                            <li onClick={() => navigate("/financiamento")}>Financiamento</li>
-                            <li onClick={() => navigate("/modular")}>Modular</li>
+                            {/* <li onClick={() => navigate("/financiamento")}>Financiamento</li>
+                            <li onClick={() => navigate("/modular")}>Modular</li> */}
                             <li onClick={() => navigate("/sobre-nos")}>Sobre nós</li>
                             <li onClick={() => navigate("/catalogo-de-casas")}>Catálogo</li>
                         </ul>

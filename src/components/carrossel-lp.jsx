@@ -21,7 +21,7 @@ const NavButton = styled.aside`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 100;
+  z-index: 101;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,250 +35,135 @@ const NavButton = styled.aside`
   user-select: none;
   transition: background 0.3s ease;
 
-  /* Esconde os pseudo-elementos padrões do Swiper */
-  &::after {
-    display: none;
-  }
+  &::after { display: none; }
+  &:hover { background: rgba(0, 0, 0, 1); }
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.8);
-  }
+  &.prev { left: 20px; }
+  &.next { right: 20px; }
 
-  &.swiper-button-prev {
-    left: 20px;
-    & svg {
-      font-size: 16px !important;
-      width: 22px;
-    }
-  }
-  &.swiper-button-next {
-    right: 20px;
-    & svg {
-      font-size: 16px !important;
-      width: 22px;
-    }
-  }
+  svg { font-size: 16px; width: 22px; }
 `;
 
 // =============================
-// Estilos para a Imagem (Thumbnail)
-// =============================
-const ZoomableImageWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  overflow: hidden;
-`;
-
-const StyledImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-`;
-
-// =============================
-// Estilos para o Modal
+// Estilos para Modal
 // =============================
 const ModalOverlay = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: rgba(0,0,0,0.8);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 1000;
 `;
 
 const ModalContent = styled.div`
   position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 90%;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Impede que cliques no conteúdo fechem o modal */
-  cursor: default;
-  &:click {
-    pointer-events: none;
-  }
-`;
-
-const ModalImage = styled.img`
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
 `;
 
 const CloseButton = styled.button`
   position: absolute;
-  top: -50px;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.7);
   border: none;
-  font-size: 24px;
   color: #fff;
-  cursor: pointer;
+  font-size: 24px;
   border-radius: 50%;
   width: 32px;
   height: 32px;
-  z-index: 1000;
+  cursor: pointer;
+  z-index: 102;
 `;
-
-// =============================
-// Componente ZoomableModalImage (Zoom ativo apenas no modal)
-// =============================
-const ZoomableModalImage = ({ src, alt, onClose }) => {
-  const [scale, setScale] = useState(1);
-  const [transformOrigin, setTransformOrigin] = useState("center center");
-  const imageRef = useRef(null);
-  const touchInitialDistanceRef = useRef(null);
-  const initialScaleRef = useRef(scale);
-
-  // Desabilita o scroll do site enquanto o modal estiver aberto
-  useEffect(() => {
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = originalOverflow;
-    };
-  }, []);
-
-  const handleMouseMove = (e) => {
-    if (imageRef.current) {
-      const rect = imageRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      setTransformOrigin(`${x}% ${y}%`);
-    }
-  };
-
-  const handleWheel = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const zoomSensitivity = 0.005;
-    let newScale = scale - e.deltaY * zoomSensitivity;
-    newScale = Math.min(Math.max(newScale, 1), 3);
-    setScale(newScale);
-  };
-
-  const getDistance = (touch1, touch2) => {
-    const dx = touch1.pageX - touch2.pageX;
-    const dy = touch1.pageY - touch2.pageY;
-    return Math.sqrt(dx * dx + dy * dy);
-  };
-
-  const handleTouchStart = (e) => {
-    if (e.touches.length >= 2) {
-      const distance = getDistance(e.touches[0], e.touches[1]);
-      touchInitialDistanceRef.current = distance;
-      initialScaleRef.current = scale;
-    }
-  };
-
-  const handleTouchMove = (e) => {
-    if (e.touches.length >= 2 && touchInitialDistanceRef.current) {
-      const distance = getDistance(e.touches[0], e.touches[1]);
-      const ratio = distance / touchInitialDistanceRef.current;
-      let newScale = initialScaleRef.current * ratio;
-      newScale = Math.min(Math.max(newScale, 1), 3);
-      setScale(newScale);
-    }
-  };
-
-  const handleTouchEnd = (e) => {
-    if (e.touches.length < 2) {
-      touchInitialDistanceRef.current = null;
-    }
-  };
-
-  return (
-    <ModalOverlay onClick={onClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
-        <CloseButton onClick={onClose}>&times;</CloseButton>
-        <ModalImage
-          ref={imageRef}
-          src={src}
-          alt={alt}
-          style={{
-            transform: `scale(${scale})`,
-            transformOrigin: transformOrigin,
-          }}
-          onMouseMove={handleMouseMove}
-          onWheel={handleWheel}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        />
-      </ModalContent>
-    </ModalOverlay>
-  );
-};
-
-// =============================
-// Componente ZoomableImage (Thumbnail que abre o modal)
-// =============================
-const ZoomableImage = ({ src, alt }) => {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const handleOpen = () => setModalOpen(true);
-  const handleClose = (e) => {
-    e && e.stopPropagation();
-    setModalOpen(false);
-  };
-
-  return (
-    <>
-      <ZoomableImageWrapper onClick={handleOpen}>
-        <StyledImage src={src} alt={alt} />
-      </ZoomableImageWrapper>
-      {modalOpen &&
-        createPortal(
-          <ZoomableModalImage src={src} alt={alt} onClose={handleClose} />,
-          document.body
-        )}
-    </>
-  );
-};
 
 // =============================
 // Componente CarrosselLP
 // =============================
 const CarrosselLP = ({ images, width, height }) => {
-  return (
-    <CarouselContainer width={width} height={height}>
-      <Swiper
-        modules={[Navigation, Autoplay]}
-        spaceBetween={10}
-        slidesPerView={1}
-        autoplay={false}
-        loop={true}
-        navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        }}
-      >
-        {images.map((image, index) => (
-          <SwiperSlide key={index}>
-            <ZoomableImage src={image} alt={`Slide ${index + 1}`} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+  const [modalOpen, setModalOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-      <NavButton className="swiper-button-prev">
-        <BsChevronLeft />
-      </NavButton>
-      <NavButton className="swiper-button-next">
-        <BsChevronRight />
-      </NavButton>
-    </CarouselContainer>
+  // refs p/ navegação
+  const mainPrevRef = useRef(null);
+  const mainNextRef = useRef(null);
+  const modalPrevRef = useRef(null);
+  const modalNextRef = useRef(null);
+
+  // Bloqueia scroll do body quando modal aberto
+  useEffect(() => {
+    document.body.style.overflow = modalOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [modalOpen]);
+
+  return (
+    <>
+      <CarouselContainer width={width} height={height}>
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          spaceBetween={10}
+          slidesPerView={1}
+          loop={true}
+          autoplay={false}
+          onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
+          navigation={{
+            prevEl: mainPrevRef.current,
+            nextEl: mainNextRef.current,
+          }}
+          onBeforeInit={(swiper) => {
+            swiper.params.navigation.prevEl = mainPrevRef.current;
+            swiper.params.navigation.nextEl = mainNextRef.current;
+          }}
+        >
+          {images.map((img, idx) => (
+            <SwiperSlide key={idx} onClick={() => { setCurrentSlide(idx); setModalOpen(true); }}>
+              <img src={img} alt={`Slide ${idx + 1}`} style={{ width: "100%", minHeight: "100%", objectFit: "cover", borderRadius: "10px" }} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <NavButton ref={mainPrevRef} className="prev"><BsChevronLeft /></NavButton>
+        <NavButton ref={mainNextRef} className="next"><BsChevronRight /></NavButton>
+      </CarouselContainer>
+
+      {modalOpen && createPortal(
+        <ModalOverlay onClick={() => setModalOpen(false)}>
+          <ModalContent onClick={e => e.stopPropagation()}>
+            <CloseButton onClick={() => setModalOpen(false)}>&times;</CloseButton>
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={10}
+              slidesPerView={1}
+              loop={true}
+              initialSlide={currentSlide}
+              onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
+              navigation={{
+                prevEl: modalPrevRef.current,
+                nextEl: modalNextRef.current,
+              }}
+              onBeforeInit={(swiper) => {
+                swiper.params.navigation.prevEl = modalPrevRef.current;
+                swiper.params.navigation.nextEl = modalNextRef.current;
+              }}
+            >
+              {images.map((img, idx) => (
+                <SwiperSlide key={idx}>
+                  <img src={img} alt={`Slide ${idx + 1}`} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", borderRadius: "10px" }} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <NavButton ref={modalPrevRef} className="prev"><BsChevronLeft /></NavButton>
+            <NavButton ref={modalNextRef} className="next"><BsChevronRight /></NavButton>
+          </ModalContent>
+        </ModalOverlay>,
+        document.body
+      )}
+    </>
   );
 };
 

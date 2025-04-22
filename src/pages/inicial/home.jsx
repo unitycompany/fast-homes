@@ -38,7 +38,7 @@ const HomeCenter = styled.div`
     z-index: 2;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 90%;
     max-width: 1280px;
     gap: 80px;
     height: auto;
@@ -55,7 +55,6 @@ const HomeTexts = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    padding-left: 5%;
 
     @media (max-width: 768px){
         width: 100%;
@@ -155,7 +154,7 @@ const Nome = styled.span`
 const ArrowButton = styled.button`
   position: absolute;
   top: 50%;
-  z-index: 10;
+  z-index: 9000!important;
   background: transparent;
   border: none;
   cursor: pointer;
