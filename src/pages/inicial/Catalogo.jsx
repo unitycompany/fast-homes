@@ -6,7 +6,6 @@ import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/autoplay';
-import { Autoplay } from 'swiper/modules';
 
 import GlobalButton3 from "../../components/buttons/GlobalButton3";
 import CardCatalogo from "../../components/cards/CardCatalogo01";

@@ -336,10 +336,16 @@ const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const closeSidebar  = () => setIsSidebarOpen(false);
 
     const toggleSidebar = () => {
         setIsSidebarOpen((prev) => !prev);
     };
+
+    const handleClick = (path) => {
+        navigate(path);
+        closeSidebar();
+    }
 
     return (
         <> 
@@ -412,18 +418,18 @@ const Header = () => {
                 </HeaderAll>
             </HeaderContainer>
 
-            <HeaderSidebar isOpen={isSidebarOpen}>
+            <HeaderSidebar isOpen={isSidebarOpen} closeSidebar={() => setIsSidebarOpen(false)}>
                 <HeaderSidebarContainer>
                     <HeaderSidebarLinks>
                         <ul>
                             <div>
-                                <HeaderSelect />
+                                <HeaderSelect onClick={() => handleClick()} />
                             </div>
-                            <li onClick={() => navigate("/projetos-personalizados")}>Seu projeto</li>
+                            <li onClick={() => handleClick("/projetos-personalizados")}>Seu projeto</li>
                             {/* <li onClick={() => navigate("/financiamento")}>Financiamento</li>
                             <li onClick={() => navigate("/modular")}>Modular</li> */}
-                            <li onClick={() => navigate("/sobre-nos")}>Sobre nós</li>
-                            <li onClick={() => navigate("/catalogo-de-casas")}>Catálogo</li>
+                            <li onClick={() => handleClick("/sobre-nos")}>Sobre nós</li>
+                            <li onClick={() => handleClick("/catalogo-de-casas")}>Catálogo</li>
                         </ul>
                     </HeaderSidebarLinks>
                     <HeaderSidebarButton>

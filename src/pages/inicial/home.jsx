@@ -84,6 +84,7 @@ const HomeTexts = styled.div`
 
             @media (max-width: 768px){
                 font-size: 16px;
+                padding-left: 0;
             }
         }
 
@@ -94,6 +95,7 @@ const HomeTexts = styled.div`
 
             @media (max-width: 768px){
                 font-size: 48px;
+                margin-left: -4px;
             }
         }
     }
