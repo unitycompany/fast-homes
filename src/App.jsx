@@ -23,12 +23,6 @@ import Cookie from "./pages/politicas/Cookie";
 
 import { HelmetProvider } from "react-helmet-async";
 
-// Páginas administrativas
-import AdicionarCasa from "./pages/Admin/AdicionarCasa";
-import LoginPage from "./pages/Admin/Login";
-import Options from "./pages/Admin/Options";
-import CasasCadastradas from "./pages/Admin/CasasCadastradas";
-
 // Página 404
 import Error from "../404";
 
@@ -59,8 +53,7 @@ const AppContent = () => {
   }, []);
 
   const hideLayout =
-    location.pathname.startsWith("/catalogo-de-casas/") ||
-    location.pathname.startsWith("/admin");
+    location.pathname.startsWith("/catalogo-de-casas/")
 
   return (
     <>
@@ -82,18 +75,6 @@ const AppContent = () => {
             <Route path="/catalogo-de-casas/:slug" element={<LandingPage />} />
             <Route path="/termos-e-condicoes" element={<Termos />} />
             <Route path="/politica-de-privacidade" element={<Privacidade />} />
-
-            {/* Rotas administrativas */}
-            <Route path="/admin" element={<LoginPage />} />
-            <Route path="/admin/options" element={<Options />} />
-            <Route
-              path="/admin/options/adicionar-casa"
-              element={<AdicionarCasa />}
-            />
-            <Route
-              path="/admin/options/casas-cadastradas"
-              element={<CasasCadastradas />}
-            />
 
             {/* Rota 404 para páginas não encontradas */}
             <Route path="*" element={<Error />} />
