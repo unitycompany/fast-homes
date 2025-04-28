@@ -354,17 +354,15 @@ const Home = () => {
           </div>
           <p data-aos="fade-up-right" data-aos-delay="600">
             Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
-            <br /><br />
-            Colocar uma descrição curta e objetiva falando sobre a fast homes.
           </p>
-          <GlobalButton2
+          {/* <GlobalButton2
             text="Falar com um consultor"
             background1="#fff"
             background2="#fff"
             colorIcon="#000"
             colorText="#000"
             to="/#form"
-          />
+          /> */}
           <GlobalButton3
             text="Conhecer catálogo"
             background1="transparent"
