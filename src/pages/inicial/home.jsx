@@ -28,7 +28,8 @@ const HomeContainer = styled.section`
     border-image: fill 0 linear-gradient(45deg, #000000, #0000);
 
     @media (max-width: 768px){
-        padding: 30% 0 10% 0;
+        padding: 30% 0 0% 0;
+        border-image: none!important;
     }
 `;
 
@@ -46,6 +47,9 @@ const HomeCenter = styled.div`
     @media (max-width: 768px){
         flex-direction: column;
         gap: 40px;
+        width: 100%;
+        padding: 5%;
+        background: linear-gradient(90deg, #000, #353535);
     }
 `;
 
@@ -77,6 +81,10 @@ const HomeTexts = styled.div`
             line-height: 100%;
             font-family: var(--font--montserrat);
             text-transform: uppercase;
+
+            @media(max-width: 768px){
+
+            }
 
             & b {
               font-weight: 400;
@@ -127,16 +135,9 @@ const BackgroundWrapper = styled.div`
   height: 100vh;
   z-index: 1; 
 
-  &::before{
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    z-index: 2;
-    clip-path: polygon(80% 98%, 0% 100%, 100% 100%);
-    background-color: #fff;
+  @media(max-width: 768px){
+    height: 62vh;
+    object-position: center;
   }
 `;
 
@@ -151,6 +152,12 @@ const Nome = styled.span`
   color: #000;
   background-color: #ffffff50;
   backdrop-filter: blur(2px);
+
+  @media(max-width: 768px){
+    top: 25%;
+    background-color: #00000050;
+    color: #fff;
+  }
 `;
 
 const ArrowButton = styled.button`
@@ -167,13 +174,21 @@ const ArrowButton = styled.button`
   opacity: 0.6;
 
   @media (max-width: 768px){
-    top: 30%;
+    top: 60%;
+    opacity: 0.8;
   }
 `;
 
 const PrevButton = styled(ArrowButton)`
   left: 20px;
   transition: all .2s ease-in-out;
+
+  @media (max-width: 768px){
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+  }
 
   &:hover {
     opacity: 1;
@@ -183,6 +198,14 @@ const PrevButton = styled(ArrowButton)`
 const NextButton = styled(ArrowButton)`
   right: 30px;
   transition: all .2s ease-in-out;
+
+  @media (max-width: 768px){
+    right: 20px;
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+  }
 
   &:hover {
     opacity: 1;
@@ -239,6 +262,10 @@ const SlideImage = styled.div`
   background-repeat: no-repeat;
   border-image: fill 0 linear-gradient(45deg, #000000, #0000);
   transition: all .5s ease-in-out;
+
+  @media (max-width: 768px){
+    border-image: none;
+  }
 `;
 
 const Home = () => {
