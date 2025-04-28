@@ -242,127 +242,143 @@ const SlideImage = styled.div`
 `;
 
 const Home = () => {
-    // Agora guardamos os dados completos da casa (nome, imagem, etc.)
-    const [loadedCasas, setLoadedCasas] = useState([]);
-    const prevRef = useRef(null);
-    const nextRef = useRef(null);
-    const location = useLocation();
-    const navigate = useNavigate();
+  const [loadedCasas, setLoadedCasas] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const location = useLocation();
 
-    useEffect(() => {
-      if (location.hash) {
-        const id = location.hash.replace("#", "");
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
+  // Detecta se está em tela mobile
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Scroll suave por hash
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location]);
+
+  // Busca as casas no Firestore
+  useEffect(() => {
+    const fetchCasas = async () => {
+      try {
+        const casasQuery = query(
+          collection(db, "catalogo"),
+          orderBy("create", "desc"),
+          limit(5)
+        );
+        const snap = await getDocs(casasQuery);
+        const casas = snap.docs
+          .map(doc => {
+            const data = doc.data();
+            return {
+              id: doc.id,
+              nome: data.nome,
+              imagem: data.imagem,               // desktop
+              imagemMobile: data.imagemMobile,   // mobile
+              // ... outros campos se precisar
+            };
+          })
+          .filter(c => c.nome && c.imagem); // garante obrigatoriedade
+        setLoadedCasas(casas);
+      } catch (error) {
+        console.error("Erro ao buscar casas no Firebase:", error);
       }
-    }, [location]);
+    };
+    fetchCasas();
+  }, []);
 
-    useEffect(() => {
-      const fetchCasas = async () => {
-        try {
-          // Ordena pela data "create" desc para pegar as casas mais recentes primeiro
-          const casasQuery = query(
-            collection(db, "catalogo"),
-            orderBy("create", "desc"),
-            limit(5)
-          );
-          const querySnapshot = await getDocs(casasQuery);
-          const casasArray = querySnapshot.docs
-            .map(doc => ({ id: doc.id, ...doc.data() })) // Busca todos os dados
-            .filter(casa => casa.imagem && casa.nome); // Garante que os campos existem
-          setLoadedCasas(casasArray);
-        } catch (error) {
-          console.error("Erro ao buscar casas no Firebase:", error);
-        }
-      };
+  return (
+    <HomeContainer>
+      <BackgroundWrapper>
+        <StyledSwiper
+          modules={[Autoplay, Pagination, EffectFade, Navigation]}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          onBeforeInit={swiper => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+          }}
+          effect="fade"
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          loop
+          pagination={{ clickable: true }}
+        >
+          {loadedCasas.map((casa, idx) => {
+            const bgUrl = isMobile && casa.imagemMobile
+              ? casa.imagemMobile
+              : casa.imagem;
+            return (
+              <SwiperSlide key={idx}>
+                <Nome>{casa.nome}</Nome>
+                <SlideImage
+                  style={{
+                    backgroundImage: `url(${bgUrl})`,
+                    backgroundAttachment: isMobile ? "scroll" : "fixed",
+                  }}
+                />
+              </SwiperSlide>
+            );
+          })}
+        </StyledSwiper>
 
-      fetchCasas();
-    }, []);
+        <PrevButton ref={prevRef}>
+          <SlArrowLeft size={24} color="#fff" />
+        </PrevButton>
+        <NextButton ref={nextRef}>
+          <SlArrowRight size={24} color="#fff" />
+        </NextButton>
+      </BackgroundWrapper>
 
-    return (
-        <HomeContainer>
-            <BackgroundWrapper>
-              <StyledSwiper
-                modules={[Autoplay, Pagination, EffectFade, Navigation]}
-                navigation={{
-                  prevEl: prevRef.current,
-                  nextEl: nextRef.current,
-                }}
-                onBeforeInit={(swiper) => {
-                  swiper.params.navigation.prevEl = prevRef.current;
-                  swiper.params.navigation.nextEl = nextRef.current;
-                }}
-                effect="fade"
-                autoplay={{ delay: 5000, disableOnInteraction: false }}
-                loop={true}
-                pagination={{ clickable: true }}
-              >
-                {loadedCasas.map((casa, index) => (
-                  <SwiperSlide key={index}>
-                    <Nome>
-                      {casa.nome}
-                    </Nome>
-                    <SlideImage
-                      style={{ 
-                        backgroundImage: `url(${casa.imagem})`,
-                        height: "100%",
-                        backgroundSize: "cover",
-                        backgroundAttachment: "fixed"
-                      }}
-                    />
-                  </SwiperSlide>
-                ))}
-              </StyledSwiper>
-
-              <PrevButton ref={prevRef}>
-                <SlArrowLeft size={24} color="#fff" />
-              </PrevButton>
-              <NextButton ref={nextRef}>
-                <SlArrowRight size={24} color="#fff" />
-              </NextButton>
-            </BackgroundWrapper>
-
-            <HomeCenter>
-                <HomeTexts>
-                    <div>
-                        <h2 data-aos="fade-up" data-aos-delay="100">
-                          Moderinadade e <b>bem estar</b>
-                        </h2>
-                        <h1 data-aos="fade-up" data-aos-delay="400">
-                          Fast Homes
-                        </h1>
-                        <h2 data-aos="fade-up" data-aos-delay="100">
-                          Um novo conceito de <b>lar</b>
-                        </h2>
-                    </div>
-                    <p data-aos="fade-up-right" data-aos-delay="600">
-                        Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos<br /><br />
-                        Colocar uma descrição curta e objetiva falando sobre a fast homes.
-                    </p>
-                    <GlobalButton2
-                            text="Falar com um consultor"
-                            background1="#fff"
-                            background2="#fff"
-                            colorIcon="#000"
-                            colorText="#000"
-                            to="/#form"
-                    />
-                    <GlobalButton3
-                            text="Conhecer catálogo"
-                            background1="transparent"
-                            background2="transparent"
-                            colorIcon="#fff"
-                            colorText="#fff"
-                            border1="#fff"
-                            border2="#fff"
-                            to="/catalogo-de-casas"
-                    />
-                </HomeTexts>
-            </HomeCenter>
-        </HomeContainer>
-    );
+      <HomeCenter>
+        <HomeTexts>
+          <div>
+            <h2 data-aos="fade-up" data-aos-delay="100">
+              Moderinadade e <b>bem estar</b>
+            </h2>
+            <h1 data-aos="fade-up" data-aos-delay="400">
+              Fast Homes
+            </h1>
+            <h2 data-aos="fade-up" data-aos-delay="100">
+              Um novo conceito de <b>lar</b>
+            </h2>
+          </div>
+          <p data-aos="fade-up-right" data-aos-delay="600">
+            Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
+            <br /><br />
+            Colocar uma descrição curta e objetiva falando sobre a fast homes.
+          </p>
+          <GlobalButton2
+            text="Falar com um consultor"
+            background1="#fff"
+            background2="#fff"
+            colorIcon="#000"
+            colorText="#000"
+            to="/#form"
+          />
+          <GlobalButton3
+            text="Conhecer catálogo"
+            background1="transparent"
+            background2="transparent"
+            colorIcon="#fff"
+            colorText="#fff"
+            border1="#fff"
+            border2="#fff"
+            to="/catalogo-de-casas"
+          />
+        </HomeTexts>
+      </HomeCenter>
+    </HomeContainer>
+  );
 };
 
 export default Home;

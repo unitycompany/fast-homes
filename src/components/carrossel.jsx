@@ -140,7 +140,7 @@ const Carrossel = ({ category }) => {
         pagination={false}
         navigation={false}
         breakpoints={{
-          0: { slidesPerView: 2, spaceBetween: 0 },
+          0: { slidesPerView: 1, spaceBetween: 0 },
           1080: { slidesPerView: 4, spaceBetween: 0 },
         }}
       >

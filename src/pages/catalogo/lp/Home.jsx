@@ -39,7 +39,7 @@ const Left = styled.div`
 
     @media (max-width: 768px){
         width: 100%;
-        height: 70dvh;
+        height: 50dvh;
         object-fit: cover;
         position: relative;
     }
@@ -49,7 +49,7 @@ const Left = styled.div`
         object-fit: cover;
 
         @media (max-width: 768px){
-            height: 70dvh;
+            height: 50dvh;
         }
     }
 `
