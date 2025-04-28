@@ -47,6 +47,7 @@ const HomeCenter = styled.div`
     @media (max-width: 768px){
         flex-direction: column;
         gap: 40px;
+        height: 40dvh;
         width: 100%;
         padding: 5%;
         background: linear-gradient(90deg, #000, #353535);
@@ -136,7 +137,7 @@ const BackgroundWrapper = styled.div`
   z-index: 1; 
 
   @media(max-width: 768px){
-    height: 62vh;
+    height: 60dvh;
     object-position: center;
   }
 `;
