@@ -28,6 +28,7 @@ const Content = styled.div`
 
     @media (max-width: 768px){
         flex-direction: column;
+        padding: 20% 5% 2.5% 5%;
         min-height: 60vh;
         gap: 20px;
     }

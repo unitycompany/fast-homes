@@ -50,7 +50,7 @@ const HomeCenter = styled.div`
         height: 40dvh;
         width: 100%;
         padding: 5%;
-        background: linear-gradient(90deg, #000, #353535);
+        background: linear-gradient(45deg, #000, #1f1f1f);
     }
 `;
 
@@ -139,6 +139,7 @@ const BackgroundWrapper = styled.div`
   @media(max-width: 768px){
     height: 60dvh;
     object-position: center;
+    z-index: 4!important;
   }
 `;
 
@@ -155,7 +156,7 @@ const Nome = styled.span`
   backdrop-filter: blur(2px);
 
   @media(max-width: 768px){
-    top: 25%;
+    top: 22.5%;
     background-color: #00000050;
     color: #fff;
   }
@@ -265,7 +266,7 @@ const SlideImage = styled.div`
   transition: all .5s ease-in-out;
 
   @media (max-width: 768px){
-    border-image: none;
+    border-image: none!important;
   }
 `;
 

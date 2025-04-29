@@ -452,7 +452,7 @@ const FormLP = () => {
           <input
             type="tel"
             id="tel"
-            placeholder="+55 (24) 98141-1940"
+            placeholder="+55 (21) 99288-2282"
             required
             value={whatsapp}
             onChange={(e) => setWhatsapp(e.target.value)}

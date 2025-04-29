@@ -81,6 +81,15 @@ const CloseButton = styled.button`
   height: 32px;
   cursor: pointer;
   z-index: 102;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @media (max-width: 768px){
+    top: 30%;
+    transform: translateY(-50%) translateX(-50%);
+    left: 50%;
+  }
 `;
 
 // =============================
