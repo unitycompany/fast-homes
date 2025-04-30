@@ -43,8 +43,6 @@ const HeaderContainer = styled.header`
         top: 0;
         left: 0;
         z-index: -1;
-        background-color: #000;
-        opacity: 0.3;
         clip-path: polygon(100% 0, 100% 100%, 40% 80%, 0 100%, 0 0);
     } */
 
