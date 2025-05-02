@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as _Swiper, SwiperSlide as _Slide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -17,6 +17,7 @@ const CarouselContainer = styled.div`
   overflow: hidden;
 `;
 
+// botões de navegação customizados
 const NavButton = styled.aside`
   position: absolute;
   top: 50%;
@@ -95,19 +96,74 @@ const CloseButton = styled.button`
 `;
 
 // =============================
+// Swiper estilizado
+// =============================
+const StyledSwiper = styled(_Swiper)`
+  width: 100%;
+  height: 100%;
+
+  /* centraliza verticalmente os slides */
+  .swiper-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  /* ajustes nos slides */
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* botões nativos (caso você use) */
+  .swiper-button-prev,
+  .swiper-button-next {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    color: #fff;
+    transition: background 0.3s ease;
+  }
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  /* paginação (se usar no futuro) */
+  .swiper-pagination-bullet {
+    background: #fff;
+    opacity: 0.7;
+    width: 12px;
+    height: 12px;
+    margin: 0 4px !important;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+`;
+
+// se quiser estilizar cada slide via styled-components
+const StyledSlide = styled(_Slide)`
+  /* só como exemplo, você pode remover */
+  padding: 0 5px;
+`;
+
+
+// =============================
 // Componente CarrosselLP
 // =============================
 const CarrosselLP = ({ images = [], width, height }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // refs de navegação via state para garantir que estejam disponíveis
   const [mainPrevEl, setMainPrevEl] = useState(null);
   const [mainNextEl, setMainNextEl] = useState(null);
   const [modalPrevEl, setModalPrevEl] = useState(null);
   const [modalNextEl, setModalNextEl] = useState(null);
 
-  // Bloqueia scroll do body quando modal aberto
   useEffect(() => {
     document.body.style.overflow = modalOpen ? "hidden" : "";
     return () => {
@@ -115,13 +171,12 @@ const CarrosselLP = ({ images = [], width, height }) => {
     };
   }, [modalOpen]);
 
-  // Quantidade de slides
   const hasMultiple = images.length > 1;
 
   return (
     <>
       <CarouselContainer width={width} height={height}>
-        <Swiper
+        <StyledSwiper
           modules={[Navigation, Autoplay]}
           spaceBetween={10}
           slidesPerView={1}
@@ -142,7 +197,7 @@ const CarrosselLP = ({ images = [], width, height }) => {
           }}
         >
           {images.map((img, idx) => (
-            <SwiperSlide key={idx}>
+            <StyledSlide key={idx}>
               <img
                 src={img}
                 alt={`Slide ${idx + 1}`}
@@ -158,9 +213,9 @@ const CarrosselLP = ({ images = [], width, height }) => {
                   setModalOpen(true);
                 }}
               />
-            </SwiperSlide>
+            </StyledSlide>
           ))}
-        </Swiper>
+        </StyledSwiper>
         {hasMultiple && (
           <>
             <NavButton ref={setMainPrevEl} className="prev">
@@ -180,7 +235,7 @@ const CarrosselLP = ({ images = [], width, height }) => {
               <CloseButton onClick={() => setModalOpen(false)}>
                 &times;
               </CloseButton>
-              <Swiper
+              <StyledSwiper
                 modules={[Navigation]}
                 spaceBetween={10}
                 slidesPerView={1}
@@ -201,27 +256,22 @@ const CarrosselLP = ({ images = [], width, height }) => {
                 }}
               >
                 {images.map((img, idx) => (
-                  <SwiperSlide
-                    key={idx}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
+                  <StyledSlide key={idx}>
                     <img
                       src={img}
                       alt={`Slide ${idx + 1}`}
                       style={{
-                        maxWidth: "100%",
-                        minHeight: "100%",
                         objectFit: "contain",
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                        width: "auto",
+                        height: "auto",
                         borderRadius: "10px",
                       }}
                     />
-                  </SwiperSlide>
+                  </StyledSlide>
                 ))}
-              </Swiper>
+              </StyledSwiper>
               {hasMultiple && (
                 <>
                   <NavButton ref={setModalPrevEl} className="prev">
