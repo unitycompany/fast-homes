@@ -46,11 +46,11 @@ const Left = styled.div`
     }
 
     & img {
-        height: 90dvh;
+        height: 90dvh!important;
         object-fit: cover;
 
         @media (max-width: 768px){
-            height: 50dvh;
+            height: 50dvh!important;
         }
     }
 `

@@ -89,10 +89,10 @@ const Right = styled.div`
     }
 
     & img {
-        height: 90dvh;
+        height: 90dvh!important;
 
         @media (max-width: 768px){
-            height: 60dvh;
+            height: 60dvh!important;
         }
     }
 `

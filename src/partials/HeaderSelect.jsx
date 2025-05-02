@@ -105,27 +105,27 @@ const HeaderSelect = ({ colorIcon, colorText }) => {
   const navigate = useNavigate();
 
   const options = [
+    { label: "Área construída", field: "Área construída", submenu: [
+      { label: "0m² até 50m²", value: "0-50" },
+      { label: "51m² até 100m²", value: "51-100" },
+      { label: "101m² até 200m²", value: "101-200" },
+      { label: "201m² até 400m²", value: "201-400" },
+    ] },
+    { label: "N° de quartos", field: "N° de quartos", submenu: [
+      { label: "1 quarto", value: "1" },
+      { label: "2 quartos", value: "2" },
+      { label: "3 quartos", value: "3" },
+      { label: "4 quartos", value: "4" },
+    ] },
+  { label: "N° de banheiros", field: "N° de banheiros", submenu: [
+      { label: "1 banheiro", value: "1" },
+      { label: "2 banheiros", value: "2" },
+      { label: "3 banheiros", value: "3" },
+      { label: "4 banheiros", value: "4" },
+    ] },
     { label: "N° de pavimentos", field: "N° de pavimentos", submenu: [
         { label: "1 pavimento", value: "1 pavimento" },
         { label: "2 pavimentos", value: "2 pavimentos" },
-      ] },
-    { label: "N° de quartos", field: "N° de quartos", submenu: [
-        { label: "1 quarto", value: "1" },
-        { label: "2 quartos", value: "2" },
-        { label: "3 quartos", value: "3" },
-        { label: "4 quartos", value: "4" },
-      ] },
-    { label: "Área construída", field: "Área construída", submenu: [
-        { label: "0m² até 50m²", value: "0-50" },
-        { label: "51m² até 100m²", value: "51-100" },
-        { label: "101m² até 200m²", value: "101-200" },
-        { label: "201m² até 400m²", value: "201-400" },
-      ] },
-    { label: "N° de banheiros", field: "N° de banheiros", submenu: [
-        { label: "1 banheiro", value: "1" },
-        { label: "2 banheiros", value: "2" },
-        { label: "3 banheiros", value: "3" },
-        { label: "4 banheiros", value: "4" },
       ] },
   ];
 

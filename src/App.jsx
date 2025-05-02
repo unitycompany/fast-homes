@@ -38,10 +38,10 @@ const pageVariants = {
 const AppContent = () => {
   const location = useLocation();
 
-  // Detecta rota de catálogo
-  const isCatalogPage =
-    location.pathname === "/catalogo-de-casas" ||
-    location.pathname.startsWith("/catalogo-de-casas/");
+  // Detecta página de detalhe de casa (slug), mas não a listagem
+  const isCatalogDetail =
+    location.pathname.startsWith("/catalogo-de-casas/") &&
+    location.pathname !== "/catalogo-de-casas";
 
   // Detecta se o usuário está em mobile (<=768px)
   const [isMobile, setIsMobile] = useState(false);
@@ -54,9 +54,12 @@ const AppContent = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Controla visibilidade do Header e do Footer
-  const showHeader = !isCatalogPage || (isCatalogPage && isMobile);
-  const showFooter = !isCatalogPage;
+  // Mostrar Header se:
+  // - não for detalhe de casa (desktop ou mobile), OU
+  // - for mobile (em qualquer rota)
+  const showHeader = !isCatalogDetail || isMobile;
+  // Footer oculto apenas em detalhe de casa
+  const showFooter = !isCatalogDetail;
 
   // Scroll ao topo em cada mudança de rota
   useEffect(() => {

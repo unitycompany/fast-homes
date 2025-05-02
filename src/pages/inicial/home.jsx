@@ -22,14 +22,11 @@ const HomeContainer = styled.section`
     position: relative;
     overflow: hidden!important;
     font-family: "Montserrat", serif;
-    background-position: center;
-    background-size: cover;
     min-height: 100dvh;
-    border-image: fill 0 linear-gradient(45deg, #000000, #0000);
+    background-color: #000;
 
     @media (max-width: 768px){
         padding: 30% 0 0% 0;
-        border-image: none!important;
     }
 `;
 
@@ -77,7 +74,7 @@ const HomeTexts = styled.div`
 
         & > h2 {
             font-size: 20px;
-            padding-left: 7.5px;
+            padding-left: 2.5px;
             font-weight: 200;
             line-height: 100%;
             font-family: var(--font--montserrat);
@@ -100,6 +97,7 @@ const HomeTexts = styled.div`
         & > h1 {
             font-size: 80px;
             line-height: 100%;
+            margin-left: -4px;
             color: #fff;
 
             @media (max-width: 768px){
