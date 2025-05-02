@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Analytics } from "@vercel/analytics/react"
 
 import "./styles/global.css";
 import "./styles/reset.css";
@@ -124,6 +125,7 @@ function App() {
         <ClickEffect />
         <AppContent />
         <Cookie />
+        <Analytics />
       </HelmetProvider>
     </BrowserRouter>
   );
