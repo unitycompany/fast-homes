@@ -422,11 +422,12 @@ const Header = () => {
                             <div>
                                 <HeaderSelect onClick={() => handleClick()} />
                             </div>
+                            <li onClick={() => handleClick("/catalogo-de-casas")}>Nosso catálogo</li>
                             <li onClick={() => handleClick("/projetos-personalizados")}>Seu projeto</li>
                             {/* <li onClick={() => navigate("/financiamento")}>Financiamento</li> */}
-                            <li onClick={() => navigate("/modular")}>Modular</li>
                             <li onClick={() => handleClick("/sobre-nos")}>Sobre nós</li>
-                            <li onClick={() => handleClick("/catalogo-de-casas")}>Catálogo</li>
+                            <li onClick={() => navigate("/modular")}>Modular</li>
+                            
                         </ul>
                     </HeaderSidebarLinks>
                     <HeaderSidebarButton>
