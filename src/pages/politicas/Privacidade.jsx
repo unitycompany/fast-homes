@@ -207,7 +207,7 @@ const Privacidade = () => {
 
       <ContentContainer>
         <Paragraph>
-          Bem-vindo(a) à nossa <strong>Política de Dados</strong>. Aqui você
+          Bem-vindo(a) à nossa <strong>Política de Privacidade</strong>. Aqui você
           encontra informações detalhadas sobre como coletamos, utilizamos e
           protegemos seus dados, em conformidade com a{' '}
           <em>Lei Geral de Proteção de Dados (LGPD)</em>. Nosso compromisso é
@@ -383,13 +383,13 @@ const Privacidade = () => {
         </Paragraph>
         <ul>
           <li>
-            E-mail: <em>contato@exemplo.com</em>
+            E-mail: <em>contato@fasthomes.com.br</em>
           </li>
           <li>
-            Telefone: <em>(XX) XXXX-XXXX</em>
+            Telefone: <em>(21) 99288-2282</em>
           </li>
           <li>
-            Presencialmente em nossa sede: <em>Rua X, nº 123, Cidade, Estado</em>
+            Presencialmente em nossa sede: <em>Av. Roberto Silveira, 251 - Centro, Miguel Pereira/RJ, 26900-000</em>
           </li>
         </ul>
 

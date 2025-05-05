@@ -40,8 +40,7 @@ const PaginaModular = () => {
                             <Trajetoria />
                                 <Formulario>
                                     <FormLP />
-                                </Formulario>
-                                
+                                        </Formulario>                          
             </Content>
         </>
     )

@@ -43,6 +43,9 @@ const Left = styled.div`
         height: 50dvh;
         object-fit: cover;
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     & img {

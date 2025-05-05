@@ -164,12 +164,12 @@ const FooterCard = styled.div`
         }
 
         &::before{
-            content: '•';
+            content: '→';
             width: 100%;
             height: 100%;
             padding-right: 0px;
             font-size: 0;
-            transition: all .2s ease-in-out;
+            transition: all .1s ease-in-out;
         }
 
         &:hover::before{

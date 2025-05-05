@@ -86,6 +86,9 @@ const Right = styled.div`
     @media (max-width: 768px){
         width: 100%;
         height: 60dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     & img {
