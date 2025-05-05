@@ -363,7 +363,12 @@ const Header = () => {
                                 <HeaderSelect />
                             </div>
                             {/* <li onClick={() => navigate=("/monte-sua-casa")}>Monte sua casa</li> */}
-                            
+                            <li 
+                                onClick={() => navigate("/catalogo-de-casas")} 
+                                className={location.pathname === "/catalogo-de-casas" ? "active" : ""}
+                            >
+                                Nosso catálogo
+                            </li>
                             <li 
                                 onClick={() => navigate("/projetos-personalizados")} 
                                 className={location.pathname === "/projetos-personalizados" ? "active" : ""}
@@ -377,22 +382,16 @@ const Header = () => {
                                 Financiamento
                             </li> */}
                             <li 
-                                onClick={() => navigate("/modular")} 
-                                className={location.pathname === "/modular" ? "active" : ""}
-                            >
-                                Modular
-                            </li>
-                            <li 
                                 onClick={() => navigate("/sobre-nos")} 
                                 className={location.pathname === "/sobre-nos" ? "active" : ""}
                             >
                                 Sobre nós
                             </li>
                             <li 
-                                onClick={() => navigate("/catalogo-de-casas")} 
-                                className={location.pathname === "/catalogo-de-casas" ? "active" : ""}
+                                onClick={() => navigate("/modular")} 
+                                className={location.pathname === "/modular" ? "active" : ""}
                             >
-                                Catálogo
+                                Modular
                             </li>
                         </ul>
                     </HeaderLinks>

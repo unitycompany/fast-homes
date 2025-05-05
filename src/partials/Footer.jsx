@@ -511,43 +511,38 @@ const Footer = () => {
               src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6c41ef7f-d25f-46fc-305c-613f704db300/public" 
               alt="logo-fast-homes" 
             />
-            <h2>O Novo conceito de lar é Fast Homes</h2>
+            <h2>Descubra um novo conceito de lar com a Fast Homes</h2>
             <a href="mailto:contato@fasthomes.com.br" target="_blank" rel="noopener noreferrer">
               contato@fasthomes.com.br
             </a>
-            <a href="#">
-              Solicite um orçamento
-            </a>
             <p>
-              Av. Roberto Silveira, 251 - Centro, Miguel Pereira - RJ, 26900-000
+              Av. Roberto Silveira, 251 - Centro, Miguel Pereira/RJ, 26900-000
             </p>
           </FooterCard>
   
           <FooterCard data-aos="fade-up" data-aos-delay="200">
             <h1>Mapa do site</h1>
             <a href="/">Início</a>
-            <a href="/catalogo-de-casas">Catálogo de casas</a>
+            <a href="/catalogo-de-casas">Nosso catálogo</a>
             <a href="/projetos-personalizados">Seu projeto</a>
             {/* <a href="/#form">Financiamento</a> */}
             {/* <a href="/modular">Modular</a> */}
             <a href="/sobre-nos">Sobre nós</a>
-            <a href="/#parcerias">Parcerias</a>
+            <a href="/modular">Modular</a>
           </FooterCard>
   
           <FooterCard data-aos="fade-up" data-aos-delay="300">
             <h1>Parcerias</h1>
-            <a href="https://fastdrywall.com.br" target="_blank" rel="noopener noreferrer">Fast Drywall</a>
-            <a href="https://esquadrias.fastsistemasconstrutivos.com.br" target="_blank" rel="noopener noreferrer">EcoFrame</a>
+            <a href="https://fastsistemasconstrutivos.com.br" target="_blank" rel="noopener noreferrer">Fast Sistemas Construtivos</a>
             <a href="https://novametalica.com.br" target="_blank" rel="noopener noreferrer">Nova Metálica</a>
             <a href="https://saintgobain.com.br" target="_blank" rel="noopener noreferrer">Saint Gobain</a>
+            <a href="https://esquadrias.fastsistemasconstrutivos.com.br" target="_blank" rel="noopener noreferrer">EcoFrame</a>
           </FooterCard>
   
           <FooterCard data-aos="fade-up" data-aos-delay="400">
             <h1>Contato</h1>
             <a href="https://wa.me/5521992882282?text=Olá!%20Gostaria%20de%20mais%20informações.
 " target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a href="https://wa.me/5521992882282?text=Olá!%20Gostaria%20de%20mais%20informações.
-" target="_blank" rel="noopener noreferrer">+55 (21) 99288-2282</a>
             <a href="mailto:contato@fasthomes.com.br" target="_blank" rel="noopener noreferrer">contato@fasthomes.com.br</a>
           </FooterCard>
         </FooterTop>
@@ -555,10 +550,10 @@ const Footer = () => {
         <FooterCenter>
           <FooterTitle>
             <h1 data-aos="fade-up" data-aos-delay="100">
-              Ficou com alguma dúvida?
+              Tem alguma dúvida?
             </h1>
             <p data-aos="fade-up" data-aos-delay="400">
-              Preencha o formulário ao lado para que possamos entrar em contato para tirar todas as suas dúvidas
+              Preencha o formulário ao lado e fale conosco. Estamos prontos para ajudar você!
             </p>
           </FooterTitle>
   
@@ -567,7 +562,7 @@ const Footer = () => {
               data-aos="fade-up" data-aos-delay="100"
               type="text" 
               id="name" 
-              placeholder="Diga seu nome"
+              placeholder="Seu nome"
               required 
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -577,7 +572,7 @@ const Footer = () => {
               data-aos="fade-up" data-aos-delay="200"
               type="tel" 
               id="tel" 
-              placeholder="(24) 98131-1321" 
+              placeholder="(21) 99288-2282" 
               required 
               value={tel}
               onChange={(e) => setTel(e.target.value)}
@@ -596,18 +591,18 @@ const Footer = () => {
             <textarea 
               data-aos="fade-up" data-aos-delay="400"
               id="textarea" 
-              placeholder="Qual a sua dúvida"
+              placeholder="Conte-nos qual é a sua dúvida"
               required
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
   
             <button type="submit" data-aos="fade-up" data-aos-delay="600" disabled={loading}>
-              {loading ? "Enviando..." : "Fale conosco"}
+              {loading ? "Enviando..." : "Falar conosco"}
             </button>
   
             <p data-aos="zoom-in" data-aos-delay="1000">
-              *Todas as informações serão usadas apenas para fins de contato, pode consultar nossa <a href="/politica-de-privacidade">política de privacidade</a> e <a href="/termos-e-condicoes">termos e condições</a>.
+              *As suas informações serão usadas apenas para fins de contato, consulte a nossa <a href="/politica-de-privacidade">Política de Privacidade</a> e o nosso <a href="/termos-e-condicoes">Termos de Condições</a>.
             </p>
           </FooterForm>
         </FooterCenter>
