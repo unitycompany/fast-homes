@@ -93,6 +93,14 @@ const CloseButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px){
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #000;
+  }
 `;
 
 // =============================
