@@ -424,7 +424,6 @@ const Header = () => {
                             </div>
                             <li onClick={() => handleClick("/catalogo-de-casas")}>Nosso catálogo</li>
                             <li onClick={() => handleClick("/projetos-personalizados")}>Seu projeto</li>
-                            {/* <li onClick={() => navigate("/financiamento")}>Financiamento</li> */}
                             <li onClick={() => handleClick("/sobre-nos")}>Sobre nós</li>
                             <li onClick={() => navigate("/modular")}>Modular</li>
                             
