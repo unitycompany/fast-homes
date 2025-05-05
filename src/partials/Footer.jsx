@@ -542,7 +542,7 @@ const Footer = () => {
           <FooterCard data-aos="fade-up" data-aos-delay="400">
             <h1>Contato</h1>
             <a href="https://wa.me/5521992882282?text=Olá!%20Gostaria%20de%20mais%20informações.
-" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+" target="_blank" rel="noopener noreferrer">+55 (21) 99288-2282</a>
             <a href="mailto:contato@fasthomes.com.br" target="_blank" rel="noopener noreferrer">contato@fasthomes.com.br</a>
           </FooterCard>
         </FooterTop>
