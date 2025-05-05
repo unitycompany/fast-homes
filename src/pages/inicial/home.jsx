@@ -1,13 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
+import styled from "styled-components";
 import { db } from "../../services/firebaseConfig";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, EffectFade, Navigation } from "swiper/modules";
-import styled from "styled-components";
-import "swiper/css";
-import "swiper/css/pagination";
 import { SlArrowRight, SlArrowLeft } from "react-icons/sl";
-import GlobalButton2 from "../../components/buttons/GlobalButton2";
 import GlobalButton3 from "../../components/buttons/GlobalButton3";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -25,10 +22,99 @@ const HomeContainer = styled.section`
   overflow: hidden !important;
   font-family: "Montserrat", serif;
   min-height: 100dvh;
-  background-color: #000;
+  background-color: transparent; /* removido fundo preto */
 
   @media (max-width: 768px) {
-    padding: 30% 0 0% 0;
+    padding: 30% 0 0 0;
+  }
+`;
+
+const BackgroundWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    height: 60dvh;
+    object-position: center;
+    z-index: 4 !important;
+  }
+`;
+
+const StyledSplide = styled(Splide)`
+  width: 100%;
+  height: 100%;
+
+  /* garante que todo o slider ocupe 100% da altura */
+  .splide__track,
+  .splide__list,
+  .splide__slide {
+    height: 100% !important;
+  }
+
+  .splide__pagination {
+    bottom: 50px !important;
+    left: 85% !important;
+    display: flex;
+    gap: 2px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .splide__pagination__page {
+    width: 10px;
+    height: 10px;
+    background: white;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+  }
+
+  .splide__pagination__page.is-active {
+    width: 18px;
+    height: 10px;
+    opacity: 1;
+  }
+
+  .splide__slide {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8;
+  }
+
+  .splide__slide.is-active {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+`;
+
+const SlideImage = styled.div`
+  position: absolute; /* preenche todo o slide */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.5s ease-in-out;
+
+  &::before{
+    content: '';
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-image: fill 0 linear-gradient(90deg, #000, #0000);
+
+    @media (max-width: 768px){
+      display: none;
+    }
   }
 `;
 
@@ -124,21 +210,6 @@ const HomeTexts = styled.div`
   }
 `;
 
-const BackgroundWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-
-  @media (max-width: 768px) {
-    height: 60dvh;
-    object-position: center;
-    z-index: 4 !important;
-  }
-`;
-
 const Nome = styled.span`
   z-index: 100 !important;
   position: absolute;
@@ -204,74 +275,16 @@ const NextButton = styled(ArrowButton)`
   }
 `;
 
-const StyledSwiper = styled(Swiper)`
-  width: 100%;
-  height: 100%;
-
-  .swiper-pagination {
-    bottom: 50px !important;
-    left: 85% !important;
-    display: flex;
-    gap: 2px;
-
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
-
-  .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    background: white;
-    opacity: 0.6;
-    transition: all 0.3s ease;
-    border-radius: 50px;
-  }
-
-  .swiper-pagination-bullet-active {
-    background: #fff;
-    width: 18px;
-    height: 10px;
-    opacity: 1;
-  }
-
-  .swiper-slide {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0.8;
-  }
-
-  .swiper-slide-active {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-`;
-
-const SlideImage = styled.div`
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: all 0.5s ease-in-out;
-  border-image: 0 fill linear-gradient(45deg, #000, #0000);
-
-  @media (max-width: 768px) {
-    transition: none;
-  }
-`;
-
 // =============================
 // Componente Home
 // =============================
 const Home = () => {
   const [loadedCasas, setLoadedCasas] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  const splideRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Detecta mobile
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     handleResize();
@@ -279,7 +292,6 @@ const Home = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Scroll suave por hash
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace("#", "");
@@ -288,7 +300,6 @@ const Home = () => {
     }
   }, [location]);
 
-  // Busca casas no Firestore
   useEffect(() => {
     const fetchCasas = async () => {
       try {
@@ -320,35 +331,27 @@ const Home = () => {
   return (
     <HomeContainer>
       <BackgroundWrapper>
-        <StyledSwiper
-          modules={[Autoplay, Pagination, EffectFade, Navigation]}
-          effect="fade"
-          loop
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
-          allowTouchMove={false} // desabilita arrastar
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
+        <StyledSplide
+          options={{
+            type: "fade",
+            rewind: true,
+            autoplay: true,
+            interval: 5000,
+            pauseOnHover: false,
+            resetProgress: false,
+            pagination: true,
+            arrows: false,
+            drag: false,
           }}
-          onInit={(swiper) => {
-            console.log(
-              "Swiper init, prevRef:",
-              prevRef.current,
-              "nextRef:",
-              nextRef.current
-            );
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
+          onMounted={(splide) => {
+            splideRef.current = splide;
           }}
         >
           {loadedCasas.map((casa, idx) => {
             const bgUrl =
               isMobile && casa.imagemMobile ? casa.imagemMobile : casa.imagem;
             return (
-              <SwiperSlide key={idx}>
+              <SplideSlide key={idx}>
                 <Nome>{casa.nome}</Nome>
                 <SlideImage
                   style={{
@@ -356,21 +359,15 @@ const Home = () => {
                     backgroundAttachment: isMobile ? "scroll" : "fixed",
                   }}
                 />
-              </SwiperSlide>
+              </SplideSlide>
             );
           })}
-        </StyledSwiper>
+        </StyledSplide>
 
-        <PrevButton
-          ref={prevRef}
-          onClick={() => console.log("clicou prev:", prevRef.current)}
-        >
+        <PrevButton onClick={() => splideRef.current && splideRef.current.go("<")}>
           <SlArrowLeft size={24} color="#fff" />
         </PrevButton>
-        <NextButton
-          ref={nextRef}
-          onClick={() => console.log("clicou next:", nextRef.current)}
-        >
+        <NextButton onClick={() => splideRef.current && splideRef.current.go(">")}>
           <SlArrowRight size={24} color="#fff" />
         </NextButton>
       </BackgroundWrapper>
@@ -389,18 +386,9 @@ const Home = () => {
             </h2>
           </div>
           <p data-aos="fade-up-right" data-aos-delay="600">
-            Colocar uma descrição curta e objetiva falando sobre a fast homes e o que
-            nós proporcionamos
+            Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós
+            proporcionamos
           </p>
-          {/* Se precisar do botão 2, descomente */}
-          {/* <GlobalButton2
-            text="Falar com um consultor"
-            background1="#fff"
-            background2="#fff"
-            colorIcon="#000"
-            colorText="#000"
-            to="/#form"
-          /> */}
           <GlobalButton3
             text="Conhecer catálogo"
             background1="transparent"
