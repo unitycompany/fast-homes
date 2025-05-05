@@ -111,6 +111,10 @@ const HeaderSelect = ({ colorIcon, colorText }) => {
       { label: "101m² até 200m²", value: "101-200" },
       { label: "201m² até 400m²", value: "201-400" },
     ] },
+    { label: "N° de pavimentos", field: "N° de pavimentos", submenu: [
+      { label: "1 pavimento", value: "1 pavimento" },
+      { label: "2 pavimentos", value: "2 pavimentos" },
+    ] },
     { label: "N° de quartos", field: "N° de quartos", submenu: [
       { label: "1 quarto", value: "1" },
       { label: "2 quartos", value: "2" },
@@ -123,10 +127,7 @@ const HeaderSelect = ({ colorIcon, colorText }) => {
       { label: "3 banheiros", value: "3" },
       { label: "4 banheiros", value: "4" },
     ] },
-    { label: "N° de pavimentos", field: "N° de pavimentos", submenu: [
-        { label: "1 pavimento", value: "1 pavimento" },
-        { label: "2 pavimentos", value: "2 pavimentos" },
-      ] },
+    
   ];
 
   const handleSelect = (index) => {

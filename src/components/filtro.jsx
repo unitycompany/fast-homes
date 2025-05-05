@@ -163,9 +163,9 @@ const MobileFiltroContainer = styled.div`
 
 const baseOptions = {
   "Área construída": ["0-50", "51-100", "101-200", "201-400"],
+  "N° de pavimentos": ["1 pavimento", "2 pavimentos"],
   "N° de quartos": ["1", "2", "3", "4"],
-  "N° de banheiros": ["1", "2", "3", "4"],
-  "N° de pavimentos": ["1 pavimento", "2 pavimentos"]
+  "N° de banheiros": ["1", "2", "3", "4"]
 };
 
 const filterCategories = Object.keys(baseOptions);
