@@ -2,6 +2,7 @@ import React from "react";
 import { BsBuildings, BsHouse, BsShop } from "react-icons/bs";
 import styled from "styled-components";
 import GlobalButton2 from "../../components/buttons/GlobalButton2";
+import CardSolucaoModular from "../../components/cards/CardSolucaoModular";
 
 const Content = styled.div`
     display: flex;
@@ -79,6 +80,7 @@ const Top = styled.div`
 `
 
 const Cards = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -88,42 +90,6 @@ const Cards = styled.div`
     @media (max-width: 768px){
         flex-direction: column;
         gap: 20px;
-    }
-`
-
-const Card = styled.div`
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    text-align: center;
-    min-height: 300px;
-    color: #000;
-    background-color: #fff;
-    border-radius: 20px;
-
-    @media (max-width: 768px){
-        min-height: 250px;
-    }
-
-    & svg {
-        font-size: 40px;
-    } 
-
-    & h1 {
-        font-size: 25px;
-        font-weight: 500;
-        color: transparent;
-        background: linear-gradient(90deg, #576628, #B05216, #603813, #1d1b1d);
-        -webkit-background-clip: text;
-    }
-
-    & p {
-        font-size: 16px;
-        width: 80%;
-        line-height: 120%;
     }
 `
 
@@ -138,21 +104,21 @@ const Solucoes = () => {
                         <p>Seja qual for sua necessidade, com a House Box, você terá mais do que uma casa: terá um espaço que se adapta ao seu sonho</p>
                     </Top>
                     <Cards>
-                        <Card>
-                            <BsHouse />
-                            <h1>Moradia</h1>
-                            <p>Realize o sonho da casa própria com menos complicações.</p>
-                        </Card>
-                        <Card>
-                            <BsShop />
-                            <h1>Locação</h1>
-                            <p>Realize o sonho da casa própria com menos complicações.</p>
-                        </Card>
-                        <Card>
-                        <BsBuildings />
-                            <h1>Empresas</h1>
-                            <p>Realize o sonho da casa própria com menos complicações.</p>
-                        </Card>
+                        <CardSolucaoModular
+                            number="01"
+                            title="Moradia"
+                            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse fuga adipisicing elit."
+                        />
+                        <CardSolucaoModular
+                            number="02"
+                            title="Locação"
+                            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse fuga adipisicing elit."
+                        />
+                        <CardSolucaoModular
+                            number="03"
+                            title="Empresas"
+                            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse fuga adipisicing elit."
+                        />
                     </Cards>
                     <GlobalButton2
                             text="Falar com um consultor"

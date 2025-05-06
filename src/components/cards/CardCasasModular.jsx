@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { MdArrowOutward } from "react-icons/md";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Card = styled.div`
     display: flex;
@@ -85,6 +86,8 @@ const Card = styled.div`
 `
 
 const CardCasasModular = ({ image, nome, area, descricao }) => {
+    const navigate = useNavigate();
+
     return (
         <>
             <Card>
@@ -94,7 +97,7 @@ const CardCasasModular = ({ image, nome, area, descricao }) => {
                     <span>{area}</span>
                 </div>
                 <p>{descricao}</p>
-                <button>
+                <button onClick={() => navigate('/#form')}>
                     Falar com um consultor <MdArrowOutward />
                 </button>
             </Card>
