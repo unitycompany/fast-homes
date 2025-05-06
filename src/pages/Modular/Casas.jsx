@@ -147,7 +147,7 @@ const Casas = () => {
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f7f8cb19-85fa-4a77-2380-160809f6b800/public"
                 nome="Parati"
                 area="30m²"
-                descricao="Com uma suíte aconchegante, uma sala de estar espaçosa o suficiente para acomodar momentos de lazer e uma cozinha funcional para preparar suas receitas favoritas, a House Buriti é um lar projetado para crescer com você e sua família."
+                descricao="Com uma suíte aconchegante, uma sala de estar espaçosa o suficiente para acomodar momentos de lazer e uma cozinha funcional para preparar suas receitas favoritas, a House Parati é um lar projetado para crescer com você e sua família."
               />
             </SwiperSlide>
             <SwiperSlide>
@@ -171,7 +171,7 @@ const Casas = () => {
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/31171d89-5228-433a-0649-f97d5f31b700/public"
                 nome="Campos do Jordão"
                 area=""
-                descricao="Compacta, funcional e cheia de conforto. Com um layout inteligente, a Tiny House Térrea oferece um quarto aconchegante no piso principal, garantindo praticidade no dia a dia. A sala integrada à cozinha cria um ambiente fluído e acolhedor, perfeito para quem busca um lar compacto sem abrir mão do bem-estar. Um espaço pensado para facilitar sua rotina e proporcionar momentos inesquecíveis!"
+                descricao="Compacta, funcional e cheia de conforto. Com um layout inteligente, a Campos do Jordão Térrea oferece um quarto aconchegante no piso principal, garantindo praticidade no dia a dia. A sala integrada à cozinha cria um ambiente fluído e acolhedor, perfeito para quem busca um lar compacto sem abrir mão do bem-estar. Um espaço pensado para facilitar sua rotina e proporcionar momentos inesquecíveis!"
               />
             </SwiperSlide>
             <SwiperSlide>
@@ -179,7 +179,7 @@ const Casas = () => {
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b45ebaaa-4f1f-477a-8eb5-5360fdb83100/public"
                 nome="Fernando de Noronha"
                 area=""
-                descricao="Design elevado para uma experiência única! Com um mezanino charmoso, a Tiny House Superior traz um quarto suspenso que otimiza o espaço e proporciona uma sensação aconchegante e moderna. A parte inferior integra sala, cozinha e banheiro em um ambiente fluído e funcional, unindo praticidade e sofisticação. Para quem busca viver com leveza, estilo e inovação!"
+                descricao="Design elevado para uma experiência única! Com um mezanino charmoso, a Fernando de Noronha Superior traz um quarto suspenso que otimiza o espaço e proporciona uma sensação aconchegante e moderna. A parte inferior integra sala, cozinha e banheiro em um ambiente fluído e funcional, unindo praticidade e sofisticação. Para quem busca viver com leveza, estilo e inovação!"
               />
             </SwiperSlide>
           </Swiper>

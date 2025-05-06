@@ -609,7 +609,7 @@ const Footer = () => {
   
         <FooterBottom>
           <p>
-            Todos os direitos reservados |<span> CNPJ: 40.436.034/0001-48 - Fast Homes</span>
+            Todos os direitos reservados |<span> CNPJ: 40.436.034/0001-48 - Fast Homes</span>
           </p>
           <p>
             Desenvolvido por 
