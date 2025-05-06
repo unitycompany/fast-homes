@@ -1,65 +1,78 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { MdArrowOutward } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
 const Card = styled.div`
-    border: 1px solid #00000050;
-    width: 25%;
-    min-height: 300px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-    justify-content: flex-end;
-    gap: 15px;
     position: relative;
-    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 300px;
+    padding: 32px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    transition: all .1250s ease-in-out!important;
-
+    
     @media (max-width: 768px){
+        height: auto;
+        padding: 20px 26px;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(-45deg, #3d3d3d 0%, var(--color--black) 100% );
+        z-index: -1;
+        transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    &:hover::before {
+        height: 100%;
+    }
+
+    &:hover h1{
+        color: #fff;
+    }
+    
+    &:hover p{
+        color: #fff;
+    }
+
+    &:hover button{
+        color: #fff;
+    }
+
+    @media (max-width: 768px) {
         width: 100%;
         min-height: 270px;
     }
-
-    &:hover {
-        border-color: ${({color}) => color ? `${color}` : "#000" };
-        transform: translateY(-5px)!important;
-
-        @media (max-width: 768px){
-            transform: translateY(0);
-        }
-    }
-`
-
-const Top = styled.div`
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 10px 40px;
-    border-radius: 20px 0 40px 0;
-    background-color: ${({color}) => color ? `${color}` : "#000" };
-
-    & span {
-        font-size: 40px;
-        font-family: var(--font--aboreto);
-        color: #fff;
-    }
-`
+`;
 
 const Content = styled.div`
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    color: #e8e8e8;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
 
     & h1 {
         font-size: 24px;
         font-weight: 600;
-        color: ${({color}) => color ? `${color}` : "#000" };
+        color: #000;
     }
 
     & p {
+        color: #000;
         font-size: 16px;
         font-weight: 400;
         line-height: 110%;
@@ -75,6 +88,7 @@ const Content = styled.div`
         position: relative;
         border-radius: 10px;
         cursor: pointer;
+        color: #000;
 
         &::before{
             content: '';
@@ -83,14 +97,14 @@ const Content = styled.div`
             position: absolute;
             top: -5%;
             left: -5%;
-            background-color: var(--color--black);
+            background-color: #fff;
             border-radius: 10px;
             transition: all .2s ease-in-out;
             z-index: -1;
         }
 
         &:hover {
-            color: #fff;
+            color: #000;
         }
 
         &:hover::before {
@@ -108,15 +122,12 @@ const Content = styled.div`
     }
 `
 
-const CardTrajetoria = ({ numero, assunto, descricao, color, animateDelay }) => {
+const CardTrajetoria = ({ assunto, descricao, color, animateDelay }) => {
     const navigate = useNavigate();
 
     return(
         <>
             <Card data-aos="fade-right" data-aos-delay={animateDelay}>
-                <Top color={color}>
-                    <span>{numero}</span>
-                </Top>
                 <Content color={color}>
                     <h1>{assunto}</h1>
                     <p>{descricao}</p>
