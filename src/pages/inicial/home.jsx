@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/react-splide/css';
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
 import styled from "styled-components";
 import { db } from "../../services/firebaseConfig";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
@@ -22,7 +22,7 @@ const HomeContainer = styled.section`
   overflow: hidden !important;
   font-family: "Montserrat", serif;
   min-height: 100dvh;
-  background-color: transparent; /* removido fundo preto */
+  background-color: transparent;
 
   @media (max-width: 768px) {
     padding: 30% 0 0 0;
@@ -48,7 +48,6 @@ const StyledSplide = styled(Splide)`
   width: 100%;
   height: 100%;
 
-  /* garante que todo o slider ocupe 100% da altura */
   .splide__track,
   .splide__list,
   .splide__slide {
@@ -93,7 +92,7 @@ const StyledSplide = styled(Splide)`
 `;
 
 const SlideImage = styled.div`
-  position: absolute; /* preenche todo o slide */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -102,9 +101,10 @@ const SlideImage = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   transition: all 0.5s ease-in-out;
+  cursor: pointer;
 
-  &::before{
-    content: '';
+  &::before {
+    content: "";
     width: 50%;
     height: 100%;
     position: absolute;
@@ -112,7 +112,7 @@ const SlideImage = styled.div`
     bottom: 0;
     border-image: fill 0 linear-gradient(90deg, #000, #0000);
 
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
       display: none;
     }
   }
@@ -315,11 +315,12 @@ const Home = () => {
             return {
               id: doc.id,
               nome: data.nome,
+              slug: data.slug,            // <— aqui pegamos o slug
               imagem: data.imagem,
               imagemMobile: data.imagemMobile,
             };
           })
-          .filter((c) => c.nome && c.imagem);
+          .filter((c) => c.nome && c.slug && c.imagem);
         setLoadedCasas(casas);
       } catch (error) {
         console.error("Erro ao buscar casas no Firebase:", error);
@@ -351,9 +352,10 @@ const Home = () => {
             const bgUrl =
               isMobile && casa.imagemMobile ? casa.imagemMobile : casa.imagem;
             return (
-              <SplideSlide key={idx}>
+              <SplideSlide key={casa.id || idx}>
                 <Nome>{casa.nome}</Nome>
                 <SlideImage
+                  onClick={() => navigate(`/catalogo-de-casas/${casa.slug}`)}  // <— navegação via slug
                   style={{
                     backgroundImage: `url(${bgUrl})`,
                     backgroundAttachment: isMobile ? "scroll" : "fixed",

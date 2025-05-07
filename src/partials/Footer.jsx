@@ -508,7 +508,7 @@ const Footer = () => {
         <FooterTop>
           <FooterCard data-aos="fade-up" data-aos-delay="100">
             <img 
-              src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6c41ef7f-d25f-46fc-305c-613f704db300/public" 
+              src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/28cf333a-365a-4025-f8d8-c86fdd742d00/public" 
               alt="logo-fast-homes" 
             />
             <h2>Descubra um novo conceito de lar com a Fast Homes</h2>

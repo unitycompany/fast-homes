@@ -3,7 +3,6 @@ import styled from "styled-components";
 import GlobalButton3 from "../../../components/buttons/GlobalButton3";
 import GlobalButton4 from "../../../components/buttons/GlobalButton4";
 import { useLocation, useNavigate } from "react-router-dom";
-import { TfiArrowCircleLeft } from "react-icons/tfi";
 
 const Header = styled.div`
   position: fixed;
@@ -47,64 +46,46 @@ const HeaderTexts = styled.div`
   text-align: left;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 20px;
   color: #000;
-  width: 35%;
+  border: 1px solid red;
+
+  & img {
+    width: 150px;
+    border: 1px solid red;
+  }
 
   @media (max-width: 768px) {
     align-items: center;
     text-align: center;
   }
 
-  & h1 {
-    font-size: 28px;
-    font-weight: 600;
-    font-family: var(--font--aboreto);
-    line-height: 100%;
+  & div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 60%;
+
+    & h1 {
+      font-size: 28px;
+      font-weight: 600;
+      font-family: var(--font--aboreto);
+      line-height: 100%;
+    }
+
+    & p {
+      font-size: 14px;
+      font-weight: 400;
+      width: 100%;
+      line-height: 100%;
+    }
   }
 
-  & p {
-    font-size: 14px;
-    font-weight: 400;
-    width: 100%;
-    line-height: 100%;
-  }
-`;
-
-const Voltar = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px 15px;
-  border-radius: 50px;
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-  flex-direction: row;
-  transition: all .2s ease-in-out;
   
-  &:hover {
-    background-color: #1d1d1d;
-  }
-
-  &:hover svg {
-    transform: scale(0.85);
-    background-color: #1d1d1d;
-  }
-
-  & svg {
-    font-size: 30px;
-    transition: all .2s ease-in-out;
-    background-color: #1d1d1d;
-  }
-
-  & span {
-    font-weight: 400;
-  }
-`
+`;
 
 const Name = ({ nome, descricao }) => {
   const [hidden, setHidden] = useState(false);
@@ -149,8 +130,15 @@ const Name = ({ nome, descricao }) => {
     return (
       <Header hidden={hidden}>
         <HeaderTexts>
-          <h1>{nome}</h1>
-          <p>{descricao}</p>
+          <img 
+            src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c9fb5a8b-b482-446e-d376-f11d80a74b00/public"
+            alt="logo da fast homes casas modulares" 
+            title="Logo da Fast Homes" 
+            onClick={() => navigate('/')}/>
+          <div>
+            <h1>{nome}</h1>
+            <p>{descricao}</p>
+          </div>
         </HeaderTexts>
         <HeaderBtns>
           <GlobalButton4
@@ -172,10 +160,6 @@ const Name = ({ nome, descricao }) => {
             border2="#000"
             to="/catalogo-de-casas"
           />
-          <Voltar onClick={() => navigate('/catalogo-de-casas')}>
-            <TfiArrowCircleLeft />
-            <span>Voltar</span>
-          </Voltar>
         </HeaderBtns>
       </Header>
     );
