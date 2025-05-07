@@ -15,6 +15,7 @@ const Content = styled.div`
     padding: 5% 5%;
     gap: 10px;
     max-height: 100vh;
+    overflow: hidden;
 
     & img {
         border-radius: 20px;

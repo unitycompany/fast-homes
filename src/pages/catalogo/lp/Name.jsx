@@ -3,7 +3,7 @@ import styled from "styled-components";
 import GlobalButton3 from "../../../components/buttons/GlobalButton3";
 import GlobalButton4 from "../../../components/buttons/GlobalButton4";
 import { useLocation, useNavigate } from "react-router-dom";
-import { FaRegTimesCircle, FaRegCircle } from "react-icons/fa";
+import { TfiArrowCircleLeft } from "react-icons/tfi";
 
 const Header = styled.div`
   position: fixed;
@@ -44,13 +44,14 @@ const HeaderBtns = styled.div`
 `;
 
 const HeaderTexts = styled.div`
-  text-align: right;
+  text-align: left;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
   gap: 10px;
   color: #000;
+  width: 35%;
 
   @media (max-width: 768px) {
     align-items: center;
@@ -67,31 +68,43 @@ const HeaderTexts = styled.div`
   & p {
     font-size: 14px;
     font-weight: 400;
-    width: 70%;
+    width: 100%;
     line-height: 100%;
   }
 `;
 
-// O MobileToggleButton recebe a prop isOpen para alterar sua posição
-const MobileToggleButton = styled.button`
-  position: fixed;
-  top: ${({ isOpen }) => (isOpen ? "250px" : "0px")};
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: ${({isOpen}) => (isOpen ? "1" : "100")};
-  background: #ffffff70;
-  backdrop-filter: blur(10px);
-  padding: 5px 10px;
-  color: #000;
-  border: none;
-  border-radius: 0px 0px 5px 5px;
+const Voltar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 50px;
+  background-color: #000;
+  color: #fff;
   cursor: pointer;
-  transition: top 0.2s ease-in-out;
-
-  @media (min-width: 769px) {
-    display: none;
+  flex-direction: row;
+  transition: all .2s ease-in-out;
+  
+  &:hover {
+    background-color: #1d1d1d;
   }
-`;
+
+  &:hover svg {
+    transform: scale(0.85);
+    background-color: #1d1d1d;
+  }
+
+  & svg {
+    font-size: 30px;
+    transition: all .2s ease-in-out;
+    background-color: #1d1d1d;
+  }
+
+  & span {
+    font-weight: 400;
+  }
+`
 
 const Name = ({ nome, descricao }) => {
   const [hidden, setHidden] = useState(false);
@@ -135,6 +148,10 @@ const Name = ({ nome, descricao }) => {
   if (window.innerWidth > 768) {
     return (
       <Header hidden={hidden}>
+        <HeaderTexts>
+          <h1>{nome}</h1>
+          <p>{descricao}</p>
+        </HeaderTexts>
         <HeaderBtns>
           <GlobalButton4
             text="Falar com um consultor"
@@ -155,11 +172,11 @@ const Name = ({ nome, descricao }) => {
             border2="#000"
             to="/catalogo-de-casas"
           />
+          <Voltar onClick={() => navigate('/catalogo-de-casas')}>
+            <TfiArrowCircleLeft />
+            <span>Voltar</span>
+          </Voltar>
         </HeaderBtns>
-        <HeaderTexts>
-          <h1>{nome}</h1>
-          <p>{descricao}</p>
-        </HeaderTexts>
       </Header>
     );
   }
