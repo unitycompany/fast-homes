@@ -238,7 +238,7 @@ const FooterForm = styled.form`
         border-bottom: 1px solid #ffffff80;
         width: 100%;
         color: #fff;
-        transition: all 0.3s ease-in-out; 
+        transition: all 0.3s ease-in-out!important; 
 
         &:focus{
             outline: none;
@@ -263,7 +263,7 @@ const FooterForm = styled.form`
         height: auto;
         overflow-y: hidden;
         color: #fff;
-        transition: all 0.3s ease-in-out; 
+        transition: all 0.3s ease-in-out!important; 
 
         &:focus{
             outline: none;
@@ -622,4 +622,4 @@ const Footer = () => {
     );
   };
   
-  export default Footer;
+export default Footer;

@@ -50,11 +50,10 @@ const HeaderTexts = styled.div`
   flex-direction: row;
   gap: 20px;
   color: #000;
-  border: 1px solid red;
 
   & img {
-    width: 150px;
-    border: 1px solid red;
+    width: 120px;
+    cursor: pointer;
   }
 
   @media (max-width: 768px) {
@@ -131,7 +130,7 @@ const Name = ({ nome, descricao }) => {
       <Header hidden={hidden}>
         <HeaderTexts>
           <img 
-            src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c9fb5a8b-b482-446e-d376-f11d80a74b00/public"
+            src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6d1a387d-eb9d-473b-dec5-bf229b9f0c00/public"
             alt="logo da fast homes casas modulares" 
             title="Logo da Fast Homes" 
             onClick={() => navigate('/')}/>
