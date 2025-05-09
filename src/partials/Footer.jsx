@@ -557,7 +557,7 @@ const Footer = () => {
             </p>
           </FooterTitle>
   
-          <FooterForm id="contactForm" onSubmit={handleSubmit}>
+          <FooterForm id="contactFormFooter" onSubmit={handleSubmit}>
             <input 
               data-aos="fade-up" data-aos-delay="100"
               type="text" 
