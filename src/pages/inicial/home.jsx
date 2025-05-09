@@ -38,9 +38,9 @@ const BackgroundWrapper = styled.div`
   z-index: 1;
 
   @media (max-width: 768px) {
-    height: 60dvh;
+    height: 50dvh;
     object-position: center;
-    z-index: 4 !important;
+    z-index: 1!important;
   }
 `;
 
@@ -132,9 +132,10 @@ const HomeCenter = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 40px;
-    height: 40dvh;
+    height: 60dvh;
     width: 100%;
     padding: 5%;
+    z-index: 2;
     background: linear-gradient(45deg, #000, #1f1f1f);
   }
 `;
