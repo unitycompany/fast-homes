@@ -8,8 +8,8 @@ export function initUtmPersistence() {
   const hasUtmInUrl = utmKeys.some(key => urlParams.has(key));
 
   // Só limpar se você quiser reiniciar a cada load
-  // localStorage.removeItem("utm_params");
-  // localStorage.removeItem("utm_session");
+  localStorage.removeItem("utm_params");
+  localStorage.removeItem("utm_session");
 
   if (hasUtmInUrl) {
     console.log("✅ UTM detectadas na URL!");
