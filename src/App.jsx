@@ -45,6 +45,59 @@ const AppContent = () => {
   window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const utmKeys = [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+    ];
+    // 1) pega do localStorage
+    const stored = JSON.parse(localStorage.getItem("utm_params") || "{}");
+    if (!Object.keys(stored).length) return;
+
+    // 2) verifica e ajusta a URL
+    const url = new URL(window.location.href);
+    let changed = false;
+    utmKeys.forEach((k) => {
+      if (stored[k] && !url.searchParams.has(k)) {
+        url.searchParams.set(k, stored[k]);
+        changed = true;
+      }
+    });
+    if (changed) {
+      window.history.replaceState({}, "", url.toString());
+      console.log("♻️ UTMs reaplicadas em:", url.toString());
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+  const stored = JSON.parse(localStorage.getItem("utm_params") || "{}");
+  if (!Object.keys(stored).length) return;
+
+  const onClick = (e) => {
+    const a = e.target.closest("a");
+    if (!a || a.hostname !== window.location.hostname) return;
+    const to = new URL(a.href);
+    let changed = false;
+    Object.entries(stored).forEach(([k, v]) => {
+      if (!to.searchParams.has(k)) {
+        to.searchParams.set(k, v);
+        changed = true;
+      }
+    });
+    if (changed) {
+      e.preventDefault();
+      window.location.href = to.toString();
+    }
+  };
+
+  document.addEventListener("click", onClick);
+  return () => document.removeEventListener("click", onClick);
+}, []);
+
+
 
   // Detecta página de detalhe de casa (slug), mas não a listagem
   const isCatalogDetail =
