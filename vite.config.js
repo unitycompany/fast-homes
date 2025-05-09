@@ -12,5 +12,5 @@ export default defineConfig({
       'framer-motion'
     ],
   },
-  base: './',
+  base: '/',
 });
