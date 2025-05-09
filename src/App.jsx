@@ -39,6 +39,13 @@ const pageVariants = {
 const AppContent = () => {
   const location = useLocation();
 
+  useEffect(() => {
+  console.log("🔄 React rodando em:", location.pathname);
+  console.log("   isCatalogDetail:", isCatalogDetail, "| isMobile:", isMobile);
+  window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+
   // Detecta página de detalhe de casa (slug), mas não a listagem
   const isCatalogDetail =
     location.pathname.startsWith("/catalogo-de-casas/") &&
