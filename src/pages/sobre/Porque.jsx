@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import GlobalButton2 from "../../components/buttons/GlobalButton2";
+import { BsCheck, BsFillBagCheckFill } from "react-icons/bs";
 
 const Content = styled.div`
     max-width: 1280px;
@@ -67,18 +68,8 @@ const Left = styled.div`
             flex-direction: column;
             gap: 0px;
             padding: 10px;
-            border: 1px solid var(--color--brown--low);;
-            border-radius: 0 30px 0 0;
             transition: all .2s ease-in-out;
-
-            &:hover {
-                background-color: var(--color--brown--medium);
-                color: #fff;
-
-                & span {
-                    color: #fff;
-                }
-            }
+            border-left: 2px solid var(--color--brown--low);
 
             & span {
                 font-family: var(--font--aboreto);
@@ -125,32 +116,28 @@ const Porque = () => {
                 <Left>
                     <h2 data-aos="fade-up" data-aos-delay="100">Por que escolher a Fast Homes?</h2>
                     <p data-aos="fade-up" data-aos-delay="300">
-                        Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
-
-                        <br /> <br />
-
-                        Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos, colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
+                        Do projeto à entrega das chaves, oferecemos uma experiência completa, com obras 4x mais rápidas, acabamentos de alto padrão e qualidade superior em cada etapa construtiva.
                     </p>
 
                     <div data-aos="fade-up" data-aos-delay="400">
                         <div>
-                            <span>100%</span>
-                            <p>Satisfação</p>    
+                            <span><BsCheck /></span>
+                            <p>Sistema Steel Frame mais eficiente;</p>    
                         </div>
 
                         <div>
-                            <span>100%</span>
-                            <p>Satisfação</p>    
+                            <span><BsCheck /></span>
+                            <p>Modelos prontos ou projeto personalizado;</p>    
                         </div>
 
                         <div>
-                            <span>100%</span>
-                            <p>Satisfação</p>    
+                            <span><BsCheck /></span>
+                            <p>Obra mais limpa, sustentável e com menos desperdício;</p>    
                         </div>
 
                         <div>
-                            <span>100%</span>
-                            <p>Satisfação</p>    
+                            <span><BsCheck /></span>
+                            <p>Casas modulares.</p>    
                         </div>
                     </div>
 

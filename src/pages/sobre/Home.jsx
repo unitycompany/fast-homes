@@ -141,16 +141,20 @@ const Home = () => {
                     </div>
 
                     <p data-aos="fade-up" data-aos-delay="400">
-                        Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
+                        Sustentável, atual e conectada com você.
+                        <br /> <br />   
 
+                        A Fast Homes nasceu para simplificar a forma de construir e viver.
                         <br /> <br />
 
-                        Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
+                        Na Fast Homes, aliamos tecnologia, estética e cuidado para entregar casas mais seguras, confortáveis e feitas para durar.
+                        <br /> <br />
+                        Aqui, você encontra mais do que uma casa, você encontra um lar.
                     </p>
 
                     <article data-aos="fade-up" data-aos-delay="500">
                         <GlobalButton2
-                            text="Falar com um consultor"
+                            text="Conversar com um consultor"
                             background1="var(--color--brown--medium)"
                             background2="var(--color--brown--medium)"
                             colorIcon="#fff"
@@ -158,7 +162,7 @@ const Home = () => {
                             to="/sobre-nos#form"
                         />
                         <GlobalButton3
-                            text="Conhecer catálogo"
+                            text="Ver o nosso catálogo"
                             background1="transparent"
                             background2="transparent"
                             colorIcon="#000"

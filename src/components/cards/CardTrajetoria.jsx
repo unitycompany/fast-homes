@@ -10,7 +10,8 @@ const Card = styled.div`
     align-items: center;
     justify-content: center;
     width: 25%;
-    height: 300px;
+    min-height: 300px;
+    height: auto;
     padding: 32px;
     overflow: hidden;
     border-radius: 10px;
@@ -132,7 +133,7 @@ const CardTrajetoria = ({ assunto, descricao, color, animateDelay }) => {
                     <h1>{assunto}</h1>
                     <p>{descricao}</p>
                     <button onClick={() => navigate('/#form')}>
-                        Falar com um consultor <MdArrowOutward />
+                        Conversar com um consultor <MdArrowOutward />
                     </button>
                 </Content>
             </Card>

@@ -48,7 +48,7 @@ const Text = styled.div`
     }
 
     & h1 {
-        font-size: 50px;
+        font-size: 26px;
         line-height: 100%;
         font-family: var(--font--aboreto);
 
@@ -63,7 +63,7 @@ const Text = styled.div`
         font-weight: 400;
 
         @media (max-width: 768px){
-            font-size: 12px;
+            font-size: 14px;
         }
     }
 `

@@ -56,6 +56,16 @@ const FormText = styled.div`
 
     & > p {
         font-size: 16px;
+        font-weight: 300;
+
+        & a {
+          font-weight: 500;
+          transition: all .1s ease-in-out;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
     }
 `
 
@@ -405,13 +415,13 @@ const Form = () => {
     <FormContainer id="form">
       <FormText>
         <h1 data-aos="fade-up" data-aos-delay="100">
-          Fale com um consultor
+          Converse com um consultor
         </h1>
         <p data-aos="fade-up" data-aos-delay="400">
-          Todas as informações serão usadas apenas para fins de contato, podendo ser consultadas nossa <a href="/politica">política de privacidade</a> e <a href="/termos">termos de condições</a>.
+          Todas as informações serão usadas apenas para fins de contato, consulte a nossa <a href="/politica">Política de Privacidade</a> e <a href="/termos">Termos de Condições</a>.
         </p>
         <GlobalButton3
-          text="Conhecer catálogo"
+          text="Ver o catálogo"
           background1="transparent"
           background2="transparent"
           colorIcon="#fff"
@@ -482,7 +492,7 @@ const Form = () => {
         </FormInputs>
         <FormSelect data-aos="fade-up" data-aos-delay="600">
           <FormPlaceholder itemSelecionado={!!selectedOption} onClick={toggleSelect}>
-            <span>Que tipo de cliente você é</span>
+            <span>Escolha a opção que melhor te representa</span>
             <p>{selectedOption || "Selecione uma opção"}</p>
             <BsArrowDown />
           </FormPlaceholder>
@@ -495,7 +505,7 @@ const Form = () => {
           </FormOptions>
         </FormSelect>
         <button type="submit" data-aos="fade-up" data-aos-delay="800" disabled={loading}>
-          {loading ? "Enviando..." : "Agende uma reunião com nosso consultor"}
+          {loading ? "Enviando..." : "Agendar uma reunião com nosso consultor"}
         </button>
       </Formulario>
     </FormContainer>

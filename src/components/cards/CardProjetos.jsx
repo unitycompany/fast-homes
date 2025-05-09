@@ -42,7 +42,7 @@ const Content = styled.div`
 
 const Texts = styled.div`
     display: flex;
-    width: 50%;
+    width: 70%;
     align-items: ${({ itemDirection }) => (itemDirection ? "flex-start" : "flex-end")};
     justify-content: center;
     flex-direction: column;

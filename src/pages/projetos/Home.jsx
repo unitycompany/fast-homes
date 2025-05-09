@@ -37,7 +37,7 @@ const Option = styled.div`
 
         @media (max-width: 768px){
             flex-direction: column;
-            gap: 0px;
+            gap: 20px;
 
             &:nth-child(2){
                 flex-direction: column-reverse;
@@ -92,7 +92,8 @@ const Right = styled.div`
     @media (max-width: 768px){
         width: 100%;
         padding: 2.5% 0% 0 0%;
-        height: 550px;
+        height: auto;
+        flex-direction: column;
     }
     
     & div {
@@ -105,7 +106,7 @@ const Right = styled.div`
         height: 600px;
 
         @media (max-width: 768px){
-            height: 500px;
+            height: 400px;
         }
     }
 `
@@ -114,21 +115,14 @@ const Home = () => {
     return (
         <>
             <Option data-aos="fade-up" data-aos-delay="100">
-                <CardProjeto 
-                    title="Já tem o projeto da sua casa?"
-                    description="Aqui na Fast Homes, nós adaptamos seu projeto para Steel Frame, sem dor de cabeça, cuidamos de tudo, e você não terá gasto nenhum com isso."
-                    direction={true}
-                    position="left"
-                    text={true}
-                    image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6e78ac0d-d748-41ef-c039-e41166058900/public"
-                    itemDirection={true}
-                />
 
                 <article>
                     <Left>
-                        <h1>Sua casa com a qualidade da Fast homes</h1>
+                        <h1>O seu projeto com a nossa qualidade</h1>
                         <p>
-                            Aqui na <b>Fast Homes</b>, nós adaptamos seu projeto para Steel Frame, sem dor de cabeça, cuidamos de tudo, e você não terá gasto nenhum com isso.
+                            Na <b>Fast Homes, adaptamos o seu projeto</b> para o sistema Steel Frame.
+                            Cuidamos de todo o processo para que você tenha uma casa do jeito que idealizou, mas com toda a inovação que só a Fast Homes oferece.<br/><br/>
+                            Você mantém o seu projeto original com todos os benefícios da construção a seco.
                         </p>
                         <GlobalButton3
                             text="Conversar com um consultor"
@@ -144,8 +138,8 @@ const Home = () => {
                     <Right>
                         <div>
                             <CardMiniProjetos 
-                                number="4X"
-                                description="O Steel Frame é 4x mais rápido que a alvenaria tradicional"
+                                number="Adaptação inteligente"
+                                description="Analisamos e ajustamos o seu projeto para o sistema Steel Frame, mantendo o conceito original."
                                 width="100"
                                 height="100"
                                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
@@ -153,16 +147,16 @@ const Home = () => {
                         </div>
                         <div>
                             <CardMiniProjetos 
-                                number="4X"
-                                description="O Steel Frame é 4x mais rápido que a alvenaria tradicional"
+                                number="Entrega rápida"
+                                description="Com o Steel Frame, sua casa fica pronta até 4x mais rápido."
                                 width="100"
                                 height="50"
                                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
                             />
 
                             <CardMiniProjetos 
-                                number="4X"
-                                description="O Steel Frame é 4x mais rápido que a alvenaria tradicional"
+                                number="Qualidade garantida"
+                                description="Trabalhamos com materiais de alta performance, tecnologia de ponta e mão de obra especializada."
                                 width="100"
                                 height="50"
                                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
@@ -175,7 +169,7 @@ const Home = () => {
             <Option data-aos="zoom-in" data-aos-delay="100">
                 <CardProjeto 
                     title="Já tem o projeto da sua casa?"
-                    description="Aqui na Fast Homes, nós adaptamos seu projeto para Steel Frame, sem dor de cabeça, cuidamos de tudo, e você não terá gasto nenhum com isso."
+                    description="Se você já tem o projeto dos seus sonhos, a Fast Homes o transforma em realidade – com toda a eficiência e qualidade do Steel Frame. Adaptamos o seu projeto sem complicações e, o melhor: com a garantia de uma construção 4x mais rápida."
                     direction={false}
                     position="right"
                     text={false}
@@ -188,8 +182,8 @@ const Home = () => {
                     <Right>
                         <div>
                             <CardMiniProjetos 
-                                number="4X"
-                                description="O Steel Frame é 4x mais rápido que a alvenaria tradicional"
+                                number="Eficiência estrutural"
+                                description="Construção precisa, com materiais leves, resistentes e de alta durabilidade."
                                 width="100"
                                 height="100"
                                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
@@ -197,16 +191,16 @@ const Home = () => {
                         </div>
                         <div>
                             <CardMiniProjetos 
-                                number="4X"
-                                description="O Steel Frame é 4x mais rápido que a alvenaria tradicional"
+                                number="Conforto termoacústico"
+                                description="Ambientes mais silenciosos e com temperatura equilibrada o ano todo."
                                 width="100"
                                 height="50"
                                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
                             />
 
                             <CardMiniProjetos 
-                                number="4X"
-                                description="O Steel Frame é 4x mais rápido que a alvenaria tradicional"
+                                number="Baixa manutenção"
+                                description="Acabamento de alto padrão que exige menos reparos ao longo dos anos."
                                 width="100"
                                 height="50"
                                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
@@ -215,12 +209,15 @@ const Home = () => {
                     </Right>
 
                     <Left>
-                        <h1>Sua casa com a qualidade da Fast homes</h1>
+                        <h1>O seu projeto começa aqui</h1>
                         <p>
-                            Aqui na <b>Fast Homes</b>, nós adaptamos seu projeto para Steel Frame, sem dor de cabeça, cuidamos de tudo, e você não terá gasto nenhum com isso.
+                            A nossa equipe técnica desenvolve um projeto personalizado para você, considerando: seu estilo de vida, sua rotina, suas necessidades e o número de moradores.
+                            <br/><br/>
+                            Com o sistema Steel Frame, garantimos uma construção rápida, eficiente e com alto padrão de qualidade desde o planejamento.
+
                         </p>
                         <GlobalButton3
-                            text="Falar com um Consultor"
+                            text="Conversar com um consultor"
                             background1="transparent"
                             background2="transparent"
                             colorIcon="#000"

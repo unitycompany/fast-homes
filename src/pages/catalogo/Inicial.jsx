@@ -33,7 +33,7 @@ const PaginaCatalogo = () => {
                 <Projetos>
                     <CardProjeto 
                         title="Já tem o projeto da sua casa?"
-                        description="Aqui na Fast Homes, nós adaptamos seu projeto para Steel Frame, sem dor de cabeça, cuidamos de tudo, e você não terá gasto nenhum com isso."
+                        description="Se você já tem o projeto dos seus sonhos, a Fast Homes o transforma em realidade - com toda a eficiência e qualidade do Steel Frame. Adaptamos o seu projeto sem complicações e, o melhor: deixando sua construção até 4x mais rápida com o sistema Steel Frame."
                         direction={true}
                         position="left"
                         text={true}

@@ -57,7 +57,7 @@ const HomeContent = styled.div`
         & b {
             font-weight: 500;
             color: transparent;
-            background: linear-gradient(90deg, #576628, #B05216, #603813, #1d1b1d);
+            background: linear-gradient(90deg, #000000, #474747);
             -webkit-background-clip: text;
         }
     }
@@ -289,10 +289,10 @@ const Home = () => {
     return (
         <HomeContent>
             <h1 data-aos="fade-up" data-aos-delay="100">
-                Conheça nosso <b>catálogo de casas</b>
+                Conheça o nosso <b>catálogo de casas</b>
             </h1>
             <p data-aos="fade-up" data-aos-delay="300">
-                Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
+                Aqui, você encontra projetos modernos em Steel Frame, explore os modelos e escolha aquele que mais combina com o seu estilo de vida!
             </p>
 
             <Filtro

@@ -193,7 +193,7 @@ const HomeTexts = styled.div`
 
   & > p {
     font-size: 16px;
-    width: 40%;
+    width: 50%;
     line-height: 120%;
     font-weight: 300;
     padding-bottom: 35px;
@@ -378,7 +378,7 @@ const Home = () => {
         <HomeTexts>
           <div>
             <h2 data-aos="fade-up" data-aos-delay="100">
-              Modernidade e <b>bem estar</b>
+              Modernidade e <b>bem-estar</b>
             </h2>
             <h1 data-aos="fade-up" data-aos-delay="400">
               Fast Homes
@@ -388,11 +388,13 @@ const Home = () => {
             </h2>
           </div>
           <p data-aos="fade-up-right" data-aos-delay="600">
-            Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós
-            proporcionamos
+            Na Fast Homes, acreditamos que o seu novo lar deve refletir o seu estilo de vida: confortável, moderno e prático. Por isso, projetamos casas que unem construção eficiente, design exclusivo e qualidade superior, criando espaços que refletem cuidado, tecnologia e estética.
+            <br/>
+            <br/>
+            Descubra um novo conceito de lar com a Fast Homes.
           </p>
           <GlobalButton3
-            text="Conhecer catálogo"
+            text="Ver o catálogo"
             background1="transparent"
             background2="transparent"
             colorIcon="#fff"

@@ -144,11 +144,13 @@ const Surgiu = () => {
                 <Right>
                     <h2 data-aos="fade-up" data-aos-delay="100">Como a Fast Homes surgiu?</h2>
                     <p data-aos="fade-up" data-aos-delay="300">
-                        Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
-
+                        A Fast Homes surgiu da vontade de tornar a construção mais leve, rápida e inteligente.
                         <br /><br />
 
-                        Colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos, colocar uma descrição curta e objetiva falando sobre a fast homes e o que nós proporcionamos
+                        Percebemos que muitas pessoas tinham o sonho de morar bem, mas enfrentavam obras demoradas, caras e cheias de imprevistos.
+
+                        <br /><br />
+                        A nossa proposta é otimizar os projetos para oferecer casas modernas, sustentáveis e prontas para morar em menos tempo, com mais conforto e menos dor de cabeça.
                     </p>
                     <div data-aos="fade-up" data-aos-delay="400">
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2110b3ee-1420-4cf2-0987-dfc2143fee00/public" loading="lazy" />
@@ -160,7 +162,7 @@ const Surgiu = () => {
 
                     <article data-aos="zoom-in" data-aos-delay="300">
                         <GlobalButton2
-                            text="Falar com um consultor"
+                            text="Conversar com um consultor"
                             background1="var(--color--brown--medium)"
                             background2="var(--color--brown--medium)"
                             colorIcon="#fff"

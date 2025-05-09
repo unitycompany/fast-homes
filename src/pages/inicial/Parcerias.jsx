@@ -166,10 +166,13 @@ const Parcerias = () => {
                             Nossas Parcerias
                         </h1>
                         <p data-aos="fade-up-right" data-aos-delay="400">
-                        enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+                        A excelência da Fast Homes também é construída com quem compartilha da nossa visão de inovação, qualidade e sustentabilidade.<br/><br/>
+                        Trabalhamos lado a lado com marcas reconhecidas no mercado para garantir que cada detalhe da sua casa tenha o melhor em tecnologia, desempenho e durabilidade.
+                        Juntos, oferecemos soluções completas que unem design, eficiência e confiança – do projeto à entrega do seu novo lar.
+
                         </p>
                         <GlobalButton2
-                            text="Catalogo de casas"
+                            text="Ver o catálogo"
                             background1="#fff"
                             background2="#fff"
                             colorIcon="#353535"

@@ -75,11 +75,11 @@ const Card = styled.div`
 
 const CardsCarrosselLP = () => {
     const cardsData = [
-        { id: 1, title: "Qualidade", text: "Espectacular casa a medida con un total de 231 m² situada en una prestigiosa zona de Mallorca. Una vivienda que se adapta completamente al desnivel del terreno y muestra sus poderosos voladizos. Espectacular casa a medida con un total de 231 m² situada en." },
-        { id: 2, title: "Durabilidade", text: "DEspectacular casa a medida con un total de 231 m² situada en una prestigiosa zona de Mallorca. Una vivienda que se adapta completamente al desnivel del terreno y muestra sus poderosos voladizos. Espectacular casa a medida con un total de 231 m² situada en." },
-        { id: 3, title: "Eficiência", text: "Espectacular casa a medida con un total de 231 m² situada en una prestigiosa zona de Mallorca. Una vivienda que se adapta completamente al desnivel del terreno y muestra sus poderosos voladizos. Espectacular casa a medida con un total de 231 m² situada en." },
-        { id: 4, title: "Sustentabilidade", text: "Espectacular casa a medida con un total de 231 m² situada en una prestigiosa zona de Mallorca. Una vivienda que se adapta completamente al desnivel del terreno y muestra sus poderosos voladizos. Espectacular casa a medida con un total de 231 m² situada en." },
-        { id: 5, title: "Custo-benefício", text: "Espectacular casa a medida con un total de 231 m² situada en una prestigiosa zona de Mallorca. Una vivienda que se adapta completamente al desnivel del terreno y muestra sus poderosos voladizos. Espectacular casa a medida con un total de 231 m² situada en." },
+        { id: 1, title: "Qualidade", text: "Materiais de alta performance, acabamento de alto padrão e atenção aos detalhes garantem um lar durável, confortável e moderno." },
+        { id: 2, title: "Rapidez na Entrega", text: "O sistema industrializado permite que sua casa fique pronta até 4x mais rápido que uma obra tradicional em alvenaria." },
+        { id: 3, title: "Durabilidade", text: "O Steel Frame resiste à umidade, pragas e intempéries, com uma estrutura que exige baixa manutenção e dura de 100 a 300 anos." },
+        { id: 4, title: "Custo-benefício", text: "Mais previsibilidade no orçamento, menos desperdício de materiais de construção e uma entrega altamente eficiente: tudo pensado para unir economia e excelência." },
+        { id: 5, title: "Sustentabilidade", text: "A construção a seco utiliza apenas 5L/m² de água e gera zero resíduos na parte da estrutura. Ideal para quem busca um lar alinhado às questões sustentáveis." },
     ];
 
     return (

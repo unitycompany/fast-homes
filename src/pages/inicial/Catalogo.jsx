@@ -100,7 +100,7 @@ const CatalogoTop = styled.div`
         & b {
             font-weight: 500;
             color: transparent;
-            background: linear-gradient(90deg, #576628, #B05216, #603813, #1d1b1d);
+            background: linear-gradient(90deg, #000000, #313031);
             -webkit-background-clip: text;
         }
 
@@ -245,7 +245,7 @@ const Catalogo = () => {
                         </h1>
 
                         <GlobalButton3
-                                text="Conhecer catálogo"
+                                text="Ver o catálogo"
                                 background1="transparent"
                                 background2="transparent"
                                 colorIcon="#000"

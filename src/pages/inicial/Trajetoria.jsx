@@ -60,7 +60,7 @@ const Top = styled.div`
         & b {
             font-weight: 500;
             color: transparent;
-            background: linear-gradient(90deg, #576628, #B05216, #603813, #1d1b1d);
+            background: linear-gradient(90deg, #000000, #444344);
             -webkit-background-clip: text;
         }
     }
@@ -112,7 +112,7 @@ const Cards = styled.div`
     
 `
 
-const Button = styled.div`
+const Button = styled.button`
 
 `
 
@@ -122,9 +122,10 @@ const Trajetoria = () => {
             
             <Content>
                 <Top>
-                    <h1 data-aos="fade-up" data-aos-delay="100">Como será sua <b>trajetória para ter sua casa?</b></h1>
+                    <h1 data-aos="fade-up" data-aos-delay="100">Sua jornada com a <b>Fast Homes</b></h1>
                     <p data-aos="fade-up" data-aos-delay="300">
-                    O processo irá depender de vários fatores, porém abaixo é apenas uma forma de você enxergar como será a parte do processo
+                    Aqui, cada etapa é pensada para tornar a experiência de ter o seu “Lar, doce lar” sem complicações.<br/><br/>
+                    Veja como funciona o processo até a entrega da chave:
                     </p>
                 </Top>
 
@@ -133,37 +134,43 @@ const Trajetoria = () => {
                         animateDelay="50"
                         color="#576628"
                         numero="1"
-                        assunto="Conversa"
-                        descricao="Descrição sobre como irá funcionar a etapa, bem objetivo e claro, sem muita enrolação"
+                        assunto="Escolha"
+                        descricao="Tudo começa com a escolha do modelo que mais combina com você.
+                        Nossos projetos foram pensados para atender a diferentes estilos de vida e necessidades.
+                        Escolha entre as nossas casas prontas — ou traga o seu projeto para darmos vida ao lar ideal para você e sua família."
                     />
 
                     <CardTrajetoria 
                         animateDelay="200"
                         color="#B05216"
                         numero="2"
-                        assunto="Pagamento"
-                        descricao="Descrição sobre como irá funcionar a etapa, bem objetivo e claro, sem muita enrolação"
+                        assunto="Bate-papo"
+                        descricao="Queremos entender o seu estilo de vida, os seus desejos e o que é prioridade para você.
+                        É nesse momento que alinhamos todos os detalhes: ouvimos suas expectativas, suas necessidades e reunimos todas as informações para garantir que o seu novo lar seja, exatamente, como você imaginou."
                     />
 
                     <CardTrajetoria
                         animateDelay="350"
                         color="#603813"
                         numero="3"
-                        assunto="Entrega"
-                        descricao="Descrição sobre como irá funcionar a etapa, bem objetivo e claro, sem muita enrolação"
+                        assunto="Pagamento"
+                        descricao="Facilitamos as condições de pagamento para caber no seu planejamento.
+                        Apresentamos todos os detalhes técnicos, prazos e valores de forma clara, com total transparência.
+                        Aqui, temos todo o cuidado para garantir segurança e previsibilidade ao seu projeto."
                     />
 
                     <CardTrajetoria 
                         animateDelay="500"
                         color="#1d1b1d"
                         numero="4"
-                        assunto="Feedback"
-                        descricao="Descrição sobre como irá funcionar a etapa, bem objetivo e claro, sem muita enrolação"
+                        assunto="Entrega"
+                        descricao="Com o padrão Fast Homes de qualidade do início ao fim, construímos sua nova casa em tempo recorde.
+                        Tudo para que você receba o seu novo lar no prazo e sem complicações."
                     />
                 </Cards>
                 <Button data-aos="fade-up" data-aos-delay="100">
                     <GlobalButton3
-                            text="Falar com um consultor"
+                            text="Conversar com um consultor"
                             background1="transparent"
                             background2="transparent"
                             colorIcon="#000"
