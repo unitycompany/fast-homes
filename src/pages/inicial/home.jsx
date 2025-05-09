@@ -26,6 +26,7 @@ const HomeContainer = styled.section`
 
   @media (max-width: 768px) {
     padding: 30% 0 0 0;
+    min-height: 125dvh;
   }
 `;
 
@@ -38,7 +39,7 @@ const BackgroundWrapper = styled.div`
   z-index: 1;
 
   @media (max-width: 768px) {
-    height: 50dvh;
+    height: 65dvh;
     object-position: center;
     z-index: 1!important;
   }
