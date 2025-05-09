@@ -1,5 +1,12 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    {
+      "source": "/catalogo-de-casas/:slug",
+      "destination": "/catalogo-de-casas"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
   ]
 }
