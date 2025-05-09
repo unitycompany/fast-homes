@@ -110,11 +110,12 @@ const Home = () => {
             <Content>
                 <Top>
                     <h1>Uma nova <b>forma de construir</b></h1>
-                    <p>Com a Fast Homes e a House Box, você recebe a sua casa pronta direto no seu terreno em tempo recorde.<br/><br/>
+                    <p>Com a Fast Homes e a House Box, você recebe a sua casa pronta direto no seu terreno em tempo recorde. 
 
-                    Combinamos a eficiência do sistema Steel Frame, o design exclusivo da Fast Homes e a praticidade da construção modular da House Box para criar casas inteligentes, sustentáveis e prontas para morar.<br/><br/>
+                    Combinamos o design exclusivo da Fast Homes com a praticidade da construção modular da House Box para criar casas inteligentes, sustentáveis e prontas para morar. 
 
                     Design, funcionalidade e velocidade: Fast Homes e House Box atuam juntas para entregar casas modulares pensadas para o presente e prontas para o futuro.
+
                     </p>
                 </Top>
 

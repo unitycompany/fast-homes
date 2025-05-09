@@ -68,7 +68,7 @@ const Card = styled.div`
     & p {
         width: 90%;
         line-height: 110%;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 400;
     }
 
