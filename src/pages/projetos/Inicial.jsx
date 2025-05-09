@@ -17,7 +17,7 @@ const Content = styled.div`
     justify-content: flex-start;
     flex-direction: column;
     overflow-x: hidden;
-    padding: 10% 0% 0 0;
+    padding: 7.5% 0% 0 0;
 `
 
 const PaginaProjetos = () => {

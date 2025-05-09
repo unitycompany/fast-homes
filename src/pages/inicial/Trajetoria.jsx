@@ -107,7 +107,7 @@ const Button = styled.button``;
 const Trajetoria = () => {
   const splideOptions = {
     type: 'slide',        // no loop
-    perPage: 4,
+    perPage: 3,
     perMove: 1,
     gap: '20px',
     arrows: true,

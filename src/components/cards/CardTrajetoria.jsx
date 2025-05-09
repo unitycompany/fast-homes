@@ -16,7 +16,7 @@ const Card = styled.div`
     overflow: hidden;
     border-radius: 10px;
     transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #00000010;
     background-color: #fff;
     
     @media (max-width: 768px){
