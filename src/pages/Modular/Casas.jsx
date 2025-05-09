@@ -93,7 +93,7 @@ const Casas = () => {
       <Content>
         <Top>
           <h1>
-            Conheça nossas <b>Houses</b>
+            Conheça as nossas <b>Houses</b>
           </h1>
           <ControlButtons>
             <ControlButton
@@ -139,7 +139,7 @@ const Casas = () => {
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c87bc3b3-0099-4723-527b-1fcc60ab7200/public"
                 nome="Olinda"
                 area="18m²"
-                descricao="Perfeita para casais começando uma nova jornada ou solteiros que desejam um lar moderno e prático. Combina design inteligente com aconchego. Visualize-se preparando um café na cozinha compacta antes de relaxar em um espaço que é"
+                descricao="Compacta e funcional, a House Olinda é ideal para os casais que estão iniciando a vida a dois ou para os solteiros que buscam mais praticidade. Com 18m² ao total, possui mini copa, 1 quarto e 1 banheiro com banheira interna ou externa, tudo em um espaço otimizado e acolhedor."
               />
             </SwiperSlide>
             <SwiperSlide>
@@ -147,7 +147,7 @@ const Casas = () => {
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f7f8cb19-85fa-4a77-2380-160809f6b800/public"
                 nome="Parati"
                 area="30m²"
-                descricao="Com uma suíte aconchegante, uma sala de estar espaçosa o suficiente para acomodar momentos de lazer e uma cozinha funcional para preparar suas receitas favoritas, a House Parati é um lar projetado para crescer com você e sua família."
+                descricao="Com 30m², a House Jatobá é ideal para aqueles que precisam de mais espaço sem abrir mão da funcionalidade. Conta com sala de estar e cozinha integradas e 1 suíte. Uma solução inteligente, pensada para o dia a dia."
               />
             </SwiperSlide>
             <SwiperSlide>

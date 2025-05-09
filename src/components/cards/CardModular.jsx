@@ -67,13 +67,14 @@ const Card = styled.div`
     }
 `
 
-const CardModular = ({ descricao, icon }) => {
+const CardModular = ({ descricao, icon, titulo }) => {
     const Icon = icons[icon];
 
     return (
         <>
             <Card>
                 {Icon && <Icon />}
+                <h1>{titulo}</h1>
                 <p>{descricao}</p>
             </Card>
         </>

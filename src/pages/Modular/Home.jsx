@@ -110,7 +110,12 @@ const Home = () => {
             <Content>
                 <Top>
                     <h1>Uma nova <b>forma de construir</b></h1>
-                    <p>Já imaginou morar ou investir em uma casa que une design moderno e sustentabilidade? Com a House Box, isso é possível em apenas 30 dias, dependendo do tamanho e modelo que escolher.</p>
+                    <p>Com a Fast Homes e a House Box, você recebe a sua casa pronta direto no seu terreno em tempo recorde.<br/><br/>
+
+                    Combinamos a eficiência do sistema Steel Frame, o design exclusivo da Fast Homes e a praticidade da construção modular da House Box para criar casas inteligentes, sustentáveis e prontas para morar.<br/><br/>
+
+                    Design, funcionalidade e velocidade: Fast Homes e House Box atuam juntas para entregar casas modulares pensadas para o presente e prontas para o futuro.
+                    </p>
                 </Top>
 
                 <Center>
@@ -121,23 +126,23 @@ const Home = () => {
                     <article>
                         <CardModular 
                             icon="house"
-                            titulo="Agilidade"
-                            descricao="Construa com agilidade. Obras demoradas e caras já não precisam fazer parte da sua realidade."
+                            titulo=" Entrega rápida direto no seu terreno"
+                            descricao="Construída em tempo recorde, sua casa chega pronta para morar. Obras demoradas e caras não são realidade por aqui."
                         />
                         <CardModular 
                             icon="wind"
-                            titulo="Sustentável"
-                            descricao="Espaços sustentáveis são o futuro — e o futuro já chegou."
+                            titulo="Design moderno e funcional"
+                            descricao=" Ambientes planejados para otimizar o espaço e garantir o seu bem-estar no dia a dia."
                         />
                         <CardModular 
                             icon="pen"
-                            titulo="Agilidade"
-                            descricao="Design funcional e inovador, pronto para acompanhar o seu estilo."
+                            titulo="Construção mais limpa e sustentável"
+                            descricao="O Steel Frame já é o presente da construção civil: menos desperdícios, menos resíduos e mais responsabilidade."
                         />
                         <CardModular 
                             icon="truck"
-                            titulo="Entrega"
-                            descricao="Sua casa chega pronta no seu terreno, dá para acreditar?"
+                            titulo="Qualidade e tecnologia unidas"
+                            descricao="Padrão Fast Homes com inovação House Box do projeto ao acabamento."
                         />
                     </article>
                 </Center>
