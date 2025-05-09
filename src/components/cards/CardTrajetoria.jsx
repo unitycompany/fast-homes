@@ -9,7 +9,7 @@ const Card = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 25%;
+    width: 100%;
     min-height: 300px;
     height: auto;
     padding: 32px;
@@ -48,6 +48,10 @@ const Card = styled.div`
         color: #fff;
     }
 
+    &:hover span {
+        color: #fff;
+    }
+
     &:hover button{
         color: #fff;
     }
@@ -69,6 +73,13 @@ const Content = styled.div`
     & h1 {
         font-size: 24px;
         font-weight: 600;
+        color: #000;
+    }
+
+    & span {
+        font-size: 30px;
+        font-weight: 500;
+        border-radius: 50px;
         color: #000;
     }
 
@@ -123,13 +134,14 @@ const Content = styled.div`
     }
 `
 
-const CardTrajetoria = ({ assunto, descricao, color, animateDelay }) => {
+const CardTrajetoria = ({ assunto, descricao, color, animateDelay, numero }) => {
     const navigate = useNavigate();
 
     return(
         <>
             <Card data-aos="fade-right" data-aos-delay={animateDelay}>
                 <Content color={color}>
+                    <span>{numero}</span>   
                     <h1>{assunto}</h1>
                     <p>{descricao}</p>
                     <button onClick={() => navigate('/#form')}>
