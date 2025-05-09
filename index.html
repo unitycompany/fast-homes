@@ -62,6 +62,78 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CPRCPM2"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <script>
+      (function() {
+          console.log("📌 UTM Debugging Script Iniciado");
+
+          let urlParams = new URLSearchParams(window.location.search);
+          let utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+          let utmData = {};
+          let hasUtmInUrl = utmKeys.some(key => urlParams.has(key));
+
+          localStorage.removeItem("utm_params");
+          localStorage.removeItem("utm_session");
+
+          if (hasUtmInUrl) {
+              console.log("✅ UTM detectadas na URL!");
+
+              // Salva as UTM no localStorage
+              utmKeys.forEach(key => {
+                  if (urlParams.has(key)) {
+                      utmData[key] = urlParams.get(key);
+                  }
+              });
+
+              localStorage.setItem("utm_params", JSON.stringify(utmData));
+              localStorage.setItem("utm_session", "true"); // Indica que a sessão iniciou com UTM
+              console.log("📥 UTM salvas no localStorage:", utmData);
+          } else {
+              console.log("⚠️ Nenhuma UTM detectada. Rodando site normalmente.");
+          }
+
+          let storedUtm = localStorage.getItem("utm_params");
+          let sessionStartedWithUtm = localStorage.getItem("utm_session") === "true";
+
+          if (storedUtm && sessionStartedWithUtm) {
+              storedUtm = JSON.parse(storedUtm);
+              console.log("📤 UTM recuperadas do localStorage:", storedUtm);
+
+              let currentUrl = new URL(window.location.href);
+              let hasUtm = utmKeys.some(key => currentUrl.searchParams.has(key));
+
+              if (!hasUtm) {
+                  Object.keys(storedUtm).forEach(param => currentUrl.searchParams.set(param, storedUtm[param]));
+                  window.history.replaceState({}, "", currentUrl.toString());
+                  console.log("♻️ UTM reaplicadas na URL atual:", currentUrl.toString());
+              }
+
+              document.querySelectorAll("a").forEach(link => {
+                  if (link.hostname === window.location.hostname && !link.href.includes("utm_")) {
+                      let url = new URL(link.href);
+                      Object.keys(storedUtm).forEach(param => url.searchParams.set(param, storedUtm[param]));
+                      link.href = url.toString();
+                      console.log("🔗 Link atualizado com UTM:", link.href);
+                  }
+              });
+
+              document.addEventListener("click", function(e) {
+                  let link = e.target.closest("a");
+                  if (link && link.hostname === window.location.hostname && !link.href.includes("utm_")) {
+                      let url = new URL(link.href);
+                      Object.keys(storedUtm).forEach(param => url.searchParams.set(param, storedUtm[param]));
+
+                      console.log("➡️ Redirecionando com UTM:", url.toString());
+
+                      e.preventDefault();
+                      window.location.href = url.toString();
+                  }
+              });
+          } else {
+              console.log("🚫 Nenhuma UTM armazenada ou sessão começou sem UTM. Site rodando normalmente.");
+          }
+      })();
+      </script>
     
     <div id="root"></div>
     <div id="modal-root"></div>
