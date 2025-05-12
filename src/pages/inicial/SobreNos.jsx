@@ -19,7 +19,7 @@ const Content = styled.div`
 
     @media (max-width: 768px){
         flex-direction: column;
-        padding: 7.5% 5% 5% 5%;
+        padding: 5% 5% 10% 5%;
         gap: 30px;
     }
 `
@@ -60,6 +60,7 @@ const Left = styled.div`
 
         @media (max-width: 768px){
             border: none;
+            display: none;
         }
     }
 `
@@ -200,8 +201,8 @@ const SobreNos = () => {
                     <h6 data-aos="zoom-in" data-aos-delay="50">Conheça a Fast Homes</h6>
                     <h1 data-aos="fade-up" data-aos-delay="150">A Fast Homes surgiu para <b>transformar nossa forma de construir</b> e viver.</h1>
                     <p data-aos="fade-up" data-aos-delay="200">
-                        Unimos a eficiência do Steel Frame com um novo conceito de lar: mais moderno, sustentável e pensado para o seu bem-estar.
-                        Acreditamos que cada casa é um projeto de vida. Por isso, oferecemos soluções inteligentes, versáteis e com acabamento de alto padrão, sempre alinhadas às suas necessidades e ao seu estilo de vida.
+                        Unimos a eficiência do Steel Frame com um novo conceito de lar: mais moderno, sustentável e pensado para o seu bem-estar.<br/><br/>
+                        Acreditamos que cada casa é um projeto de vida. Por isso, oferecemos soluções inteligentes, versáteis e com acabamento de alto padrão, sempre alinhadas às suas necessidades e ao seu estilo de vida.<br/><br/>
                         Na Fast Homes, construir é simples, rápido e seguro.
                     </p>
                     <GlobalButton2

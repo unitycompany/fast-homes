@@ -26,7 +26,7 @@ const HomeContainer = styled.section`
 
   @media (max-width: 768px) {
     padding: 30% 0 0 0;
-    min-height: 125dvh;
+    min-height: 100dvh;
   }
 `;
 
@@ -133,9 +133,9 @@ const HomeCenter = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 40px;
-    height: 60dvh;
+    height: auto;
     width: 100%;
-    padding: 5%;
+    padding: 10% 5%;
     z-index: 2;
     background: linear-gradient(45deg, #000, #1f1f1f);
   }
@@ -147,6 +147,7 @@ const HomeTexts = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  gap: 20px;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -389,12 +390,12 @@ const Home = () => {
               Um novo conceito de <b>lar</b>
             </h2>
           </div>
-          <p data-aos="fade-up-right" data-aos-delay="600">
+          {/* <p data-aos="fade-up-right" data-aos-delay="600">
             Na Fast Homes, acreditamos que o seu novo lar deve refletir o seu estilo de vida: confortável, moderno e prático. Por isso, projetamos casas que unem construção eficiente, design exclusivo e qualidade superior, criando espaços que refletem cuidado, tecnologia e estética.
             <br/>
             <br/>
             Descubra um novo conceito de lar com a Fast Homes.
-          </p>
+          </p> */}
           <GlobalButton3
             text="Ver o catálogo"
             background1="transparent"

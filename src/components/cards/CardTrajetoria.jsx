@@ -21,7 +21,7 @@ const Card = styled.div`
     
     @media (max-width: 768px){
         height: auto;
-        padding: 20px 26px;
+        padding: 20px 56px;
     }
 
     &::before {
