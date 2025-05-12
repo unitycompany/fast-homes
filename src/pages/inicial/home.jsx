@@ -39,7 +39,7 @@ const BackgroundWrapper = styled.div`
   z-index: 1;
 
   @media (max-width: 768px) {
-    height: 65dvh;
+    height: 70dvh;
     object-position: center;
     z-index: 1!important;
   }
