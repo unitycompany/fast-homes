@@ -156,7 +156,7 @@ const Carrossel = ({ category }) => {
             >
               <div>
                 <button onClick={() => navigate(casa.destinationUrl)}>
-                  Conhecer Casa
+                  Conhecer casa
                 </button>
                 {casa.imageUrl ? (
                   <img src={casa.imageUrl} alt={casa.name} loading="lazy"/>
