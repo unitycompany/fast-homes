@@ -350,7 +350,7 @@ const Header = () => {
             <HeaderContainer>
                 <HeaderAll>
                     <HeaderImage>
-                        <button onClick={() => navigate('/')}> 
+                        <button onClick={() => handleClick('/')}> 
                             <img 
                                 src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/28cf333a-365a-4025-f8d8-c86fdd742d00/public" 
                                 alt="logo-fast-homes" 
