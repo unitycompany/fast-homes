@@ -290,7 +290,7 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
                 <Right>
                     <RightTop>
                         <span data-aos="fade-up" data-aos-delay="100">{area}m²</span>
-                        <h4 data-aos="fade-up" data-aos-delay="100">Área construída</h4>
+                        {/* <h4 data-aos="fade-up" data-aos-delay="100">Área construída</h4> */}
                     </RightTop>
 
                     <RightPacotes data-aos="fade-up" data-aos-delay="300">

@@ -43,20 +43,24 @@ const Left = styled.div`
         flex-direction: column;
 
         & h1 {
-            font-size: 40px;
+            font-size: 32px;
             font-family: var(--font--aboreto);
             line-height: 100%;
+
+            @media (max-width: 768px){
+                font-size: 28px;
+            }
         }
 
         & p {
-            font-size: 20px;
+            font-size: 16px;
             line-height: 110%;
             width: 90%;
             font-weight: 300;
             text-align: justify;
 
             @media (max-width: 768px){
-                font-size: 18px;
+                font-size: 16px;
             }
         }
     }
@@ -119,6 +123,7 @@ const Dobra2 = ({ title1, area, descricao, imagens }) => {
             <Content>
                 <Left>
                     <div>
+                        <h1>Informações gerais</h1>
                         <p data-aos="fade-up" data-aos-delay="300" style={{ whiteSpace: 'pre-line' }}>{descricao}</p>
                     </div>
                     <div>
