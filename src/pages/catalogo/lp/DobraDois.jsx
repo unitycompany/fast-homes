@@ -118,8 +118,7 @@ const Dobra2 = ({ title1, area, descricao, imagens }) => {
             <Content>
                 <Left>
                     <div>
-                        {/* <h1 data-aos="fade-up" data-aos-delay="100">{title1}</h1> */}
-                        <p data-aos="fade-up" data-aos-delay="300">{descricao}</p>
+                        <p data-aos="fade-up" data-aos-delay="300" style={{ whiteSpace: 'pre-line' }}>{descricao}</p>
                     </div>
                     <div>
                         {/* <h1 data-aos="zoom-in" data-aos-delay="100">{area}M²</h1>
