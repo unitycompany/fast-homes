@@ -62,6 +62,12 @@ const Left = styled.div`
         align-items: center;
         gap: 5px;
 
+        @media (max-width: 768px){
+            position: relative;
+            width: 100%;
+            margin-top: 20px;
+        }
+
         & h1 {
             font-size: 100px;
             font-family: var(--font--aboreto);
