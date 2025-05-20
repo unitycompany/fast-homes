@@ -18,7 +18,7 @@ const Content = styled.div`
 
     @media (max-width: 768px){
         height: 100%;
-        padding: 2.5% 0;
+        padding: 2.5%;
     }
 
     & img {

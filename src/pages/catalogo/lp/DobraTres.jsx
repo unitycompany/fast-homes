@@ -52,13 +52,13 @@ const Top = styled.div`
 const Bottom = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: 15px;
     width: 100%;
 
     & h1 {
-        font-size: 30px;
+        font-size: 42px;
         font-family: var(--font--aboreto);
 
         @media (max-width: 768px){
@@ -92,11 +92,11 @@ const Dobra3 = ({ descricao, title, carrosselDireita, carrosselEsquerda }) => {
                 </Top>
                 <Bottom>
                     <h1 data-aos="fade-up" data-aos-delay="100">
-                        {title}
+                        Planta Baixa
                     </h1>
-                    <p data-aos="fade-up" data-aos-delay="300">
+                    {/* <p data-aos="fade-up" data-aos-delay="300">
                         {descricao}
-                    </p>
+                    </p> */}
                 </Bottom>
             </Content>
         </>

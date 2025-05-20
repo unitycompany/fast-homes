@@ -4,6 +4,7 @@ import CarrosselLP from "../../../components/carrossel-lp";
 
 const Content = styled.div`
     width: 100%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,7 +28,7 @@ const Left = styled.div`
     justify-content: flex-start;
     flex-direction: column;
     height: 100%;
-    min-height: 90dvh;
+    min-height: auto;
     position: relative;
 
     @media (max-width: 768px){
@@ -48,9 +49,14 @@ const Left = styled.div`
         }
 
         & p {
-            font-size: 18px;
+            font-size: 22px;
             line-height: 110%;
-            width: 95%;
+            width: 90%;
+            font-weight: 300;
+
+            @media (max-width: 768px){
+                font-size: 18px;
+            }
         }
     }
 
@@ -112,12 +118,12 @@ const Dobra2 = ({ title1, area, descricao, imagens }) => {
             <Content>
                 <Left>
                     <div>
-                        <h1 data-aos="fade-up" data-aos-delay="100">{title1}</h1>
+                        {/* <h1 data-aos="fade-up" data-aos-delay="100">{title1}</h1> */}
                         <p data-aos="fade-up" data-aos-delay="300">{descricao}</p>
                     </div>
                     <div>
-                        <h1 data-aos="zoom-in" data-aos-delay="100">{area}M²</h1>
-                        <span data-aos="fade-up" data-aos-delay="500">Área construida</span>
+                        {/* <h1 data-aos="zoom-in" data-aos-delay="100">{area}M²</h1>
+                        <span data-aos="fade-up" data-aos-delay="500">Área construida</span> */}
                     </div>
                 </Left>
                 <Right data-aos="fade-up" data-aos-delay="100">
