@@ -11,7 +11,7 @@ const Card = styled.div`
     width: 100%;
     min-height: 400px;
     height: auto;
-    border-radius: calc(20px + 5px);
+    border-radius: calc(15px + 5px);
     padding: 5px;
     gap: 15px;
     border: 1px solid #00000020;
@@ -43,7 +43,7 @@ const Card = styled.div`
     & img {
         width: 100%;
         height: 250px;
-        border-radius: 20px;
+        border-radius: 15px;
         object-fit: cover;
     }
 
@@ -57,11 +57,13 @@ const Card = styled.div`
         & h2 {
             font-weight: 600;
             font-size: 20px;
+            font-family: var(--font--aboreto);
         }
 
         & span {
-            font-weight: 600;
+            font-weight: 300;
             font-size: 15px;
+            font-family: var(--font--aboreto);
         }
     }
 

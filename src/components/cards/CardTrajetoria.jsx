@@ -17,42 +17,27 @@ const Card = styled.div`
     border-radius: 10px;
     transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
     border: 1px solid #00000010;
-    background-color: #fff;
+    background-color: var(--color--black);
+    color: #fff;
     
     @media (max-width: 768px){
         height: auto;
         padding: 20px 56px;
     }
 
-    &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 5px;
-        background: linear-gradient(-45deg, #3d3d3d 0%, var(--color--black) 100% );
-        z-index: -1;
-        transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
-    }
-
-    &:hover::before {
-        height: 100%;
-    }
-
-    &:hover h1{
+    & h1{
         color: #fff;
     }
     
-    &:hover p{
+    & p{
         color: #fff;
     }
 
-    &:hover span {
+    & span {
         color: #fff;
     }
 
-    &:hover button{
+    & button{
         color: #fff;
     }
 
@@ -73,18 +58,20 @@ const Content = styled.div`
     & h1 {
         font-size: 24px;
         font-weight: 600;
-        color: #000;
+        color: #fff;
     }
 
     & span {
-        font-size: 30px;
+        font-size: 40px;
         font-weight: 500;
         border-radius: 50px;
-        color: #000;
+        color: #fff;
+        font-family: var(--font--aboreto);
+        margin-bottom: -20px;
     }
 
     & p {
-        color: #000;
+        color: #fff;
         font-size: 16px;
         font-weight: 400;
         line-height: 110%;
@@ -100,7 +87,7 @@ const Content = styled.div`
         position: relative;
         border-radius: 10px;
         cursor: pointer;
-        color: #000;
+        color: #fff;
 
         &::before{
             content: '';

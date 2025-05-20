@@ -8,19 +8,18 @@ import "swiper/css/pagination";
 import CardCasasModular from "../../components/cards/CardCasasModular";
 
 const Content = styled.div`
-  min-height: 100vh;
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 50px;
-  padding: 2.5% 5% 5% 5%;
+  padding: 2.5% 5% 2.5% 5%;
 
   @media (max-width: 768px){
     gap: 20px;
     padding: 2.5% 5% 0 5%;
-    min-height: auto;
+    align-items: center;
   }
 `;
 
@@ -32,7 +31,7 @@ const Top = styled.div`
 
   @media (max-width: 768px){
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 30px;
   }
 
@@ -40,16 +39,16 @@ const Top = styled.div`
     font-size: 36px;
     font-weight: 300;
     line-height: 100%;
+    width: 100%;
+    text-align: center;
 
     @media (max-width: 768px){
       font-size: 28px;
+      text-align: center;
     }
 
     & b {
       font-weight: 500;
-      color: transparent;
-      background: linear-gradient(90deg, #576628, #B05216, #603813, #1d1b1d);
-      -webkit-background-clip: text;
     }
   }
 `;
@@ -58,6 +57,21 @@ const ControlButtons = styled.div`
   display: flex;
   gap: 20px;
   align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 95%;
+  left: 2.5%;
+
+  @media (max-width: 768px){
+    top: 25%;
+    width: 90%;
+    left: 5%;
+  }
 
   & svg {
     width: 18px;
@@ -71,6 +85,19 @@ const ControlButton = styled.button`
   font-size: 24px;
   color: #333;
   transition: color 0.2s;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #1d1d1d;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  & svg {
+    width: 15px;
+    fill: #fff;
+  }
 
   &:hover {
     color: #555;
@@ -95,22 +122,6 @@ const Casas = () => {
           <h1>
             Conheça as nossas <b>Houses</b>
           </h1>
-          <ControlButtons>
-            <ControlButton
-              onClick={() =>
-                swiperRef.current && swiperRef.current.slidePrev()
-              }
-            >
-              <SlArrowLeft />
-            </ControlButton>
-            <ControlButton
-              onClick={() =>
-                swiperRef.current && swiperRef.current.slideNext()
-              }
-            >
-              <SlArrowRight />
-            </ControlButton>
-          </ControlButtons>
         </Top>
         <Center>
           <Swiper
@@ -123,7 +134,6 @@ const Casas = () => {
             }}
             spaceBetween={20}
             slidesPerView={3}
-            speed={2500}
             pagination={false}
             navigation={false}
             breakpoints={{
@@ -182,6 +192,22 @@ const Casas = () => {
                 descricao="Design elevado para uma experiência única! Com um mezanino charmoso, a Fernando de Noronha Superior traz um quarto suspenso que otimiza o espaço e proporciona uma sensação aconchegante e moderna. A parte inferior integra sala, cozinha e banheiro em um ambiente fluído e funcional, unindo praticidade e sofisticação. Para quem busca viver com leveza, estilo e inovação!"
               />
             </SwiperSlide>
+            <ControlButtons>
+            <ControlButton
+              onClick={() =>
+                swiperRef.current && swiperRef.current.slidePrev()
+              }
+            >
+              <SlArrowLeft />
+            </ControlButton>
+            <ControlButton
+              onClick={() =>
+                swiperRef.current && swiperRef.current.slideNext()
+              }
+            >
+              <SlArrowRight />
+            </ControlButton>
+          </ControlButtons>
           </Swiper>
         </Center>
       </Content>

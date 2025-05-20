@@ -19,6 +19,7 @@ const Content = styled.section `
     flex-direction: column;
     justify-content: center;
     gap: 50px;
+    overflow: hidden;
 `
 
 const Formulario = styled.div`

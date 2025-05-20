@@ -13,7 +13,7 @@ const icons = {
 };
 
 const Card = styled.div`
-    border-radius: 15px;
+    border-radius: 20px;
     padding: 30px;
     width: 100%;
     height: auto;
@@ -24,12 +24,13 @@ const Card = styled.div`
     gap: 20px;
     position: relative;
     overflow: hidden;
-    border: 1px solid #00000020;
+    border: 2px dashed rgba(0, 0, 0, 0.1);
 
     @media (max-width: 768px){
         padding: 20px;
+        border: 1px dashed rgba(0, 0, 0, 0.1);
     }
-    
+/*     
     &::before{
         content: '';
         width: 100%;
@@ -44,25 +45,42 @@ const Card = styled.div`
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
-    }
+    } */
+
+    & h1 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #1d1d1d;
+        line-height: 110%;
+        font-family: var(--font--aboreto);
+
+        @media (max-width: 768px) {
+            font-size: 20px;
+        }
+    }  
 
     & svg {
-        width: 30px;
+        width: 50px;
         height: auto;
-        fill: #000000;
+        fill: #fff;
+        padding: 10px;
+        background-color: var(--color--green--low);
+        border-radius: 50%;
+        border: 2px solid var(--color--green--high);
 
         @media (max-width: 768px){
-            width: 25px;
+            width: 35px;
+            padding: 5px;
         }
     }
 
     & p {
-        font-size: 18px;
+        font-size: 16px;
         color: #000000;
         line-height: 120%;
 
         @media (max-width: 768px){
-            font-size: 16px;
+            font-size: 15px;
         }
     }
 `

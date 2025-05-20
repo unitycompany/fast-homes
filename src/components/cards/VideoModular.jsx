@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Card = styled.div`
   border-radius: 20px;
   width: 100%;
-  height: 300px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -25,7 +25,7 @@ const VideoContainer = styled.div`
 `;
 
 const Iframe = styled.iframe`
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;

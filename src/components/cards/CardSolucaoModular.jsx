@@ -12,6 +12,7 @@ const CardContainer = styled.div`
   gap: 0.75rem;
   position: relative;
   overflow: hidden;
+  border-radius: 15px;
 
   @media (max-width: 768px){
     width: 100%;

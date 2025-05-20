@@ -29,7 +29,7 @@ const Background = styled.div`
 const Conteudo = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     width: 100%;
     padding: 5% 0;
@@ -43,9 +43,10 @@ const Conteudo = styled.div`
 const Top = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: 10px;
+    width: 100%;
 
     @media (max-width: 768px){
         align-items: center;
@@ -70,8 +71,9 @@ const Top = styled.div`
 
     & p {
         font-size: 16px;
-        width: 60%;
+        width: 50%;
         line-height: 120%;
+        text-align: center;
 
         @media (max-width: 768px){
             width: 100%;
