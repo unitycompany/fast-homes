@@ -188,7 +188,7 @@ const Home = () => (
           </SplideSlide>
           <SplideSlide>
             <CardModular
-              icon="wind"
+              icon="brush"
               titulo="Design moderno e funcional"
               descricao="Ambientes planejados para otimizar o espaço e garantir o seu bem-estar no dia a dia."
             />

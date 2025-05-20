@@ -1,15 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { BsBrush, BsHouse, BsPen, BsTruckFlatbed } from "react-icons/bs";
+import { FaShippingFast } from "react-icons/fa";
+import { AiOutlineAntDesign } from "react-icons/ai";
+import { BsDropletHalf } from "react-icons/bs";
+import { FaArrowTrendUp } from "react-icons/fa6";
+
 import { WiCloudyWindy } from "react-icons/wi";
 
 
 const icons = {
-    house: BsHouse,
-    brush: BsBrush,
-    pen: BsPen,
-    truck: BsTruckFlatbed,
-    wind: WiCloudyWindy,
+    house: FaShippingFast,
+    brush: AiOutlineAntDesign,
+    pen: BsDropletHalf,
+    truck: FaArrowTrendUp,
 };
 
 const Card = styled.div`
@@ -24,7 +27,7 @@ const Card = styled.div`
     gap: 20px;
     position: relative;
     overflow: hidden;
-    border: 2px dashed rgba(0, 0, 0, 0.1);
+    border: 1px dashed rgba(0, 0, 0, 0.1);
 
     @media (max-width: 768px){
         padding: 20px;
@@ -66,7 +69,7 @@ const Card = styled.div`
         padding: 10px;
         background-color: var(--color--green--low);
         border-radius: 50%;
-        border: 2px solid var(--color--green--high);
+        border: 1px solid var(--color--green--high);
 
         @media (max-width: 768px){
             width: 35px;
