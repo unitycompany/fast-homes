@@ -45,7 +45,7 @@ const HeaderBtns = styled.div`
 const HeaderTexts = styled.div`
   text-align: left;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   flex-direction: row;
   gap: 20px;
@@ -64,7 +64,8 @@ const HeaderTexts = styled.div`
   & div {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
     width: 60%;
 
@@ -136,7 +137,7 @@ const Name = ({ nome, descricao }) => {
             onClick={() => navigate('/')}/>
           <div>
             <h1>{nome}</h1>
-            <p>{descricao}</p>
+            {/* <p>{descricao}</p> */}
           </div>
         </HeaderTexts>
         <HeaderBtns>
