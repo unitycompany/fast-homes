@@ -51,8 +51,8 @@ const NavButton = styled.aside`
 // Rótulo de pavimento
 const FloorLabel = styled.span`
   position: absolute;
-  top: 5%;
-  left: 2.5%;
+  top: 0%;
+  left: 5%;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   padding: 4px 8px;
@@ -62,8 +62,7 @@ const FloorLabel = styled.span`
   z-index: 100;
 
   @media (max-width: 768px){
-    left: 50%;
-    transform: translateX(-50%);
+    left: 2.5%;
     top: 0%;
   }
 `;

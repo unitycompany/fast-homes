@@ -52,13 +52,13 @@ const Top = styled.div`
 const Bottom = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 15px;
     width: 100%;
 
     & h1 {
-        font-size: 42px;
+        font-size: 36px;
         font-family: var(--font--aboreto);
 
         @media (max-width: 768px){
