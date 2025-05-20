@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CarrosselLP from "../../../components/carrossel-lp";
+import CarrosselLPPlanta from "../../../components/carrossel-lp-planta";
 
 const Content = styled.div`
     width: 100%;
@@ -36,7 +36,7 @@ const Dobra4 = ({ plantaBaixa }) => {
     return (
         <>
             <Content>
-                <CarrosselLP
+                <CarrosselLPPlanta
                     images={plantaBaixa}
                     width="100%"
                     height="auto"

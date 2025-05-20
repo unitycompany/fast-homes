@@ -49,7 +49,7 @@ const Left = styled.div`
         }
 
         & p {
-            font-size: 22px;
+            font-size: 20px;
             line-height: 110%;
             width: 90%;
             font-weight: 300;
