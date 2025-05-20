@@ -53,6 +53,7 @@ const Left = styled.div`
             line-height: 110%;
             width: 90%;
             font-weight: 300;
+            text-align: justify;
 
             @media (max-width: 768px){
                 font-size: 18px;
