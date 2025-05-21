@@ -6,6 +6,7 @@ import Solucoes from "./Solucoes";
 import Trajetoria from "../inicial/Trajetoria";
 import FormLP from "../../components/form-lp";
 import { Helmet } from "react-helmet-async";
+import Parceria from "./Parceria";
 
 const Content = styled.section `
     width: 100%;
@@ -39,9 +40,10 @@ const PaginaModular = () => {
                     <Casas />
                         <Solucoes />
                             <Trajetoria />
-                                <Formulario>
-                                    <FormLP />
-                                        </Formulario>                          
+                                <Parceria />
+                                    <Formulario>    
+                                        <FormLP />
+                                            </Formulario>                          
             </Content>
         </>
     )

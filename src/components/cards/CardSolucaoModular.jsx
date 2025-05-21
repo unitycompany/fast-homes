@@ -1,79 +1,196 @@
-// UICard.jsx
-import React from "react";
+import React, { useRef } from "react";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
+import { BsHouse, BsShop, BsBuildings } from "react-icons/bs";
 import styled from "styled-components";
+import GlobalButton2 from "../../components/buttons/GlobalButton2";
+import CardSolucaoModular from "../../components/cards/CardSolucaoModular";
 
-const CardContainer = styled.div`
-  width: 30%;
-  background-color: #ffffff;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.09);
-  padding: 2.25rem;
+const Content = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   position: relative;
-  overflow: hidden;
-  border-radius: 15px;
+  color: #fff;
+  padding: 0% 5%;
 
-  @media (max-width: 768px){
-    width: 100%;
+  @media (max-width: 768px) {
+    padding: 2.5% 5%;
   }
 `;
 
-const Circle = styled.div`
-  width: 6rem;
-  height: 6rem;
-  background-color: var(--color--green--very--low);
-  border-radius: 50%;
+const Background = styled.div`
+  width: 100vw;
+  height: 100%;
+  background-color: var(--color--brown--very--high);
   position: absolute;
-  right: -1.25rem;
-  top: -1.75rem;
+  z-index: -1;
 `;
 
-const Number = styled.p`
+const Conteudo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 5% 0;
+  gap: 50px;
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+`;
+
+const Top = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
+
+  & h1 {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 100%;
+
+    @media (max-width: 768px) {
+      font-size: 28px;
+      line-height: 110%;
+    }
+
+    & b {
+      font-weight: 500;
+    }
+  }
+
+  & p {
+    font-size: 16px;
+    width: 50%;
+    line-height: 120%;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+`;
+
+const CarouselWrapper = styled.div`
+  width: 100%;
+  position: relative;
+`;
+
+const MobileArrows = styled.div`
+  display: none;           /* hidden by default */
   position: absolute;
-  bottom: 1.5rem;
-  left: 1.75rem;
-  color: #ffffff;
-  font-size: 1.5rem;
-  margin: 0;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 5%;
+  transform: translateY(-50%);
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    display: flex;        /* show only on mobile */
+  }
 `;
 
-const IconWrapper = styled.div`
-  width: 3rem;
-  fill: var(--color--green--very--low);
-`;
+const Solucoes = () => {
+  const splideRef = useRef(null);
 
-const Title = styled.h1`
-  font-weight: 500;
-  font-size: 1.25rem;
-  margin: 0;
-  color: #000;
-`;
+  const options = {
+    arrows: false,
+    pagination: false,
+    perPage: 3,
+    gap: "50px",
+    breakpoints: {
+      768: {
+        perPage: 1,
+      },
+    },
+  };
 
-const Description = styled.p`
-  font-size: 0.875rem;
-  color: #71717a;
-  line-height: 1.5rem;
-  margin: 0;
-`;
-
-export default function CardSolucaoModular({ 
-  number = "01", 
-  title = "Título Padrão", 
-  description = "Descrição padrão do card." 
-}) {
   return (
-    <CardContainer>
-      <Circle>
-        <Number>{number}</Number>
-      </Circle>
+    <Content>
+      <Background />
+      <Conteudo>
+        <Top>
+          <h1>
+            Soluções feitas <b>para você!</b>
+          </h1>
+          <p>
+            Seja qual for sua necessidade, com a House Box, você terá mais do que
+            uma casa: terá um espaço que se adapta ao seu sonho
+          </p>
+        </Top>
 
-      <IconWrapper>
-        <svg id="fi_3472646" enable-background="new 0 0 511.375 511.375" viewBox="0 0 511.375 511.375" xmlns="http://www.w3.org/2000/svg"><g><path d="m511.375 255.687-57.89-64.273 9.064-86.045-84.65-17.921-43.18-75.011-79.031 35.32-79.031-35.32-43.18 75.011-84.65 17.921 9.063 86.045-57.89 64.273 57.889 64.273-9.063 86.045 84.65 17.921 43.18 75.011 79.031-35.321 79.031 35.321 43.18-75.011 84.65-17.921-9.064-86.045zm-255.687 175.071-66.544 29.74-36.35-63.146-71.3-15.095 7.63-72.444-48.749-54.125 48.749-54.125-7.63-72.444 71.3-15.095 36.35-63.146 66.544 29.739 66.543-29.739 36.35 63.146 71.301 15.095-7.63 72.444 48.748 54.124-48.749 54.125 7.63 72.443-71.301 15.095-36.35 63.146z"></path><path d="m340.497 179.725-107.203 120.104-66.734-66.734-21.213 21.213 89.186 89.186 128.345-143.792z"></path></g></svg>
-      </IconWrapper>
+        <CarouselWrapper>
+          <Splide options={options} ref={splideRef}>
+            <SplideSlide>
+              <CardSolucaoModular
+                number="01"
+                title="Moradia"
+                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse fuga adipisicing elit."
+                icon={<BsHouse />}
+              />
+            </SplideSlide>
+            <SplideSlide>
+              <CardSolucaoModular
+                number="02"
+                title="Locação"
+                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse fuga adipisicing elit."
+                icon={<BsShop />}
+              />
+            </SplideSlide>
+            <SplideSlide>
+              <CardSolucaoModular
+                number="03"
+                title="Empresas"
+                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse fuga adipisicing elit."
+                icon={<BsBuildings />}
+              />
+            </SplideSlide>
+          </Splide>
 
-      <Title>{title}</Title>
-      <Description>{description}</Description>
-    </CardContainer>
+          {/* Setas separadas, posicionadas no meio dos cards e visíveis apenas no mobile */}
+          <MobileArrows>
+            <GlobalButton2
+              text="‹"
+              onClick={() => splideRef.current.splide.go("<")}
+              background1="#fff"
+              background2="#fff"
+              colorIcon="#000"
+              colorText="#000"
+            />
+            <GlobalButton2
+              text="›"
+              onClick={() => splideRef.current.splide.go(">")}
+              background1="#fff"
+              background2="#fff"
+              colorIcon="#000"
+              colorText="#000"
+            />
+          </MobileArrows>
+        </CarouselWrapper>
+
+        <GlobalButton2
+          text="Falar com um consultor"
+          background1="#fff"
+          background2="#fff"
+          colorIcon="#000"
+          colorText="#000"
+          to="/#form"
+        />
+      </Conteudo>
+    </Content>
   );
-}
+};
+
+export default Solucoes;

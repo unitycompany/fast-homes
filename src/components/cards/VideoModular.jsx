@@ -25,7 +25,7 @@ const VideoContainer = styled.div`
 `;
 
 const Iframe = styled.iframe`
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
