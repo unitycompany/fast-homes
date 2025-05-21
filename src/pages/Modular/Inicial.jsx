@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Home from "./Home";
 import Casas from "./Casas";
-import Solucoes from "./Solucoes";
+// import Solucoes from "./Solucoes";
 import Trajetoria from "../inicial/Trajetoria";
 import FormLP from "../../components/form-lp";
 import { Helmet } from "react-helmet-async";
@@ -38,7 +38,7 @@ const PaginaModular = () => {
             <Content>
                 <Home />
                     <Casas />
-                        <Solucoes />
+                        {/* <Solucoes /> */}
                             <Trajetoria />
                                 <Parceria />
                                     <Formulario>    
