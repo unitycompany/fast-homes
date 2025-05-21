@@ -74,7 +74,7 @@ const Card = styled.div`
         font-weight: 400;
     }
 
-    & button {
+    & a {
         font-size: 14px;
         width: 90%;
         text-align: left;
@@ -99,9 +99,9 @@ const CardCasasModular = ({ image, nome, area, descricao }) => {
                     <span>{area}</span>
                 </div>
                 <p>{descricao}</p>
-                <button onClick={() => navigate('/#form')}>
+                <a href="#form">
                     Falar com um consultor <MdArrowOutward />
-                </button>
+                </a>
             </Card>
         </>
     )

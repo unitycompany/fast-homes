@@ -77,7 +77,7 @@ const Content = styled.div`
         line-height: 110%;
     }
 
-    & button {
+    & a {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -131,9 +131,9 @@ const CardTrajetoria = ({ assunto, descricao, color, animateDelay, numero }) => 
                     <span>{numero}</span>   
                     <h1>{assunto}</h1>
                     <p>{descricao}</p>
-                    <button onClick={() => navigate('/#form')}>
+                    <a href="#form">
                         Conversar com um consultor <MdArrowOutward />
-                    </button>
+                    </a>
                 </Content>
             </Card>
         </>
