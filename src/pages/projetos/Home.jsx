@@ -114,58 +114,6 @@ const Right = styled.div`
 const Home = () => {
     return (
         <>
-            <Option data-aos="fade-up" data-aos-delay="100">
-
-                <article>
-                    <Left>
-                        <h1>O seu projeto com a nossa qualidade</h1>
-                        <p>
-                            Na <b>Fast Homes, adaptamos o seu projeto</b> para o sistema Steel Frame.
-                            Cuidamos de todo o processo para que você tenha uma casa do jeito que idealizou, mas com toda a inovação que só a Fast Homes oferece.<br/><br/>
-                            Você mantém o seu projeto original com todos os benefícios da construção a seco.
-                        </p>
-                        <GlobalButton3
-                            text="Conversar com um consultor"
-                            background1="transparent"
-                            background2="transparent"
-                            colorIcon="#000"
-                            colorText="#000"
-                            border1="#000"
-                            border2="#000"
-                            to="/projetos-personalizados#form"
-                        />
-                    </Left>
-                    <Right>
-                        <div>
-                            <CardMiniProjetos 
-                                number="Adaptação inteligente"
-                                description="Analisamos e ajustamos o seu projeto para o sistema Steel Frame, mantendo o conceito original."
-                                width="100"
-                                height="100"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
-                            />
-                        </div>
-                        <div>
-                            <CardMiniProjetos 
-                                number="Entrega rápida"
-                                description="Com o Steel Frame, sua casa fica pronta até 4x mais rápido."
-                                width="100"
-                                height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
-                            />
-
-                            <CardMiniProjetos 
-                                number="Qualidade garantida"
-                                description="Trabalhamos com materiais de alta performance, tecnologia de ponta e mão de obra especializada."
-                                width="100"
-                                height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
-                            />
-                        </div>
-                    </Right>
-                </article>
-            </Option>
-            
             <Option data-aos="zoom-in" data-aos-delay="100">
                 <CardProjeto 
                     title="Já tem o projeto da sua casa?"
@@ -229,7 +177,58 @@ const Home = () => {
                     </Left>
                 </article>
             </Option>
-            
+
+            <Option data-aos="fade-up" data-aos-delay="100">
+
+                <article>
+                    <Left>
+                        <h1>O seu projeto com a nossa qualidade</h1>
+                        <p>
+                            Na <b>Fast Homes, adaptamos o seu projeto</b> para o sistema Steel Frame.
+                            Cuidamos de todo o processo para que você tenha uma casa do jeito que idealizou, mas com toda a inovação que só a Fast Homes oferece.<br/><br/>
+                            Você mantém o seu projeto original com todos os benefícios da construção a seco.
+                        </p>
+                        <GlobalButton3
+                            text="Conversar com um consultor"
+                            background1="transparent"
+                            background2="transparent"
+                            colorIcon="#000"
+                            colorText="#000"
+                            border1="#000"
+                            border2="#000"
+                            to="/projetos-personalizados#form"
+                        />
+                    </Left>
+                    <Right>
+                        <div>
+                            <CardMiniProjetos 
+                                number="Adaptação inteligente"
+                                description="Analisamos e ajustamos o seu projeto para o sistema Steel Frame, mantendo o conceito original."
+                                width="100"
+                                height="100"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
+                            />
+                        </div>
+                        <div>
+                            <CardMiniProjetos 
+                                number="Entrega rápida"
+                                description="Com o Steel Frame, sua casa fica pronta até 4x mais rápido."
+                                width="100"
+                                height="50"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
+                            />
+
+                            <CardMiniProjetos 
+                                number="Qualidade garantida"
+                                description="Trabalhamos com materiais de alta performance, tecnologia de ponta e mão de obra especializada."
+                                width="100"
+                                height="50"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
+                            />
+                        </div>
+                    </Right>
+                </article>
+            </Option>    
         </>
     )
 }
