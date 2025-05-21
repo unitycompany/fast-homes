@@ -115,15 +115,6 @@ const Home = () => {
     return (
         <>
             <Option data-aos="zoom-in" data-aos-delay="100">
-                <CardProjeto 
-                    title="Já tem o projeto da sua casa?"
-                    description="Se você já tem o projeto dos seus sonhos, a Fast Homes o transforma em realidade – com toda a eficiência e qualidade do Steel Frame. Adaptamos o seu projeto sem complicações e, o melhor: com a garantia de uma construção 4x mais rápida."
-                    direction={false}
-                    position="right"
-                    text={false}
-                    image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2751c4a0-fc31-407c-244e-8277817bdc00/public"
-                    itemDirection={false}
-                />
 
                 <article>
                     
@@ -176,6 +167,16 @@ const Home = () => {
                         />
                     </Left>
                 </article>
+
+                <CardProjeto 
+                    title="Já tem o projeto da sua casa?"
+                    description="Se você já tem o projeto dos seus sonhos, a Fast Homes o transforma em realidade – com toda a eficiência e qualidade do Steel Frame. Adaptamos o seu projeto sem complicações e, o melhor: com a garantia de uma construção 4x mais rápida."
+                    direction={false}
+                    position="right"
+                    text={false}
+                    image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2751c4a0-fc31-407c-244e-8277817bdc00/public"
+                    itemDirection={false}
+                />
             </Option>
 
             <Option data-aos="fade-up" data-aos-delay="100">
