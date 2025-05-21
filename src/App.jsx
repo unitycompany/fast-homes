@@ -158,7 +158,7 @@ const AppContent = () => {
               element={<LandingPage />}
             />
             <Route path="/sobre-nos" element={<PaginaSobre />} />
-            <Route path="/modular" element={<PaginaModular />} />
+            <Route path="/modulos-prontos" element={<PaginaModular />} />
             <Route
               path="/projetos-personalizados"
               element={<PaginaProjeto />}

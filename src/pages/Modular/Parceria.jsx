@@ -188,7 +188,7 @@ const Parceria = () => {
                 <main>
                     <article>
                         <h1>O novo conceito de lar é modular</h1>
-                        <p>A união entre a Fast Homes e a House Box nasceu com um objetivo em comum: popularizar a construção modular em todo o Brasil.</p>
+                        <p>A união entre a Fast Homes e a House Box nasceu com um objetivo em comum: popularizar a construção com módulos prontos em todo o Brasil.</p>
                         <p>Combinamos o design moderno da Fast Homes com a eficiência da House Box para oferecer soluções eficientes, modernas e sustentáveis.</p>
                         <p>Mais do que construir casas, essa parceria busca transformar a forma de morar, levando praticidade, qualidade e inovação para quem deseja morar, investir ou empreender, mas com bem menos burocracia e muito mais velocidade na entrega.</p>
                         <GlobalButton3
