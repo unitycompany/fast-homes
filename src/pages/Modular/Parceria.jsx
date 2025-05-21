@@ -192,14 +192,14 @@ const Parceria = () => {
                         <p>Combinamos o design moderno da Fast Homes com a eficiência da House Box para oferecer soluções eficientes, modernas e sustentáveis.</p>
                         <p>Mais do que construir casas, essa parceria busca transformar a forma de morar, levando praticidade, qualidade e inovação para quem deseja morar, investir ou empreender, mas com bem menos burocracia e muito mais velocidade na entrega.</p>
                         <GlobalButton3
-                            text="Ver o catálogo"
+                            text="Conversar com um consultor"
                             background1="transparent"
                             background2="transparent"
                             colorIcon="#fff"
                             colorText="#fff"
                             border1="#fff"
                             border2="#fff"
-                            to="/catalogo-de-casas"
+                            to="/modulos-prontos#form"
                         />
                     </article>
                     
