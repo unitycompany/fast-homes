@@ -72,7 +72,8 @@ const Card = styled.div`
         border: 1px solid var(--color--green--high);
 
         @media (max-width: 768px){
-            width: 35px;
+            width: 35px!important;
+            height: 35px!important;
             padding: 5px;
         }
     }
