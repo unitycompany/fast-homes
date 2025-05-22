@@ -134,7 +134,7 @@ const Home = () => {
                                 description="Ambientes mais silenciosos e com temperatura equilibrada o ano todo."
                                 width="100"
                                 height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ab6ced45-9d28-49af-ec9d-03875b7b9900/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/e607bbeb-d05d-4166-34c6-1cc81e2ae800/public"
                             />
 
                             <CardMiniProjetos 
@@ -142,7 +142,7 @@ const Home = () => {
                                 description="Acabamento de alto padrão que exige menos reparos ao longo dos anos."
                                 width="100"
                                 height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/31cfc11a-b38a-4d82-beab-16fd29abb800/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/013c0863-bc2e-4861-6412-b54d82e1b100/public"
                             />
                         </div>
                     </Right>
@@ -207,7 +207,7 @@ const Home = () => {
                                 description="Analisamos e ajustamos o seu projeto para o sistema Steel Frame, mantendo o conceito original."
                                 width="100"
                                 height="100"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/352f4307-70e0-488e-1d6d-275c5477b800/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/67da56ec-73a3-41d1-7f44-934391ab0900/public"
                             />
                         </div>
                         <div>
