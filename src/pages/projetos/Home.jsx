@@ -134,7 +134,7 @@ const Home = () => {
                                 description="Ambientes mais silenciosos e com temperatura equilibrada o ano todo."
                                 width="100"
                                 height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/67d35ae2-a4c2-444c-780e-82a3a66f1700/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/045f947e-7614-4b48-b84b-1b242776fd00/public"
                             />
 
                             <CardMiniProjetos 
