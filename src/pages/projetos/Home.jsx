@@ -134,7 +134,7 @@ const Home = () => {
                                 description="Ambientes mais silenciosos e com temperatura equilibrada o ano todo."
                                 width="100"
                                 height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/e607bbeb-d05d-4166-34c6-1cc81e2ae800/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/67d35ae2-a4c2-444c-780e-82a3a66f1700/public"
                             />
 
                             <CardMiniProjetos 
@@ -142,7 +142,7 @@ const Home = () => {
                                 description="Acabamento de alto padrão que exige menos reparos ao longo dos anos."
                                 width="100"
                                 height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/013c0863-bc2e-4861-6412-b54d82e1b100/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/69901ac3-ef62-4ce2-39e2-c5c6c14a7900/public"
                             />
                         </div>
                     </Right>
@@ -224,7 +224,7 @@ const Home = () => {
                                 description="Trabalhamos com materiais de alta performance, tecnologia de ponta e mão de obra especializada."
                                 width="100"
                                 height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2cc32c99-d60d-4618-f10b-8471fa6ccb00/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/7fe07fcc-e4e1-4cab-a28a-1226726da000/public"
                             />
                         </div>
                     </Right>
