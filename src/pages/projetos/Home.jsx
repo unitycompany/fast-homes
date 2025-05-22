@@ -125,7 +125,7 @@ const Home = () => {
                                 description="Construção precisa, com materiais leves, resistentes e de alta durabilidade."
                                 width="100"
                                 height="100"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/66228922-7e9e-4a61-d2c7-99637da26300/public"
                             />
                         </div>
                         <div>
@@ -134,7 +134,7 @@ const Home = () => {
                                 description="Ambientes mais silenciosos e com temperatura equilibrada o ano todo."
                                 width="100"
                                 height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ab6ced45-9d28-49af-ec9d-03875b7b9900/public"
                             />
 
                             <CardMiniProjetos 
@@ -142,7 +142,7 @@ const Home = () => {
                                 description="Acabamento de alto padrão que exige menos reparos ao longo dos anos."
                                 width="100"
                                 height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/31cfc11a-b38a-4d82-beab-16fd29abb800/public"
                             />
                         </div>
                     </Right>
@@ -207,7 +207,7 @@ const Home = () => {
                                 description="Analisamos e ajustamos o seu projeto para o sistema Steel Frame, mantendo o conceito original."
                                 width="100"
                                 height="100"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/352f4307-70e0-488e-1d6d-275c5477b800/public"
                             />
                         </div>
                         <div>
@@ -216,7 +216,7 @@ const Home = () => {
                                 description="Com o Steel Frame, sua casa fica pronta até 4x mais rápido."
                                 width="100"
                                 height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f599a42a-0f08-492b-6ad3-e9f925725100/public"
                             />
 
                             <CardMiniProjetos 
@@ -224,7 +224,7 @@ const Home = () => {
                                 description="Trabalhamos com materiais de alta performance, tecnologia de ponta e mão de obra especializada."
                                 width="100"
                                 height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/eebf97bc-e4a7-45ac-054f-2dce6a095e00/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2cc32c99-d60d-4618-f10b-8471fa6ccb00/public"
                             />
                         </div>
                     </Right>
