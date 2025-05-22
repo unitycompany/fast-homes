@@ -207,7 +207,7 @@ const Home = () => {
                                 description="Analisamos e ajustamos o seu projeto para o sistema Steel Frame, mantendo o conceito original."
                                 width="100"
                                 height="100"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/67da56ec-73a3-41d1-7f44-934391ab0900/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/20f3dc9a-78b9-489f-d698-97015a3b1200/public"
                             />
                         </div>
                         <div>
