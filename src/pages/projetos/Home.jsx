@@ -224,7 +224,7 @@ const Home = () => {
                                 description="Trabalhamos com materiais de alta performance, tecnologia de ponta e mão de obra especializada."
                                 width="100"
                                 height="50"
-                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b89d4731-adab-4563-eea0-da28b2738100/public"
+                                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c2ee7547-fb64-49b0-7e60-8a52ab263a00/public"
                             />
                         </div>
                     </Right>
