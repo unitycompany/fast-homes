@@ -387,12 +387,12 @@ const Header = () => {
                             >
                                 Sobre nós
                             </li>
-                            <li 
+                            {/* <li 
                                 onClick={() => navigate("/modulos-prontos")} 
                                 className={location.pathname === "/modulos-prontos" ? "active" : ""}
                             >
                                 Módulos prontos
-                            </li>
+                            </li> */}
                         </ul>
                     </HeaderLinks>
                     {/* <HeaderButton>
@@ -425,7 +425,7 @@ const Header = () => {
                             <li onClick={() => handleClick("/catalogo-de-casas")}>Nosso catálogo</li>
                             <li onClick={() => handleClick("/projetos-personalizados")}>Seu projeto</li>
                             <li onClick={() => handleClick("/sobre-nos")}>Sobre nós</li>
-                            <li onClick={() => handleClick("/modulos-prontos")}>Módulos Prontos</li>
+                            {/* <li onClick={() => handleClick("/modulos-prontos")}>Módulos Prontos</li> */}
                             
                         </ul>
                     </HeaderSidebarLinks>
