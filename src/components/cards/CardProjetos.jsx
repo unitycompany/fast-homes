@@ -85,7 +85,7 @@ const Texts = styled.div`
     }
 `
 
-const CardProjeto = ({ title, description, direction, position, text, image, itemDirection }) => {
+const CardProjeto = ({ title, description, direction, position, text, image, itemDirection, textButton }) => {
     return (
         <>
             <Content direction={direction} position={position} image={image}>
@@ -93,7 +93,7 @@ const CardProjeto = ({ title, description, direction, position, text, image, ite
                     <h1>{title}</h1>
                     <p>{description}</p>
                     <GlobalButton3
-                        text="Conversar com um consultor"
+                        text={textButton || 'Conversar com um consultor'}
                         background1="transparent"
                         background2="transparent"
                         colorIcon="#fff"
