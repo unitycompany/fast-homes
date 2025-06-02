@@ -176,7 +176,7 @@ const Casas = () => {
                 descricao="Espaçosa, com duas suítes que garantem privacidade e conforto para todos. Imagine uma cozinha com ilha central, onde as refeições se tornam eventos especiais, e uma sala ampla que acomoda todos para momentos de descontração. Um lar feito para viver e compartilhar momentos inesquecíveis."
               />
             </SwiperSlide>
-            <SwiperSlide>
+            {/* <SwiperSlide>
               <CardCasasModular 
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/31171d89-5228-433a-0649-f97d5f31b700/public"
                 nome="Campos do Jordão"
@@ -191,7 +191,7 @@ const Casas = () => {
                 area=""
                 descricao="Design elevado para uma experiência única! Com um mezanino charmoso, a Fernando de Noronha Superior traz um quarto suspenso que otimiza o espaço e proporciona uma sensação aconchegante e moderna. A parte inferior integra sala, cozinha e banheiro em um ambiente fluído e funcional, unindo praticidade e sofisticação. Para quem busca viver com leveza, estilo e inovação!"
               />
-            </SwiperSlide>
+            </SwiperSlide> */}
             <ControlButtons>
             <ControlButton
               onClick={() =>
