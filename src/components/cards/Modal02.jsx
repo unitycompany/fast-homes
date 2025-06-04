@@ -191,7 +191,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                         <div>
                             <h4> <BsCheckLg />Fundação tipo Radier</h4>
                             <p>
-                            Projeto da fundação e Ferragen e concreto usinado, o tipo de fundação predefinido é o Radier.
+                            Projeto da fundação e Ferragem e concreto usinado, o tipo de fundação predefinido é o Radier.
                             </p>
                         </div>
                     </Option>
