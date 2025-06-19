@@ -147,23 +147,23 @@ const Casas = () => {
             <SwiperSlide>
               <CardCasasModular 
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c87bc3b3-0099-4723-527b-1fcc60ab7200/public"
-                nome="Olinda"
+                nome="Vitória-Régia"
                 area="18m²"
-                descricao="Compacta e funcional, a House Olinda é ideal para os casais que estão iniciando a vida a dois ou para os solteiros que buscam mais praticidade. Com 18m² ao total, possui mini copa, 1 quarto e 1 banheiro com banheira interna ou externa, tudo em um espaço otimizado e acolhedor."
+                descricao="Compacta e funcional, a House Vitória-Régia é ideal para os casais que estão iniciando a vida a dois ou para os solteiros que buscam mais praticidade. Com 18m² ao total, possui mini copa, 1 quarto e 1 banheiro com banheira interna ou externa, tudo em um espaço otimizado e acolhedor."
               />
             </SwiperSlide>
             <SwiperSlide>
               <CardCasasModular 
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f7f8cb19-85fa-4a77-2380-160809f6b800/public"
-                nome="Parati"
+                nome="Capim-Limão"
                 area="30m²"
-                descricao="Com 30m², a House Jatobá é ideal para aqueles que precisam de mais espaço sem abrir mão da funcionalidade. Conta com sala de estar e cozinha integradas e 1 suíte. Uma solução inteligente, pensada para o dia a dia."
+                descricao="Com 30m², a House Capim-Limão é ideal para aqueles que precisam de mais espaço sem abrir mão da funcionalidade. Conta com sala de estar e cozinha integradas e 1 suíte. Uma solução inteligente, pensada para o dia a dia."
               />
             </SwiperSlide>
             <SwiperSlide>
               <CardCasasModular 
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b2dd4421-6185-4b1e-fa61-c3036248e200/public"
-                nome="Bonito"
+                nome="Bromélia Azul"
                 area="45m²"
                 descricao="Pense em um espaço onde você pode relaxar com conforto e estilo após um longo dia. Oferece uma suíte completa e uma sala de estar espaçosa que se torna o coração do lar. A cozinha completa e o banheiro americano compartilhado tornam cada momento mais prático, perfeito para famílias que valorizam espaço e funcionalidade."
               />
@@ -171,7 +171,7 @@ const Casas = () => {
             <SwiperSlide>
               <CardCasasModular 
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/26e1126a-ea99-4c71-1586-bb74050c5c00/public"
-                nome="Búzios"
+                nome="Mandacaru"
                 area="55m²"
                 descricao="Espaçosa, com duas suítes que garantem privacidade e conforto para todos. Imagine uma cozinha com ilha central, onde as refeições se tornam eventos especiais, e uma sala ampla que acomoda todos para momentos de descontração. Um lar feito para viver e compartilhar momentos inesquecíveis."
               />

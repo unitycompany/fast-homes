@@ -41,9 +41,6 @@ const Top = styled.div`
 
     & b {
       font-weight: 500;
-      color: transparent;
-      background: linear-gradient(90deg, #576628, #B05216, #603813, #1d1b1d);
-      -webkit-background-clip: text;
     }
   }
 

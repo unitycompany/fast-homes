@@ -67,9 +67,9 @@ const Card = styled.div`
         height: auto;
         fill: #fff;
         padding: 10px;
-        background-color: var(--color--green--low);
+        background-color: var(--color--black);
         border-radius: 50%;
-        border: 1px solid var(--color--green--high);
+        border: 1px solid var(--color--black);
 
         @media (max-width: 768px){
             width: 35px!important;
