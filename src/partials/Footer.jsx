@@ -20,7 +20,6 @@ const FooterContainer = styled.footer`
     background-color: var(--color--black);
     width: 100%;
     padding: 2.5% 0;
-    font-family: "Montserrat", serif;
     z-index: 10;
 
     &::before{
