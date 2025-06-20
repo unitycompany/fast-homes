@@ -64,6 +64,7 @@ const FormText = styled.div`
 
           &:hover {
             opacity: 0.8;
+            color: #02fff2;
           }
         }
     }

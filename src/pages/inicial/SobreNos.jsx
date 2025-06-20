@@ -5,6 +5,8 @@ import GlobalButton2 from "../../components/buttons/GlobalButton2";
 const Content = styled.div`
     width: 100%;
     max-width: 1280px;
+    height: auto;
+    min-height: 80dvh;
     padding: 7.5% 5% 5% 5%;
     position: relative;
     display: flex;
@@ -27,7 +29,7 @@ const Content = styled.div`
 const Background = styled.div`
     width: 100vw;
     position: absolute;
-    height: 70%;
+    height: 80%;
     bottom: 0;
     background-color: #fafafa;
     z-index: -1;
@@ -53,7 +55,7 @@ const Left = styled.div`
     }
 
     & img {
-        height: 500px;
+        height: 650px;
         object-fit: cover;
         border-radius: 20px;
         border: 5px solid #fff;
@@ -177,6 +179,15 @@ const SobreNos = () => {
                 <Background></Background>
                 <Left>
                     <img data-aos="zoom-in" data-aos-delay="0" src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6e78ac0d-d748-41ef-c039-e41166058900/public" alt="" loading="lazy" />
+                </Left>
+                <Right>
+                    <h6 data-aos="zoom-in" data-aos-delay="50">Conheça a Fast Homes</h6>
+                    <h1 data-aos="fade-up" data-aos-delay="150">A Fast Homes surgiu para <b>transformar nossa forma de construir</b> e viver.</h1>
+                    <p data-aos="fade-up" data-aos-delay="200">
+                        Unimos a eficiência do Steel Frame com um novo conceito de lar: mais moderno, sustentável e pensado para o seu bem-estar.<br/><br/>
+                        Acreditamos que cada casa é um projeto de vida. Por isso, oferecemos soluções inteligentes, versáteis e com acabamento de alto padrão, sempre alinhadas às suas necessidades e ao seu estilo de vida.<br/><br/>
+                        Na Fast Homes, construir é simples, rápido e seguro.
+                    </p>
                     <Cards>
                         <Card data-aos="fade-up" data-aos-delay="100">
                             <div>
@@ -196,15 +207,6 @@ const SobreNos = () => {
                             </div>
                         </Card>
                     </Cards>
-                </Left>
-                <Right>
-                    <h6 data-aos="zoom-in" data-aos-delay="50">Conheça a Fast Homes</h6>
-                    <h1 data-aos="fade-up" data-aos-delay="150">A Fast Homes surgiu para <b>transformar nossa forma de construir</b> e viver.</h1>
-                    <p data-aos="fade-up" data-aos-delay="200">
-                        Unimos a eficiência do Steel Frame com um novo conceito de lar: mais moderno, sustentável e pensado para o seu bem-estar.<br/><br/>
-                        Acreditamos que cada casa é um projeto de vida. Por isso, oferecemos soluções inteligentes, versáteis e com acabamento de alto padrão, sempre alinhadas às suas necessidades e ao seu estilo de vida.<br/><br/>
-                        Na Fast Homes, construir é simples, rápido e seguro.
-                    </p>
                     <GlobalButton2
                             text="Conhecer a Fast Homes"
                             background1="#000"

@@ -69,7 +69,7 @@ const Top = styled.div`
   & p {
     width: 60%;
     line-height: 100%;
-    font-size: 16px;
+    font-size: 18px;
     margin-top: -70px;
 
     @media (max-width: 768px) {
@@ -87,12 +87,12 @@ const CardsWrapper = styled.div`
 
   &::before {
     content: '';
-    width: 100%;
+    width: 90%;
     height: 1px;
     position: absolute;
     z-index: -1;
     top: 50%;
-    left: 0;
+    left: 5%;
     transform: translateY(-50%);
     background-color: #00000050;
 

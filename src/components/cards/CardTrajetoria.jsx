@@ -13,31 +13,85 @@ const Card = styled.div`
     min-height: 300px;
     height: auto;
     padding: 32px;
-    overflow: hidden;
-    border-radius: 10px;
+    margin: 10px;
     transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
-    border: 1px solid #00000010;
-    background-color: var(--color--black);
+    background-color: #000000;
     color: #fff;
+    z-index: 2!important;
+
+    @media (max-width: 768px) {
+        margin: 0;
+    }
+
+    &::before {
+        content: '';
+        width: 5%;
+        height: 5%;
+        position: absolute;
+        top: -1.25%;
+        left: -1.25%;
+        border-left: 1px solid #00000050;
+        border-top: 1px solid #00000050;
+        z-index: -2!important;
+    }
+
+    &::after {
+        content: '';
+        width: 5%;
+        height: 5%;
+        position: absolute;
+        bottom: -1.25%;
+        left: -1.25%;
+        border-left: 1px solid #00000050;
+        border-bottom: 1px solid #00000050;
+        z-index: -2!important;
+    }
+
+    &::before, &::after, & .corner-top-right, & .corner-bottom-right {
+        pointer-events: none;
+    }
+
+    & .corner-top-right {
+        content: '';
+        width: 5%;
+        height: 5%;
+        position: absolute;
+        top: -1.25%;
+        right: -1.25%;
+        border-right: 1px solid #00000050;
+        border-top: 1px solid #00000050;
+        z-index: -2!important;
+    }
+    & .corner-bottom-right {
+        content: '';
+        width: 5%;
+        height: 5%;
+        position: absolute;
+        bottom: -1.25%;
+        right: -1.25%;
+        border-right: 1px solid #00000050;
+        border-bottom: 1px solid #00000050;
+        z-index: -2!important;
+    }
     
     @media (max-width: 768px){
         height: auto;
         padding: 20px 56px;
     }
 
-    & h1{
+    & > h1{
         color: #fff;
     }
     
-    & p{
+    & > p{
         color: #fff;
     }
 
-    & span {
+    & > span {
         color: #fff;
     }
 
-    & button{
+    & > button{
         color: #fff;
     }
 
@@ -57,17 +111,39 @@ const Content = styled.div`
 
     & h1 {
         font-size: 24px;
-        font-weight: 600;
+        font-weight: 500;
         color: #fff;
     }
 
     & span {
         font-size: 40px;
         font-weight: 500;
-        border-radius: 50px;
-        color: #fff;
+        color: #000;
         font-family: var(--font--aboreto);
         margin-bottom: -20px;
+        position: relative;
+        width: 100px;
+        border: 1px solid transparent;
+
+        @media (max-width: 768px) {
+            width: 110px;
+        }
+
+        &::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0%;
+            left: -50%;
+            background-color: #fff;
+            z-index: -1;
+            transition: all .2s ease-in-out;
+
+            @media (max-width: 768px) {
+                left: -55%;
+            }
+        }
     }
 
     & p {
@@ -77,12 +153,12 @@ const Content = styled.div`
         line-height: 110%;
     }
 
-    & a {
+    & > a {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        font-size: 12px;
+        font-size: 14px;
         transition: all .1250s ease-in-out;
         position: relative;
         border-radius: 10px;
@@ -127,6 +203,8 @@ const CardTrajetoria = ({ assunto, descricao, color, animateDelay, numero }) => 
     return(
         <>
             <Card data-aos="fade-right" data-aos-delay={animateDelay}>
+                <span className="corner-top-right" />
+                <span className="corner-bottom-right" />
                 <Content color={color}>
                     <span>{numero}</span>   
                     <h1>{assunto}</h1>

@@ -65,11 +65,11 @@ const Card = styled.div`
     }
 
     & h4 {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     & p {
-        font-size: 14px;
+        font-size: 16px;
     }
 `;
 
