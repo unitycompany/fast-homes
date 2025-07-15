@@ -527,7 +527,7 @@ const Footer = () => {
             {/* <a href="/#form">Financiamento</a> */}
             {/* <a href="/modular">Modular</a> */}
             <a href="/sobre-nos">Sobre nós</a>
-            <a href="/modular">Modular</a>
+            <a href="/modulos-prontos">Módulos Prontos</a>
           </FooterCard>
   
           <FooterCard data-aos="fade-up" data-aos-delay="300">

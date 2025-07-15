@@ -158,6 +158,22 @@ const HeaderLinks = styled.div`
                 color: var(--color--black);
             }
         }
+
+        & button {
+            padding: 7.5px 15px;
+            background-color: #fff;
+            color: #000;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            transition: all .2s ease-out;
+            border-radius: 10px 10px / 30px 30px;
+
+            &:hover {
+                transform: scale(0.98);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            }
+        }
     }
 `;
 
@@ -229,6 +245,22 @@ const HeaderSidebarLinks = styled.div`
                 height: 100%;
                 transition-delay: .4s;
                 color: var(--color--black);
+            }
+        }
+
+        & button {
+            padding: 7.5px 15px;
+            background-color: #fff;
+            color: #000;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            transition: all .2s ease-out;
+            border-radius: 10px 10px / 30px 30px;
+
+            &:hover {
+                transform: scale(0.98);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
             }
         }
     }
@@ -393,6 +425,9 @@ const Header = () => {
                             >
                                 Módulos prontos
                             </li>
+                            <button onClick={() => window.open("https://drive.google.com/file/d/1CnaH10m4krR6OwM3obs9iidRw9HF8rgA/view?usp=sharing", "_blank")}>
+                                Catálogo PDF
+                            </button>
                         </ul>
                     </HeaderLinks>
                     {/* <HeaderButton>
@@ -426,6 +461,9 @@ const Header = () => {
                             <li onClick={() => handleClick("/projetos-personalizados")}>Seu projeto</li>
                             <li onClick={() => handleClick("/sobre-nos")}>Sobre nós</li>
                             <li onClick={() => handleClick("/modulos-prontos")}>Módulos Prontos</li>
+                            <button onClick={() => window.open("", "_blank")}>
+                                Catálogo PDF
+                            </button>
                         </ul>
                     </HeaderSidebarLinks>
                     <HeaderSidebarButton>

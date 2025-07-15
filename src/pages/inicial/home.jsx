@@ -381,13 +381,13 @@ const Home = () => {
         <HomeTexts>
           <div>
             <h2 data-aos="fade-up" data-aos-delay="100">
-              Modernidade e <b>bem-estar</b>
+              Arquitetura que <b>acolhe</b>
             </h2>
             <h1 data-aos="fade-up" data-aos-delay="400">
               Fast Homes
             </h1>
             <h2 data-aos="fade-up" data-aos-delay="100">
-              Um novo conceito de <b>lar</b>
+              Tecnologia que <b>constrói</b>
             </h2>
           </div>
           {/* <p data-aos="fade-up-right" data-aos-delay="600">
