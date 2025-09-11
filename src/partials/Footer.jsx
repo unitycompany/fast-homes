@@ -425,6 +425,21 @@ const Footer = () => {
       };
     };
   
+    // Helpers de telefone
+    const normalizePhone = (value) => (value || '').replace(/\D/g, '');
+    const maskPhone = (digits) => {
+      const d = (digits || '').replace(/\D/g, '');
+      if (d.length >= 11) {
+        // (XX) XXXXX-XXXX
+        return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7,11)}`;
+      }
+      if (d.length >= 10) {
+        // (XX) XXXX-XXXX
+        return `(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6,10)}`;
+      }
+      return d; // fallback
+    };
+
     // Função de envio do formulário
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -438,56 +453,59 @@ const Footer = () => {
   
       setLoading(true);
       const utms = getUTMs();
-      const interesse = "interesse: " + window.location.pathname;
-  
-      // Montagem do payload a ser enviado
+
+      const whatsappRaw = normalizePhone(tel);
+      const whatsappMasked = maskPhone(whatsappRaw);
+
+      // Montagem do payload no novo padrão
+      const body = {
+        name: name,
+        email: email,
+        whatsapp: tel,
+        whatsapp_raw: whatsappRaw,
+        whatsapp_masked: whatsappMasked,
+        referrer: document.referrer || "",
+        submittedAt: new Date().toISOString(),
+        source: window.location.href,
+        utm_source: utms.utm_source || "",
+        utm_medium: utms.utm_medium || "",
+        utm_campaign: utms.utm_campaign || "",
+        utm_term: utms.utm_term || "",
+        utm_content: utms.utm_content || "",
+        gclid: new URLSearchParams(window.location.search).get('gclid') || "",
+        utm_captured_at: new Date().toISOString(),
+        utm_source_url: window.location.href,
+        message: message,
+      };
+
       const payload = {
-        rules: {
-          update: "false",
-          filter_status_update: "open",
-          equal_pipeline: "true",
-          status: "open",
-          validate_cpf: "false",
-        },
-        leads: [
-          {
-            id: "FORMULARIO FOOTER - FAST HOMES" + " - " + name,
-            user: name,
-            email: email,
-            name: name,
-            personal_phone: tel,
-            mobile_phone: tel,
-            last_conversion: {
-              source: "FORMULARIO FOOTER - FAST HOMES"
-            },
-            custom_fields: {
-              uniqueId: generateUniqueId(),
-              utm_source: utms.utm_source || "",
-              utm_medium: utms.utm_medium || "",
-              utm_campaign: utms.utm_campaign || "",
-              utm_content: utms.utm_content || "",
-              utm_term: utms.utm_term || "",
-              page_referrer: window.location.href || "URL não encontrada",
-              message: message
-            },
-            notes: {
-                notas: interesse
-            }
-          }
-        ]
+        ...body,
+        webhookUrl: 'https://n8n.unitycompany.com.br/webhook/form-fasthomes-lp',
+        executionMode: 'production',
       };
   
       try {
-        const response = await fetch('https://app.pipe.run/webservice/integradorJson?hash=1e28b707-3c02-4393-bb9d-d3826b060dcd', {
+  const response = await fetch('https://n8n.unitycompany.com.br/webhook/form-fasthomes-lp', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(payload)
         });
-  
-        const data = await response.json();
-        console.log('Success:', data);
+
+        if (!response.ok) {
+          const text = await response.text().catch(() => '');
+          throw new Error(`HTTP ${response.status} ${text}`);
+        }
+
+        // Alguns webhooks não retornam JSON. Evita quebrar o fluxo ao tentar fazer parse.
+        try {
+          const data = await response.json();
+          console.log('Success:', data);
+        } catch (_) {
+          console.log('Success: webhook recebido com sucesso.');
+        }
+
         alert("Formulário enviado com sucesso!");
         // Reseta os campos do formulário
         setName('');

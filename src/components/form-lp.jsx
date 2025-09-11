@@ -334,6 +334,18 @@ const FormLP = () => {
     };
   };
 
+  const normalizePhone = (value) => (value || '').replace(/\D/g, '');
+  const maskPhone = (digits) => {
+    const d = (digits || '').replace(/\D/g, '');
+    if (d.length >= 11) {
+      return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7,11)}`;
+    }
+    if (d.length >= 10) {
+      return `(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6,10)}`;
+    }
+    return d;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -346,49 +358,39 @@ const FormLP = () => {
     setLoading(true);
     const utms = getUTMs();
 
-    // Captura o interesse dinâmico baseado na página atual
-    const interesse = "Interesse: " + window.location.pathname;
+    const whatsappRaw = normalizePhone(whatsapp);
+    const whatsappMasked = maskPhone(whatsappRaw);
+
+    const body = {
+      name: name,
+      email: email,
+      whatsapp: whatsapp,
+      whatsapp_raw: whatsappRaw,
+      whatsapp_masked: whatsappMasked,
+      referrer: document.referrer || "",
+      submittedAt: new Date().toISOString(),
+      source: window.location.href,
+      utm_source: utms.utm_source || "",
+      utm_medium: utms.utm_medium || "",
+      utm_campaign: utms.utm_campaign || "",
+      utm_term: utms.utm_term || "",
+      utm_content: utms.utm_content || "",
+      gclid: new URLSearchParams(window.location.search).get('gclid') || "",
+      utm_captured_at: new Date().toISOString(),
+      utm_source_url: window.location.href,
+      cidade: cidade,
+      estado: estado,
+      tipoCliente: selectedOption,
+    };
 
     const payload = {
-      rules: {
-        update: "false",
-        filter_status_update: "open",
-        equal_pipeline: "true",
-        status: "open",
-        validate_cpf: "false",
-      },
-      leads: [
-        {
-          id: "FORMULARIO - FAST HOMES" + " - " + name,
-          user: name,
-          email: email,
-          name: name,
-          personal_phone: whatsapp,
-          mobile_phone: whatsapp,
-          last_conversion: {
-            source: "FORMULARIO - FAST HOMES",
-          },
-          custom_fields: {
-            uniqueId: generateUniqueId(),
-            utm_source: utms.utm_source || "",
-            utm_medium: utms.utm_medium || "",
-            utm_campaign: utms.utm_campaign || "",
-            utm_content: utms.utm_content || "",
-            utm_term: utms.utm_term || "",
-            page_referrer: window.location.href || "URL não encontrada",
-            cidade: cidade,
-            estado: estado,
-            tipoCliente: selectedOption,
-          },
-          notes: {
-            notas: interesse
-          }
-        }
-      ]
+      ...body,
+      webhookUrl: 'https://n8n.unitycompany.com.br/webhook/form-fasthomes-lp',
+      executionMode: 'production',
     };
 
     try {
-      const response = await fetch('https://app.pipe.run/webservice/integradorJson?hash=1e28b707-3c02-4393-bb9d-d3826b060dcd', {
+  const response = await fetch('https://n8n.unitycompany.com.br/webhook/form-fasthomes-lp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -396,8 +398,18 @@ const FormLP = () => {
         body: JSON.stringify(payload)
       });
 
-      const data = await response.json();
-      console.log('Success:', data);
+      if (!response.ok) {
+        const text = await response.text().catch(() => '');
+        throw new Error(`HTTP ${response.status} ${text}`);
+      }
+
+      try {
+        const data = await response.json();
+        console.log('Success:', data);
+      } catch (_) {
+        console.log('Success: webhook recebido com sucesso.');
+      }
+
       alert('Formulário enviado com sucesso!');
       // Reseta os campos do formulário
       setName('');
