@@ -15,6 +15,8 @@ const Content = styled.div`
     top: 0;
     transform: translateX(-50%);
     position: relative;
+    border: 1px solid var(--color--gray);
+    border-top: none;
 
     @media (max-width: 768px){
         flex-direction: column-reverse;
@@ -22,7 +24,7 @@ const Content = styled.div`
 `
 
 const Left = styled.div`
-    width: 45%;
+    width: 50%;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -98,7 +100,7 @@ const Left = styled.div`
 `
 
 const Right = styled.div`
-    width: 55%;
+    width: 50%;
     height: 100%;
 
     @media (max-width: 768px){
@@ -110,7 +112,7 @@ const Right = styled.div`
     }
 
     & img {
-        height: 90dvh!important;
+        height: 80dvh!important;
 
         @media (max-width: 768px){
             height: 60dvh!important;

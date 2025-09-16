@@ -17,6 +17,8 @@ const Content = styled.div`
     top: 0;
     transform: translateX(-50%);
     position: relative;
+    border: 1px solid var(--color--gray);
+    border-top: none;
 `
 
 const Top = styled.div`

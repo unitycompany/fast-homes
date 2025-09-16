@@ -15,6 +15,8 @@ const Content = styled.div`
     top: 0;
     position: relative;
     transform: translateX(-50%);
+    border: 1px solid var(--color--gray);
+    border-top: none;
 
     & img {
         height: 650px!important;
@@ -49,30 +51,7 @@ const Top = styled.div`
     }
 `
 
-const Bottom = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 15px;
-    width: 100%;
 
-    & h1 {
-        font-size: 36px;
-        font-family: var(--font--aboreto);
-
-        @media (max-width: 768px){
-            font-size: 26px;
-            line-height: 110%;
-        }
-    }
-
-    & p {
-        font-size: 16px;
-        line-height: 110%;
-        width: 80%;
-    }
-`
 
 const Dobra3 = ({ descricao, title, carrosselDireita, carrosselEsquerda }) => {
     return (
@@ -90,14 +69,6 @@ const Dobra3 = ({ descricao, title, carrosselDireita, carrosselEsquerda }) => {
                         height="650px"
                     />
                 </Top>
-                <Bottom>
-                    <h1 data-aos="fade-up" data-aos-delay="100">
-                        Planta Baixa
-                    </h1>
-                    {/* <p data-aos="fade-up" data-aos-delay="300">
-                        {descricao}
-                    </p> */}
-                </Bottom>
             </Content>
         </>
     )

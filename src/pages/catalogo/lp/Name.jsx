@@ -9,16 +9,18 @@ const Header = styled.div`
   max-width: 1280px;
   top: 0;
   left: 50%;
-  transform: translateX(-50%) translateY(${({ hidden }) => (hidden ? "-100%" : "0")});
+  transform: translateX(-50%);
   z-index: 100;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5% 5%;
-  background: #ffffff70;
+  padding: 0% 5%;
+  height: 100px;
+  background: #ffffff;
   backdrop-filter: blur(10px);
   transition: transform 0.5s ease;
+  border: 1px solid var(--color--gray);
 
   @media (max-width: 768px) {
     flex-direction: column-reverse;

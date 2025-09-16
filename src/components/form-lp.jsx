@@ -32,6 +32,8 @@ const FormContainer = styled.section`
     top: 0;
     transform: translateX(-50%);
     position: relative;
+    border: 1px solid var(--color--gray);
+    border-top: none;
 
     @media (max-width: 768px){
         flex-direction: column;

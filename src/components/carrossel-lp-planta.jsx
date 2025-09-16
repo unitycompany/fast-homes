@@ -15,6 +15,8 @@ const CarouselContainer = styled.div`
   height: ${({ height }) => height || "400px"};
   position: relative;
   overflow: hidden;
+  border: 1px solid var(--color--gray);
+  padding: 2.5% 0;
 `;
 
 // Botões de navegação

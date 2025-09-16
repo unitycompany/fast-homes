@@ -16,27 +16,32 @@ const Content = styled.div`
     transform: translateX(-50%);
     width: 100%;
     height: auto;
-    min-height: 100dvh;
-    margin-top: 7.5%;
+    margin-top: 100px;
+    min-height: auto;
     padding: 2.5% 5%;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 10px;
+    gap: 30px;
     font-family: var(--font--montserrat);
+    border: 1px solid var(--color--gray);
+    border-top: none;
     overflow: hidden;
 
     @media (max-width: 768px){
         flex-direction: column;
-        padding: 20% 5% 2.5% 5%;
+        padding: 5% 5% 2.5% 5%;
         min-height: 60vh;
         gap: 20px;
     }
 `
 
 const Left = styled.div`
-    width: 58%;
-    height: 100%;
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media (max-width: 768px){
         width: 100%;
@@ -49,8 +54,9 @@ const Left = styled.div`
     }
 
     & img {
-        height: 90dvh!important;
+        height: 80vh!important;
         object-fit: cover;
+        border-radius: 8px!important;
 
         @media (max-width: 768px){
             height: 50dvh!important;
@@ -59,7 +65,7 @@ const Left = styled.div`
 `
 
 const Right = styled.div`
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -284,7 +290,7 @@ const Home = ({ area, largura, lote, quartos, churrasqueira, suites, garagem, ba
                     <CarrosselLP
                         images={imagens}
                         width="100%"
-                        height="90dvh"
+                        height="auto"
                     />
                 </Left>
                 <Right>
