@@ -176,6 +176,14 @@ const Casas = () => {
                 descricao="Espaçosa, com duas suítes que garantem privacidade e conforto para todos. Imagine uma cozinha com ilha central, onde as refeições se tornam eventos especiais, e uma sala ampla que acomoda todos para momentos de descontração. Um lar feito para viver e compartilhar momentos inesquecíveis."
               />
             </SwiperSlide>
+            <SwiperSlide>
+              <CardCasasModular 
+                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/abc7bb4f-f339-41b6-ec1f-d8ef8b268100/public"
+                nome="Paineira"
+                area="19m²"
+                descricao="Compacta e funcional, a House Paineira é ideal para os casais que estão iniciando a vida a dois ou para os solteiros que buscam mais praticidade. Com 19m² ao total, possui uma suíte e um banheiro e uma cozinha no estilo americano, tudo em um espaço otimizado e acolhedor."
+              />
+            </SwiperSlide>
             {/* <SwiperSlide>
               <CardCasasModular 
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/31171d89-5228-433a-0649-f97d5f31b700/public"
