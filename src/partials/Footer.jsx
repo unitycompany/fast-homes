@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
+import AlephsramosdevWidget from "../components/AlephsramosdevWidget";
 
 const shine = keyframes `
     0% {
@@ -628,12 +629,7 @@ const Footer = () => {
           <p>
             Todos os direitos reservados |<span> CNPJ: 40.436.034/0001-48 - Fast Homes</span>
           </p>
-          <p>
-            Desenvolvido por 
-            <a href="https://www.alephsramos.com.br" target="_blank" rel="noopener noreferrer">
-              <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/aa412b31-1015-40a2-cfd6-ab7afce75500/public" alt="logo do aleph desenvolvedor web" />
-            </a>
-          </p>
+          <AlephsramosdevWidget />
         </FooterBottom>
       </FooterContainer>
     );
