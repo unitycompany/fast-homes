@@ -83,7 +83,7 @@ const HomeCatalogo = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
     padding: 0 2.5%;
     gap: 20px;
