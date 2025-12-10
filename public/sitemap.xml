@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
-    <!-- Página incial -->
+    <!-- Página inicial -->
     <url>
-        <loc>https://fasthomes.com.br</loc> 
-        <lastmod>2025/04/04</lastmod>
+        <loc>https://fasthomes.com.br/</loc> 
+        <lastmod>2025-09-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <!-- Página de Catálogo -->
     <url>
-        <loc>https://fasthomes.com.br/catalogo</loc>
-        <lastmod>2025/04/04</lastmod>
+        <loc>https://fasthomes.com.br/catalogo-de-casas</loc>
+        <lastmod>2025-09-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -20,41 +20,41 @@
     <!-- Página de projetos personalizados -->
     <url>
         <loc>https://fasthomes.com.br/projetos-personalizados</loc>
-        <lastmod>2025/04/04</lastmod>
+        <lastmod>2025-09-11</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
     </url>
 
-    <!-- Página sobre a house box -->
+    <!-- Página de módulos prontos -->
     <url>
-        <loc>https://fasthomes.com.br/modular</loc>
-        <lastmod>2025/04/04</lastmod>
+        <loc>https://fasthomes.com.br/modulos-prontos</loc>
+        <lastmod>2025-09-11</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.8</priority>
     </url>
 
     <!-- Página de sobre nós -->
     <url>
         <loc>https://fasthomes.com.br/sobre-nos</loc>
-        <lastmod>2025/04/04</lastmod>
+        <lastmod>2025-09-11</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.3</priority>
+        <priority>0.7</priority>
     </url>
 
     <!-- Página de politica de privacidade -->
     <url>
         <loc>https://fasthomes.com.br/politica-de-privacidade</loc>
-        <lastmod>2025/04/04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.1</priority>
+        <lastmod>2025-09-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
 
     <!-- Página de termos e condições -->
     <url>
         <loc>https://fasthomes.com.br/termos-e-condicoes</loc>
-        <lastmod>2025/04/04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.1</priority>
+        <lastmod>2025-09-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
     
 </urlset>
