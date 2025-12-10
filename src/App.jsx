@@ -22,13 +22,157 @@ import Privacidade from "./pages/politicas/Privacidade";
 import Termos from "./pages/politicas/Termos";
 import Cookie from "./pages/politicas/Cookie";
 
-import { HelmetProvider } from "react-helmet-async";
+import { HelmetProvider, Helmet } from "react-helmet-async";
 
 // Página 404
 import Error from "../404";
 
 // Efeito de clique
 import ClickEffect from "./components/clickEffect";
+
+const BASE_URL = "https://fasthomes.com.br";
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Fast Homes",
+  url: BASE_URL,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${BASE_URL}/catalogo-de-casas?search={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Fast Homes",
+  url: BASE_URL,
+  logo:
+    "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/28cf333a-365a-4025-f8d8-c86fdd742d00/public",
+  sameAs: [
+    "https://www.instagram.com/fasthomesbr",
+    "https://www.facebook.com/fasthomesbr",
+    "https://www.linkedin.com/company/fasthomesbr/",
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+55-21-99288-2282",
+      contactType: "customer support",
+      areaServed: "BR",
+      availableLanguage: ["Portuguese", "English"],
+    },
+  ],
+};
+
+const getBreadcrumb = (pathname) => {
+  const items = [
+    { name: "Início", path: "/" },
+  ];
+
+  const mapping = {
+    "/catalogo-de-casas": "Catálogo de Casas",
+    "/projetos-personalizados": "Projetos Personalizados",
+    "/modulos-prontos": "Módulos Prontos",
+    "/sobre-nos": "Sobre Nós",
+    "/politica-de-privacidade": "Política de Privacidade",
+    "/termos-e-condicoes": "Termos e Condições",
+  };
+
+  if (mapping[pathname]) {
+    items.push({ name: mapping[pathname], path: pathname });
+  }
+
+  if (items.length === 1) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${BASE_URL}${item.path}`,
+    })),
+  };
+};
+
+const getPageSchema = (pathname) => {
+  const common = {
+    "@context": "https://schema.org",
+    url: `${BASE_URL}${pathname === "/" ? "" : pathname}`,
+  };
+
+  switch (pathname) {
+    case "/":
+      return {
+        ...common,
+        "@type": "WebPage",
+        name: "Fast Homes - Casas em Steel Frame",
+        description:
+          "Casas em steel frame com construção rápida, sustentável e de alta qualidade pela Fast Homes.",
+      };
+    case "/catalogo-de-casas":
+      return {
+        ...common,
+        "@type": "CollectionPage",
+        name: "Catálogo de Casas - Fast Homes",
+        description:
+          "Conheça o catálogo completo de casas pré-fabricadas em steel frame da Fast Homes.",
+      };
+    case "/projetos-personalizados":
+      return {
+        ...common,
+        "@type": "WebPage",
+        name: "Projetos Personalizados - Fast Homes",
+        description:
+          "Transforme seu projeto em realidade com a Fast Homes em steel frame.",
+      };
+    case "/modulos-prontos":
+      return {
+        ...common,
+        "@type": "WebPage",
+        name: "Módulos Prontos - Fast Homes",
+        description:
+          "Módulos prontos em steel frame da Fast Homes, rapidez e eficiência na construção.",
+      };
+    case "/sobre-nos":
+      return {
+        ...common,
+        "@type": "AboutPage",
+        name: "Sobre a Fast Homes",
+        description:
+          "Conheça a Fast Homes, construtora especializada em steel frame e construção industrializada.",
+      };
+    case "/politica-de-privacidade":
+      return {
+        ...common,
+        "@type": "WebPage",
+        name: "Política de Privacidade - Fast Homes",
+        description: "Política de privacidade da Fast Homes.",
+      };
+    case "/termos-e-condicoes":
+      return {
+        ...common,
+        "@type": "WebPage",
+        name: "Termos e Condições - Fast Homes",
+        description: "Termos e condições de uso do site da Fast Homes.",
+      };
+    default:
+      return null;
+  }
+};
+
+const getStructuredData = (pathname) => {
+  const data = [websiteSchema, organizationSchema];
+  const breadcrumb = getBreadcrumb(pathname);
+  const page = getPageSchema(pathname);
+  if (breadcrumb) data.push(breadcrumb);
+  if (page) data.push(page);
+  return data;
+};
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -38,6 +182,7 @@ const pageVariants = {
 
 const AppContent = () => {
   const location = useLocation();
+  const structuredData = getStructuredData(location.pathname);
 
   useEffect(() => {
   console.log("🔄 React rodando em:", location.pathname);
@@ -140,6 +285,12 @@ const AppContent = () => {
 
   return (
     <>
+      {structuredData.map((schema, idx) => (
+        <Helmet key={`ld-${idx}`}>
+          <script type="application/ld+json">{JSON.stringify(schema)}</script>
+        </Helmet>
+      ))}
+
       {showHeader && <Header />}
 
       <AnimatePresence mode="wait">
