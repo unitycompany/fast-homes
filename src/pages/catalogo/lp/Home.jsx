@@ -45,7 +45,7 @@ const Left = styled.div`
 
     @media (max-width: 768px){
         width: 100%;
-        height: 50dvh;
+        height: 40dvh;
         object-fit: cover;
         position: relative;
         display: flex;
@@ -59,7 +59,7 @@ const Left = styled.div`
         border-radius: 8px!important;
 
         @media (max-width: 768px){
-            height: 50dvh!important;
+            height: 40dvh!important;
         }
     }
 `
