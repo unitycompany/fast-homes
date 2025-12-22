@@ -184,6 +184,22 @@ const Casas = () => {
                 descricao="Compacta e funcional, a House Paineira é ideal para os casais que estão iniciando a vida a dois ou para os solteiros que buscam mais praticidade. Com 19m² ao total, possui uma suíte e um banheiro e uma cozinha no estilo americano, tudo em um espaço otimizado e acolhedor."
               />
             </SwiperSlide>
+            <SwiperSlide>
+              <CardCasasModular 
+                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/34e8d7ab-9e2f-4c0e-cc41-d461b06a7400/public"
+                nome="Ingazeira"
+                area="27m²"
+                descricao="Compacta e funcional, a House Ingazeira é ideal para os casais que estão iniciando a vida a dois ou para os solteiros que buscam mais praticidade. Com 27m² ao total, possui 1 quarto e 1 banheiro e uma cozinha no estilo americano, tudo em um espaço otimizado e acolhedor."
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <CardCasasModular 
+                image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/377bb7dd-7b21-4129-628c-a6f467748600/public"
+                nome="Canela"
+                area="19m²"
+                descricao="Compacta e funcional, a House Canela é ideal para os casais que estão iniciando a vida a dois ou para os solteiros que buscam mais praticidade. Com 19m² ao total, possui 1 suíte e 1 banheiro e uma cozinha no estilo americano, tudo em um espaço otimizado e acolhedor."
+              />
+            </SwiperSlide>
             {/* <SwiperSlide>
               <CardCasasModular 
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/31171d89-5228-433a-0649-f97d5f31b700/public"
