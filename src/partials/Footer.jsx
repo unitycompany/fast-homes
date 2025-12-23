@@ -629,7 +629,6 @@ const Footer = () => {
           <p>
             Todos os direitos reservados |<span> CNPJ: 40.436.034/0001-48 - Fast Homes</span>
           </p>
-          <AlephsramosdevWidget />
         </FooterBottom>
       </FooterContainer>
     );
