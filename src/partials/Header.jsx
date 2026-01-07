@@ -461,7 +461,7 @@ const Header = () => {
                             <li onClick={() => handleClick("/projetos-personalizados")}>Seu projeto</li>
                             <li onClick={() => handleClick("/sobre-nos")}>Sobre nós</li>
                             <li onClick={() => handleClick("/modulos-prontos")}>Módulos Prontos</li>
-                            <button onClick={() => window.open("", "_blank")}>
+                            <button onClick={() => window.open("https://drive.google.com/file/d/1CnaH10m4krR6OwM3obs9iidRw9HF8rgA/view?usp=sharing", "_blank")}>
                                 Catálogo PDF
                             </button>
                         </ul>
