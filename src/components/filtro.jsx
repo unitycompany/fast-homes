@@ -170,6 +170,28 @@ const baseOptions = {
 
 const filterCategories = Object.keys(baseOptions);
 
+const toNumberOrNull = (value) => {
+  if (value === null || value === undefined) return null;
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+
+  const text = String(value).trim();
+  if (!text) return null;
+
+  // Extrai o primeiro número (suporta "137.16m²", "3 quartos", etc.)
+  const match = text.match(/-?\d+(?:[\.,]\d+)?/);
+  if (!match) return null;
+
+  const normalized = match[0].replace(",", ".");
+  const parsed = Number(normalized);
+  return Number.isFinite(parsed) ? parsed : null;
+};
+
+const toIntOrNull = (value) => {
+  const numberValue = toNumberOrNull(value);
+  if (numberValue === null) return null;
+  return Math.trunc(numberValue);
+};
+
 const Filtro = ({
   cards = [],
   onSearch = () => {},
@@ -225,12 +247,17 @@ const Filtro = ({
         if (cat === "N° de pavimentos") {
           matches = matches && card.pavimentos === value;
         } else if (cat === "N° de quartos") {
-          matches = matches && card.quartos === parseInt(value, 10);
+          const casaQuartos = toIntOrNull(card.quartos);
+          const filtroQuartos = toIntOrNull(value);
+          matches = matches && casaQuartos !== null && filtroQuartos !== null && casaQuartos === filtroQuartos;
         } else if (cat === "N° de banheiros") {
-          matches = matches && card.banheiros === parseInt(value, 10);
+          const casaBanheiros = toIntOrNull(card.banheiros);
+          const filtroBanheiros = toIntOrNull(value);
+          matches = matches && casaBanheiros !== null && filtroBanheiros !== null && casaBanheiros === filtroBanheiros;
         } else if (cat === "Área construída") {
           const [min, max] = value.split("-").map(Number);
-          matches = matches && card.area >= min && card.area <= max;
+          const areaCasa = toNumberOrNull(card.area);
+          matches = matches && areaCasa !== null && areaCasa >= min && areaCasa <= max;
         }
       });
       return matches;
@@ -239,12 +266,19 @@ const Filtro = ({
     if (category === "N° de pavimentos") {
       return filtered.some((card) => card.pavimentos === option);
     } else if (category === "N° de quartos") {
-      return filtered.some((card) => card.quartos === parseInt(option, 10));
+      const filtroQuartos = toIntOrNull(option);
+      if (filtroQuartos === null) return false;
+      return filtered.some((card) => toIntOrNull(card.quartos) === filtroQuartos);
     } else if (category === "N° de banheiros") {
-      return filtered.some((card) => card.banheiros === parseInt(option, 10));
+      const filtroBanheiros = toIntOrNull(option);
+      if (filtroBanheiros === null) return false;
+      return filtered.some((card) => toIntOrNull(card.banheiros) === filtroBanheiros);
     } else if (category === "Área construída") {
       const [min, max] = option.split("-").map(Number);
-      return filtered.some((card) => card.area >= min && card.area <= max);
+      return filtered.some((card) => {
+        const areaCasa = toNumberOrNull(card.area);
+        return areaCasa !== null && areaCasa >= min && areaCasa <= max;
+      });
     }
     return false;
   };
@@ -316,13 +350,13 @@ const Filtro = ({
                 id={`${category}-select`}
                 value={selectedOptions[category] || ""}
                 label={category}
-                onChange={() => {}}
+                onChange={(e) => handleSelect(category, e.target.value)}
               >
                 {baseOptions[category].map((option) => (
                   <MenuItem
                     key={option}
                     value={option}
-                    onClick={() => handleSelect(category, option)}
+                    disabled={!isOptionAvailable(category, option)}
                     style={{
                       color: isOptionAvailable(category, option)
                         ? "inherit"

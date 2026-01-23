@@ -1,10 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { db } from "./../../services/firebaseConfig"; 
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import Filtro from "../../components/filtro";
 import CardCatalogo from "../../components/cards/CardCatalogo";
 import { useLocation } from "react-router-dom";
+
+const toNumberOrNull = (value) => {
+    if (value === null || value === undefined) return null;
+    if (typeof value === "number" && Number.isFinite(value)) return value;
+
+    const text = String(value).trim();
+    if (!text) return null;
+
+    const match = text.match(/-?\d+(?:[\.,]\d+)?/);
+    if (!match) return null;
+
+    const normalized = match[0].replace(",", ".");
+    const parsed = Number(normalized);
+    return Number.isFinite(parsed) ? parsed : null;
+};
+
+const toIntOrNull = (value) => {
+    const numberValue = toNumberOrNull(value);
+    if (numberValue === null) return null;
+    return Math.trunc(numberValue);
+};
 
 const HomeContent = styled.div`
     height: auto;
@@ -158,6 +179,7 @@ const Home = () => {
     // O valor inicial será ajustado conforme o dispositivo: 6 para desktop e 3 para mobile
     const [visibleCount, setVisibleCount] = useState(6);
     const location = useLocation();
+    const lastAppliedNavFilterRef = useRef(null);
 
     // Detecta se o dispositivo é mobile (largura <= 768px)
     useEffect(() => {
@@ -218,6 +240,19 @@ const Home = () => {
         fetchCards();
     }, []);
 
+    // Se a navegação vier com filtros (ex: HeaderSelect), aplica automaticamente.
+    useEffect(() => {
+        const navSelected = location?.state?.selectedOptions;
+        if (!navSelected || Object.keys(navSelected).length === 0) return;
+
+        const signature = JSON.stringify(navSelected);
+        if (lastAppliedNavFilterRef.current === signature) return;
+        lastAppliedNavFilterRef.current = signature;
+
+        aplicarFiltro(navSelected);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location?.state?.selectedOptions]);
+
     const aplicarFiltro = (selectedOptions) => {
         setLoading(true);
         console.log("🔍 Aplicando filtro:", selectedOptions);
@@ -238,16 +273,21 @@ const Home = () => {
                 }
 
                 if (selectedOptions["N° de quartos"]) {
-                    matches = matches && casa.quartos === parseInt(selectedOptions["N° de quartos"]);
+                    const filtroQuartos = toIntOrNull(selectedOptions["N° de quartos"]);
+                    const casaQuartos = toIntOrNull(casa.quartos);
+                    matches = matches && filtroQuartos !== null && casaQuartos !== null && casaQuartos === filtroQuartos;
                 }
 
                 if (selectedOptions["N° de banheiros"]) {
-                    matches = matches && casa.banheiros === parseInt(selectedOptions["N° de banheiros"]);
+                    const filtroBanheiros = toIntOrNull(selectedOptions["N° de banheiros"]);
+                    const casaBanheiros = toIntOrNull(casa.banheiros);
+                    matches = matches && filtroBanheiros !== null && casaBanheiros !== null && casaBanheiros === filtroBanheiros;
                 }
 
                 if (selectedOptions["Área construída"]) {
                     const [min, max] = selectedOptions["Área construída"].split("-").map(Number);
-                    matches = matches && casa.area >= min && casa.area <= max;
+                    const areaCasa = toNumberOrNull(casa.area);
+                    matches = matches && areaCasa !== null && areaCasa >= min && areaCasa <= max;
                 }
 
                 return matches;
