@@ -527,7 +527,10 @@ const Footer = () => {
           <FooterCard data-aos="fade-up" data-aos-delay="100">
             <img 
               src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/28cf333a-365a-4025-f8d8-c86fdd742d00/public" 
-              alt="logo-fast-homes" 
+              alt="logo-fast-homes"
+              width="438"
+              height="77"
+              loading="lazy"
             />
             <h2>Descubra um novo conceito de lar com a Fast Homes</h2>
             <a href="mailto:contato@fasthomes.com.br" target="_blank" rel="noopener noreferrer">

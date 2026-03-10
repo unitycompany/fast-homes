@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { Analytics } from "@vercel/analytics/react"
 
 import "./styles/global.css";
 import "./styles/reset.css";
@@ -11,24 +8,26 @@ import "./styles/variables.css";
 
 import Header from "./partials/Header";
 import Footer from "./partials/Footer";
-import PaginaInicial from "./pages/inicial/Inicial";
-import PaginaCatalogo from "./pages/catalogo/Inicial";
-import PaginaSobre from "./pages/sobre/Inicial";
-import PaginaProjeto from "./pages/projetos/Inicial";
-import LandingPage from "./pages/catalogo/lp/LandingPage";
-import PaginaModular from "./pages/Modular/Inicial";
 
-import Privacidade from "./pages/politicas/Privacidade";
-import Termos from "./pages/politicas/Termos";
-import Cookie from "./pages/politicas/Cookie";
+// Lazy load de páginas — reduz bundle inicial (~386 KiB de JS não usado)
+const PaginaInicial = lazy(() => import("./pages/inicial/Inicial"));
+const PaginaCatalogo = lazy(() => import("./pages/catalogo/Inicial"));
+const PaginaSobre = lazy(() => import("./pages/sobre/Inicial"));
+const PaginaProjeto = lazy(() => import("./pages/projetos/Inicial"));
+const LandingPage = lazy(() => import("./pages/catalogo/lp/LandingPage"));
+const PaginaModular = lazy(() => import("./pages/Modular/Inicial"));
+const Privacidade = lazy(() => import("./pages/politicas/Privacidade"));
+const Termos = lazy(() => import("./pages/politicas/Termos"));
+const Cookie = lazy(() => import("./pages/politicas/Cookie"));
+const Error = lazy(() => import("../404"));
+
+// Lazy load de libs pesadas — AOS, Analytics, ClickEffect
+const ClickEffect = lazy(() => import("./components/clickEffect"));
+const LazyAnalytics = lazy(() =>
+  import("@vercel/analytics/react").then((m) => ({ default: m.Analytics }))
+);
 
 import { HelmetProvider, Helmet } from "react-helmet-async";
-
-// Página 404
-import Error from "../404";
-
-// Efeito de clique
-import ClickEffect from "./components/clickEffect";
 
 const BASE_URL = "https://fasthomes.com.br";
 
@@ -272,16 +271,27 @@ const AppContent = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  // Inicializa AOS
+  // Inicializa AOS de forma lazy (não bloqueia o bundle principal)
   useEffect(() => {
-    AOS.init({
-      duration: 1200,
-      offset: 50,
-      easing: "ease-in-out",
-      once: true,
-      mirror: true,
+    let mounted = true;
+    import("aos").then((AOS) => {
+      if (!mounted) return;
+      import("aos/dist/aos.css");
+      AOS.init({
+        duration: 1200,
+        offset: 50,
+        easing: "ease-in-out",
+        once: true,
+        mirror: false,
+      });
     });
+    return () => { mounted = false; };
   }, []);
+
+  // Fallback mínimo para Suspense
+  const suspenseFallback = (
+    <div style={{ minHeight: "100vh", background: "#000" }} />
+  );
 
   return (
     <>
@@ -301,26 +311,28 @@ const AppContent = () => {
           exit="exit"
           variants={pageVariants}
         >
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<PaginaInicial />} />
-            <Route path="/catalogo-de-casas" element={<PaginaCatalogo />} />
-            <Route
-              path="/catalogo-de-casas/:slug"
-              element={<LandingPage />}
-            />
-            <Route path="/sobre-nos" element={<PaginaSobre />} />
-            <Route path="/modulos-prontos" element={<PaginaModular />} />
-            <Route
-              path="/projetos-personalizados"
-              element={<PaginaProjeto />}
-            />
-            <Route path="/termos-e-condicoes" element={<Termos />} />
-            <Route
-              path="/politica-de-privacidade"
-              element={<Privacidade />}
-            />
-            <Route path="*" element={<Error />} />
-          </Routes>
+          <Suspense fallback={suspenseFallback}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<PaginaInicial />} />
+              <Route path="/catalogo-de-casas" element={<PaginaCatalogo />} />
+              <Route
+                path="/catalogo-de-casas/:slug"
+                element={<LandingPage />}
+              />
+              <Route path="/sobre-nos" element={<PaginaSobre />} />
+              <Route path="/modulos-prontos" element={<PaginaModular />} />
+              <Route
+                path="/projetos-personalizados"
+                element={<PaginaProjeto />}
+              />
+              <Route path="/termos-e-condicoes" element={<Termos />} />
+              <Route
+                path="/politica-de-privacidade"
+                element={<Privacidade />}
+              />
+              <Route path="*" element={<Error />} />
+            </Routes>
+          </Suspense>
         </motion.div>
       </AnimatePresence>
 
@@ -333,10 +345,14 @@ function App() {
   return (
     <BrowserRouter>
       <HelmetProvider>
-        <ClickEffect />
+        <Suspense fallback={null}>
+          <ClickEffect />
+        </Suspense>
         <AppContent />
-        <Cookie />
-        <Analytics />
+        <Suspense fallback={null}>
+          <Cookie />
+          <LazyAnalytics />
+        </Suspense>
       </HelmetProvider>
     </BrowserRouter>
   );

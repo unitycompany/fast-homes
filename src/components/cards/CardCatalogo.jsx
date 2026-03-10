@@ -254,12 +254,16 @@ const CardCatalogo = ({ id, nome, pavimentos, area, quartos, banheiros, imagem, 
                         alt={nome}
                         className={hover ? "hidden" : "visible"}
                         loading="lazy"
+                        width="934"
+                        height="525"
                     />
                     <img
                         src={imagemDois}
                         alt={nome}
                         className={hover ? "visible" : "hidden"}
                         loading="lazy"
+                        width="934"
+                        height="525"
                     />
                 </ImageWrapper>
                 <button to={`/casas/${id}`}>Conhecer casa</button>

@@ -1,61 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
-
-const rippleAnimation = keyframes`
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(3);
-    opacity: 0;
-  }
-`;
-
-const Ripple = styled.span`
-  position: fixed;
-  width: 15px;
-  height: 15px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  animation: ${rippleAnimation} 0.6s ease-out forwards;
-  z-index: 9999999;
-`;
+import { useEffect } from 'react';
 
 const ClickEffect = () => {
-  const [effects, setEffects] = useState([]);
-
-  const handleClick = (e) => {
-    const newEffect = {
-      x: e.clientX,
-      y: e.clientY,
-      id: Date.now(),
-    };
-    setEffects((prev) => [...prev, newEffect]);
-  };
-
   useEffect(() => {
+    // Injeta CSS uma única vez
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes rippleClick {
+        0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+      }
+      .click-ripple {
+        position: fixed;
+        width: 15px;
+        height: 15px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999999;
+        animation: rippleClick 0.6s ease-out forwards;
+      }
+    `;
+    document.head.appendChild(style);
+
+    const handleClick = (e) => {
+      const el = document.createElement('span');
+      el.className = 'click-ripple';
+      el.style.left = e.clientX + 'px';
+      el.style.top = e.clientY + 'px';
+      document.body.appendChild(el);
+      el.addEventListener('animationend', () => el.remove(), { once: true });
+    };
+
     window.addEventListener('click', handleClick);
     return () => {
       window.removeEventListener('click', handleClick);
+      document.head.removeChild(style);
     };
   }, []);
 
-  return (
-    <>
-      {effects.map((effect) => (
-        <Ripple
-          key={effect.id}
-          style={{ top: effect.y, left: effect.x }}
-          onAnimationEnd={() =>
-            setEffects((prev) => prev.filter((item) => item.id !== effect.id))
-          }
-        />
-      ))}
-    </>
-  );
+  return null;
 };
 
 export default ClickEffect;

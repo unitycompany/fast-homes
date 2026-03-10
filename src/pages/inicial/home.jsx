@@ -358,10 +358,10 @@ const Home = () => {
               <SplideSlide key={casa.id || idx}>
                 <Nome>{casa.nome}</Nome>
                 <SlideImage
-                  onClick={() => navigate(`/catalogo-de-casas/${casa.slug}`)}  // <— navegação via slug
+                  onClick={() => navigate(`/catalogo-de-casas/${casa.slug}`)}
                   style={{
                     backgroundImage: `url(${bgUrl})`,
-                    backgroundAttachment: isMobile ? "scroll" : "fixed",
+                    backgroundAttachment: isMobile ? "scroll" : "scroll",
                   }}
                 />
               </SplideSlide>
