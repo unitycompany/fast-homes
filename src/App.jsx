@@ -184,8 +184,6 @@ const AppContent = () => {
   const structuredData = getStructuredData(location.pathname);
 
   useEffect(() => {
-  console.log("🔄 React rodando em:", location.pathname);
-  console.log("   isCatalogDetail:", isCatalogDetail, "| isMobile:", isMobile);
   window.scrollTo(0, 0);
   }, [location.pathname]);
 
@@ -212,7 +210,6 @@ const AppContent = () => {
     });
     if (changed) {
       window.history.replaceState({}, "", url.toString());
-      console.log("♻️ UTMs reaplicadas em:", url.toString());
     }
   }, [location.pathname]);
 
@@ -265,11 +262,6 @@ const AppContent = () => {
   const showHeader = !isCatalogDetail || isMobile;
   // Footer oculto apenas em detalhe de casa
   const showFooter = !isCatalogDetail;
-
-  // Scroll ao topo em cada mudança de rota
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
 
   // Inicializa AOS de forma lazy (não bloqueia o bundle principal)
   useEffect(() => {

@@ -200,7 +200,9 @@ const Termos = () => {
         <img
           src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/3d1440c5-f0d7-41e3-953e-64662df60e00/public" 
           alt="logo-fast-homes" 
-          loading="lazy"
+          width="200"
+          height="70"
+          decoding="async"
         />
         <h1>Termos e Condições</h1>
       </Topo>

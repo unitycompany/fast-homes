@@ -144,7 +144,7 @@ const MobileToggleButton = styled.button`
 
     & svg {
       font-size: 22px;
-      transition: all .2s ease-in-out;
+      transition: transform .2s ease-in-out;
     }
   }
 `;

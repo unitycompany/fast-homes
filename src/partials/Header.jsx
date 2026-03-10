@@ -389,6 +389,7 @@ const Header = () => {
                                 width="438"
                                 height="77"
                                 fetchPriority="high"
+                                decoding="async"
                             />
                         </button>
                     </HeaderImage>

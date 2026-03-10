@@ -93,7 +93,7 @@ const CardCasasModular = ({ image, nome, area, descricao }) => {
     return (
         <>
             <Card>
-                <img src={image} alt='foto da casa {nome}' loading="lazy" />
+                <img src={image} alt={`foto da casa ${nome}`} loading="lazy" width="400" height="300" />
                 <div>
                     <h2>{nome}</h2>
                     <span>{area}</span>

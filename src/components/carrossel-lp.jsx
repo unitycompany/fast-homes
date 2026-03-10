@@ -209,6 +209,10 @@ const CarrosselLP = ({ images = [], width, height }) => {
               <img
                 src={img}
                 alt={`Slide ${idx + 1}`}
+                loading={idx === 0 ? undefined : "lazy"}
+                decoding="async"
+                width="800"
+                height="600"
                 style={{
                   width: "100%",
                   height: "100%",

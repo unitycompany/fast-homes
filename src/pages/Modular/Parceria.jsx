@@ -2,22 +2,22 @@ import react from 'react';
 import GlobalButton3 from '../../components/buttons/GlobalButton3';
 import styled, {keyframes} from 'styled-components';
 
-// keyframes para a primeira imagem (DIV 2):
+// keyframes para a primeira imagem (DIV 2): usando transform para composited animation
 const move1 = keyframes `
-  0%   { top: 0;    left: 50%; }  /* etapa 1: top-right */
-  25%  { top: 50%;  left: 50%; }  /* etapa 2: bottom-right */
-  50%  { top: 50%;  left: 0;    }  /* etapa 3: bottom-left */
-  75%  { top: 0;    left: 0;    }  /* etapa 4: top-left */
-  100% { top: 0;    left: 50%; }  /* volta ao início */
+  0%   { transform: translate(100%, 0); }
+  25%  { transform: translate(100%, 100%); }
+  50%  { transform: translate(0, 100%); }
+  75%  { transform: translate(0, 0); }
+  100% { transform: translate(100%, 0); }
 `;
 
-// keyframes para a segunda imagem (DIV 3):
+// keyframes para a segunda imagem (DIV 3): usando transform para composited animation
 const move2 = keyframes `
-  0%   { top: 50%;  left: 0;    }  /* etapa 1: bottom-left */
-  25%  { top: 0;    left: 0;    }  /* etapa 2: top-left */
-  50%  { top: 0;    left: 50%; }  /* etapa 3: top-right */
-  75%  { top: 50%;  left: 50%; }  /* etapa 4: bottom-right */
-  100% { top: 50%;  left: 0;    }  /* volta ao início */
+  0%   { transform: translate(0, 100%); }
+  25%  { transform: translate(0, 0); }
+  50%  { transform: translate(100%, 0); }
+  75%  { transform: translate(100%, 100%); }
+  100% { transform: translate(0, 100%); }
 `;
 
 const ParceriaContent = styled.section `
@@ -152,22 +152,28 @@ const ParceriaContent = styled.section `
                 // DIV 2 (contém img 01): animação move1
                 &:nth-child(2) {
                 position: absolute;
+                top: 0;
+                left: 0;
                 background-color: #fff;
                 border-radius: 20px;
                 width: 48.5%;
                 height: 48.5%;
                 animation: ${move1} 8s ease-in-out infinite;
+                will-change: transform;
                 img { width: 100%; height: 100%; object-fit: cover; }
                 }
 
                 // DIV 3 (contém img 02): animação move2
                 &:nth-child(3) {
                 position: absolute;
+                top: 0;
+                left: 0;
                 width: 48.5%;
                 height: 48.5%;
                 background-color: #fff;
                 border-radius: 20px;
                 animation: ${move2} 8s ease-in-out infinite;
+                will-change: transform;
                 img { width: 100%; height: 100%; object-fit: cover; }
                 }
             }
@@ -206,10 +212,10 @@ const Parceria = () => {
                     <aside>
                         <div></div>
                         <div>
-                            <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/11152b3c-1a94-4970-f99e-0a6ee9080100/public" alt="" loading='lazy' />
+                            <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/11152b3c-1a94-4970-f99e-0a6ee9080100/public" alt="" loading='lazy' width="250" height="250" />
                         </div>
                         <div>
-                            <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/79e150fc-9edf-47b1-869a-537cd5b8b700/public" alt="" loading='lazy' />
+                            <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/79e150fc-9edf-47b1-869a-537cd5b8b700/public" alt="" loading='lazy' width="250" height="250" />
                         </div>
                         <div></div>
                     </aside>

@@ -17,11 +17,8 @@ const moveBackground = keyframes`
     0% {
         background-position: 0 0;
     }
-    50% {
-        background-position: -20px -20px;
-    }
     100% {
-        background-position: 0 0;
+        background-position: -20px -20px;
     }
 `;
 
@@ -31,7 +28,7 @@ const CatalogoContainer = styled.section`
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    font-family: "Montserrat", serif;
+    font-family: var(--font--montserrat);
     flex-direction: column;
     max-width: 1280px;
     left: 50%;

@@ -6,15 +6,15 @@ import GlobalButton3 from "./buttons/GlobalButton3";
 
 const shine = keyframes `
     0% {
-      left: -100px;
+      transform: translateX(-100%);
     }
   
     60% {
-      left: 100%;
+      transform: translateX(200%);
     }
   
     to {
-      left: 100%;
+      transform: translateX(calc(100% + 100px));
     }
 `;
 
@@ -123,7 +123,7 @@ const Formulario = styled.form`
                 rgba(255, 255, 255, 0) 70%
             );
             top: 0;
-            left: -200px;
+            left: 0;
             opacity: 0.7;
             animation: ${shine} 2.5s ease-out infinite;
         }

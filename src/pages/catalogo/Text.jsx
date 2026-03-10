@@ -3,11 +3,9 @@ import styled, {keyframes} from "styled-components";
 
 const letterSpacing = keyframes`
     0% {
-        letter-spacing: -1px;
         opacity: 1;
     }
     50% {
-        letter-spacing: 0;
         opacity: 0.9;
     }
 `

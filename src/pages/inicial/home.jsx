@@ -20,7 +20,7 @@ const HomeContainer = styled.section`
   justify-content: center;
   position: relative;
   overflow: hidden !important;
-  font-family: "Montserrat", serif;
+  font-family: var(--font--montserrat);
   min-height: 100dvh;
   background-color: transparent;
 

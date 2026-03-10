@@ -136,6 +136,10 @@ const Name = ({ nome, descricao }) => {
             src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6d1a387d-eb9d-473b-dec5-bf229b9f0c00/public"
             alt="logo da fast homes casas modulares" 
             title="Logo da Fast Homes" 
+            width="438"
+            height="77"
+            fetchPriority="high"
+            decoding="async"
             onClick={() => navigate('/')}/>
           <div>
             <h1>{nome}</h1>

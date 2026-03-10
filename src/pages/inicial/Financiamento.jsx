@@ -219,7 +219,7 @@ const Financiamento = (  ) => {
         <>
             <Content id="financiamento">
                 <Left data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b3fa5fa4-dd1f-4610-c4b2-338813e3d700/public" alt="" loading="lazy" />
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b3fa5fa4-dd1f-4610-c4b2-338813e3d700/public" alt="" loading="lazy" width="600" height="400" />
                 </Left>
 
                 <Right>

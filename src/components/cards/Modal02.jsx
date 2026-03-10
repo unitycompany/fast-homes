@@ -177,7 +177,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
         </Top>
         <Center>
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/77c8b7e4-472e-43b4-a2d8-4562cb2bbe00/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/77c8b7e4-472e-43b4-a2d8-4562cb2bbe00/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Projeto Estrutural</h4>
                             <p>
@@ -187,7 +187,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f8c777e0-02be-44ea-0ceb-f135510d0000/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f8c777e0-02be-44ea-0ceb-f135510d0000/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Fundação tipo Radier</h4>
                             <p>
@@ -197,7 +197,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/d633cf8e-c2b5-40b5-89f1-019a8c99ea00/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/d633cf8e-c2b5-40b5-89f1-019a8c99ea00/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Estrutura da Casa em Aço Galvanizado</h4>
                             <p>
@@ -207,7 +207,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c8ea9ac7-5443-465d-107c-275a63d23700/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c8ea9ac7-5443-465d-107c-275a63d23700/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Fechamento Externo</h4>
                             <p>
@@ -217,7 +217,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b444892d-78d8-4068-9067-edf1fc32ed00/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b444892d-78d8-4068-9067-edf1fc32ed00/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Acabamentos Externos Quartzolit</h4>
                             <p>
@@ -227,7 +227,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/fb7a77be-a48b-403b-aa78-5d3e2af93a00/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/fb7a77be-a48b-403b-aa78-5d3e2af93a00/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Fechamento Interno</h4>
                             <p>
@@ -237,7 +237,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/290c6e3c-b2d8-40f9-14d2-72ee00149900/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/290c6e3c-b2d8-40f9-14d2-72ee00149900/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Fechamento da Cobertura</h4>
                             <p>
@@ -247,7 +247,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/97798517-1785-420e-56da-eff42d28ac00/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/97798517-1785-420e-56da-eff42d28ac00/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Esquadrias de PVC</h4>
                             <p>
@@ -257,7 +257,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/87e15bf0-2333-4bf0-6f42-6bcbc3666700/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/87e15bf0-2333-4bf0-6f42-6bcbc3666700/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Portas Internas em Madeira</h4>
                             <p>
@@ -267,7 +267,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/7910b81f-9d78-41db-9774-160704161100/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/7910b81f-9d78-41db-9774-160704161100/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Pisos Vinílicos e Porcelanato</h4>
                             <p>
@@ -278,7 +278,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/fc0b4ce7-8c54-43f9-5608-2162a529b700/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/fc0b4ce7-8c54-43f9-5608-2162a529b700/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Impermeabilização e Revestimentos <b>(Opcional)</b></h4>
                             <p>
@@ -289,7 +289,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c8ea9ac7-5443-465d-107c-275a63d23700/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c8ea9ac7-5443-465d-107c-275a63d23700/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Acabamento Internos Pintura SW</h4>
                             <p>
@@ -299,7 +299,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/fe06d892-b395-4d48-662d-68afe1d9ec00/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/fe06d892-b395-4d48-662d-68afe1d9ec00/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Instalações <b>(Opcional)</b></h4>
                             <p>
@@ -309,7 +309,7 @@ const PacoteBasicoModal = ({ visivel, fechar }) => {
                     </Option>
 
                     <Option>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ce5c536b-2a52-425f-6b65-bd4bc1ab8300/public" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ce5c536b-2a52-425f-6b65-bd4bc1ab8300/public" loading="lazy" width="200" height="150" />
                         <div>
                             <h4> <BsCheckLg />Isolamento Térmico e Acústico</h4>
                             <p>

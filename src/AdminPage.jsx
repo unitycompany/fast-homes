@@ -8,10 +8,10 @@ import { AiOutlineCheckCircle, AiOutlineClose, AiOutlineCloseCircle, AiOutlineMe
 const Sidebar = styled.aside`
   width: 320px;
   position: fixed;
-  left: ${({ isOpen }) => (isOpen ? "0" : "-330px")};
-  transition: left 0.3s ease-in-out; /* Animação suave */
+  left: 0;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(${({ isOpen }) => (isOpen ? "0" : "-330px")});
+  transition: transform 0.3s ease-in-out;
   height: 70vh;
   overflow-y: auto;
   background-color: #fff;
@@ -83,9 +83,9 @@ const Sidebar = styled.aside`
 
 const ToggleButton = styled.button`
   position: fixed;
-  left: ${({ isOpen }) => (isOpen ? "320px" : "10px")};
+  left: 10px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(${({ isOpen }) => (isOpen ? "320px" : "0")});
   background: var(--color--green--low);
   color: #fff;
   border: none;
@@ -94,7 +94,7 @@ const ToggleButton = styled.button`
   cursor: pointer;
   border-radius: 5px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: left 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   display: flex;
   align-items: center;
   gap: 5px;

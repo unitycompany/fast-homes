@@ -5,15 +5,20 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     dedupe: [
-      '@chakra-ui/react',
-      '@chakra-ui/system',
-      '@emotion/react',
-      '@emotion/styled',
       'framer-motion'
     ],
   },
   base: '/',
   build: {
+    target: 'es2020',
+    cssTarget: 'chrome80',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     rollupOptions: {
       output: {
         manualChunks: {
@@ -22,7 +27,7 @@ export default defineConfig({
           'vendor-motion': ['framer-motion'],
           'vendor-swiper': ['swiper'],
           'vendor-splide': ['@splidejs/react-splide', '@splidejs/splide'],
-          'vendor-mui': ['@mui/material', '@mui/icons-material'],
+          'vendor-mui': ['@mui/material'],
           'vendor-three': ['three', '@react-three/fiber', '@react-three/drei'],
           'vendor-styled': ['styled-components'],
         },

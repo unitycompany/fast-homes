@@ -152,7 +152,7 @@ const Porque = () => {
                 </Left>
 
                 <Right data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a4e9b2a2-0170-44fa-4535-943920b58300/public" loading="lazy"/>
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a4e9b2a2-0170-44fa-4535-943920b58300/public" loading="lazy" width="600" height="400" />
                 </Right>
             </Content>
         </>

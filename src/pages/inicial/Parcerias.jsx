@@ -184,16 +184,16 @@ const Parcerias = () => {
                     <ParceriasImagens>
                         <ParceriasImageDiv>
                             <a href="https://fastdrywall.com.br/" target="_blank" data-aos="fade-up" data-aos-delay="300">
-                                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6b64f421-c21d-418a-22df-aeb637cc8800/public" alt="fastsistemasconstrutivos" />
+                                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6b64f421-c21d-418a-22df-aeb637cc8800/public" alt="fastsistemasconstrutivos" width="182" height="44" loading="lazy" />
                             </a>
                             <a href="https://novametalica.com.br/" target="_blank" data-aos="fade-up" data-aos-delay="500">
-                                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c12d51c8-2ed5-4b88-b069-c85191014100/public" alt="novametalica" />
+                                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c12d51c8-2ed5-4b88-b069-c85191014100/public" alt="novametalica" width="182" height="44" loading="lazy" />
                             </a>
                             <a href="https://www.saint-gobain.com.br/" target="_blank" data-aos="fade-up" data-aos-delay="700">
-                                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/978e5875-90fe-47bc-0e0c-973e5b58fb00/public" alt="saintgobain" />
+                                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/978e5875-90fe-47bc-0e0c-973e5b58fb00/public" alt="saintgobain" width="182" height="44" loading="lazy" />
                             </a>
                             <a href="https://esquadrias.fastsistemasconstrutivos.com.br/" target="_blank" data-aos="fade-up" data-aos-delay="100">
-                                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1eb3f29b-d879-41f9-9870-ffec8fd83100/public" alt="ecoframe" />
+                                <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1eb3f29b-d879-41f9-9870-ffec8fd83100/public" alt="ecoframe" width="182" height="44" loading="lazy" />
                             </a>
                         </ParceriasImageDiv>
                     </ParceriasImagens>

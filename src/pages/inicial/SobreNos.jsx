@@ -178,7 +178,7 @@ const SobreNos = () => {
             <Content>
                 <Background></Background>
                 <Left>
-                    <img data-aos="zoom-in" data-aos-delay="0" src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6e78ac0d-d748-41ef-c039-e41166058900/public" alt="" loading="lazy" />
+                    <img data-aos="zoom-in" data-aos-delay="0" src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6e78ac0d-d748-41ef-c039-e41166058900/public" alt="Fast Homes" loading="lazy" width="600" height="400" decoding="async" />
                 </Left>
                 <Right>
                     <h6 data-aos="zoom-in" data-aos-delay="50">Conheça a Fast Homes</h6>

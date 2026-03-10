@@ -139,7 +139,7 @@ const Surgiu = () => {
         <>
             <Content>
                 <Left data-aos="zoom-in" data-aos-delay="100">
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/63458025-85e6-434a-44b6-831d6e958700/public" loading="lazy" />
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/63458025-85e6-434a-44b6-831d6e958700/public" loading="lazy" width="600" height="400" />
                 </Left>
                 <Right>
                     <h2 data-aos="fade-up" data-aos-delay="100">Como a Fast Homes surgiu?</h2>
@@ -153,11 +153,11 @@ const Surgiu = () => {
                         A nossa proposta é otimizar os projetos para oferecer casas modernas, sustentáveis e prontas para morar em menos tempo, com mais conforto e menos dor de cabeça.
                     </p>
                     <div data-aos="fade-up" data-aos-delay="400">
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2110b3ee-1420-4cf2-0987-dfc2143fee00/public" loading="lazy" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2110b3ee-1420-4cf2-0987-dfc2143fee00/public" loading="lazy" width="400" height="300" />
 
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6e78ac0d-d748-41ef-c039-e41166058900/public" loading="lazy" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6e78ac0d-d748-41ef-c039-e41166058900/public" loading="lazy" width="400" height="300" />
 
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2751c4a0-fc31-407c-244e-8277817bdc00/public" loading="lazy" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2751c4a0-fc31-407c-244e-8277817bdc00/public" loading="lazy" width="400" height="300" />
                     </div>
 
                     <article data-aos="zoom-in" data-aos-delay="300">

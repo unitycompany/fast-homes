@@ -107,7 +107,7 @@ const RightPacotes = styled.div`
 
 const Pacote = styled.div`
     width: 100%;
-    transition: border 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
 
     & article{
         display: flex;
@@ -117,7 +117,7 @@ const Pacote = styled.div`
         border: 1px solid ${({ ativo }) => (ativo ? "var(--color--green--very--low)" : "var(--color--black)")};
         border-radius: ${({ ativo }) => (ativo ? "10px 10px 0 0" : "10px")};
         cursor: pointer;
-        transition: all 0.2s ease-in-out;
+        transition: border-color 0.2s ease-in-out, border-radius 0.2s ease-in-out;
         ${({ ativo }) => ativo && "border-bottom: none;"}
 
         & span {
@@ -130,7 +130,7 @@ const Pacote = styled.div`
         & svg {
             fill: ${({ ativo }) => (ativo ? "var(--color--green--very--low)" : "#000")};
             font-size: 25px;
-            transition: all .4s ease-in-out;
+            transition: transform .4s ease-in-out, fill .4s ease-in-out;
         }
     }
 

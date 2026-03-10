@@ -215,7 +215,7 @@ const CardCatalogo2 = ({ titulo, area, banheiros, quartos, imagem, slug }) => {
 
             <CardContainer onClick={handleClick}>
                 <CardImage>
-                    <img src={imagem} alt="" loading="lazy" />
+                    <img src={imagem} alt="" loading="lazy" width="400" height="300" />
                 </CardImage>
                 <CardText className="CardText">
                     <h2>
